@@ -1,0 +1,6 @@
+profile.json
+profile*.local.json
+reports/
+*.pdf
+screenshots/
+.DS_Store

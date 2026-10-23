@@ -1,0 +1,1506 @@
+{
+  "intake": {
+    "sport": "",
+    "team": "",
+    "graduation_year": "",
+    "target_levels": [
+      ""
+    ],
+    "dry_run": null
+  },
+  "athlete": {
+    "first_name": "",
+    "middle_name": "",
+    "last_name": "",
+    "preferred_name": "",
+    "email": "",
+    "secondary_email": "",
+    "mobile_phone": "",
+    "home_phone": "",
+    "date_of_birth": "",
+    "gender": "",
+    "sex": "",
+    "citizenship": "",
+    "ethnicity": "",
+    "hispanic_latino": "",
+    "married": "",
+    "address": {
+      "street_line_1": "",
+      "street_line_2": "",
+      "street_line_3": "",
+      "city": "",
+      "state_province": "",
+      "postal_code": "",
+      "country": ""
+    },
+    "social": {
+      "x_twitter": "",
+      "instagram": "",
+      "facebook": "",
+      "other_accounts": [
+        {
+          "platform": "",
+          "handle_or_url": ""
+        }
+      ]
+    },
+    "headshot_file": ""
+  },
+  "family": {
+    "parent_guardian_1": {
+      "name": "",
+      "relationship": "",
+      "email": "",
+      "mobile_phone": "",
+      "home_phone": "",
+      "phone": "",
+      "fax": "",
+      "address": {
+        "street_line_1": "",
+        "street_line_2": "",
+        "street_line_3": "",
+        "city": "",
+        "state_province": "",
+        "postal_code": "",
+        "country": ""
+      },
+      "occupation": "",
+      "college_attended": "",
+      "highest_education": "",
+      "attended_four_year_college": null,
+      "address_differs_from_athlete": null
+    },
+    "parent_guardian_2": {
+      "name": "",
+      "relationship": "",
+      "email": "",
+      "mobile_phone": "",
+      "home_phone": "",
+      "phone": "",
+      "fax": "",
+      "address": {
+        "street_line_1": "",
+        "street_line_2": "",
+        "street_line_3": "",
+        "city": "",
+        "state_province": "",
+        "postal_code": "",
+        "country": ""
+      },
+      "occupation": "",
+      "college_attended": "",
+      "highest_education": "",
+      "attended_four_year_college": null,
+      "address_differs_from_athlete": null
+    },
+    "additional_guardians": [
+      {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        },
+        "occupation": "",
+        "college_attended": "",
+        "highest_education": "",
+        "attended_four_year_college": null,
+        "address_differs_from_athlete": null
+      }
+    ],
+    "lives_with": "",
+    "parents_marital_status": "",
+    "siblings": [
+      {
+        "name": "",
+        "age": ""
+      }
+    ],
+    "school_connections": [
+      {
+        "school": "",
+        "family_alumni_ties": "",
+        "other_connections": ""
+      }
+    ]
+  },
+  "high_school": {
+    "name": "",
+    "ceeb_ets_code": "",
+    "phone": "",
+    "fax": "",
+    "address": {
+      "street_line_1": "",
+      "street_line_2": "",
+      "street_line_3": "",
+      "city": "",
+      "state_province": "",
+      "postal_code": "",
+      "country": ""
+    },
+    "has_american_football_team": null,
+    "coach": {
+      "name": "",
+      "relationship": "",
+      "email": "",
+      "mobile_phone": "",
+      "home_phone": "",
+      "phone": "",
+      "fax": "",
+      "address": {
+        "street_line_1": "",
+        "street_line_2": "",
+        "street_line_3": "",
+        "city": "",
+        "state_province": "",
+        "postal_code": "",
+        "country": ""
+      }
+    },
+    "counselor": {
+      "name": "",
+      "relationship": "",
+      "email": "",
+      "mobile_phone": "",
+      "home_phone": "",
+      "phone": "",
+      "fax": "",
+      "address": {
+        "street_line_1": "",
+        "street_line_2": "",
+        "street_line_3": "",
+        "city": "",
+        "state_province": "",
+        "postal_code": "",
+        "country": ""
+      }
+    }
+  },
+  "academics": {
+    "graduation_year": "",
+    "class_rank": "",
+    "class_size": "",
+    "intended_major": "",
+    "academic_honors": "",
+    "entry_term": "",
+    "admit_term": "",
+    "projected_enrollment_year": "",
+    "application_status": "",
+    "student_type": "",
+    "class_category": "",
+    "campus": "",
+    "academic_interest": "",
+    "current_class_schedule": "",
+    "gpa": {
+      "weighted": "",
+      "unweighted": "",
+      "core": "",
+      "scale": ""
+    },
+    "sat": {
+      "math": "",
+      "reading_ebrw": "",
+      "writing": "",
+      "total": "",
+      "superscore": "",
+      "test_dates": [
+        ""
+      ],
+      "planned_test_dates": [
+        ""
+      ]
+    },
+    "psat": {
+      "math": "",
+      "reading_ebrw": "",
+      "writing": "",
+      "total": "",
+      "test_dates": [
+        ""
+      ]
+    },
+    "act": {
+      "composite": "",
+      "english": "",
+      "math": "",
+      "reading": "",
+      "science": "",
+      "writing": "",
+      "superscore": "",
+      "test_dates": [
+        ""
+      ],
+      "planned_test_dates": [
+        ""
+      ]
+    },
+    "toefl": {
+      "reading": "",
+      "listening": "",
+      "speaking": "",
+      "writing": "",
+      "total": "",
+      "test_dates": [
+        ""
+      ]
+    },
+    "ap_courses_scores": [
+      {
+        "course": "",
+        "score": "",
+        "test_date": ""
+      }
+    ],
+    "transcript_file": "",
+    "unofficial_transcript_file": "",
+    "test_score_files": [
+      ""
+    ],
+    "early_decision_interest": null,
+    "financial_aid_interest": null,
+    "athletic_aid_interest": null,
+    "campus_visit_interest": null,
+    "other_schools_considering": [
+      ""
+    ],
+    "college_preferences_ranked": [
+      "",
+      "",
+      ""
+    ],
+    "previous_colleges": [
+      {
+        "name": "",
+        "year": "",
+        "graduation_year": "",
+        "credits_hours": "",
+        "gpa": "",
+        "major": "",
+        "reason_for_transfer": "",
+        "eligibility_remaining": "",
+        "level_played": "",
+        "coach": {
+          "name": "",
+          "relationship": "",
+          "email": "",
+          "mobile_phone": "",
+          "home_phone": "",
+          "phone": "",
+          "fax": "",
+          "address": {
+            "street_line_1": "",
+            "street_line_2": "",
+            "street_line_3": "",
+            "city": "",
+            "state_province": "",
+            "postal_code": "",
+            "country": ""
+          }
+        }
+      }
+    ],
+    "school_specific": [
+      {
+        "school": "",
+        "entry_term": "",
+        "admit_term": "",
+        "projected_enrollment_year": "",
+        "application_status": "",
+        "early_decision_interest": "",
+        "financial_aid_interest": "",
+        "athletic_aid_interest": "",
+        "campus": "",
+        "academic_interest": ""
+      }
+    ]
+  },
+  "eligibility": {
+    "ncaa_eligibility_center_registered": null,
+    "ncaa_id": "",
+    "naia_playnaia_id": "",
+    "qualifier": null
+  },
+  "athletics": {
+    "height": {
+      "value": "",
+      "unit": "",
+      "date": ""
+    },
+    "weight": {
+      "value": "",
+      "unit": "",
+      "date": ""
+    },
+    "recruiting_video_links": [
+      ""
+    ],
+    "recruiting_profile_url": "",
+    "high_school_team_name": "",
+    "high_school_jersey_number": "",
+    "high_school_position": "",
+    "high_school_coach": {
+      "name": "",
+      "relationship": "",
+      "email": "",
+      "mobile_phone": "",
+      "home_phone": "",
+      "phone": "",
+      "fax": "",
+      "address": {
+        "street_line_1": "",
+        "street_line_2": "",
+        "street_line_3": "",
+        "city": "",
+        "state_province": "",
+        "postal_code": "",
+        "country": ""
+      }
+    },
+    "club_teams": [
+      {
+        "name": "",
+        "jersey_number": "",
+        "position": "",
+        "league": "",
+        "coach": {
+          "name": "",
+          "relationship": "",
+          "email": "",
+          "mobile_phone": "",
+          "home_phone": "",
+          "phone": "",
+          "fax": "",
+          "address": {
+            "street_line_1": "",
+            "street_line_2": "",
+            "street_line_3": "",
+            "city": "",
+            "state_province": "",
+            "postal_code": "",
+            "country": ""
+          }
+        }
+      }
+    ],
+    "tournaments_showcases_events": [
+      {
+        "name": "",
+        "date": "",
+        "location": "",
+        "team": "",
+        "notes": ""
+      }
+    ],
+    "other_sports_played": [
+      ""
+    ],
+    "athletic_honors": "",
+    "hobbies": "",
+    "other_schools_considering": [
+      ""
+    ]
+  },
+  "sports": {
+    "baseball": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "club_position": "",
+      "bats": "",
+      "throws": "",
+      "summer_jersey_number": "",
+      "summer_fall_tournaments": [
+        {
+          "name": "",
+          "date": "",
+          "location": "",
+          "team": "",
+          "notes": ""
+        }
+      ],
+      "sixty_yard_time": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "exit_velocity": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "pitching_velocity": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      }
+    },
+    "softball": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "bats": "",
+      "throws": "",
+      "summer_select_team": "",
+      "summer_jersey_number": "",
+      "years_lettered": "",
+      "team_wins": "",
+      "team_losses": "",
+      "strengths": "",
+      "weaknesses": "",
+      "sportsrecruits_profile": "",
+      "stanford_connections": "",
+      "favorite_snack_foods": "",
+      "club_position": "",
+      "summer_select_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "throwing_velocity": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "sixty_yard_time": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "batting": {
+        "season": "",
+        "team": "",
+        "source": "",
+        "at_bats": "",
+        "runs": "",
+        "hits": "",
+        "doubles": "",
+        "triples": "",
+        "home_runs": "",
+        "runs_batted_in": "",
+        "walks": "",
+        "strikeouts": "",
+        "stolen_bases": "",
+        "batting_average": "",
+        "putouts": "",
+        "assists": "",
+        "errors": "",
+        "double_plays": "",
+        "fielding_average": ""
+      },
+      "pitching": {
+        "season": "",
+        "team": "",
+        "source": "",
+        "games_played": "",
+        "innings_pitched": "",
+        "hits": "",
+        "runs": "",
+        "earned_runs": "",
+        "earned_run_average": "",
+        "walks": "",
+        "strikeouts": "",
+        "wins": "",
+        "losses": ""
+      },
+      "film_available": null,
+      "film_link": "",
+      "future_sat_act_dates": [
+        ""
+      ]
+    },
+    "football": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "jersey_number": "",
+      "football_honors": "",
+      "juco_name": "",
+      "juco_graduation_year": "",
+      "favorite_nfl_team": "",
+      "favorite_artist": "",
+      "video_link": "",
+      "forty_yard_time": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "hundred_meter_time": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "bench": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "squat": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "power_clean": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "max_clean": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "vertical_jump": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "broad_jump": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "shuttle": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "high_school_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "offers": [
+        ""
+      ],
+      "other_offers": [
+        ""
+      ],
+      "camps_attended": [
+        {
+          "name": "",
+          "date": "",
+          "location": "",
+          "team": "",
+          "notes": ""
+        }
+      ],
+      "college_choice_factor_ratings": [
+        {
+          "exact_factor_label": "",
+          "rating_1_to_10": ""
+        }
+      ]
+    },
+    "basketball": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "club_position": "",
+      "aau_club_team": "",
+      "club_jersey_number": "",
+      "years_lettered": "",
+      "other_stats": "",
+      "stats_current_year": {
+        "season": "",
+        "team": "",
+        "source": "",
+        "points_per_game": "",
+        "field_goal_percentage": "",
+        "free_throw_percentage": "",
+        "rebounds_per_game": "",
+        "assists_per_game": "",
+        "steals_per_game": "",
+        "blocks_per_game": ""
+      },
+      "stats_last_year": {
+        "season": "",
+        "team": "",
+        "source": "",
+        "points_per_game": "",
+        "field_goal_percentage": "",
+        "free_throw_percentage": "",
+        "rebounds_per_game": "",
+        "assists_per_game": "",
+        "steals_per_game": "",
+        "blocks_per_game": ""
+      },
+      "july_tournaments": [
+        {
+          "name": "",
+          "date": "",
+          "location": "",
+          "team": "",
+          "notes": ""
+        }
+      ],
+      "high_school_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "aau_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "game_film_available": null,
+      "game_film_link": ""
+    },
+    "soccer": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "dominant_foot": "",
+      "club_team": "",
+      "club_jersey_number": "",
+      "club_position": "",
+      "club_coaches": [
+        {
+          "name": "",
+          "relationship": "",
+          "email": "",
+          "mobile_phone": "",
+          "home_phone": "",
+          "phone": "",
+          "fax": "",
+          "address": {
+            "street_line_1": "",
+            "street_line_2": "",
+            "street_line_3": "",
+            "city": "",
+            "state_province": "",
+            "postal_code": "",
+            "country": ""
+          }
+        }
+      ]
+    },
+    "volleyball": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "club_team": "",
+      "club_position": "",
+      "club_jersey_number": "",
+      "high_school_position": "",
+      "high_school_jersey_number": "",
+      "t_shirt_size": "",
+      "approach_jump_touch": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "block_jump_touch": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "standing_reach": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "vertical_jump": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "club_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "high_school_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      }
+    },
+    "track_field_cross_country": {
+      "event_group": "",
+      "milesplit_link": "",
+      "years_trained_competitively": "",
+      "years_trained_year_round": "",
+      "events": [
+        {
+          "event": "",
+          "best_mark": "",
+          "unit": "",
+          "date": "",
+          "course_notes": ""
+        },
+        {
+          "event": "",
+          "best_mark": "",
+          "unit": "",
+          "date": "",
+          "course_notes": ""
+        },
+        {
+          "event": "",
+          "best_mark": "",
+          "unit": "",
+          "date": "",
+          "course_notes": ""
+        },
+        {
+          "event": "",
+          "best_mark": "",
+          "unit": "",
+          "date": "",
+          "course_notes": ""
+        }
+      ]
+    },
+    "wrestling": {
+      "weight_class": "",
+      "freestyle_accomplishments": "",
+      "greco_accomplishments": "",
+      "juco_accomplishments": "",
+      "film_link": "",
+      "state_finish_by_grade": {
+        "grade_9": "",
+        "grade_10": "",
+        "grade_11": "",
+        "grade_12": ""
+      },
+      "records_by_year": [
+        {
+          "year": "",
+          "wins": "",
+          "losses": "",
+          "weight_class": ""
+        }
+      ],
+      "state_champion": null,
+      "state_placer": null,
+      "state_qualifier": null,
+      "one_hundred_plus_wins": null,
+      "all_american": null,
+      "national_qualifier": null
+    },
+    "swimming_diving": {
+      "stroke_specialty": "",
+      "primary_event": "",
+      "best_primary_event_time_yards": "",
+      "secondary_event": "",
+      "other_event_times": "",
+      "video_link": "",
+      "events_text": "",
+      "time": "",
+      "diving": null,
+      "swim_events": [
+        {
+          "event": "",
+          "course": "",
+          "time": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "time": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "time": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "time": ""
+        }
+      ],
+      "dive_events": [
+        {
+          "event": "",
+          "score": ""
+        },
+        {
+          "event": "",
+          "score": ""
+        },
+        {
+          "event": "",
+          "score": ""
+        }
+      ],
+      "amherst_best_times": [
+        {
+          "event": "",
+          "course": "",
+          "time": ""
+        }
+      ],
+      "amherst_dive_scores": {
+        "one_meter_six_dive": "",
+        "one_meter_eleven_dive": "",
+        "three_meter_six_dive": "",
+        "three_meter_eleven_dive": "",
+        "list_of_dives": ""
+      }
+    },
+    "golf": {
+      "nine_hole_scoring_average": "",
+      "nine_hole_best_score": "",
+      "eighteen_hole_scoring_average": "",
+      "eighteen_hole_best_score": "",
+      "usga_handicap": "",
+      "handicap_index": "",
+      "usga_ghin_number": "",
+      "average_score": "",
+      "low_score": "",
+      "low_score_course": "",
+      "low_tournament_score": "",
+      "high_school_average": "",
+      "home_course": "",
+      "home_course_slope": "",
+      "home_course_rating": "",
+      "tournament_experience": "",
+      "highlights": "",
+      "swing_video_url": "",
+      "driving_distance_carry": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "ball_speed": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "clubhead_speed": {
+        "value": "",
+        "unit": "",
+        "date": ""
+      },
+      "head_pro": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "swing_instructor": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "five_best_tournament_results": [
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        }
+      ],
+      "top_three_recent_finishes": [
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        },
+        {
+          "event": "",
+          "course": "",
+          "score": "",
+          "place": "",
+          "date": ""
+        }
+      ],
+      "anticipated_major_tournaments": [
+        {
+          "name": "",
+          "date": "",
+          "location": "",
+          "team": "",
+          "notes": ""
+        }
+      ]
+    },
+    "tennis": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "utr_rating": "",
+      "usta_u18_national_ranking": "",
+      "world_tennis_number": "",
+      "singles_team_position": "",
+      "doubles_team_position": "",
+      "state_tournament_results": "",
+      "usta_ranking_results": "",
+      "state_ranking_results": "",
+      "regional_ranking_results": "",
+      "dominant_hand": "",
+      "strongest_strokes": "",
+      "why_play_tennis": "",
+      "what_you_want_from_team": "",
+      "best_marks_stats_by_event": "",
+      "sport_goals_next_two_years": "",
+      "most_influential_person": "",
+      "religion": "",
+      "usta_itf_events": [
+        {
+          "event": "",
+          "date": "",
+          "results": ""
+        },
+        {
+          "event": "",
+          "date": "",
+          "results": ""
+        },
+        {
+          "event": "",
+          "date": "",
+          "results": ""
+        }
+      ],
+      "high_school_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "private_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "match_video_available": null,
+      "match_video_link": "",
+      "high_school_position_grid": {
+        "singles": [
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          }
+        ],
+        "doubles": [
+          {
+            "position": "",
+            "partner": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "partner": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "partner": "",
+            "year": "",
+            "results": ""
+          }
+        ]
+      },
+      "prior_college_position_grid": {
+        "singles": [
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "year": "",
+            "results": ""
+          }
+        ],
+        "doubles": [
+          {
+            "position": "",
+            "partner": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "partner": "",
+            "year": "",
+            "results": ""
+          },
+          {
+            "position": "",
+            "partner": "",
+            "year": "",
+            "results": ""
+          }
+        ]
+      }
+    },
+    "lacrosse": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "strong_hand": "",
+      "club_team": "",
+      "club_jersey_number": "",
+      "recruiting_profile_url": "",
+      "summer_tournaments_not_listed": "",
+      "current_class_schedule": "",
+      "formal_name": "",
+      "stats_awards": "",
+      "high_school_level_played": "",
+      "college_level_played": "",
+      "video_link": "",
+      "video_uniform_number": "",
+      "video_uniform_color": "",
+      "currently_enrolled_at_aacc": null,
+      "transfer": null,
+      "game_tape_available": null,
+      "high_school_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "club_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "college_coach": {
+        "name": "",
+        "relationship": "",
+        "email": "",
+        "mobile_phone": "",
+        "home_phone": "",
+        "phone": "",
+        "fax": "",
+        "address": {
+          "street_line_1": "",
+          "street_line_2": "",
+          "street_line_3": "",
+          "city": "",
+          "state_province": "",
+          "postal_code": "",
+          "country": ""
+        }
+      },
+      "other_upcoming_events": [
+        {
+          "name": "",
+          "date": "",
+          "location": "",
+          "team": "",
+          "notes": ""
+        }
+      ]
+    },
+    "ice_hockey": {
+      "primary_position": "",
+      "secondary_position": "",
+      "other_positions": [
+        ""
+      ],
+      "best_position": "",
+      "alternate_position": "",
+      "shoots": "",
+      "league": "",
+      "league_website": "",
+      "games_played": "",
+      "goals": "",
+      "assists": "",
+      "points": "",
+      "penalty_minutes": "",
+      "goalie_goals_against_average": "",
+      "goalie_save_percentage": "",
+      "goalie_record": "",
+      "high_school_team_name": "",
+      "high_school_jersey_number": "",
+      "high_school_stat_line": "",
+      "planned_entry_type": "",
+      "planned_entry_term": "",
+      "club_coaches": [
+        {
+          "name": "",
+          "relationship": "",
+          "email": "",
+          "mobile_phone": "",
+          "home_phone": "",
+          "phone": "",
+          "fax": "",
+          "address": {
+            "street_line_1": "",
+            "street_line_2": "",
+            "street_line_3": "",
+            "city": "",
+            "state_province": "",
+            "postal_code": "",
+            "country": ""
+          }
+        }
+      ],
+      "team_stats_by_year": [
+        {
+          "year": "",
+          "team": "",
+          "high_school_or_junior": "",
+          "games": "",
+          "goals": "",
+          "assists": "",
+          "points": "",
+          "coach": {
+            "name": "",
+            "relationship": "",
+            "email": "",
+            "mobile_phone": "",
+            "home_phone": "",
+            "phone": "",
+            "fax": "",
+            "address": {
+              "street_line_1": "",
+              "street_line_2": "",
+              "street_line_3": "",
+              "city": "",
+              "state_province": "",
+              "postal_code": "",
+              "country": ""
+            }
+          }
+        }
+      ],
+      "goalie_stats_by_year": [
+        {
+          "year": "",
+          "team": "",
+          "games": "",
+          "saves": "",
+          "goals_against": ""
+        }
+      ]
+    },
+    "generic_any_sport": {
+      "sport_being_recruited_for": "",
+      "projected_enrollment_term": "",
+      "projected_enrollment_year": ""
+    }
+  },
+  "consents": {
+    "records": [
+      {
+        "school": "",
+        "form_url": "",
+        "field_label": "",
+        "kind": "",
+        "verbatim_wording": "",
+        "verbatim_options": [
+          ""
+        ],
+        "family_answer": null,
+        "answered_at": "",
+        "family_answer_verbatim": "",
+        "implicit_by_action": "",
+        "proposed_decline": ""
+      }
+    ]
+  },
+  "target_schools": [
+    {
+      "school": "",
+      "sport": "",
+      "team": "",
+      "level": "",
+      "official_athletics_url": "",
+      "official_source_page_url": "",
+      "form_url": "",
+      "platform": "",
+      "form_type": "",
+      "verification_notes": "",
+      "official_link_chain": [
+        ""
+      ]
+    }
+  ],
+  "approvals": {
+    "full_profile": {
+      "approved": null,
+      "family_answer_verbatim": "",
+      "approved_at": "",
+      "profile_snapshot_sha256": ""
+    },
+    "final_school_list": {
+      "approved": null,
+      "family_answer_verbatim": "",
+      "approved_at": "",
+      "school_list_snapshot_sha256": ""
+    },
+    "school_actions": [
+      {
+        "school": "",
+        "form_url": "",
+        "action": "",
+        "exact_action_wording": "",
+        "approved": null,
+        "family_answer_verbatim": "",
+        "approved_at": ""
+      }
+    ]
+  }
+}
