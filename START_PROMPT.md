@@ -3,7 +3,7 @@ ChatGPT desktop app and do not know how to use a terminal. Do the setup work
 yourself and explain each step in plain words. Ask me only for decisions,
 permissions and answers you need. Never ask me to type or run commands.
 
-Get this instruction package: https://github.com/reichenbach/<repo>
+Get this instruction package: https://github.com/reichenbach/recruiting-questionnaire-helper
 
 1. If <repo> is still a placeholder, ask me for the real repository link before
    downloading anything. Do not guess the repository name. If this package is

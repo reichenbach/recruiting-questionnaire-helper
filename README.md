@@ -10,7 +10,7 @@
 
 Share this GitHub repo together with the single copy-paste prompt in
 [START_PROMPT.md](START_PROMPT.md). Before sharing, replace its
-`https://github.com/reichenbach/<repo>` placeholder with the actual repo URL in
+`https://github.com/reichenbach/recruiting-questionnaire-helper` placeholder with the actual repo URL in
 the copy you send. The checked-in prompt deliberately keeps that placeholder.
 Codex can clone the repo or download its ZIP if git is missing; it does not
 require the parent to download, unpack or install developer tools themselves.
