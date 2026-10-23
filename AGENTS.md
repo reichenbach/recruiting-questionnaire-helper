@@ -10,9 +10,10 @@ including the coverage notes; sample links are candidates, not verified targets.
 
 - Help fill recruiting questionnaires only. Never contact coaches: no emails,
   messages, calls, meeting requests, or outreach through any channel.
-- No payments, paid services, or subscriptions. Never create accounts or enter
-  account passwords without asking first for that specific action. Do not request
-  passwords in chat or save them. Let the family handle sign-in if needed.
+- No payments, paid services, or subscriptions. Never create accounts without
+  asking first for that specific action.
+- Never type, request or save passwords; the family signs in themselves.
+- Where the reference tree says to answer, default, pick the closest value or substitute a form, AGENTS.md wins.
 - Never upload a file without approval for that exact file, school, and form.
   Knowing a file path is not upload approval.
 - During questionnaire discovery and filling, stay on official school athletics
@@ -40,15 +41,15 @@ including the coverage notes; sample links are candidates, not verified targets.
 Follow `prompts/first-run-check.md` before collecting any family information.
 Explain each step in plain words. The parent never needs a terminal: Codex
 handles any necessary free installs and setup, within the app's permissions.
-The parent handles operating-system approvals and sign-in themselves. Never
-ask for passwords in chat or buy anything. Check actual capabilities rather
+The parent handles operating-system approvals and sign-in themselves. Do not
+buy anything. Check actual capabilities rather
 than promising access based on a subscription or app name.
 
 1. In the ChatGPT desktop app, guide the parent to **Plugins > Computer Use**,
    then **Install plugin** or **Enable**. Turn on both the **Computer Use server**
    and **skill** toggles, then **Try now**. Explain that this lets the helper see
    and operate approved apps; review browser access in **Settings > Computer use**.
-2. For this package's Mac workflow, require **Apple Silicon (M1 or newer)**.
+2. If the first-run check fails on an older Intel Mac, it may not be supported.
    Guide the parent to Apple menu > About This Mac to check the chip if needed.
    In **System Settings > Privacy & Security**, enable **Screen Recording**
    and **Accessibility** for the Computer Use component named in the prompt.
@@ -173,11 +174,31 @@ ask the family to handle a challenge or report the block.
 
 ### ARMS
 
-- The landing page offers Google/Twitter sign-in or "Continue without".
-  **Continue creates a profile in the school's ARMS. Ask explicit approval
-  before clicking it**, even in a dry run. Avoid social sign-in unless the
-  family specifically authorizes it. This approval is separate from Submit.
-- Phone fields require ten digits; the tree's 555-0101 test number was rejected.
+- The landing page offers Google, Twitter or "Continue without one of these accounts".
+  Always choose continue-without. Ask explicit approval before clicking it,
+  even in a dry run, because the flow creates a school-side profile. This
+  approval is separate from Submit. Inspect only public content until approved.
+- Illinois Wesleyan University men's baseball dry-run findings, supplied for
+  https://questionnaires.armssoftware.com/8b8ac3c4ffef:
+  - A "Visitor Details" step asks for first name, last name and email and says
+    it is used "to Create a Profile". Treat this as sending data. Proceed only
+    after full-profile and final-school-list approval and separate profile-creation
+    approval. In a dry run never go past this step unless the data is fake and
+    the live-rehearsal disclosure has been explicitly approved.
+  - Position is single-select: 1b, 2b, 3b, C, Lhp, Mif, Of, Rhp, Ss. Ask the
+    family for their primary position; do not choose among multiple positions.
+  - High school is a typeahead. If not found, "Add a new high school?" requires
+    the school's address, city, state, ZIP and "Does your school have an American
+    Football Team?" Ask the family for these answers. The template's
+    `high_school.address` and `has_american_football_team` fields hold them.
+  - The phone field has a country-code widget: click it and type the supplied
+    digits. Verify the country code and final number without inventing digits.
+  - Dropdowns use Angular Material overlays. State only appears after Country
+    is set; select Country first and inspect the overlay options.
+  - This form had no bats/throws fields and no consent or opt-in boxes. These
+    findings describe that form during the dry run; inspect the live form again.
+- Phone fields require ten digits; the tree's seven-digit test was rejected.
+  Use 202-555-0100-style numbers for synthetic test data only.
 - New-school lookup fallback requires name, street line 1 and state in the
   schema. Lewis enforced ZIP even though not marked required. Collect city,
   ZIP and country too. "Does your school have an American Football Team?" is
@@ -203,8 +224,8 @@ ask the family to handle a challenge or report the block.
   captcha"). Hand off challenges; never solve around or bypass them.
 - Required: first/last name, email, ZIP, cell, graduation year. Volleyball also
   requires city, state, high school, HS coach name, HS position and HS jersey.
-- NCSA and IMG Academy marketing Yes/No radios are required. Propose "No thanks"
-  and obtain the family's answer to the exact wording before entering it.
+- NCSA and IMG Academy marketing Yes/No radios are required. Follow the
+  **Opt-in rule** in section 4 and the live-wording consent review below.
 - Ten-digit phones; repeatable "Personal Contacts" for parents/coaches.
 - High-school "is not listed" expands address lines 1–3, city, state, ZIP,
   country and CEEB. Collect required missing values from the family.
@@ -257,20 +278,25 @@ run. Record school, URL, field label, kind, exact wording/options, family's exac
 answer, and date in `consents.records`; unanswered means null and remains blank.
 If wording changes, show it again and collect a fresh answer.
 
-Marketing/SMS/contact/opt-in checkboxes default to No/unchecked unless the family
-explicitly says Yes. Clear preselected opt-ins. For required Yes/No radios,
-propose No/"No thanks", show the wording, and enter only the family's confirmed
-answer; do not manufacture a family response from that default. If a required
-consent/signature lacks an answer, stop that school as needs-info. Never sign
-on a person's behalf without their specific answer to the exact signature
-request. Handle implicit authorization (such as entering a phone number) before
-the triggering action, not just before Submit.
+### Opt-in rule
+
+Unchecked opt-in boxes stay unchecked. Clear preselected opt-in boxes unless the family explicitly says Yes. Marketing and SMS choices default to No unless the family explicitly says Yes. Any required Yes/No choice needs the family's answer to the exact live wording and all options; propose No or "No thanks" for marketing and SMS, but enter only the family's confirmed answer.
+
+If a required consent/signature lacks an answer, stop that school as needs-info.
+Never sign on a person's behalf without their specific answer to the exact
+signature request. Handle implicit authorization (such as entering a phone
+number) before the triggering action, not just before Submit.
+
+### Reviewed profile and school list
 
 Before entering family data, show the FULL profile (all supplied fields, units,
 files, unanswered items and consent records) and the FINAL school list with
 school/sport/team, form type and URL for EACH. Get two explicit approvals: full
 profile and final school list. Record the family's words, date and SHA-256 of
 each reviewed snapshot in `approvals`; store snapshots under local `reports/`.
+The profile version is the exact set of answers the family approved. The
+school-list version is the exact schools, sports, teams, form types and form
+URLs approved. Any change requires re-approval of the affected snapshots.
 Do not include `approvals` itself in the profile snapshot. Null approvals are
 not approval. A general "go ahead" from before these reviews is insufficient.
 

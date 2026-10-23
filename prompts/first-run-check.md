@@ -2,16 +2,18 @@ Read AGENTS.md and follow its section 0 before intake. Explain each step in
 plain words. Do setup yourself where the available tools and permissions allow;
 never ask the parent to use a terminal. Use only free necessary installs from
 official sources. Let the parent handle system permissions and sign-in; never
-ask for passwords in chat, create accounts without asking, or pay for anything.
+create accounts without asking or pay for anything.
+Never type, request or save passwords; the family signs in themselves.
 
 In the ChatGPT desktop app, guide the parent through Plugins > Computer Use >
 Install plugin or Enable. Turn on both the Computer Use server and skill toggles,
 then Try now. Review browser access in Settings > Computer use and explain the
 app-access prompt before the parent approves it.
 
-Mac: this package's workflow requires Apple Silicon (M1 or newer); check Apple
-menu > About This Mac if needed. Guide the parent through System Settings >
-Privacy & Security > Screen Recording and Accessibility for the Computer Use
+If the first-run check fails on an older Intel Mac, it may not be supported.
+On Mac, check Apple menu > About This Mac if needed. Guide the parent through
+System Settings > Privacy & Security > Screen Recording and Accessibility for
+the Computer Use
 component shown in the permission prompt. Explain that these let it see the
 browser and click/type. Have the parent grant the permissions and reopen the app
 if prompted. Do not bypass a system permission or administrator prompt.

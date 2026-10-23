@@ -8,11 +8,11 @@ answers, or fill unknown required values with placeholders. Stop that school
 as needs-info if a required answer or unambiguous option is missing.
 Show every consent, attestation, certification and signature request verbatim
 with all options and enter only the family's answer. Leave unanswered requests
-blank. Marketing/SMS/opt-ins default No/unchecked unless explicitly Yes; get
-the family's confirmed No for required consent radios. Before entering a phone
+blank. Follow the Opt-in rule in AGENTS.md section 4. Before entering a phone
 number that itself grants SMS/AI-contact authorization, show that wording and
 get approval for the action. Ask separately before ARMS Continue/profile
-creation, any account/password action, or each specific file upload.
+creation, any account creation, or each specific file upload.
+Never type, request or save passwords; the family signs in themselves.
 Review the completed form, show its values and URL, then ask once more and wait
 for an explicit school-specific Yes immediately before each Submit. Never
 submit a dry run or the fake test fixture. No payments or coach contact.

@@ -9,8 +9,9 @@ follow section 4's order for the common questions, and ask ONLY the named
 sport's section 2 block. Save my actual answers to ./profile.json using
 profile.template.json; leave unknowns blank/null and never invent values.
 Show me exact live consent/attestation wording before collecting my answer.
-Marketing/SMS opt-ins default No/unchecked unless I explicitly opt in.
-Do not create accounts/profiles, enter passwords, upload files, or trigger
+Follow the Opt-in rule in AGENTS.md section 4.
+Never type, request or save passwords; the family signs in themselves.
+Do not create accounts/profiles, upload files, or trigger
 implicit phone/contact consent without asking for the specific action.
 Never contact coaches or pay for anything. Keep saved data local.
 Before filling, have me approve the full profile and final school list with

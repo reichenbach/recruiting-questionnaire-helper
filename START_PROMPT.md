@@ -5,34 +5,35 @@ permissions and answers you need. Never ask me to type or run commands.
 
 Get this instruction package: https://github.com/reichenbach/recruiting-questionnaire-helper
 
-1. If <repo> is still a placeholder, ask me for the real repository link before
-   downloading anything. Do not guess the repository name. If this package is
-   already open locally, verify it and reuse it without overwriting saved work.
+1. If this link doesn't open as a public repo, ask me for the right link.
+   If this package is already open locally, verify it and reuse it without
+   overwriting saved work.
 2. Otherwise choose a sensible private local folder, such as a projects folder
    under Documents on Mac or Windows. Avoid cloud-synced and shared folders;
    choose another local location if Documents is synced. Tell me where you will
    put it. Use git clone if git is available. If git is missing, download the
-   repository ZIP from GitHub using its actual default branch, unpack it and use
-   the extracted folder; I do not need to install git. Never overwrite an
+   repository ZIP from GitHub, unpack it and use the extracted folder; I do not need to install git. Never overwrite an
    existing folder. Do not upload files or family information to GitHub.
 3. Open/use that folder as the local Codex project and confirm you can read its
    files. If the app needs me to grant folder access or select the folder in its
    project picker, walk me through that small step. Do not claim access until
    you have it. Read AGENTS.md, README.md, all prompts/ and the entire read-only
    reference/recruiting-intake-tree.md. Follow their workflow and approval rules.
+   Where the reference tree says to answer, default, pick the closest value or substitute a form, AGENTS.md wins.
    Do not change the reference or blank template. After retrieval, work only
-   inside the project folder; do not commit, change remotes, push, merge or
-   delete branches. If using Git, work on a local working branch, not the default
-   branch. A ZIP copy does not need Git initialized.
+   inside the project folder; do not commit, change remotes or publish changes.
+   A downloaded ZIP is ready to use as an ordinary folder.
 4. Handle any necessary free installs yourself from official sources, explaining
    their purpose. Respect the app's access prompts; let me grant operating-system
-   permissions and handle any sign-in myself. Never request passwords in chat,
-   buy anything, or start a paid service. If access is blocked, explain the
+   permissions and handle any sign-in myself.
+   Never type, request or save passwords; the family signs in themselves.
+   Never buy anything or start a paid service. If access is blocked, explain the
    limitation and guide me through the available app controls, not a terminal.
 5. BEFORE intake, run prompts/first-run-check.md. Guide me through Plugins >
    Computer Use > Install plugin or Enable, both server and skill toggles and
-   browser access. On Mac, this package requires Apple Silicon; guide me through
-   System Settings > Privacy & Security > Screen Recording and Accessibility.
+   browser access. If the first-run check fails on an older Intel Mac, it may not be supported.
+   On Mac, guide me through System Settings > Privacy & Security > Screen
+   Recording and Accessibility.
    On Windows, explain that Computer Use takes over the foreground: keep the PC
    unlocked and do not use it meanwhile. Then use Computer Use to open
    https://example.com and read back the heading actually displayed: "Example
@@ -47,14 +48,13 @@ Get this instruction package: https://github.com/reichenbach/recruiting-question
    the synthetic test fixture for my family. Unknown means unanswered, not No.
 7. Find each form through the official school athletics site and verify its
    destination, redirects, school, sport and team. Ask before ARMS Continue
-   (which creates a school profile), any account/password action, or uploading
+   and profile creation, any account creation, or uploading
    an exact file to a specific school/form. Never contact coaches, make payments,
    browse recruiting marketplaces/social profiles or guess missing values.
 8. Show every live consent, attestation, certification, signature and terms
    request verbatim with all options and linked disclosures; enter only my
-   answer. Marketing/SMS opt-ins default No/unchecked; required Yes/No choices
-   still need my answer. Show implicit contact authorization and obtain my
-   approval BEFORE an action such as entering a mobile number triggers it.
+   answer. Follow the Opt-in rule in AGENTS.md section 4. Show implicit contact
+   authorization and obtain my approval BEFORE an action such as entering a mobile number triggers it.
 9. Before entering family data, show the FULL profile including units, files,
    unanswered items and consents, and the FINAL school list with each school,
    sport/team, form type and verified URL. Obtain two explicit approvals: the
@@ -74,7 +74,8 @@ Keep saved family data only in local profile.json and ignored reports/ (and
 screenshots/ only if needed). Do not create cloud documents or extra remote
 profiles. Explain that chat and Computer Use are not an offline-processing
 promise and an approved form may save data before Submit. If usage runs out,
-save local progress and explain how to resume. Plus uses a rolling usage window,
-often described as about 5 hours; check https://help.openai.com for current
-limits and the app's displayed reset time. Do not promise message counts or buy
-extra usage. Start now with getting and checking the package, not family intake.
+save local progress and explain how to resume. Plus has a roughly 5-hour usage
+window and a weekly cap; limits can change.
+Check https://help.openai.com and the app's Usage display for current limits and
+reset times. Do not promise message counts, and don't buy extra usage. Start now
+with getting and checking the package, not family intake.

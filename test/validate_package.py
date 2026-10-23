@@ -60,6 +60,46 @@ def same_shape(template, fixture, path=""):
         require(fixture is None or isinstance(fixture, (str, bool)), "Invalid value type: " + path)
 
 
+def personal_data_issues(text, *, reference=False):
+    """Return pattern categories, without echoing potentially private values."""
+    issues = set()
+    for match in re.finditer(r"[A-Z0-9._%+-]+@([A-Z0-9.-]+\.[A-Z]{2,})", text, re.I):
+        if match.group(1).lower() not in {"example.com", "example.org"}:
+            issues.add("non-example email")
+    phone_pattern = re.compile(
+        r"(?<![\w])(?:\+?1[-. \t]?)?"
+        r"(?:\(\d{3}\)[-. \t]*|\d{3}[-. \t]?)?"
+        r"\d{3}[-. \t]?\d{4}(?![\w])"
+    )
+    for match in phone_pattern.finditer(text):
+        digits = re.sub(r"\D", "", match.group())
+        # Only the exact opt-out number quoted in the read-only reference is exempt.
+        if reference and match.group() == "1-877-845-6272":
+            continue
+        local_digits = digits[1:] if len(digits) == 11 and digits.startswith("1") else digits
+        if local_digits[-7:-4] != "555":
+            issues.add("non-555 phone")
+    if re.search(r"/Users/|/home/|[A-Z]:[\\/]Users(?:[\\/]|\b)", text, re.I):
+        issues.add("home path")
+    if re.search(r"\b[\w-]+\.local\b|omarchy|DoubleSecret", text, re.I):
+        issues.add("hostname")
+    return issues
+
+
+def phone_fields(value, path=""):
+    """Inspect every phone/fax field, including populated fields in nested contacts."""
+    if isinstance(value, dict):
+        for key, item in value.items():
+            field_path = (path + "." + key).lstrip(".")
+            if key in {"phone", "fax"} or key.endswith("_phone"):
+                yield field_path, item
+            else:
+                yield from phone_fields(item, field_path)
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            yield from phone_fields(item, path + "." + str(index))
+
+
 def main():
     required = [
         ".gitignore", "AGENTS.md", "README.md", "START_PROMPT.md",
@@ -72,7 +112,7 @@ def main():
         require((ROOT / name).is_file(), "Missing package file: " + name)
     print("PASS: required package files")
 
-    # Normalize checkout line endings so this check works on Windows too.
+    # read_text uses universal newlines: CRLF and CR become LF before hashing.
     source = (ROOT / "reference/recruiting-intake-tree.md").read_text(encoding="utf-8")
     require(hashlib.sha256(source.encode("utf-8")).hexdigest() == SOURCE_SHA256, "Read-only reference changed")
     section = source[source.index("## 5. Sources (all read-only)"):]
@@ -112,7 +152,9 @@ def main():
         family.parent_guardian_2.attended_four_year_college
         family.lives_with family.parents_marital_status family.siblings.0.name
         family.siblings.0.age family.school_connections.0.family_alumni_ties
-        high_school.name high_school.ceeb_ets_code high_school.address.postal_code
+        high_school.name high_school.ceeb_ets_code high_school.address.street_line_1
+        high_school.address.city high_school.address.state_province
+        high_school.address.postal_code high_school.address.country
         high_school.has_american_football_team high_school.coach.email high_school.counselor.email
         academics.graduation_year academics.gpa.weighted academics.gpa.unweighted
         academics.gpa.core academics.class_rank academics.sat.math academics.sat.reading_ebrw
@@ -208,8 +250,14 @@ def main():
     for value in leaves(fixture):
         if isinstance(value, str) and "@" in value:
             require(value.endswith("@example.com"), "Non-example email in fixture")
-        if isinstance(value, str) and re.fullmatch(r"\d{3}-\d{3}-\d{4}", value):
-            require(re.fullmatch(r"\d{3}-555-01\d{2}", value), "Phone outside reserved example range")
+    for path, value in phone_fields(fixture):
+        require(value in (None, "") or (isinstance(value, str) and
+                re.fullmatch(r"202-555-01\d{2}", value)),
+                "Fixture phone must use 202-555-01xx: " + path)
+    for field in ("street_line_1", "city", "state_province", "postal_code", "country"):
+        require(bool(fixture["high_school"]["address"][field]), "Missing fake high-school address: " + field)
+    require(fixture["high_school"]["has_american_football_team"] is False,
+            "Expected explicit synthetic high-school football answer")
     print("PASS: synthetic dry-run fixture, null consents, no approvals or other-sport answers")
 
     patterns = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
@@ -228,10 +276,24 @@ def main():
     else:
         print("PASS: required ignore patterns (Git behavior check skipped outside a Git checkout)")
 
-    for name in required:
-        if not name.endswith(".md"):
-            continue
-        page = ROOT / name
+    markdown_pages = sorted(page for page in ROOT.rglob("*.md")
+                            if ".git" not in page.relative_to(ROOT).parts)
+    for page in markdown_pages:
+        name = page.relative_to(ROOT).as_posix()
+        issues = personal_data_issues(page.read_text(encoding="utf-8"),
+                                      reference=name.startswith("reference/"))
+        require(not issues, "Personal-data pattern in " + name + ": " + ", ".join(sorted(issues)))
+    print("PASS: all Markdown personal-data scan (exact reference opt-out number exempt)")
+
+    repo_pattern = r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_-]+"
+    readme_repos = set(re.findall(repo_pattern, (ROOT / "README.md").read_text(encoding="utf-8")))
+    start_repos = set(re.findall(repo_pattern, (ROOT / "START_PROMPT.md").read_text(encoding="utf-8")))
+    require(len(readme_repos) == 1 and readme_repos == start_repos,
+            "README.md and START_PROMPT.md must agree on one repository URL")
+    print("PASS: README and START_PROMPT repository URLs agree")
+
+    for page in markdown_pages:
+        name = page.relative_to(ROOT).as_posix()
         for link in re.findall(r"\[[^\]]*\]\(([^\s)]+)\)", page.read_text(encoding="utf-8")):
             if "://" in link or link.startswith(("#", "mailto:")):
                 continue
