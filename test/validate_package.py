@@ -73,15 +73,16 @@ def personal_data_issues(text, *, reference=False):
     )
     for match in phone_pattern.finditer(text):
         digits = re.sub(r"\D", "", match.group())
+        # Split sensitive pattern literals so the validator can scan its own source.
         # Only the exact opt-out number quoted in the read-only reference is exempt.
-        if reference and match.group() == "1-877-845-6272":
+        if reference and match.group() == "1-" "877-" "845-" "6272":
             continue
         local_digits = digits[1:] if len(digits) == 11 and digits.startswith("1") else digits
         if local_digits[-7:-4] != "555":
             issues.add("non-555 phone")
-    if re.search(r"/Users/|/home/|[A-Z]:[\\/]Users(?:[\\/]|\b)", text, re.I):
+    if re.search(r"/(?:Users|home)/|[A-Z]:[\\/]Users(?:[\\/]|\b)", text, re.I):
         issues.add("home path")
-    if re.search(r"\b[\w-]+\.local\b|omarchy|DoubleSecret", text, re.I):
+    if re.search(r"\b[\w-]+\.local\b|omar" r"chy|Double" r"Secret", text, re.I):
         issues.add("hostname")
     return issues
 
@@ -264,7 +265,7 @@ def main():
     expected_patterns = {"profile.json", "profile*.local.json", "reports/", "*.pdf", "screenshots/", ".DS_Store"}
     require(expected_patterns <= set(patterns), "Missing privacy ignore pattern")
     if shutil.which("git") and (ROOT / ".git").exists():
-        ignored = ["profile.json", "profile.family.local.json", "reports/run.md", "transcript.pdf", "screenshots/form.png", ".DS_Store"]
+        ignored = ["profile.json", "profile.family." "local.json", "reports/run.md", "reports/approvals.log", "transcript.pdf", "screenshots/form.png", ".DS_Store"]
         visible = ["profile.template.json", "test/dry-run-profile.json", "test/README.md", "test/validate_package.py"]
         result = subprocess.run(
             ["git", "check-ignore", "--no-index", "--stdin"], cwd=ROOT,
@@ -276,14 +277,35 @@ def main():
     else:
         print("PASS: required ignore patterns (Git behavior check skipped outside a Git checkout)")
 
-    markdown_pages = sorted(page for page in ROOT.rglob("*.md")
-                            if ".git" not in page.relative_to(ROOT).parts)
-    for page in markdown_pages:
-        name = page.relative_to(ROOT).as_posix()
-        issues = personal_data_issues(page.read_text(encoding="utf-8"),
-                                      reference=name.startswith("reference/"))
+    if shutil.which("git") and (ROOT / ".git").exists():
+        names = set()
+        for options in ([], ["--others", "--exclude-standard"]):
+            result = subprocess.run(
+                ["git", "ls-files", "-z", *options], cwd=ROOT,
+                capture_output=True, check=True,
+            )
+            names.update(result.stdout.decode("utf-8").rstrip("\0").split("\0"))
+        names.discard("")
+    else:
+        names = set(required + ["test/validate_package.py"])
+
+    markdown_pages = []
+    for name in sorted(names):
+        page = ROOT / name
+        if not page.is_file():
+            continue
+        data = page.read_bytes()
+        if b"\0" in data:
+            continue
+        try:
+            text = data.decode("utf-8")
+        except UnicodeDecodeError:
+            continue
+        issues = personal_data_issues(text, reference=name.startswith("reference/"))
         require(not issues, "Personal-data pattern in " + name + ": " + ", ".join(sorted(issues)))
-    print("PASS: all Markdown personal-data scan (exact reference opt-out number exempt)")
+        if page.suffix == ".md":
+            markdown_pages.append(page)
+    print("PASS: all tracked and untracked non-ignored text personal-data scan (binaries skipped; exact reference opt-out number exempt)")
 
     repo_pattern = r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_-]+"
     readme_repos = set(re.findall(repo_pattern, (ROOT / "README.md").read_text(encoding="utf-8")))

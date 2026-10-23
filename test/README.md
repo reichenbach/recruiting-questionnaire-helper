@@ -26,9 +26,12 @@ On Windows, `py -3` can replace `python3` if that is your installed Python
 launcher. The validator uses only the standard library and local read-only
 checks. It checks blank template values, required field coverage, fixture
 safety, source-list equality/count, source integrity, ignore behavior,
-relative Markdown links, personal-data patterns in all Markdown files, and
+relative Markdown links, personal-data patterns in all tracked text files and
+untracked non-ignored text files (skipping binaries), and
 matching repository URLs in README.md and START_PROMPT.md. It never visits a
 site or fills/submits a form.
+Outside a Git checkout, the personal-data scan covers the required package
+files and the validator itself.
 It does not prove how an agent or a live form will behave.
 
 ## Rehearse the workflow
@@ -98,7 +101,9 @@ link and current page before use; these observations do not grant any approval.
   "to Create a Profile". Treat it as sending data. Proceed only after full-profile
   and final-school-list approval, with profile-creation and live-rehearsal
   disclosure approvals as well. In a dry run never go past this step unless
-  the data is fake. Submission remains disabled.
+  the data is fake. Record approvals to proceed past Visitor Details in local
+  `reports/approvals.log`, ignored by Git via `reports/`. Keep all approvals
+  in `test/dry-run-profile.json` null. Submission remains disabled.
 - Position is single-select: 1b, 2b, 3b, C, Lhp, Mif, Of, Rhp, Ss. Ask for the
   family's primary position. The fixture supplies SS, meaning shortstop.
 - High school is a typeahead. If it is missing, "Add a new high school?" requires
