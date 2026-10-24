@@ -82,7 +82,8 @@ Required consent, file, contact and other item-specific safety gates still apply
    never "entry plans" or "transfer details" unless the form needs them). Ask
    only the named sport's questions. Save answers to local profile.json as we
    go. Unknown stays blank. Before the summary, quietly read each target form
-   (page fetch or the Browser tool) and list its REQUIRED fields. Put any
+   in the Browser tool (never to get past a bot wall) and list its REQUIRED
+   fields. Put any
    required item still unknown into the last group, so no required question
    first appears while filling: for example high school and club jersey
    numbers, high school coach name, position, and the NCAA Eligibility Center

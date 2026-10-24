@@ -75,7 +75,11 @@ Then ask five short question groups, one reply each: schools; athlete and
 parents; high school and academics; athletics (only the named sport's
 questions); optional extras. "Skip" or "not sure" is fine; unknown stays blank.
 Save quietly to profile.json (from profile.template.json) after each group; no
-"reply yes" between groups. Never infer team from gender.
+"reply yes" between groups. Never infer team from gender. Before the summary,
+quietly read each target form in the interactive browser tool (never to get past
+a bot wall) and list its REQUIRED fields; fold any still-unknown required item
+into the last group so no required question first appears while filling, keeping
+about five groups total. Ask only leftovers found later, once per school.
 
 The official athletics page link chain is enough when JumpForward shows no
 school name. Missing branding alone never blocks verification or needs a

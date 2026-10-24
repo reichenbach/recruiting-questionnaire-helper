@@ -96,7 +96,7 @@ reachable through optional additions or actual required form questions.
 5. Optional extras: anything else, such as social accounts, family/education,
    academic extras, hobbies or files. Sensitive optional answers can be skipped.
 
-Public discovery may start after group 1. Stay on official athletics pages and
+Public discovery may start after group 1. Before the summary, quietly read each target form in the interactive browser tool (never to get past a bot wall) and list its REQUIRED fields; fold any still-unknown required item into the last group so no required question first appears while filling, keeping about five groups total. Ask only leftovers found later, once per school. Stay on official athletics pages and
 linked questionnaire forms; never visit supplied social/video/profile links.
 The official athletics page link chain is enough when JumpForward shows no
 school name. Missing branding alone never blocks verification or needs a

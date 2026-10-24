@@ -71,7 +71,7 @@ unknown stays blank, never guessed. No "reply yes to continue" between groups.
    details, academic extras, hobbies or files. All reference section 4 fields
    remain reachable through these groups or later actual-form questions.
 
-Public discovery can start right after group 1.
+Public discovery can start right after group 1. Before the summary, quietly read each target form in the interactive browser tool (never to get past a bot wall) and list its REQUIRED fields; fold any still-unknown required item into the last group so no required question first appears while filling, keeping about five groups total. Ask only leftovers found later, once per school.
 The official athletics page link chain is enough when JumpForward shows no
 school name. Missing branding alone never blocks verification or needs a
 parent question; still stop for a visible mismatch or a blocked official site.

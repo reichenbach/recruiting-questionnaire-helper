@@ -483,6 +483,14 @@ def check_live_run_friction(pages):
         text = normalized(pages[name])
         require("jumpforward" in text and "school name" in text and "never" in text,
                 name + " must accept unbranded official questionnaire links")
+    for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "prompts/start.md",
+                 "CLAUDE_PROMPT.md", "CURSOR_PROMPT.md", ".cursor/rules/parent-flow.mdc"):
+        phrases_in(normalized(pages[name]), (
+            "quietly read each target form", "required fields",
+            "so no required question first appears while filling",
+        ), name + " pre-summary required-field read")
+    require("page fetch" not in normalized(pages["CURSOR_PROMPT.md"]),
+            "CURSOR_PROMPT.md must read forms in the browser tool, not plain fetch")
     expected = normalized(pages["test/README.md"])
     for label in ("reuse an already-open package folder", "first run before family intake",
                   "successful opening", "real-family flow", "deliberate dry-run test on a live form"):
