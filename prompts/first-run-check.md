@@ -1,82 +1,61 @@
-Read AGENTS.md and follow its section 0 before intake. Use the package obtained
-through START_PROMPT.md (or CURSOR_PROMPT.md in Cursor) or an existing local/bundled copy; help the parent unzip
-and select the folder if needed. Every runtime repo/file fetch must follow
-START_PROMPT.md's single-attempt fallback: use a bounded timeout and handle
-errors; if private, 404, offline or blocked, say "I couldn't open the online
-package, so I'll use a local copy or ask you to share it." Try once only, with
-no retry loops or alternate download methods/endpoints after failure. Continue
-from the open folder, bundled copy or a ZIP/folder the parent points to, without
-more network attempts after a failure. If none exists, ask the family to paste
-or share the package and explain what is missing; never crash or stall on a
-fetch. Explain each step in plain words. Do setup yourself where
-the available tools and permissions allow; never ask the parent to use a
-terminal. Use only free necessary installs from official sources. Let the parent
-handle system permissions and sign-in; never create accounts without asking or
-pay for anything. Never type, request or save passwords; the family signs in
-themselves.
+Read AGENTS.md section 0 before intake. Quietly reuse the package folder the
+app is opened in, without overwriting saved work. No folder-picker or "where
+should I save it" questions. Only if files cannot be read, guide the small
+folder-access step. Check the actual path; only if inside iCloud Drive, Dropbox,
+OneDrive or Google Drive, say so in one plain sentence and ask permission to use
+a local folder instead before saving data. Otherwise do not ask about sync.
 
-## Set up your app's computer-use tool
+Use START_PROMPT.md's source or an existing local/bundled copy. For EVERY
+runtime repo/file fetch, try once only with a bounded timeout and handle errors.
+If private, 404, offline or blocked, say:
+"I couldn't open the online package, so I'll use a local copy or ask you to share it."
+No retry loops, alternate download methods/endpoints or sign-in attempts after
+failure. Continue from the open folder, bundled copy or supplied ZIP/folder,
+without more network attempts after failure. If none is usable, ask the family
+to paste or share the package and explain what is missing; never crash or stall.
+Save no family data during setup. Never invent missing package instructions.
 
-Identify the current app and its available computer-use tool. Follow that app's
-official setup/help for enabling the tool, required components and browser
-access. Explain that the tool can see and operate approved apps. Check actual
-capabilities; an app or subscription name is not proof of access. If the app has
-no supported computer-use tool, explain the limitation and pause intake.
+## Quiet setup
 
-### If you use Codex / the ChatGPT desktop app:
+Check actual computer-use capabilities, not app or subscription names. Handle
+necessary free setup from official sources within app permissions; never ask
+the parent to use a terminal or buy anything. The parent grants system
+permissions and handles sign-in; never type, request or save passwords or
+bypass system/administrator prompts. Never create accounts without approval.
+Use official app help if setup is needed. Explain permissions and device
+troubleshooting ONLY if a permission prompt appears or the check fails.
 
-Guide the parent through Plugins > Computer Use > Install plugin or Enable.
-Turn on both the Computer Use server and skill
-toggles, then Try now. Review browser access in Settings > Computer use and
-explain the app-access prompt before the parent approves it.
+For Codex / ChatGPT desktop, if needed: Plugins > Computer Use > Install plugin
+or Enable; both server and skill toggles, Try now, and browser access in
+Settings > Computer use. Explain that permission allows seeing/operating
+approved apps when the parent is asked to grant it.
 
-### If you use Cursor:
+For Cursor, if needed: Settings > Tools & MCP > Browser Automation > Browser
+Tab. Fully restart and open a new Agent chat in this project if required;
+review/approve browser actions rather than auto-run. The headless cursor-agent
+CLI has no Browser tool; use desktop. If blocked, check tool approval settings.
 
-Guide the parent through enabling Cursor's built-in Browser tool (Browser /
-browser MCP) in plain words:
+## Browser test
 
-1. Open Cursor Settings (Cursor > Settings on Mac, or File > Preferences >
-   Settings on Windows/Linux).
-2. Go to Tools & MCP.
-3. Find Browser Automation and turn it on. Choose Browser Tab (Cursor's built-in
-   browser). Fully restart Cursor if needed, then open a new Agent chat in this
-   project folder.
-4. Explain that when the agent uses a browser tool, the parent should review and
-   approve each action for recruiting work (prefer manual approval over auto-run).
+Using the actual computer-use tool, open https://example.com and inspect the
+browser. Pass only if displayed page text contains "Example Domain". Expected
+text, web search, HTTP fetch or a shell command cannot pass. Do not collect
+family information until it works. On success say at most "Browser check
+passed." and continue with prompts/start.md. Do not narrate successful setup.
 
-In Cursor, the Browser tool is the computer-use tool for the check below. If it
-fails, also check that Browser Automation is on and set to Browser Tab, that
-Cursor was fully restarted, that a new Agent chat is open in this project, and
-that browser tool approvals are not blocked. The headless cursor-agent CLI has
-no Browser tool; use the Cursor desktop app.
+On failure, explain what happened in plain words; check tool installation,
+enablement, components, browser access and internet. Explain only the relevant
+permission/device steps:
 
-## Permissions and browser check for any supported app
+- Mac: older Intel Macs may not be supported; Apple menu > About This Mac shows
+  the chip. In System Settings > Privacy & Security, the parent enables Screen
+  Recording and Accessibility for the component named by the permission prompt.
+  These let it see the browser and click/type. Reopen the app if prompted.
+- Windows: computer-use takes over the foreground, pointer and keyboard. Keep
+  the browser visible and PC unlocked/connected; do not use it meanwhile. The
+  parent can stop or take over anytime.
 
-If the first-run check fails on an older Intel Mac, it may not be supported. On
-Mac, check Apple menu > About This Mac if needed. Guide the parent through
-System Settings > Privacy & Security > Screen Recording and Accessibility for
-the computer-use component shown in the permission prompt. Explain that these
-let it see the browser and click/type. Have the parent grant the permissions and
-reopen the app if prompted. Do not bypass a system permission or administrator
-prompt.
-
-Windows: explain that the computer-use tool takes over the foreground, pointer
-and keyboard. Keep the browser visible, the PC unlocked and connected to the
-internet; do not use the PC meanwhile. The parent can stop or take over at any
-time.
-
-Now use the computer-use tool to open https://example.com in a browser. Inspect
-the page and read back the heading actually observed. Pass only when it reads
-"Example Domain". Do not claim success from the expected text, web search, HTTP
-fetch or shell command. Do not collect family information or begin intake until
-it works.
-
-If it fails, say what happened without jargon. Check the tool's installation,
-enablement, required components, browser access, Mac chip/permissions or Windows
-visible desktop, and internet access. If you use the app-specific setup above,
-also check both toggles. Retry the same page after fixing the issue. If a new
-session is necessary, walk the parent through reopening this
-project and repeating the check. If the feature is unavailable for this account,
-region or device policy, explain the limitation and pause; do not promise an
-upgrade fixes it or switch to scripted form entry. Once the test passes, follow
-prompts/start.md.
+Retry the same harmless page after fixing the issue. If tools need a new
+session, explain how to reopen this project and retry. If unavailable or blocked
+by account, region or device policy, explain and pause intake. Never promise an
+upgrade fixes access or replace computer-use with scripted form entry.

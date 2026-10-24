@@ -1,23 +1,27 @@
-Read AGENTS.md and the entire read-only reference/recruiting-intake-tree.md. Use
-the target_schools in ./profile.json. Confirm the exact school, division and
-sport/team for any vague school name before searching. Read
-reference/verified-forms.md for four women's volleyball examples verified on
-2026-10-23; recheck each link live from the official athletics site. For each
-target, find that site's sport/team recruiting questionnaire; fall back to its
-generic prospective athlete form only if needed. Verify the school's official
-link to any vendor, the destination school/team, and all redirects. Use only
-official school pages and verified form destinations. The sample list is a
-starting reference, not proof that a link is current or official.
+Read AGENTS.md and the entire read-only reference/recruiting-intake-tree.md.
+Use target_schools in ./profile.json; public discovery may start after intake
+group 1. Clarify vague school names, division and sport/team before searching.
+Read reference/verified-forms.md for the four women's volleyball examples dated
+2026-10-23; recheck live from the official athletics site. Sample links are
+candidates, not proof that a form is current.
 
-Do not create a profile, click ARMS Continue, sign in, enter personal data,
-upload, or submit during discovery.
+Start at each official athletics domain and follow its sport/team questionnaire
+link. A questionnaire link followed from the school's official athletics page
+counts as verified even if the vendor shows no school name. Record official
+source, full link chain, final URL, platform, form type and notes in
+./profile.json target_schools. Stop if it lacks an official athletics source,
+redirects leave allowed vendors/school forms, or visibly shows a different
+school/sport/team. Tell parents "Found on [school]'s official athletics page".
+Stay on official pages and their linked forms. Use an official generic form only
+if no sport-specific form is available; explain it in the summary.
 
-Save the official source, link chain, final form URL, platform, form type and
-verification notes in ./profile.json. Show the complete final school list with
-URLs and any missing or unavailable forms. Request explicit approval of this
-list; separately show and request approval of the full profile before filling.
+Inspect public content only: no ARMS Continue, profile/account creation,
+sign-in, family data, uploads or Submit during discovery. Never bypass access
+controls, CAPTCHA or Cloudflare; the family handles challenges.
 
-Save local results in reports/ and show them in chat. Never contact coaches. Use
-one short line per school plus its link: "Sent", "Not sent: why", or "Needs your
-answer: what". A school not yet filled needs an answer or approval; discovery
-alone never counts as sent. Say "link not verified yet" if unknown.
+Include final schools/sport/team/form types/official form links and unavailable
+forms in the ONE summary with the full profile and exact one-time actions.
+Ask once for "Yes, fill these forms"; do not ask a separate school-list approval.
+Keep detailed local reports/ and one parent-facing line per school with its
+link: Sent / Not sent: why / Needs your answer: what. Discovery never means
+Sent; use "link not verified yet" when unknown. Never contact coaches.

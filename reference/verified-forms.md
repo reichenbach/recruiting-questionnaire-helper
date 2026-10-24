@@ -3,7 +3,9 @@
 Verified 2026-10-23. These are supplied observations from that date, not a
 guarantee that a link or field still works. Recheck each form live by starting
 at the school's official athletics site and following its women's volleyball
-recruiting link. Verify the final school, division, sport/team and redirects.
+recruiting link. Check redirects and visible school/sport/team mismatches. A link followed from
+the school's official athletics page counts as verified even without a vendor
+school name; missing branding alone does not block entry.
 Record the current official source page and link chain before using a form.
 These notes do not authorize profile creation, filling, uploads or submission.
 
@@ -11,7 +13,7 @@ These notes do not authorize profile creation, filling, uploads or submission.
   - Form: https://questionnaires.armssoftware.com/1b72853c63ec
   - Linked as "Recruit Questionnaire" on the iwusports.com women's volleyball
     page. Requires NCAA Eligibility Center ID and has a profile-creation step.
-    Apply the separate ARMS approval gates, including "Verify Your Details to
+    Approve the specific ARMS action in the one summary or a later request, including "Verify Your Details to
     Create a Profile"; do not continue just to discover fields.
 - **Coalinga College / West Hills (JUCO), women's volleyball — FrontRush**
   - Form:
@@ -40,8 +42,8 @@ These notes do not authorize profile creation, filling, uploads or submission.
   - Primary: https://questionnaires.armssoftware.com/eafc4e7429b0
   - Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
     page, seen 2026-10-23. ARMS's Visitor Details / Create Profile step applies;
-    require full-profile, final-school-list and separate profile-creation
-    approvals before proceeding.
+    require combined profile/list approval and specific profile-creation
+    approval, which may all be in the one summary before proceeding.
   - Fallback (JumpForward, older link, still loads as of 2026-10-23):
     https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
     Recheck the official link before use. On this fallback, high school uses a

@@ -1,232 +1,183 @@
 # Recruiting questionnaire helper for families
 
-1. **Get ChatGPT Plus or higher** using your personal account. This package is
-   intended for ChatGPT Plus or higher; the first-run check confirms whether
-   Computer Use works for your account and device.
-2. **Install the ChatGPT desktop app** from [OpenAI's download
-   page](https://openai.com/chatgpt/download/).
-3. **Open Codex in the desktop app and paste all of
-   [START_PROMPT.md](START_PROMPT.md)**. Codex normally gets the package from
-   https://github.com/reichenbach/recruiting-questionnaire-helper using git
-   clone or a ZIP download. You never need to use a terminal or install Git
-   yourself. The repository is private for now and will become public later.
-4. **If the download is unavailable, use the ZIP or folder you received**.
-   Codex helps unzip it and open its folder, then checks Computer Use before
-   asking questions. Keep it in a private local folder outside cloud sync or
-   shared storage. If you have no copy, share or paste the package when asked.
+**Paste the prompt → grant permissions → answer about five groups of questions
+→ approve one summary → watch it fill the forms → give one Yes per Submit.**
 
-**Using Claude instead?** Paste all of [CLAUDE_PROMPT.md](CLAUDE_PROMPT.md)
-into the Claude desktop app with computer use, or into Claude in Chrome, if your
-Claude plan and app offer them. Claude Code is optional. The same check, review
-and per-Submit approvals apply; see [CLAUDE.md](CLAUDE.md) and
-https://support.anthropic.com for setup help.
+Paste all of [START_PROMPT.md](START_PROMPT.md) into Codex in the ChatGPT desktop
+app. The helper uses the package folder already open, checks browser access,
+and starts the questions. You never need a terminal. It handles necessary free
+setup and only explains extra steps if access fails or a permission prompt
+appears. Grant the app permissions you approve; handle sign-in yourself.
 
-### Cursor option
+The public package is at
+https://github.com/reichenbach/recruiting-questionnaire-helper
+An existing local or bundled copy works too. The helper quietly checks the
+folder path. If it is inside iCloud Drive, Dropbox, OneDrive or Google Drive,
+it asks to use a local folder instead before saving data. Otherwise there is no
+save-location or sync question. If files cannot be read, it guides the small
+access step without replacing saved work.
 
-1. **Install [Cursor](https://cursor.com)** and open this package folder
-   (File > Open Folder). Keep it in a private local folder outside cloud sync
-   or shared storage.
-2. **Paste all of [CURSOR_PROMPT.md](CURSOR_PROMPT.md)** into a new Agent chat.
-3. **Enable the built-in Browser**: Cursor Settings > Tools & MCP > Browser
-   Automation > turn on and choose Browser Tab. Restart Cursor if asked, then
-   return to Agent chat. Approve browser actions when prompted.
-4. The agent runs the [first-run check](prompts/first-run-check.md) by opening
-   `https://example.com` in Browser and reading back **Example Domain**, then
-   continues intake. Project rules under `.cursor/rules/` reinforce the same
-   boundaries as [AGENTS.md](AGENTS.md).
+**Other apps:** [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) is a self-contained rules
+backup for ChatGPT Work with Computer Use; local file access is still needed to
+save family data. [CLAUDE_PROMPT.md](CLAUDE_PROMPT.md) supports Claude computer
+use; see [CLAUDE.md](CLAUDE.md) and https://support.anthropic.com.
+[CURSOR_PROMPT.md](CURSOR_PROMPT.md) supports Cursor's built-in Browser; open the
+package in Cursor Agent chat. Those app-specific launchers may describe extra
+steps; the current package workflow is in [AGENTS.md](AGENTS.md).
 
-This folder helps a parent and athlete prepare one local profile, find official
-college recruiting questionnaires, and fill them using Computer Use (ChatGPT),
-Claude computer use or Cursor's built-in Browser. You review the answers, final school list, live
-consent wording and each completed form before approving a submission.
+## Setup and access
 
-The helper fills forms only. It never contacts coaches, sends emails or
-messages, makes calls, pays fees, or buys services. It cannot promise admission,
-eligibility, recruiting interest or a scholarship. It asks before creating an
-account or school profile and before each specific file upload. Never type,
-request or save passwords; the family signs in themselves. It stops a school
-when required information is missing rather than making up an answer. All opt-in
-decisions follow the [Opt-in rule in AGENTS.md](AGENTS.md#opt-in-rule).
+The helper checks actual access rather than relying on a subscription name.
+Before asking family questions it uses the computer-use tool to open
+`https://example.com` and inspect the browser. Displayed page text must contain
+**Example Domain**; a search or fetch cannot pass. Success needs at most
+"Browser check passed." If it fails, intake pauses while the helper explains
+the relevant fix. You never need to run commands or buy extra access.
 
-## What happens after you paste the prompt
+If setup is needed, see [first-run check](prompts/first-run-check.md). In
+Codex/ChatGPT desktop this may involve Plugins > Computer Use, server and skill
+toggles, Try now and Settings > Computer use browser access. Mac permissions may
+include Screen Recording and Accessibility; older Intel Macs may not be
+supported. On Windows the tool uses the foreground, pointer and keyboard: keep
+the browser visible, PC unlocked and connected, and do not use it meanwhile.
+The helper explains those details only on failure or a permission prompt. You
+can stop or take over at any time. Official setup help:
+https://learn.chatgpt.com/docs/computer-use and https://help.openai.com.
 
-Codex reuses an existing package without replacing saved work; otherwise it
-tries once to clone or download the package from the URL above. Every runtime
-repo or repo-file fetch uses a bounded timeout and handles errors. If the repo
-or any file cannot be opened (private, 404, offline or blocked), it says:
-"I couldn't open the online package, so I'll use a local copy or ask you to
-share it." It then uses the folder Codex is opened in, a bundled copy, or a
-ZIP/folder you point to. Try once only: no retry loops, alternate download
-methods/endpoints after failure, or sign-in attempts to bypass it; after a
-failure, use available copies without more network attempts. If no usable copy
-exists, Codex asks you to paste or share the package and explains what is
-missing; a failed fetch must never crash or stall the workflow.
+If a package download is needed, every runtime repo/file fetch uses a bounded
+timeout and handled errors. If private, 404, offline or blocked, the helper says:
+"I couldn't open the online package, so I'll use a local copy or ask you to share it."
+Try once only: no retry loops, alternate download methods/endpoints or sign-in
+attempts after failure. It uses the open folder, bundled copy or supplied
+ZIP/folder without more network attempts after failure. If none is usable, it
+asks for a pasted/shared package and explains what's missing; it must never
+crash or stall. The backup's inline rules and examples remain available after
+an optional reference fetch fails, but family data still needs local storage.
 
-If the app asks you to choose a project folder, choose the folder containing
-`AGENTS.md`, `profile.template.json`, `prompts/` and `reference/`. Codex
-confirms it can read them before collecting family information and handles
-necessary free installs.
+## Questions and one summary
 
-Codex guides you through **Plugins > Computer Use > Install plugin** or
-**Enable**, both the **Computer Use server** and **skill** toggles, and **Try
-now**. Review browser access in **Settings > Computer use** and grant any app
-access you approve. On Mac, you handle **Screen Recording** and
-**Accessibility** in **System Settings > Privacy & Security** when prompted. If
-the first-run check fails on an older Intel Mac, it may not be supported. On
-Windows, Computer Use moves the pointer, types and takes over the foreground.
-Keep the browser visible and the computer unlocked and connected; do not use it
-while the task runs. You can stop or take over at any time.
+Each group is one short message you answer in one reply. Say "skip" or "not
+sure" for anything you cannot answer. The helper saves quietly after each group;
+there are no "reply yes to continue" steps.
 
-Before intake, Codex follows [the first-run check](prompts/first-run-check.md),
-opens `https://example.com` using Computer Use and reads back **Example Domain**
-from the actual page. If the test fails, it helps troubleshoot in plain words
-and pauses intake until the test works. Account, region, device policy and
-permissions can affect access; a plan name alone does not establish capability.
-The setup guidance follows [OpenAI's Computer Use
-guide](https://learn.chatgpt.com/docs/computer-use).
+1. **Schools:** school, sport, men's/women's team for each, graduation year and
+   target levels. Vague names are clarified before searching.
+2. **Athlete and parents:** names, contacts, full address, date of birth and
+   parent/guardian relationships, names and contacts.
+3. **High school and academics:** school/address, coach/counselor, GPA/scale,
+   test scores/dates, major, entry/transfer plans and eligibility center details
+   where applicable. NAIA IDs are requested only for NAIA targets.
+4. **Athletics:** height/weight with units, positions, club team/coach, high
+   school and club jersey numbers, videos, honors, events and only your sport's
+   questions.
+5. **Optional extras:** anything else you want to add, such as social accounts,
+   family/education details, academic extras, hobbies or files.
 
-For an already-open package, the stage prompts are [start](prompts/start.md),
-[find forms](prompts/find-forms.md), [fill forms](prompts/fill-forms.md) and
-[report](prompts/report.md). They all follow [AGENTS.md](AGENTS.md).
+All reference fields remain available; optional or sensitive questions can be
+skipped. Unknown answers stay blank. The helper never guesses, invents numbers,
+calculates missing statistics, converts units or chooses a different school to
+get past a field. It can change phone punctuation, never the number.
 
-## Intake, review and submission
+It may find public forms after the schools group. A questionnaire link followed
+from the school's official athletics page counts as verified, even if the
+vendor shows no school name. You see "Found on [school]'s official athletics
+page". The helper records the link chain and stops if there is no official
+source, redirects leave allowed vendors/school forms, or the page visibly shows
+a different school/sport/team. It stays on official athletics pages and linked
+forms; supplied video/social/profile links are form data, not browsing targets.
 
-The helper first asks for each school's name, sport and men's or women's team.
-It then asks the common questions in small batches, followed by only the named
-sport's questions. For vague names, confirm the exact school, division and
-sport/team before searching. Intake includes high school and club jersey
-numbers, NCAA Eligibility Center ID where applicable or required, and NAIA
-Eligibility Center ID only for NAIA targets. Say "unknown" or "skip" when
-needed. Unknown answers stay empty; a missing required answer stops that school.
-Eligibility identifiers for the National Association of Intercollegiate
-Athletics are requested only when that association is among your target levels.
+Before entry you see ONE summary: all profile values, units, files, unanswered
+items and consent records; each school's sport/team, form type and official
+form link; and any specific one-time actions requested. Reply **"Yes, fill these
+forms"** once to approve the profile and school list together. The helper saves
+local copies and your words/date, with a separate SHA-256 for each reviewed copy.
+You are not asked to approve profile and list separately.
 
-Review the full profile, including every number, unit, test score, file,
-unanswered question and consent record. Separately review and approve the final
-school list with each school's sport, team, form type and verified form URL.
-These are two explicit approvals. Changed answers, consent wording or form URLs
-require renewed review and the affected approvals. The helper never substitutes
-a school, team, sport or competition level without your approval.
+The same Yes can approve actions explicitly listed there: for example ARMS
+"continue without signing in, which creates a profile on the school's side",
+Visitor Details/Create Profile disclosure, a named account creation or Personal
+Contacts Save, or an exact file uploaded to a named school/form. Unlisted actions
+still need specific approval. This Yes never authorizes Submit.
 
-Stay available for questions specific to each form. The helper shows every live
-consent, attestation, certification, signature or terms request with its
-complete wording, options and necessary disclosures. Provide your own answer.
-Opt-ins follow the [Opt-in rule](AGENTS.md#opt-in-rule); unanswered required
-requests stop the form. Handle any verification challenge yourself. Required
-NCSA and IMG Academy choices also need your answer to the complete live wording
-and all options; the helper proposes "No thanks" but never picks for you. If a
-new required question appears during filling, it asks you.
+New required answers or answers to blank fields are asked in one short batch
+per school, saved locally and included in that school's final review; you do
+not approve the whole summary again. Changing/removing an approved answer,
+adding a school or changing its form link needs a brief confirmation of just
+the change before proceeding. Original reviewed copies stay intact; additions
+and changes are logged locally.
 
-The helper uses the same phone number in the format a field requests, such as
-digits only. It searches high schools by name plus city; if yours is absent, it
-uses the form's add-school path with your address, asking for missing details.
-It never chooses a different school. It checks every preset dropdown, radio and
-checkbox against your answers and lists the final choices before sending.
-Unknown answers are asked, not accepted from a form's defaults. A FrontRush
-Personal Contacts Save needs your approval as part of filling, and unusual
-position choices need your confirmation. If a preset has no blank option, the
-review labels it, for example: "Site preset Yes - NOT the family's answer;
-needs your answer". An inaccessible pre-checked opt-in, such as hidden Ryzer
-registration, stops that school; the helper explains it and never changes it
-through page code. On FrontRush, ticking "the school is not listed above"
-erases School Name; the helper re-types and verifies it before review.
+## Filling and sending
 
-Some actions send data before Submit. ARMS offers "Continue without one of these
-accounts" as its route without social sign-in; the helper always chooses that
-route after separate approval for profile creation. ARMS "Visitor Details" or
-"Verify Your Details to Create a Profile" asks for profile information. It needs
-full-profile and school-list approvals before proceeding, as well as
-profile-creation approval. Some forms authorize text messages or artificial
-intelligence contact when a mobile number is entered. The helper shows the live
-notice and obtains your approval before that action, following the Opt-in rule.
+Stay available for form questions. Every consent, attestation, signature or
+terms request is shown with verbatim live wording, all options and needed
+linked disclosures. Only you answer, once per item unless wording changes; the
+answer appears again in the final review. Implicit phone/SMS/AI-contact notices
+need approval before entering the number. Opt-ins stay off unless you explicitly
+say Yes; required choices need your answer. For NCSA/IMG Academy the helper
+proposes "No thanks" and waits for your own answers. See the
+[Opt-in rule](AGENTS.md#opt-in-rule).
 
-Before each Submit, review about one screen per school: school/team and form
-link, each visible field and its value to enter (or blank), presets with confirmed
-answers or explicit unanswered labels, Needs-your-answer items, consent answers,
-uploads and the approval question. Hidden/technical fields (anti-spam traps,
-tokens and hidden IDs) stay untouched and are omitted; hidden consent blockers
-are explained in plain words. All visible fields and blockers remain in the
-compact review. Resolve blockers, then give a fresh, school-specific Yes. On
-FrontRush, give that Yes first, then solve any CAPTCHA yourself, then the helper
-submits. The helper never solves CAPTCHAs. Profile and school-list approval do
-not authorize submission. You see one short line per school and its form link:
-**Sent** only after confirmation, **Not sent: why**, or **Needs your answer: what**. Detailed
-evidence and times stay in local `reports/`. If sending is uncertain, it tells
-you it may already have gone through and does not automatically try again.
-Confirmed schools are not sent again.
+The helper verifies high-school lookup matches, asks for missing details and
+never selects a different school or bypasses disabled fields. JumpForward uses
+school name only and has no not-listed option. Every preset must match your
+answer. If unknown, it stops and labels it, for example: "Site preset Yes - NOT
+the family's answer; needs your answer". FrontRush relationship "Other" needs
+confirmation; unusual position mappings do too. Personal Contacts Save needs
+specific approval as part of filling. If a pre-checked opt-in such as FrontRush
+Ryzer cannot be seen or cleared through normal visible UI, that school stops;
+it is never changed through code. Coalinga's not-listed checkbox erases School
+Name, so the helper re-types and verifies it.
 
-Usage limits may apply and can change; see the OpenAI Help Center and the app's
-usage display. Help Center: https://help.openai.com. No fixed message count is
-promised, and don't buy extra usage. If you reach a limit, the helper saves
-local progress. To resume, reopen the folder and ask it to continue. It checks
-saved answers, approvals and the page, then asks again before Submit.
+Before **each Submit**, review about one screen per school: school/team/link,
+every visible field/value or blank, presets and confirmed answers, unanswered
+labels, new answers, consents, uploads and blockers. Hidden/technical fields
+stay untouched and are omitted; hidden consent blockers are explained plainly.
+Resolve blockers, then give a fresh per-form Yes. Approval for one school never
+covers another, a retry or resubmission. FrontRush order: **your Yes, you solve
+the CAPTCHA, then Submit**. The helper never solves/bypasses CAPTCHAs. Fake data
+and dry runs never submit, even if later asked.
 
-## Backup option without the local package
+Results show one line per school with sport/team and link: **Sent** only after
+confirmation, **Not sent: why**, or **Needs your answer: what**. Detailed evidence,
+actions and times stay in local `reports/`. An uncertain send may already have
+gone through; the helper does not retry automatically or resend confirmed forms.
+After a pause it reads local records, checks the page and asks again before
+Submit. Usage limits may change; use the app's usage display. No message count
+is promised and no extra usage is purchased.
 
-Copy all of [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) into the ChatGPT desktop
-app's **Work** mode with **Computer Use**. This is one self-contained paste
-covering the common intake, every sport branch, form verification and approval
-boundaries, with four volleyball examples included. It may try once to read
-reference files from the same GitHub URL as an optional source. If that fails,
-it explains in one sentence and continues with the instructions and examples
-inlined in the prompt; it never blocks on a download or requires a local copy.
-It runs the Computer Use check before asking for a saved profile summary or new
-family information. Without working Computer Use, it pauses intake and form
-entry.
-
-The backup keeps its working record in the conversation and prints one compact,
-complete **SAVED PROFILE SUMMARY** to keep privately. Paste that summary with
-the backup prompt in a later conversation to resume after the Computer Use
-check. The helper confirms saved answers, asks for missing items, and rechecks
-live wording, links and approvals. It does not maintain `profile.json` or local
-reports or create additional remote documents. Chat is still processed by
-ChatGPT and is not offline storage.
+The helper never contacts coaches by email, message, call or any channel; never
+makes payments; and never types, requests or saves passwords. You handle sign-in.
+It cannot promise admission, eligibility, recruiting interest or scholarships.
 
 ## Privacy and package contents
 
-On the Codex or Cursor path, family data is saved only in local `profile.json`
-and ignored files inside `reports/`, plus `screenshots/` if needed. Never commit
-or share these files, documents or family information. The `.gitignore` helps
-prevent accidental Git inclusion; it does not encrypt files or prevent sharing.
-Information provided in chat or displayed through Computer Use or Cursor Browser
-is not a promise of offline processing. Entering data into an approved form
-discloses it to the school and its provider, and the form may save entries
-before Submit.
+Family data is saved only in local `profile.json` and ignored `reports/`, plus
+`screenshots/` if needed. Never commit/share profiles, reports, documents,
+screenshots, passwords or secrets. `.gitignore` helps prevent accidental Git
+inclusion; it does not encrypt files or prevent sharing. Chat/computer-use is
+not an offline-processing promise. Approved form entry discloses data to the
+school/provider, and a form may save before Submit. No additional cloud
+summaries, remote profiles, documents or reporting are created.
 
-- [AGENTS.md](AGENTS.md) defines the workflow, boundaries and approval gates.
-- [START_PROMPT.md](START_PROMPT.md) gets or checks the package and starts the
-  Codex path, with a local-copy fallback if downloading fails.
-- [CURSOR_PROMPT.md](CURSOR_PROMPT.md) starts the same workflow in Cursor Agent
-  chat using the built-in Browser tool.
-- [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) provides the self-contained Work
-  backup.
-- [.cursor/rules/](.cursor/rules/) mirrors AGENTS.md boundaries for Cursor
-  Agent sessions.
-- [profile.template.json](profile.template.json) contains blank common fields
-  and all 14 sport blocks. Unused sport blocks stay empty.
-- [prompts/first-run-check.md](prompts/first-run-check.md) and the other stage
-  prompts guide setup, intake, discovery, filling and reporting.
-- [The reference tree](reference/recruiting-intake-tree.md) is read-only field
-  research. [Sample forms](reference/sample-forms.md) copies its section 5
-  exactly, including coverage gaps. Historical links are candidates requiring
-  official verification and may be expired or blocked.
-- [Verified forms](reference/verified-forms.md) records four women's volleyball
-  examples verified on 2026-10-23. Recheck every link live from the official
-  athletics site before use; these notes do not grant filling approval.
-- [test/README.md](test/README.md) explains the offline checks and dry runs. The
-  [baseball fixture](test/dry-run-profile.json) and
-  [volleyball fixture](test/dry-run-profile-volleyball.json) contain invented
-  data only. A dry run never submits and may stop earlier at an approval gate.
+- [AGENTS.md](AGENTS.md) defines the current rules. Stage prompts:
+  [start](prompts/start.md), [find](prompts/find-forms.md),
+  [fill](prompts/fill-forms.md), [report](prompts/report.md).
+- [profile.template.json](profile.template.json) has blank common fields and
+  all 14 sport blocks; unused blocks stay blank.
+- [Reference tree](reference/recruiting-intake-tree.md) is read-only research;
+  [sample forms](reference/sample-forms.md) copies section 5 including gaps.
+- [reference/verified-forms.md](reference/verified-forms.md) has four women's
+  volleyball examples dated 2026-10-23; recheck official links live. Dated notes
+  never authorize filling or submission.
+- [test/README.md](test/README.md) covers offline checks and synthetic fixtures.
+  Dry runs never submit; real forms may save even before Submit.
 
 ## Notes for someone sharing this package
 
-Keep a ZIP or folder containing the package and START_PROMPT.md available as a
-fallback while the repository is private or if a download fails. Package source:
+The repository is public. Package source:
 https://github.com/reichenbach/recruiting-questionnaire-helper
-
-The repository stays private for now and will become public later; do not change
-its visibility as part of setup. A parent never needs repository access to run
-the package you give them. Send only the instructions, blank template, prompts,
-references and synthetic `test/` files. Inspect the folder first and exclude all
+Keep a ZIP/folder fallback available for offline or blocked downloads. Do not
+change repository visibility during setup. Share only instructions, blank
+template, prompts, references and synthetic test files. Inspect first and exclude
 private profiles, reports, documents, screenshots, passwords and secrets. Never
-substitute real family information into the shareable test fixture.
+put real family data in the shareable fixtures.

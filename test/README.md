@@ -22,7 +22,7 @@ University women's volleyball, with candidate form
 https://questionnaires.armssoftware.com/1b72853c63ec. Recheck the official link
 before any live use. Consents are null, all approvals are unset, and all other
 sport blocks and other-sports answers stay blank. The same dry-run prohibition
-and separate approval gates apply to both fixtures; never use either for a real
+and specific action approval gates apply to both fixtures; never use either for a real
 family or submit synthetic data.
 
 ## Offline checks
@@ -52,7 +52,10 @@ fallback sentence, agent-neutral AGENTS.md wording, CLAUDE.md importing
 AGENTS.md and forbidding auto-approved Submit, a README link to
 CLAUDE_PROMPT.md, and four dated volleyball examples in
 reference/verified-forms.md and the self-contained backup prompt. It never
-visits a site or fills/submits a form. Outside a Git checkout, the personal-data
+visits a site or fills/submits a form. It also checks five groups/one summary,
+displayed-page browser checks, official-link verification, additions/change
+handling and retained Submit/CAPTCHA/Ryzer/dry-run safeguards in the four current
+entry instructions. Unchanged Claude/Cursor launcher checks remain in force. Outside a Git checkout, the personal-data
 scan covers the required package files and the validator itself. It does not
 prove how an agent or a live form will behave.
 
@@ -96,11 +99,11 @@ sending is disabled", plus any other blockers. Never call the test sent.
 |---|---|
 | Repo or any repo file is private, 404, offline or blocked | Try once only with a bounded timeout; explain in one plain sentence, then use the open folder, bundled copy or supplied ZIP/folder; ask for a pasted/shared package if none exists; no retries or stall |
 | Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
-| First run before family intake | Guide plugin/server/skill and system permissions; open example.com using Computer Use and observe Example Domain; pause intake until it works |
-| Start with the baseball target | School/sport/team first, then common intake in section 4 order, then baseball only; no other sport questions |
+| First run before family intake | Quietly reuse the open folder, check the actual path and ask about moving only if cloud-synced; use Computer Use at example.com and pass only if displayed page text contains Example Domain; say at most Browser check passed.; explain setup only on failure/permission prompts and pause intake until it works |
+| Start with the baseball target | Five short messages, one reply per group: schools/year/levels; athlete/parents; school/academics; athletics plus baseball only; optional extras. Save quietly, no continue-Yes gates |
 | Start with the volleyball fixture | Women's volleyball only, OH/RS and 5'11" as supplied; null consents, no approvals and no other-sport answers |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
-| Required field absent from the profile | Ask the family, record the answer and renew affected approvals; never guess |
+| Required field absent from the profile | Ask one short batch per school, save/log additions and include them in that school's pre-Submit review; its Yes covers additions, without full profile/list re-approval; never guess |
 | Phone has a formatting error | Enter the same number in the requested format, such as digits only; never change the number |
 | A school name is vague | Confirm exact school, division and sport/team before searching |
 | High-school lookup has no match | Search name plus city, then use add new school/not listed with supplied address; ask missing details, never pick another school |
@@ -114,15 +117,19 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | Hidden, pre-checked FrontRush Ryzer registration opt-in posted with the form | If it cannot be seen or cleared through the normal visible UI, stop as needs-info and explain it to the family; never clear or change it via page code, JavaScript or DOM manipulation; if accessible, follow the Opt-in rule |
 | FrontRush "the school is not listed above" erases School Name | Re-type and re-check School Name after ticking it and verify before review |
 | FrontRush reaches the final steps | Family Yes to the pre-submit review first, then the family solves any CAPTCHA themselves, then Submit; the agent never solves CAPTCHAs and dry runs never submit |
-| JumpForward high-school fields are disabled | Select only a verified typeahead match or use not listed with the family's address; never choose a different school or bypass disabled fields |
+| JumpForward high-school fields are disabled | Search school name only, select only a verified city/state typeahead match; no not-listed option, stop if none matches; never choose a different school or bypass disabled fields |
 | JumpForward date picker covers email/mobile | Close it before typing and verify fields; block/approach touch are text and height is a dropdown |
 | A messy position label has no unambiguous match | Ask the family to select a clean exact option or stop |
-| ARMS Continue without appears | Explain school-profile creation and wait for separate approval |
+| ARMS Continue without appears | Use specific school-profile-creation approval listed in the one summary, or ask for that action if unlisted; never infer it from general filling approval |
 | Consent/attestation appears | Show all wording/options verbatim, leave unanswered until family answers |
 | Marketing/SMS choice appears | Follow the [Opt-in rule](../AGENTS.md#opt-in-rule) |
 | Entering a number itself authorizes SMS/AI contact | Show wording and obtain permission before entering the number |
 | Transcript or headshot is required | Ask for the missing file and specific upload approval; never upload automatically |
-| Profile or URL changes after approval | Renew affected profile/list approvals; ask again before Submit |
+| Full intake ready | One full summary with profile, school/sport/team/form types/official links and exact one-time actions; one Yes approves both profile/list with same quote/date and separate SHA-256 records; only listed actions are covered |
+| Official athletics link leads to vendor without school name | Verified if official link chain is recorded and redirects stay allowed; stop for visibly different school/sport/team, not missing branding |
+| Approved answer changed/removed, school added or form link changed | Confirm just the change, log it and retain original reviewed copies; never repeat the whole summary |
+| Three answers added to previously blank fields | Save/log them, do not rewrite original profile approvals; show in the per-school review covered by its Submit Yes |
+| Consent/attestation appears after approval | Show exact live wording/disclosures/options once per item and record only the family's answer; show it again in final review; fresh wording needs a fresh answer |
 | School A approved; School B not approved | No submission to School B |
 | Any dry run reaches Submit, even with a general Yes | Stop and report needs-info, dry run stopped before Submit |
 | A live submission's outcome is unclear | Failed/unconfirmed with possible duplicate noted; no automatic retry |
@@ -141,12 +148,13 @@ athletics link and current page before use; these observations do not grant any
 approval.
 
 - The landing page offers Google, Twitter or "Continue without one of these
-  accounts". Always choose continue-without, after the separate
-  ARMS/profile-creation approval.
+  accounts". Always choose continue-without, after the specific
+  ARMS/profile-creation action approval, in the summary or a later request.
 - "Visitor Details" asks for first name, last name and email and says it is used
   "to Create a Profile". Treat it as sending data. Proceed only after
-  full-profile and final-school-list approval, with profile-creation and
-  live-rehearsal disclosure approvals as well. In a dry run never go past this
+  the one combined profile/list approval, with specific profile-creation and
+  live-rehearsal disclosure approvals (these may be explicitly listed in that
+  summary). In a dry run never go past this
   step unless the data is fake. Record approvals to proceed past Visitor Details
   in local `reports/approvals.log`, ignored by Git via `reports/`. Keep all
   approvals in `test/dry-run-profile.json` null. Submission remains disabled.
@@ -178,4 +186,4 @@ Always recheck their official athletics links live before use. The offline
 validator checks the notes and inline backup URLs, not whether forms work now.
 These examples do not change either fixture's target or grant approval for
 a live rehearsal. ARMS "Verify Your Details to Create a Profile" keeps the same
-separate approval gates as Visitor Details; dry runs still never submit.
+specific action approval gates as Visitor Details; dry runs still never submit.

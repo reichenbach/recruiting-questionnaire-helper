@@ -1,15 +1,18 @@
 Read AGENTS.md and the entire read-only reference/recruiting-intake-tree.md. Use
 ./profile.json and the app's computer-use tool on macOS or Windows to fill only
-verified forms for the approved school/sport/team list. First show the FULL
-profile and FINAL school list with each form URL and obtain explicit approval of
-both if approvals for the exact reviewed copies are not already recorded.
+verified forms for the approved school/sport/team list. Use the ONE summary approval for the full
+profile and final school list with form URLs and exact listed one-time actions
+(see AGENTS.md). Ask once for "Yes, fill these forms" if not already approved;
+never request separate profile/list approvals. Verify saved copies and logs.
 
 Use the family's exact answers only. Never guess, round, calculate missing
 answers, or fill unknown required values with placeholders.
 Stop that school as needs-info if a required answer or unambiguous option is
-missing. Ask the family about every new required field absent from the profile,
-save the answer locally and renew affected
-approvals. Never accept a preset as an unknown answer.
+missing. Ask new required or previously blank answers in ONE short
+batch per school, save and log locally, then include them in the pre-Submit
+review; its per-form Yes covers additions without whole-profile/list re-approval.
+Confirm only the change for changed/removed approved answers, added schools
+or changed form links before proceeding. Never accept a preset as an unknown answer.
 
 Enter the same phone number in the format requested, such as digits only after a
 format error; never change the number itself. For high-school search, use name
@@ -30,8 +33,9 @@ Show every consent, attestation, certification and signature request verbatim
 with all options and enter only the family's answer. Leave unanswered requests
 blank. Follow the Opt-in rule in AGENTS.md section 4. Before entering a phone
 number that itself grants SMS/AI-contact authorization, show that wording and
-get approval for the action. Ask separately before ARMS Continue/profile
-creation, any account creation, or each specific file upload.
+get approval for the action. ARMS Continue/profile creation, account creation
+and uploads need specific approval, either exactly listed in the one summary
+or requested later for that exact action/file/school/form.
 
 NCSA/IMG Academy radios are required on Coalinga FrontRush: show complete live
 wording and all options for each, propose No thanks and enter only the family's
@@ -78,9 +82,10 @@ approval question. Leave hidden/technical fields untouched and omit them from
 the review, including PrestoSports fs_email1/fs_email2 anti-spam traps, tokens
 and hidden IDs. Explain hidden consent blockers in plain words, not as technical
 fields. Keep it compact without omitting visible fields or blockers. Resolve
-blockers and renew affected approvals before asking: "Approve submitting this
+blockers and confirm changes under AGENTS.md before asking: "Approve submitting this
 reviewed questionnaire to [school/team] at [URL] now?" Wait for a fresh explicit
-Yes. On FrontRush, obtain that Yes first, then the family solves any CAPTCHA
+Yes for that school/attempt; one school's approval never covers another, a retry
+or resubmission. On FrontRush, obtain that Yes first, then the family solves any CAPTCHA
 themselves, then Submit. Never solve or bypass CAPTCHAs. Never submit a dry run or
 the fake test fixture. No payments or coach contact.
 

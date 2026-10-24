@@ -1,138 +1,133 @@
 Help my family fill college recruiting questionnaires using this app's
-computer-use tool on macOS or Windows. I do not know how to use a terminal.
-Do the setup work yourself and explain each step in plain words. Ask me only
-for decisions, permissions and answers you need. Never ask me to type or run
-commands.
+computer-use tool on macOS or Windows. Handle setup yourself; I never need a
+terminal. My flow: paste this prompt, grant permissions, answer five question
+groups, approve one summary, watch forms fill, give one fresh Yes per Submit.
 
-Get the package from
+Quietly use the package folder the app is opened in. If it is missing, the
+PUBLIC package source is:
 https://github.com/reichenbach/recruiting-questionnaire-helper
-using git clone or a ZIP download. This is the normal source; the repo is
-private for now and will become public later. An existing local or bundled copy
-also works.
+Use an existing local/bundled copy first, without overwriting saved work.
+Otherwise use git clone or ZIP (Git is optional) with a bounded timeout and
+handled errors. For EVERY runtime repo/file fetch, try once only. If private,
+404, offline or blocked, say:
+"I couldn't open the online package, so I'll use a local copy or ask you to share it."
+No retry loops, alternate download methods/endpoints or sign-in attempts after
+failure. Use the open folder, bundled copy or supplied ZIP/folder without more
+network attempts after failure. If none is usable, ask me to paste or share the
+package and explain what's missing; never crash or stall. Do not invent rules.
 
-1. Check the current folder for AGENTS.md, profile.template.json, prompts/ and
-   reference/. Reuse an existing package without overwriting saved work.
-   Otherwise make one download attempt from the URL above: use git clone if
-   available, or a ZIP download without requiring Git. Use a bounded timeout and
-   handle errors. If the repo or any repo file cannot be opened (private, 404,
-   offline or blocked), say: "I couldn't open the online package, so I'll use a
-   local copy or ask you to share it." Try once only: no retry loops, alternate
-   download methods/endpoints after failure, or sign-in attempts to bypass it.
-   Continue from the folder the app is opened in, a bundled copy, or a
-   ZIP/folder I point to. Apply this rule to EVERY runtime repo/file fetch,
-   including later reference reads; after a failure, use available copies
-   without more network attempts. If no usable copy exists, ask me to paste or
-   share the package and explain what is missing; never crash or stall on the
-   fetch.
-2. Help me unzip any downloaded or supplied ZIP and select the package folder
-   in the app. Keep it in a private local location outside cloud sync and shared
-   storage. Never overwrite an existing folder. I never need to use a terminal.
-3. Open/use that folder as the local project and confirm you can read its
-   files. If the app needs me to grant folder access or select the folder in its
-   project picker, walk me through that small step. Do not claim access until
-   you have it. Read AGENTS.md, README.md, all prompts/ and the entire read-only
-   reference/recruiting-intake-tree.md. Follow their workflow and approval
-   rules. Where the reference tree says to answer, default, pick the closest
-   value or substitute a form, AGENTS.md wins. Do not change the reference or
-   blank template. Work only inside the project folder; do not commit, change
-   remotes or publish changes. Once unzipped, the package is ready to use as an
-   ordinary folder.
-4. Handle any necessary free installs yourself from official sources, explaining
-   their purpose. Respect the app's access prompts; let me grant
-   operating-system permissions and handle any sign-in myself. Never type,
-   request or save passwords; the family signs in themselves. Never buy anything
-   or start a paid service. If access is blocked, explain the limitation and
-   guide me through the available app controls, not a terminal.
-5. BEFORE intake, run prompts/first-run-check.md. Follow the current app's
-   official setup/help to enable its computer-use tool, required components and
-   browser access. If the first-run check fails on an older Intel Mac, it may
-   not be supported. On Mac, guide me through System Settings > Privacy &
-   Security > Screen Recording and Accessibility. On Windows, explain that the
-   computer-use tool takes over the foreground: keep the PC unlocked and do not
-   use it meanwhile. Then use that tool to open https://example.com and read
-   back the heading actually displayed: "Example Domain". Do not substitute a
-   web fetch or pretend the test passed. Troubleshoot in plain words and pause
-   intake until the browser test works.
-6. After the test passes, follow prompts/start.md. Ask my target schools FIRST:
-   school name, sport and men's/women's team for each; never infer the team from
-   gender. Confirm the exact school, division and sport/team for vague names
-   before searching. Then follow the common intake order, 3-5 questions at a
-   time, and ask ONLY the named sport's block and relevant school/level
-   follow-ups. Create local profile.json from profile.template.json and save
-   after each batch. Reuse confirmed supplied answers and ask for missing items.
-   Never use the synthetic test fixture for my family. Ask high school and club
-   jersey numbers, NCAA Eligibility Center ID where applicable or required by a
-   form, and NAIA Eligibility Center ID only for NAIA targets. Unknown stays
-   unanswered.
-7. Find each form through the official school athletics site and verify its
-   destination, redirects, school, sport and team. Ask before ARMS Continue and
-   profile creation, any account creation, or uploading an exact file to a
-   specific school/form. Never contact coaches, make payments, browse recruiting
-   marketplaces/social profiles or guess missing values.
-8. Show every live consent, attestation, certification, signature and terms
-   request verbatim with all options and linked disclosures; enter only my
-   answer. Follow the Opt-in rule in AGENTS.md section 4. Show implicit contact
-   authorization and obtain my approval BEFORE an action such as entering a
-   mobile number triggers it. This includes required NCSA/IMG Academy radios:
-   show all live wording and options, propose No thanks, and wait for my answer
-   to each.
-9. Before entering family data, show the FULL profile including units, files,
-   unanswered items and consents, and the FINAL school list with each school,
-   sport/team, form type and verified URL. Obtain two explicit approvals: the
-   full profile and the final school list. Save copies of what I reviewed and
-   the approval records as AGENTS.md requires. Changes require renewed approval.
-10. Fill using the app's computer-use tool, review every field and validation
-    error, and ask me about any missing required field, even one not in the
-    profile. Search high schools by name plus city; if no match, use add new
-    school/not listed with my school address, asking for missing details. Never
-    choose a different school. Enter the same phone number in the requested
-    format, such as digits only; never change the number. Confirm or change
-    every preset dropdown/radio/checkbox to my answer; unknown means stop and
-    ask, even if no blank option exists. Mark it in the review, for example:
-    "Site preset Yes - NOT the family's answer; needs your answer". Follow
-    AGENTS.md for FrontRush Personal Contacts Save approval, odd position
-    choices, JumpForward controls and ARMS profile creation. On FrontRush,
-    stop if a pre-checked opt-in cannot be seen or cleared through the normal
-    visible UI; explain it to me and never change it via page code, JavaScript
-    or DOM manipulation. After ticking "the school is not listed above",
-    re-type/re-check School Name and verify it before review.
-    Before EACH Submit, give a parent-facing review of about one screen per
-    school: school/team and form link, each visible field and its value to enter
-    (or blank), visible presets with confirmed answers or explicit unanswered
-    labels, Needs-your-answer items, consent answers, uploads, and the approval
-    question. Leave hidden/technical fields untouched and omit them from the
-    review, including PrestoSports fs_email1/fs_email2 anti-spam traps, tokens
-    and hidden IDs. Explain hidden consent blockers in plain words. Keep it
-    compact without omitting visible fields or blockers. Resolve blockers and
-    renew affected approvals before asking: "Approve submitting this reviewed
-    questionnaire to [school/team] at [URL] now?" Wait for my fresh explicit Yes.
-    On FrontRush, I then solve any CAPTCHA myself, then Submit; never solve or
-    bypass CAPTCHAs. Never submit a dry run. Never
-    retry an uncertain submission automatically. Save local per-school action
-    logs and reports and show one short line per school plus its link: "Sent"
-    (confirmed success only), "Not sent: why", or "Needs your answer: what".
-    Keep detailed status and evidence/time locally. To resume, read local
-    records, verify reviewed copies and the page, and ask again before Submit.
-    Never resend confirmed forms.
+Unzip if needed, quietly check file access and actual folder path. No folder
+picker or "where should I save it" questions unless you cannot read the files;
+then guide that small step. Only if inside iCloud Drive, Dropbox, OneDrive or
+Google Drive, say so in one sentence and ask permission to use a local folder
+instead before saving data. Otherwise do not ask about sync. Work only inside
+the package folder. Read AGENTS.md, README.md, prompts/ and the whole read-only
+reference/recruiting-intake-tree.md; AGENTS.md overrides its suggestions to
+guess/default/substitute. Never edit the reference/template or use fixture data
+for my family. Do not commit, change remotes or publish.
 
-## If you use Codex / the ChatGPT desktop app:
+Before intake run prompts/first-run-check.md quietly, handling necessary free
+setup from official sources within app permissions. Use the actual computer-use
+tool at https://example.com and inspect the browser: displayed page text must
+contain "Example Domain". A search, HTTP fetch or shell cannot pass. On success
+say at most "Browser check passed." Explain setup/permissions, Intel Mac support
+or Windows foreground details only on failure or a permission prompt. I grant
+system permissions and handle sign-in; never bypass prompts or type, request
+or save passwords. Pause intake until the real check passes.
 
-Open Codex in the desktop app and select the package as its local project.
-For Computer Use setup, guide me through Plugins > Computer Use > Install
-plugin or Enable, both server and skill toggles, Try now, and browser access
-in Settings > Computer use. Follow prompts/first-run-check.md and respect all
-system permission prompts. Check actual tool access before intake.
-Usage limits may apply and can change; see the OpenAI Help Center and the app's
-usage display: https://help.openai.com. Do not promise message counts or buy
-extra usage.
+Send FIVE plain-language question groups, one short message and one reply each.
+I can say "skip" or "not sure"; unknown stays blank, never guessed. Save quietly
+after each group to ./profile.json from profile.template.json. No "reply yes to
+continue" gates. Reuse supplied answers; keep every reference section 4 field
+reachable through optional additions or actual required form questions.
+
+1. Schools: school, sport, men's/women's team for each, graduation year, target
+   levels. Never infer team from gender; clarify vague school/division/team
+   before searching.
+2. Athlete and parents: full/preferred names, contacts, address, DOB, guardian
+   relationships/names/contacts and different addresses.
+3. High school and academics: school/address, coach/counselor, GPA/scale, test
+   scores/dates, major, entry/transfer plans, NCAA Eligibility Center registration/
+   ID where applicable; NAIA PlayNAIA ID only for NAIA targets.
+4. Athletics: height/weight with units, positions, club team/coach, high school
+   and club jersey numbers, videos, events, honors; ONLY the named sport's block
+   and relevant level/school follow-ups, reusing common answers.
+5. Optional extras: anything else, such as social accounts, family/education,
+   academic extras, hobbies or files. Sensitive optional answers can be skipped.
+
+Public discovery may start after group 1. A questionnaire link followed from the
+school's official athletics page counts as verified even if the vendor shows no
+school name. Record the link chain in target_schools. Stop if no official
+athletics source, redirects leave allowed vendors/school forms, or the page
+visibly shows a different school/sport/team. Tell me "Found on [school]'s official
+athletics page". Stay on official athletics pages and linked vendor forms;
+never visit supplied social/video/profile links or marketplaces.
+
+Before entering family data show ONE summary: full profile (all values, units,
+files, unanswered items, consent records), final school list with sport/team,
+form type and official form link for each, and exact one-time actions requested.
+For ARMS name "continue without signing in, which creates a profile on the
+school's side" plus Visitor Details/Create Profile disclosure; uploads name the
+exact file, school and form. Account creation and Personal Contacts Save must
+also be listed specifically or approved later. Ask once: "Does this look right?
+Reply 'Yes, fill these forms' to approve." One Yes approves profile and list
+and only listed actions; never ask separate profile/list approvals. Save local
+reports/ copies and record the same quote/date with separate SHA-256 values in
+approvals.full_profile and approvals.final_school_list; record listed actions
+as school_actions. This is never permission to Submit.
+
+While filling, ask new required/previously blank answers in ONE short batch per
+school, save and log locally, and fold them into that school's pre-Submit review;
+its Submit Yes covers additions without repeating the whole summary. Confirm
+just the change before changing/removing approved answers, adding a school or
+changing a form link. Retain original approvals/copies; log additions/changes.
+Show each consent/attestation/signature/terms item verbatim with every option
+and needed linked disclosures when it appears; enter only my own answer, once
+per item unless wording changes, and show it again in the final review. Show
+implicit SMS/AI-contact notices and get approval BEFORE the triggering action.
+Opt-ins default off; required choices need my answer. Propose No thanks for
+NCSA/IMG Academy, but never choose for me.
+
+Fill only through computer-use; review every field and validation error. Never
+guess, calculate, convert units or invent digits. Preserve values and units;
+phone punctuation may change, never the number. Follow AGENTS.md's platform
+rules: high-school typeahead matches must be correct (JumpForward uses school
+name only and has no not-listed option); never choose a different school or
+bypass disabled controls. Confirm every preset; unknown means stop and ask,
+even without a blank option: "Site preset Yes - NOT the family's answer; needs
+your answer". For FrontRush Ryzer opt-ins unseen or uncleared through normal
+visible UI, stop and explain; never change via code/JavaScript/DOM. Recheck
+Coalinga School Name after ticking not listed. No coach contact or payments.
+
+Before EACH Submit give about one screen per school: school/team/link, EVERY
+visible field and value or blank, presets/final answers, unanswered labels,
+Needs-your-answer blockers, new answers, consents and uploads. Leave hidden/technical
+fields untouched and omit them (including anti-spam traps, tokens,
+hidden IDs); explain hidden consent blockers plainly. Resolve blockers and
+confirm changes, then ask "Approve submitting this reviewed questionnaire to
+[school/team] at [URL] now?" Wait for my fresh explicit per-form Submit Yes.
+One school never covers another, a retry or resubmission. FrontRush order:
+family Yes first, then family solves CAPTCHA themselves, then Submit. Never
+solve/bypass CAPTCHA. Never submit fake data or a dry run, even if later asked.
+Never send via Enter/Next/Finish early or retry uncertain submissions
+automatically. Save local per-school logs/reports; show Sent (confirmed only) /
+Not sent: why / Needs your answer: what with links. On resume verify local
+copies, logs and page state and ask again before Submit; never resend confirmed
+forms.
+
+For Codex / ChatGPT desktop, only if setup is needed: Plugins > Computer Use >
+Install plugin or Enable, both server and skill toggles, Try now, browser access
+in Settings > Computer use. Respect system prompts and check actual access.
+Usage limits may change; see https://help.openai.com and the app usage display.
+Do not promise message counts or buy extra usage.
 
 ## Dated form example and privacy rules for every app
 
 University of South Dakota (D1), women's volleyball example, seen 2026-10-23:
 PRIMARY (ARMS): https://questionnaires.armssoftware.com/eafc4e7429b0
 Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
-page. Visitor Details / Create Profile requires full-profile, final-school-list
-and separate profile-creation approvals before proceeding.
+page. Visitor Details / Create Profile requires approval of the profile, school
+list and that specific profile-creation action; all may be in the one summary.
 FALLBACK (JumpForward, older link, still loads on that date):
 https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
 On the fallback, typeahead-search school name only, verify city; close the

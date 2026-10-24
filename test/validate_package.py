@@ -400,6 +400,60 @@ def main():
             "README parent steps must link CLAUDE_PROMPT.md")
     print("PASS: matching repository URLs, single-attempt fetch fallbacks, agent-neutral rules and Claude import")
 
+    # Current entry paths share one parent flow. Legacy launchers above keep
+    # all their existing URL/fallback checks; they are intentionally unchanged.
+    for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "prompts/start.md"):
+        raw = (ROOT / name).read_text(encoding="utf-8")
+        text = " ".join(re.sub(r"[*`#]", "", raw).lower().split())
+        for phrase in ("five", "one summary", "yes, fill these forms",
+                       "skip", "not sure", "quietly", "after each group"):
+            require(phrase in text, name + " must describe five groups/one summary: " + phrase)
+        # Require the actual five groups in order, not merely the word 'five'.
+        groups = re.findall(r"^([1-5])\. (.+)", raw, re.M)
+        require([number for number, _ in groups] == list("12345"),
+                name + " must list exactly five intake groups")
+        for (_, label), expected in zip(groups, (
+                "schools", "athlete and parents", "high school and academics",
+                "athletics", "optional extras")):
+            require(expected in label.lower(), name + " missing intake group: " + expected)
+        for phrase in ("approvals.full_profile", "approvals.final_school_list", "sha-256"):
+            require(phrase in text, name + " must retain combined approval records: " + phrase)
+        require("same" in text and "quote" in text and "date" in text,
+                name + " must record the same family answer for both approvals")
+        require("displayed page text" in text and "example domain" in text and
+                "https://example.com" in text and "computer-use" in text,
+                name + " must require a displayed-text computer-use test")
+        require(not re.search(r"read (?:its|back the|the observed) heading|heading actually|observed heading", text),
+                name + " must not require reading a heading back")
+        require("official athletics page counts as verified" in text and
+                ("no school name" in text or "even without" in text),
+                name + " must accept the official athletics link without vendor branding")
+        for phrase in ("target_schools", "link chain", "different school/sport/team",
+                       "allowed vendors", "found on [school]'s official athletics page"):
+            require(phrase in text, name + " must retain official link verification: " + phrase)
+        require("destination identity unresolved" not in text,
+                name + " must use plain parent-facing verification wording")
+        for phrase in ("each submit", "fresh", "yes", "retry", "resubmission",
+                       "captcha", "family", "then submit", "ryzer", "stop",
+                       "normal visible ui", "never submit fake data", "dry run",
+                       "hidden/technical fields", "never", "passwords", "local"):
+            require(phrase in text, name + " missing safety anchor: " + phrase)
+        require(re.search(r"(?:family|i) (?:then )?(?:solves?|solve) (?:any )?captcha (?:themselves|myself)", text),
+                name + " must leave CAPTCHA to the family")
+        require(re.search(r"dry run.{0,25}never submit|never submit.{0,25}dry run", text),
+                name + " must prohibit dry-run submission")
+        for phrase in ("one short batch per school", "pre-submit review",
+                       "just the change", "blank", "log"):
+            require(phrase in text, name + " must allow logged additions/change-only confirmation: " + phrase)
+        for phrase in ("icloud drive", "dropbox", "onedrive", "google drive"):
+            require(phrase in text, name + " must check cloud-synced folder paths")
+    first_run = " ".join((ROOT / "prompts/first-run-check.md").read_text(encoding="utf-8").lower().split())
+    require("displayed page text" in first_run and "example domain" in first_run,
+            "First-run prompt must use displayed page text")
+    require("heading actually" not in first_run and "read its heading back" not in first_run,
+            "First-run prompt must not require heading narration")
+    print("PASS: five groups, one summary approval, displayed-text browser check, official links, logged additions and safety gates")
+
     verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
     backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")
     south_dakota_primary = "https://questionnaires.armssoftware.com/eafc4e7429b0"
