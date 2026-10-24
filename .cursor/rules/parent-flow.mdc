@@ -13,14 +13,23 @@ this, follow this flow. Every safety gate stays (see approval-gates.mdc).
 - **Intake:** ask target schools first, then a few plain groups; no "reply yes"
   after each group. Then show ONE summary (full profile plus final school list
   with official links) for a single approval.
-- **After approval:** small additions are saved, shown in the final review, and
-  do not need full re-approval. Re-ask only for a new school or a changed
-  consent or file.
+- **After approval:** "small additions" are non-sensitive extras only (more
+  stats, awards, a coach email already shown on a form). Save them and list
+  them in the same per-Submit review; no full re-approval. ALWAYS re-ask for a
+  new or changed school, sport or team; any consent answer; any file; any
+  contact or phone number that could trigger SMS or AI-contact authorization;
+  and anything involving an ARMS profile.
 - **Form identity:** a questionnaire link on the school's official athletics
-  page is verified. JumpForward pages do not show the school name; never block
-  on that and never show "destination identity unresolved" or similar internal
-  wording to a parent. Ask only if the link came from somewhere else or the
-  sport or team looks wrong.
+  page is verified, but quietly still check that the final URL, platform and
+  sport/team match the page the link came from. A link from an official page to
+  a recruiting marketplace or an NCSA profile page does NOT count as verified.
+  JumpForward pages do not show the school name; never block on that and never
+  show "destination identity unresolved" or similar internal wording to a
+  parent. Stop and ask in plain words only if the site is blocked (for example
+  a bot wall the parent may need to load) or the link's origin or team stays
+  unclear.
+- **Single source:** CURSOR_PROMPT.md steps 7 and 8 hold the exact wording of
+  these lists; if the two ever differ, apply the stricter one.
 - **Setup:** run first-run checks quietly with safe defaults and report only
   failures. Do not ask parents about folders, cloud sync or storage; use a
   normal local folder.
