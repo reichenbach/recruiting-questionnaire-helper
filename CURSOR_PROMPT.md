@@ -50,21 +50,32 @@ never crash or stall on a fetch.
 6. Ask my target schools first: school, sport and men's or women's team. Confirm
    vague school names. Then ask the rest in a few plain groups (about five in
    total: schools, the athlete, the family and contacts, academics and
-   athletics, anything extra). Ask only the named sport's questions. Save
-   answers to local profile.json as we go. Unknown stays blank. When a target
-   form needs them, ask high school and club jersey numbers, high school coach
-   name, and the NCAA Eligibility Center ID (NAIA ID only for NAIA targets).
-   Never use the synthetic test fixture. Do not ask me to reply "yes" after each
-   group.
+   athletics, anything extra). Ask each group as a short list of plain
+   questions with no jargon (say "NCAA Eligibility Center ID, if you have one",
+   never "entry plans" or "transfer details" unless the form needs them). Ask
+   only the named sport's questions. Save answers to local profile.json as we
+   go. Unknown stays blank. Before the summary, quietly read each target form
+   (page fetch or the Browser tool) and list its REQUIRED fields. Put any
+   required item still unknown into the last group, so no required question
+   first appears while filling: for example high school and club jersey
+   numbers, high school coach name, position, and the NCAA Eligibility Center
+   ID (NAIA ID only for NAIA targets). Do not add another round; keep about
+   five total. Never use the synthetic test fixture. Do not ask me to reply
+   "yes" after each group.
 7. When intake is done, show ONE summary: the full profile (including files,
    unanswered items and consent choices) and the final school list with the
-   official questionnaire link for each school. If a school's form (such as
-   ARMS) will create a school-side profile or account, list that action in the
-   summary, naming it and the disclosure the form shows. Ask once: "Does this
-   look right? Reply 'Yes, fill these forms' to approve." That one Yes approves
-   both the profile and the school list and only the listed actions; you must
-   have it before you enter any family data. Never ask for separate profile and
-   list approvals. Record that one Yes as BOTH `approvals.full_profile` and
+   official questionnaire link for each school. If a school's form will create
+   a school-side profile or account, list that action in the summary in the
+   form's own words as seen on its page (for example the ARMS "Verify Your
+   Details to Create a Profile" step), naming the action and the disclosure the
+   form shows. Never quote a disclosure or sign-in options you have not actually
+   seen; if not seen yet, say the form will show its own notice and you will
+   show it word for word before acting. Do not name sign-in providers you have
+   not seen on the page. Ask once: "Does this look right? Reply 'Yes, fill
+   these forms' to approve." That one Yes approves both the profile and the
+   school list and only the listed actions; you must have it before you enter
+   any family data. Never ask for separate profile and list approvals. Record
+   that one Yes as BOTH `approvals.full_profile` and
    `approvals.final_school_list`, with the same quote and date but separate
    SHA-256 values for the profile snapshot and the school-list snapshot, as
    AGENTS.md requires. "Small additions" means non-sensitive extras only: more
@@ -96,7 +107,10 @@ never crash or stall on a fetch.
    Enter phone numbers in the format the form asks for (such as digits only) and
    never change the number. Confirm or change every preset dropdown, radio and
    checkbox to my answer. Follow AGENTS.md for FrontRush, JumpForward and ARMS
-   details.
+   details. On FrontRush use the form's own Parent/Guardian fields for parents;
+   list a Personal Contacts Save in the summary only if you will really use it
+   (for example for the high school coach or a contact the main fields cannot
+   hold).
 10. Show every live consent, attestation, signature and terms request word for
     word with all options and linked disclosures, and enter only my answer. Show
     any implicit contact authorization BEFORE an action such as entering a

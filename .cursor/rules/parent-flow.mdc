@@ -11,8 +11,13 @@ per Submit. Where AGENTS.md asks the parent for more batches or approvals than
 this, follow this flow. Every safety gate stays (see approval-gates.mdc).
 
 - **Intake:** ask target schools first, then a few plain groups; no "reply yes"
-  after each group. Then show ONE summary (full profile plus final school list
-  with official links) for a single approval.
+  after each group. Ask each group as plain questions (no jargon). Before the
+  summary, quietly read each target form and fold any still-unknown REQUIRED
+  fields into the last group; keep about five total. Then show ONE summary
+  (full profile plus final school list with official links) for a single
+  approval. Describe school-side actions in the form's own words once seen; on
+  FrontRush use Parent/Guardian fields and list Personal Contacts Save only if
+  you will really use it.
 - **After approval:** "small additions" are non-sensitive extras only (more
   stats, awards, a coach email already shown on a form). Save them and list
   them in the same per-Submit review; no full re-approval. ALWAYS re-ask a
@@ -29,8 +34,8 @@ this, follow this flow. Every safety gate stays (see approval-gates.mdc).
   parent. Stop and ask in plain words only if the site is blocked (for example
   a bot wall the parent may need to load) or the link's origin or team stays
   unclear.
-- **Single source:** CURSOR_PROMPT.md steps 7 and 8 hold the exact wording of
-  these lists; if the two ever differ, apply the stricter one.
+- **Single source:** CURSOR_PROMPT.md holds the exact wording of these lists; if
+  the two ever differ, apply the stricter one.
 - **Setup:** run first-run checks quietly with safe defaults and report only
   failures. Follow AGENTS.md section 0 for the folder: an agent-created folder
   is a silent new ~/RecruitingHelper; only a reused Desktop, Documents or synced
