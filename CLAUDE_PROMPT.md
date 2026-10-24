@@ -65,7 +65,9 @@ That one Yes approves the profile, list and listed actions only. Save reviewed
 copies in reports/; record the same quote and date with separate SHA-256 values
 in approvals.full_profile and approvals.final_school_list. It never approves
 Submit. Ask missing or blank answers in one short batch per school and fold them
-into that school's pre-Submit review; no whole-summary re-approval. Always ask
+into that school's pre-Submit review; no whole-summary re-approval. Ask each
+blank once; after "not sure" or no answer, keep it as Needs-your-answer and
+do not repeat it in later replies. Always ask
 again, in just the change, for: a new or changed school, sport, team or form
 link; changing or removing an approved answer; any consent answer; any file;
 any new phone or contact that could trigger SMS or AI-contact authorization;
