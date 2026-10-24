@@ -163,12 +163,15 @@ def check_fixture(template, fixture, *, sport, city, postal_code, form_url):
 def main():
     required = [
         ".gitignore", "AGENTS.md", "README.md", "START_PROMPT.md",
-        "CHATGPT_PROMPT.md", "CLAUDE.md", "CLAUDE_PROMPT.md",
+        "CHATGPT_PROMPT.md", "CLAUDE.md", "CLAUDE_PROMPT.md", "CURSOR_PROMPT.md",
         "profile.template.json", "prompts/first-run-check.md",
         "prompts/start.md", "prompts/find-forms.md", "prompts/fill-forms.md",
         "prompts/report.md", "reference/recruiting-intake-tree.md",
         "reference/sample-forms.md", "reference/verified-forms.md",
         "test/dry-run-profile.json", "test/dry-run-profile-volleyball.json", "test/README.md",
+        ".cursor/rules/agents-source-of-truth.mdc",
+        ".cursor/rules/hard-boundaries.mdc",
+        ".cursor/rules/approval-gates.mdc",
     ]
     for name in required:
         require((ROOT / name).is_file(), "Missing package file: " + name)
@@ -369,12 +372,12 @@ def main():
             "README parent steps must contain the package repository URL")
     require(re.findall(repo_pattern, sharer_notes) == [repo_url],
             "README sharer notes must contain only the package repository URL")
-    for name in ("START_PROMPT.md", "CHATGPT_PROMPT.md", "CLAUDE_PROMPT.md"):
+    for name in ("START_PROMPT.md", "CHATGPT_PROMPT.md", "CLAUDE_PROMPT.md", "CURSOR_PROMPT.md"):
         prompt = (ROOT / name).read_text(encoding="utf-8")
         require(set(re.findall(repo_pattern, prompt)) == {repo_url},
                 name + " must contain the same package repository URL as README")
     for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "README.md",
-                 "prompts/first-run-check.md", "CLAUDE_PROMPT.md"):
+                 "prompts/first-run-check.md", "CLAUDE_PROMPT.md", "CURSOR_PROMPT.md"):
         instructions = " ".join((ROOT / name).read_text(encoding="utf-8").split())
         fallback_sentence = (
             "I couldn't open the online package, so I'll use a local copy or ask you to share it."

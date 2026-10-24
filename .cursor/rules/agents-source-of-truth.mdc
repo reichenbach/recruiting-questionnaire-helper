@@ -1,0 +1,20 @@
+---
+description: AGENTS.md is the source of truth for this recruiting package
+alwaysApply: true
+---
+
+# Source of truth
+
+Follow **AGENTS.md** for workflow, boundaries, intake order, platform behavior,
+consent rules and approval gates. Read the entire read-only
+`reference/recruiting-intake-tree.md` before starting. Never edit that file.
+`reference/sample-forms.md` is an exact copy of its section 5; sample links are
+candidates, not verified targets.
+
+Where the reference tree says to answer, default, pick the closest value or
+substitute a form, **AGENTS.md wins**.
+
+In Cursor, the **Browser / browser MCP** (built-in browser tool) is the
+computer-use tool named in AGENTS.md for the example.com check and form fills.
+Do not replace it with scripted POSTs, API submissions or browser automation
+code.

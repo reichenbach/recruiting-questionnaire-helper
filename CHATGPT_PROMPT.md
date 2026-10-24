@@ -282,10 +282,10 @@ inlined examples remain available if the optional reference fetch fails.
   Fallback (JumpForward, older link, still loads on that date):
   https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
   On the fallback, high-school fields stay disabled until a typeahead suggestion
-  is selected. Search name plus city and verify the match; if none exists, use
-  the not-listed option with my school address, asking for missing details.
-  Never select a different school or bypass disabled fields; stop as needs-info
-  if there is no usable fallback. Close the date picker covering email/mobile
+  is selected. Search the school name only and verify the city/state shown;
+  there is no not-listed option, so stop as needs-info if none matches.
+  Never select a different school or bypass disabled fields.
+  Close the date picker covering email/mobile
   before typing. Block/approach touches are free text; height is a dropdown.
 - Central Methodist University (NAIA), school-built (PrestoSports):
   https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire
@@ -365,10 +365,9 @@ JumpForward needs JavaScript. Its long page covers athlete, two parents,
 guardian, full high-school address/phone/fax/counselor, academics, athletics and
 personal "Other Questions". Ask those answers. High school uses search
 suggestions; high-school fields stay disabled until a typeahead suggestion is
-selected. Search name plus city and verify the match; if no match, use the
-not-listed option with my school address, asking if missing. Never choose
-another school or bypass disabled fields. If no usable fallback exists, stop
-as needs-info. Close any
+selected. Search the school name only and verify the city/state shown; it
+has no not-listed option, so stop as needs-info if none matches. Never choose
+another school or bypass disabled fields. Close any
 date-picker popup covering email/mobile before typing and verify the entered
 fields. Block/approach touch are free text; height is a dropdown. Use exact
 supplied values and units. Follow the final platform after redirects.

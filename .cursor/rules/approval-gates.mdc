@@ -1,0 +1,37 @@
+---
+description: Submit, ARMS profile-creation and consent approval gates from AGENTS.md
+alwaysApply: true
+---
+
+# Approval gates
+
+Follow **AGENTS.md** section 4. Never answer an attestation, consent,
+certification, signature or terms acceptance for the family. Show verbatim live
+wording and every option before asking. Follow the Opt-in rule there.
+
+## Do not create accounts or school profiles without asking
+
+Ask separately before any account creation, ARMS "Continue without one of these
+accounts", or any step that creates a school-side profile. Inspect only public
+content until approved.
+
+## Stop before ARMS Visitor Details / Verify Your Details
+
+Treat **Visitor Details** and **Verify Your Details to Create a Profile** as
+sending data to create a school profile. Stop before that step. Proceed only
+after full-profile approval, final-school-list approval and separate
+profile-creation approval. In a dry run never go past it unless data is fake and
+live-rehearsal disclosure is separately approved. Never submit a dry run.
+
+## Never click final Submit without family approval
+
+After filling and immediately before **each Submit**, show the school, team,
+final form URL, entered values, every preset choice and its confirmed final
+answer, consent answers and file list. Ask a fresh school-specific question such
+as: "Approve submitting this reviewed questionnaire to [school/team] at [URL]
+now?" Wait for an explicit Yes. Approval for one school does not cover another,
+a retry or a resubmission. Treat any action that sends a completed questionnaire
+as Submit.
+
+Before entering family data, obtain two explicit approvals: the full profile and
+the final school list with each form URL. Changes require renewed approval.

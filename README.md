@@ -21,10 +21,24 @@ Claude plan and app offer them. Claude Code is optional. The same check, review
 and per-Submit approvals apply; see [CLAUDE.md](CLAUDE.md) and
 https://support.anthropic.com for setup help.
 
+### Cursor option
+
+1. **Install [Cursor](https://cursor.com)** and open this package folder
+   (File > Open Folder). Keep it in a private local folder outside cloud sync
+   or shared storage.
+2. **Paste all of [CURSOR_PROMPT.md](CURSOR_PROMPT.md)** into a new Agent chat.
+3. **Enable the built-in Browser**: Cursor Settings > Tools & MCP > Browser
+   Automation > turn on and choose Browser Tab. Restart Cursor if asked, then
+   return to Agent chat. Approve browser actions when prompted.
+4. The agent runs the [first-run check](prompts/first-run-check.md) by opening
+   `https://example.com` in Browser and reading back **Example Domain**, then
+   continues intake. Project rules under `.cursor/rules/` reinforce the same
+   boundaries as [AGENTS.md](AGENTS.md).
+
 This folder helps a parent and athlete prepare one local profile, find official
-college recruiting questionnaires, and fill them using Computer Use. You review
-the answers, final school list, live consent wording and each completed form
-before approving a submission.
+college recruiting questionnaires, and fill them using Computer Use (ChatGPT),
+Claude computer use or Cursor's built-in Browser. You review the answers, final school list, live
+consent wording and each completed form before approving a submission.
 
 The helper fills forms only. It never contacts coaches, sends emails or
 messages, makes calls, pays fees, or buys services. It cannot promise admission,
@@ -170,19 +184,24 @@ ChatGPT and is not offline storage.
 
 ## Privacy and package contents
 
-On the Codex path, family data is saved only in local `profile.json` and ignored
-files inside `reports/`, plus `screenshots/` if needed. Never commit or share
-these files, documents or family information. The `.gitignore` helps prevent
-accidental Git inclusion; it does not encrypt files or prevent sharing.
-Information provided in chat or displayed through Computer Use is not a promise
-of offline processing. Entering data into an approved form discloses it to the
-school and its provider, and the form may save entries before Submit.
+On the Codex or Cursor path, family data is saved only in local `profile.json`
+and ignored files inside `reports/`, plus `screenshots/` if needed. Never commit
+or share these files, documents or family information. The `.gitignore` helps
+prevent accidental Git inclusion; it does not encrypt files or prevent sharing.
+Information provided in chat or displayed through Computer Use or Cursor Browser
+is not a promise of offline processing. Entering data into an approved form
+discloses it to the school and its provider, and the form may save entries
+before Submit.
 
 - [AGENTS.md](AGENTS.md) defines the workflow, boundaries and approval gates.
 - [START_PROMPT.md](START_PROMPT.md) gets or checks the package and starts the
   Codex path, with a local-copy fallback if downloading fails.
+- [CURSOR_PROMPT.md](CURSOR_PROMPT.md) starts the same workflow in Cursor Agent
+  chat using the built-in Browser tool.
 - [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) provides the self-contained Work
   backup.
+- [.cursor/rules/](.cursor/rules/) mirrors AGENTS.md boundaries for Cursor
+  Agent sessions.
 - [profile.template.json](profile.template.json) contains blank common fields
   and all 14 sport blocks. Unused sport blocks stay empty.
 - [prompts/first-run-check.md](prompts/first-run-check.md) and the other stage
