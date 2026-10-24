@@ -5,12 +5,15 @@
    Computer Use works for your account and device.
 2. **Install the ChatGPT desktop app** from [OpenAI's download
    page](https://openai.com/chatgpt/download/).
-3. **Unzip the package you received and open its folder in Codex** in the
-   desktop app. Keep it in a private local folder outside cloud sync or shared
-   storage. If you received a folder, open it directly.
-4. **Paste all of [START_PROMPT.md](START_PROMPT.md) into Codex**. It checks the
-   local package, explains setup, checks Computer Use, then asks questions. You
-   never need a terminal, Git or a repository URL.
+3. **Open Codex in the desktop app and paste all of
+   [START_PROMPT.md](START_PROMPT.md)**. Codex normally gets the package from
+   https://github.com/reichenbach/recruiting-questionnaire-helper using git
+   clone or a ZIP download. You never need to use a terminal or install Git
+   yourself. The repository is private for now and will become public later.
+4. **If the download is unavailable, use the ZIP or folder you received**.
+   Codex helps unzip it and open its folder, then checks Computer Use before
+   asking questions. Keep it in a private local folder outside cloud sync or
+   shared storage. If you have no copy, share or paste the package when asked.
 
 This folder helps a parent and athlete prepare one local profile, find official
 college recruiting questionnaires, and fill them using Computer Use. You review
@@ -27,12 +30,22 @@ decisions follow the [Opt-in rule in AGENTS.md](AGENTS.md#opt-in-rule).
 
 ## What happens after you paste the prompt
 
-Codex uses the package folder already open, or the local folder you point to,
-without replacing saved work. It can help you unzip the package. It does not
-fetch a repository or repository files. If the app asks you to choose a project
-folder, choose the folder containing `AGENTS.md`, `profile.template.json`,
-`prompts/` and `reference/`. Codex confirms it can read them before collecting
-family information and handles necessary free installs.
+Codex reuses an existing package without replacing saved work; otherwise it
+tries once to clone or download the package from the URL above. Every runtime
+repo or repo-file fetch uses a bounded timeout and handles errors. If the repo
+or any file cannot be opened (private, 404, offline or blocked), it says:
+"I couldn't open the online package, so I'll use a local copy or ask you to
+share it." It then uses the folder Codex is opened in, a bundled copy, or a
+ZIP/folder you point to. Try once only: no retry loops, alternate download
+methods/endpoints after failure, or sign-in attempts to bypass it; after a
+failure, use available copies without more network attempts. If no usable copy
+exists, Codex asks you to paste or share the package and explains what is
+missing; a failed fetch must never crash or stall the workflow.
+
+If the app asks you to choose a project folder, choose the folder containing
+`AGENTS.md`, `profile.template.json`, `prompts/` and `reference/`. Codex confirms
+it can read them before collecting family information and handles necessary
+free installs.
 
 Codex guides you through **Plugins > Computer Use > Install plugin** or
 **Enable**, both the **Computer Use server** and **skill** toggles, and **Try
@@ -121,10 +134,12 @@ saved answers, approvals and the page, then asks again before Submit.
 Copy all of [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) into the ChatGPT desktop
 app's **Work** mode with **Computer Use**. This is one self-contained paste
 covering the common intake, every sport branch, form verification and approval
-boundaries, with four volleyball examples included. It never fetches repository
-files. It runs the Computer Use check before asking for a saved profile summary
-or new family information. Without working Computer Use, it pauses intake and
-form entry.
+boundaries, with four volleyball examples included. It may try once to read
+reference files from the same GitHub URL as an optional source. If that fails,
+it explains in one sentence and continues with the instructions and examples
+inlined in the prompt; it never blocks on a download or requires a local copy.
+It runs the Computer Use check before asking for a saved profile summary or new
+family information. Without working Computer Use, it pauses intake and form entry.
 
 The backup keeps its working record in the conversation and prints one compact,
 complete **SAVED PROFILE SUMMARY** to keep privately. Paste that summary with
@@ -145,8 +160,8 @@ of offline processing. Entering data into an approved form discloses it to the
 school and its provider, and the form may save entries before Submit.
 
 - [AGENTS.md](AGENTS.md) defines the workflow, boundaries and approval gates.
-- [START_PROMPT.md](START_PROMPT.md) checks the local package and starts the
-  Codex path.
+- [START_PROMPT.md](START_PROMPT.md) gets or checks the package and starts the
+  Codex path, with a local-copy fallback if downloading fails.
 - [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) provides the self-contained Work
   backup.
 - [profile.template.json](profile.template.json) contains blank common fields
@@ -166,11 +181,12 @@ school and its provider, and the form may save entries before Submit.
 
 ## Notes for someone sharing this package
 
-Give the parent a ZIP or folder containing the package and START_PROMPT.md.
-Optional download for an authorized sharer:
+Keep a ZIP or folder containing the package and START_PROMPT.md available as a
+fallback while the repository is private or if a download fails. Package source:
 https://github.com/reichenbach/recruiting-questionnaire-helper
 
-This repository may be private. A parent never needs repository access to run
+The repository stays private for now and will become public later; do not change
+its visibility as part of setup. A parent never needs repository access to run
 the package you give them. Send only the instructions, blank template, prompts,
 references and synthetic `test/` files. Inspect the folder first and exclude all
 private profiles, reports, documents, screenshots, passwords and secrets. Never

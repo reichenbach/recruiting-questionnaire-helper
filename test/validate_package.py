@@ -322,16 +322,25 @@ def main():
     sharer_heading = "## Notes for someone sharing this package"
     require(sharer_heading in readme, "Missing README sharer notes")
     parent_notes, sharer_notes = readme.split(sharer_heading, 1)
-    require("github.com" not in parent_notes.lower(), "Runtime README steps contain a repository URL")
     repo_pattern = r"https://github\.com/[^\s)]+"
+    require(set(re.findall(repo_pattern, parent_notes)) == {repo_url},
+            "README parent steps must contain the package repository URL")
     require(re.findall(repo_pattern, sharer_notes) == [repo_url],
-            "README sharer notes must contain only the optional package repository URL")
+            "README sharer notes must contain only the package repository URL")
     for name in ("START_PROMPT.md", "CHATGPT_PROMPT.md"):
         prompt = (ROOT / name).read_text(encoding="utf-8")
-        require("github.com" not in prompt.lower(), name + " must not contain github.com")
-        require("do not fetch any repository" in " ".join(prompt.lower().split()),
-                name + " must prohibit fetching repository files")
-    print("PASS: local package startup; repository URL only in optional README sharer notes")
+        require(set(re.findall(repo_pattern, prompt)) == {repo_url},
+                name + " must contain the same package repository URL as README")
+    for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "README.md",
+                 "prompts/first-run-check.md"):
+        instructions = " ".join((ROOT / name).read_text(encoding="utf-8").lower().split())
+        for phrase in ("try once only", "no retry loops", "bounded timeout", "private",
+                       "404", "offline", "blocked", "local", "bundled", "never crash or stall"):
+            require(phrase in instructions, name + " must cover fetch fallback: " + phrase)
+    agent_rules = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    require(not re.search(r"codex|chatgpt", agent_rules, re.I),
+            "AGENTS.md must use agent-neutral wording")
+    print("PASS: matching repository URLs, single-attempt fetch fallbacks and agent-neutral rules")
 
     verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
     backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")

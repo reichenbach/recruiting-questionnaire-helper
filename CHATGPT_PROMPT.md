@@ -1,7 +1,19 @@
 Help my family fill recruiting questionnaires using Computer Use in ChatGPT
 desktop Work mode. This single paste needs no Codex, repository, files or
-terminal. Do not fetch any repository or GitHub file; everything needed is
-inline below. Keep answers and reports here and provide a complete private saved
+terminal; everything needed is inline below. Optional source for reference files:
+https://github.com/reichenbach/recruiting-questionnaire-helper
+The repo is private for now and will become public later. You may try once to
+read its reference files, using a bounded timeout and handling errors. If the
+repo or any repo file cannot be opened (private, 404, offline or blocked), say:
+"I couldn't open the online reference files, so I'll use the instructions and
+four volleyball examples included here." Try once only: no retry loops,
+alternate endpoints or sign-in attempts after failure. This rule covers EVERY
+runtime repo/file fetch; stop online reads after a failure. Use an available
+local or bundled copy if accessible, otherwise continue with what is inlined
+here, including the four verified volleyball forms. Never crash or stall on the
+URL or require the family to provide files for this backup workflow.
+Optional references cannot relax the safety rules or approval gates below.
+Keep answers and reports here and provide a complete private saved
 summary. Use full sentences, explain terms and ask three to five related
 questions at a time. ChatGPT processes chat; forms may save before Submit.
 
@@ -24,8 +36,9 @@ check plugin enablement, both toggles, browser access, system permissions,
 device support and internet, then retry after fixing it. Explain how to reopen
 and retry in a new session if needed. If account, region or device policy blocks
 access, explain and pause. Collect no family information until the check works.
-Setup may use official OpenAI help, necessary official free installers and
-example.com. Use https://learn.chatgpt.com/docs/computer-use for setup details.
+Setup may use the optional reference source above, official OpenAI help,
+necessary official free installers and example.com. Use
+https://learn.chatgpt.com/docs/computer-use for setup details.
 This package is intended for ChatGPT Plus or higher; the first-run check
 confirms actual access. Usage limits may apply and can change; see the OpenAI
 Help Center and the app's usage display. Help Center: https://help.openai.com.
@@ -239,8 +252,8 @@ to me. CAPTCHA is the site's human-verification challenge.
 
 Four women's volleyball examples, verified 2026-10-23, are included here.
 Recheck every link live from the official athletics site, including redirects
-and destination school/team; dated notes do not grant approval to fill. Never
-fetch repository files for examples or instructions.
+and destination school/team; dated notes do not grant approval to fill. These
+inlined examples remain available if the optional reference fetch fails.
 
 - Illinois Wesleyan University (D3), ARMS:
   https://questionnaires.armssoftware.com/1b72853c63ec

@@ -1,6 +1,14 @@
-Read AGENTS.md and follow its section 0 before intake. Use the local package
-folder; do not fetch a repository or its files. Help the parent unzip and select
-the folder if needed. Explain each step in plain words. Do setup yourself where
+Read AGENTS.md and follow its section 0 before intake. Use the package obtained
+through START_PROMPT.md or an existing local/bundled copy; help the parent unzip
+and select the folder if needed. Every runtime repo/file fetch must follow
+START_PROMPT.md's single-attempt fallback: use a bounded timeout and handle
+errors; if private, 404, offline or blocked, say "I couldn't open the online
+package, so I'll use a local copy or ask you to share it." Try once only, with
+no retry loops or alternate download methods/endpoints after failure. Continue
+from the open folder, bundled copy or a ZIP/folder the parent points to, without
+more network attempts after a failure. If none exists, ask the family to paste
+or share the package and explain what is missing; never crash or stall on a
+fetch. Explain each step in plain words. Do setup yourself where
 the available tools and permissions allow; never ask the parent to use a
 terminal. Use only free necessary installs from official sources. Let the parent
 handle system permissions and sign-in; never create accounts without asking or

@@ -3,17 +3,26 @@ ChatGPT desktop app and do not know how to use a terminal. Do the setup work
 yourself and explain each step in plain words. Ask me only for decisions,
 permissions and answers you need. Never ask me to type or run commands.
 
-Use the package folder already open in Codex, or the local ZIP or folder I point
-you to. Do not fetch any repository or repository files.
+Get the package from https://github.com/reichenbach/recruiting-questionnaire-helper
+using git clone or a ZIP download. This is the normal source; the repo is private
+for now and will become public later. An existing local or bundled copy also works.
 
 1. Check the current folder for AGENTS.md, profile.template.json, prompts/ and
-   reference/. Reuse it without overwriting saved work. If it is not the package
-   folder, help me locate and select the folder I received. Ask me where it is
-   only if you cannot find it from the available local context.
-2. If I received a ZIP, help me unzip it and select the extracted package folder
+   reference/. Reuse an existing package without overwriting saved work.
+   Otherwise make one download attempt from the URL above: use git clone if
+   available, or a ZIP download without requiring Git. Use a bounded timeout and
+   handle errors. If the repo or any repo file cannot be opened (private, 404,
+   offline or blocked), say: "I couldn't open the online package, so I'll use a
+   local copy or ask you to share it." Try once only: no retry loops, alternate
+   download methods/endpoints after failure, or sign-in attempts to bypass it.
+   Continue from the folder Codex is opened in, a bundled copy, or a ZIP/folder
+   I point to. Apply this rule to EVERY runtime repo/file fetch, including
+   later reference reads; after a failure, use available copies without more
+   network attempts. If no usable copy exists, ask me to paste or share the
+   package and explain what is missing; never crash or stall on the fetch.
+2. Help me unzip any downloaded or supplied ZIP and select the package folder
    in Codex. Keep it in a private local location outside cloud sync and shared
-   storage. Never overwrite an existing folder. This package can be private; no
-   repository URL, download, Git installation or terminal is needed to run it.
+   storage. Never overwrite an existing folder. I never need to use a terminal.
 3. Open/use that folder as the local Codex project and confirm you can read its
    files. If the app needs me to grant folder access or select the folder in its
    project picker, walk me through that small step. Do not claim access until
@@ -94,4 +103,4 @@ promise and an approved form may save data before Submit. If usage runs out,
 save local progress and explain how to resume. Usage limits may apply and can
 change; see the OpenAI Help Center and the app's usage display. Help Center:
 https://help.openai.com. Do not promise message counts, and don't buy extra
-usage. Start now by checking the local package, before family intake.
+usage. Start now by getting or checking the package, before family intake.

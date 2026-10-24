@@ -30,10 +30,10 @@ launcher. The validator uses only the standard library and local read-only
 checks. It checks blank template values, required field coverage, fixture
 safety, source-list equality/count, source integrity, ignore behavior, relative
 Markdown links, personal-data patterns in all tracked text files and untracked
-non-ignored text files (skipping binaries), and local-only startup prompts (no
-github.com in START_PROMPT.md or CHATGPT_PROMPT.md), the optional repository URL
-only in README sharer notes, and four dated volleyball examples in
-reference/verified-forms.md and the self-contained backup prompt. It never
+non-ignored text files (skipping binaries), matching package repository URLs in
+START_PROMPT.md, CHATGPT_PROMPT.md and the README parent steps, single-attempt
+download fallback instructions, agent-neutral AGENTS.md wording, and four dated
+volleyball examples in reference/verified-forms.md and the self-contained backup prompt. It never
 visits a site or fills/submits a form. Outside a Git checkout, the personal-data
 scan covers the required package files and the validator itself. It does not
 prove how an agent or a live form will behave.
@@ -74,6 +74,8 @@ sending is disabled", plus any other blockers. Never call the test sent.
 
 | Situation | Expected behavior |
 |---|---|
+| Repo or any repo file is private, 404, offline or blocked | Try once only with a bounded timeout; explain in one plain sentence, then use the open folder, bundled copy or supplied ZIP/folder; ask for a pasted/shared package if none exists; no retries or stall |
+| Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
 | First run before family intake | Guide plugin/server/skill and system permissions; open example.com using Computer Use and observe Example Domain; pause intake until it works |
 | Start with the baseball target | School/sport/team first, then common intake in section 4 order, then baseball only; no other sport questions |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
