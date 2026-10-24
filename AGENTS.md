@@ -72,12 +72,12 @@ subscription or app name.
    unavailable or blocked by account, region or device policy, explain the
    limitation and pause. **Only continue to intake after this check works.**
 
-Setup alone may use this repository's GitHub download, official OpenAI
-setup/help pages, necessary official free installer sources and the example.com
-test page. This exception does not authorize other browsing during recruiting
-work. Initial repository retrieval is handled by `START_PROMPT.md`; afterward
-work inside this folder without changing remotes. Save no family data during
-setup.
+Use the local ZIP or folder the parent received; help them unzip it and select
+it in Codex if needed. Do not fetch a repository or repository files at runtime.
+Setup alone may use official OpenAI setup/help pages, necessary official free
+installer sources and the example.com test page. This exception does not
+authorize other browsing during recruiting work. Work inside this folder without
+changing remotes. Save no family data during setup.
 
 ## 1. Intake and local profile
 
@@ -87,9 +87,10 @@ section 4 of the tree in this order, asking about 3–5 related questions at a
 time in plain language and saving after each batch:
 
 1. Confirm named sport, team, graduation year, and target levels (NCAA D1/D2/D3,
-   NAIA, JUCO; club/ACHA where relevant). Clarify ambiguous school names. If the
-   family names multiple sports, complete a separate named-sport pass for each;
-   never ask about unrelated sports.
+   NAIA, JUCO; club/ACHA where relevant). Before searching, ask the family to
+   confirm the exact school, division and sport/team for any vague school name.
+   If the family names multiple sports, complete a separate named-sport pass for
+   each; never ask about unrelated sports.
 2. Athlete: all section 1a fields, including legal/middle/preferred names,
    primary/secondary email, phones, full address, DOB, gender/sex, citizenship,
    X/Twitter, Instagram, Facebook/other accounts, headshot path, ethnicity and
@@ -111,12 +112,17 @@ time in plain language and saving after each batch:
    eligibility remaining only if applicable. Capture school-specific answers
    separately rather than assuming the same application status or aid preference
    for all schools.
-6. Eligibility: NCAA registration and ID as applicable to target levels,
-   qualifier answer; ask NAIA/PlayNAIA ID only if an NAIA target is present
-   (seven digits). Do not invent or look up eligibility answers.
+6. Eligibility: NCAA Eligibility Center registration and ID as applicable to
+   target levels and actual form requirements, including Illinois Wesleyan D3
+   women's volleyball; qualifier answer. Ask NAIA Eligibility Center ID
+   (PlayNAIA, seven digits) only if an NAIA target is present. Save the IDs in
+   `eligibility.ncaa_id` and `eligibility.naia_playnaia_id`. Do not invent or
+   look up eligibility answers.
 7. Common athletics: height/weight with exact units, videos, recruiting profile,
-   HS/club teams, jerseys, positions, coach contacts, tournaments/showcases and
-   dates, other sports, honors and hobbies. Coach contacts are form data only.
+   HS/club teams, high school jersey number and each club jersey number,
+   positions, coach contacts, tournaments/showcases and dates, other sports,
+   honors and hobbies. Use `athletics.high_school_jersey_number` and
+   `athletics.club_teams[].jersey_number`. Coach contacts are form data only.
 8. ONLY the named sport's section 2 block, including its follow-up branches for
    the target levels/schools. Use shared common fields when they already answer
    a sport question; avoid asking twice. The template has 14 blocks, with shared
@@ -135,11 +141,24 @@ such as `consents` can be null until there are actual records.
 
 Ask, do not invent, guess, calculate missing stats, convert units, derive a
 superscore, or round a value. Do not fabricate a ten-digit phone from seven
-digits. Removing punctuation from a provided ten-digit number is formatting
-only; if it still fails, ask. For dropdown synonyms, use a clean option only
-when it unambiguously preserves the family's meaning; otherwise ask the family
-to select the exact option. This overrides the tree's "closest clean value"
-suggestion when it would require guessing.
+digits. Enter the same number in the format the field requests, such as digits
+only after a format error. Changing punctuation is formatting only; never change
+the number itself or invent a country code. If it still fails, ask. For dropdown
+synonyms, use a clean option only when it unambiguously preserves the family's
+meaning; otherwise ask the family to select the exact option. This overrides the
+tree's "closest clean value" suggestion when it would require guessing.
+
+If a required field found while filling is not in the profile, ask the family
+for its exact answer and save it locally with the appropriate school/sport.
+Never guess or accept a preset value to fill that gap. Renew affected profile
+approvals before entering the new answer.
+
+For every preset dropdown, radio or checkbox, confirm it against the family's
+answer and change it if needed. Unknown means ask, not accept the default. Clear
+preselected opt-ins under the Opt-in rule; required choices still need the
+family's answer. List every preset choice and its final answer in the pre-submit
+review. For example, Central Methodist may preset campus visit Yes, hand RIGHT,
+stats YES and film Yes; none establishes the family's answer.
 
 All section 2 fields must be available in the template, including metrics that
 are rare on forms. Baseball 60-yard time/exit velocity/pitching velocity were
@@ -152,6 +171,12 @@ Keep the tree's coverage gaps visible; never assume unseen fields or substitute
 a different school, team, sport or competition level without family approval.
 
 ## 2. Find and verify forms
+
+See `reference/verified-forms.md` for the four women's volleyball examples
+verified on 2026-10-23. Recheck each link live from the official athletics site;
+the dated notes do not replace that check or grant approval to enter data.
+Confirm vague school names, exact school, division and sport/team before any
+search.
 
 For each target, start at its official athletics domain and follow its sport
 recruiting/questionnaire link. Use official-domain searches if needed; do not
@@ -175,6 +200,11 @@ for a replacement or appropriate generic fallback. Stop if provenance or team
 identity remains unclear. Never bypass access controls, CAPTCHA or Cloudflare;
 ask the family to handle a challenge or report the block.
 
+For a high-school typeahead (a search box with suggestions), search by school
+name plus city and verify the match. If no match exists, use "add new school" or
+"not listed" with the family's school address; ask if any details are missing.
+Never pick a different school to continue.
+
 ## 3. Required platform behavior
 
 ### ARMS
@@ -184,6 +214,10 @@ ask the family to handle a challenge or report the block.
   clicking it, even in a dry run, because the flow creates a school-side
   profile. This approval is separate from Submit. Inspect only public content
   until approved.
+- Treat "Verify Your Details to Create a Profile" like "Visitor Details": it
+  sends data to create a school profile. Require full-profile, final-school-list
+  and separate profile-creation approvals before proceeding. A live dry run also
+  needs separate disclosure approval and fake data; never submit it.
 - Illinois Wesleyan University men's baseball dry-run findings, supplied for
   https://questionnaires.armssoftware.com/8b8ac3c4ffef:
   - A "Visitor Details" step asks for first name, last name and email and says
@@ -237,6 +271,13 @@ ask the family to handle a challenge or report the block.
 - NCSA and IMG Academy marketing Yes/No radios are required. Follow the **Opt-in
   rule** in section 4 and the live-wording consent review below.
 - Ten-digit phones; repeatable "Personal Contacts" for parents/coaches.
+- The Personal Contacts widget has its own Save button; the parent relationship
+  can only be set there. Use it to add/save the parent contact only after the
+  family approves that action as part of filling. Verify the relationship and
+  saved contact. Otherwise record the relationship as needing their answer and
+  the Save action as awaiting approval; do not guess or use another field.
+- Some HS position lists show odd values such as "0", "Middle" and "Outside".
+  Map a supplied position to one of these only with the family's confirmation.
 - High-school "is not listed" expands address lines 1–3, city, state, ZIP,
   country and CEEB. Collect required missing values from the family.
 - Links expire: Grossmont swimming, CWRU and CCBC Essex were unavailable in the
@@ -244,6 +285,11 @@ ask the family to handle a challenge or report the block.
 
 ### JumpForward
 
+- High school uses a typeahead: search name plus city and use the
+  unlisted-school path if needed. A date-picker popup can cover email/mobile
+  fields; close it before typing and verify where the text went. Block/approach
+  touch are free text; height is a dropdown. Use supplied values and units
+  without conversion.
 - Needs JavaScript; long single page: athlete, Parent 1, Parent 2, guardian,
   academics with full school address/phone/fax/counselor, athletics, then fun
   "Other Questions". Ask for those answers rather than inventing preferences.
@@ -298,6 +344,26 @@ Yes/No choice needs the family's answer to the exact live wording and all
 options; propose No or "No thanks" for marketing and SMS, but enter only the
 family's confirmed answer.
 
+Third-party consents, including NCSA and IMG Academy, always need the exact live
+wording, every option and the family's own answer. For example, Coalinga
+FrontRush has required radios with this excerpt (not a substitute for the full
+live disclosure):
+
+> By selecting Yes and clicking Submit, I provide my electronic signature and
+> consent, as parent/legal guardian and on behalf of my child, to share personal
+> information with and be contacted by NCSA and IMG Academy at the number(s)
+> provided via recurring calls or texts, including by autodialer, AI, or
+> prerecorded voice, and to receive a free profile. ...
+
+The options are "Yes, I want to maximize my recruiting! Email me a free
+recruiting profile to get started." and "No thanks". A second IMG Academy Camps
+radio uses the same text naming "IMG Academy and its affiliates", with options
+"Yes, I am interested in hearing more about camp programs available throughout
+the year." and "No thanks". Show the complete current text, linked disclosures
+and all options for each. Propose "No thanks", but enter only the family's
+confirmed answer. The form cannot be sent until the family picks both required
+answers; never choose for them or treat either as harmless because it is free.
+
 If a required consent/signature lacks an answer, stop that school as needs-info.
 Never sign on a person's behalf without their specific answer to the exact
 signature request. Handle implicit authorization (such as entering a phone
@@ -324,13 +390,13 @@ allowed choices needed). Never enter dummy placeholders, N/A, zero or estimates
 to make validation pass. Leave unanswered optional fields blank.
 
 After filling and immediately before **each Submit**, show the school, team,
-final form URL, entered values, consent answers and file list. Ask a fresh,
-school-specific question such as: "Approve submitting this reviewed
-questionnaire to [school/team] at [URL] now?" Wait for an explicit Yes; record
-it as a school action. Approval for one school does not cover another, a retry
-or a resubmission. Do not press Enter, click a misleading Next/Finish, or use
-another action that submits early. Treat any action sending a completed
-questionnaire as Submit.
+final form URL, entered values, every preset choice and its confirmed final
+answer, consent answers and file list. Ask a fresh, school-specific question
+such as: "Approve submitting this reviewed questionnaire to [school/team] at
+[URL] now?" Wait for an explicit Yes; record it as a school action. Approval for
+one school does not cover another, a retry or a resubmission. Do not press
+Enter, click a misleading Next/Finish, or use another action that submits early.
+Treat any action sending a completed questionnaire as Submit.
 
 If profile values, school list, form URL or consent answers change, invalidate
 the affected approvals, show the changes and obtain fresh profile/list approval
@@ -346,13 +412,13 @@ rehearsal at any such gate without specific approval.
 
 ## 5. Results and resumability
 
-After every school and at the end, save a local Markdown report in `reports/`
-and show the same result table in chat:
+After every school and at the end, save a local Markdown report in `reports/`.
+Keep this detailed table locally:
 
 | School | Sport/team | Form link | Status | Reason or missing fields | Evidence/time |
 |---|---|---|---|---|---|
 
-Use exactly these result statuses:
+Use exactly these internal result statuses in local records:
 
 - `submitted`: only when the form shows success/confirmation; record its wording
   or confirmation reference and time without unnecessary personal data.
@@ -368,6 +434,18 @@ intentionally disabled" and list any other blockers. Never call a rehearsal
 submitted. For unvisited schools report `needs-info` and "not attempted" with
 the pending gate; show an unverified/unknown URL honestly rather than invent
 one.
+
+Show parents one short line per school with sport/team and form link: "Sent",
+"Not sent: why", or "Needs your answer: what". Use "Sent" only for confirmed
+success (`submitted`); use "Not sent" for `failed`, explaining any uncertainty
+as "We could not confirm it was sent; it may already have gone through. Do not
+send it again yet." Use "Needs your answer" for `needs-info`. For a dry run say
+"Needs your answer: test stopped before sending; sending is disabled", plus
+other blockers. For unvisited schools say "Needs your answer: not started;
+[pending approval/answer]". If the URL is unknown, say "link not verified yet".
+Keep evidence/time in local records. Avoid internal status codes and words like
+provenance or snapshot in parent-facing output; say "official link" and "saved
+copy of the answers you reviewed" instead.
 
 Keep a local per-school action log with URLs, approved actions, current step,
 missing fields, confirmation evidence and whether a submit was attempted. On

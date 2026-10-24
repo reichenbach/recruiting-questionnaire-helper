@@ -5,9 +5,12 @@
    Computer Use works for your account and device.
 2. **Install the ChatGPT desktop app** from [OpenAI's download
    page](https://openai.com/chatgpt/download/).
-3. **Paste all of [START_PROMPT.md](START_PROMPT.md) into Codex** in the desktop
-   app. Codex gets the package, explains setup, checks Computer Use, then asks
-   questions. You never need a terminal or commands.
+3. **Unzip the package you received and open its folder in Codex** in the
+   desktop app. Keep it in a private local folder outside cloud sync or shared
+   storage. If you received a folder, open it directly.
+4. **Paste all of [START_PROMPT.md](START_PROMPT.md) into Codex**. It checks the
+   local package, explains setup, checks Computer Use, then asks questions. You
+   never need a terminal, Git or a repository URL.
 
 This folder helps a parent and athlete prepare one local profile, find official
 college recruiting questionnaires, and fill them using Computer Use. You review
@@ -24,12 +27,12 @@ decisions follow the [Opt-in rule in AGENTS.md](AGENTS.md#opt-in-rule).
 
 ## What happens after you paste the prompt
 
-Codex retrieves the package into a private local folder, or reuses an existing
-copy without replacing saved work. It can download the ZIP if Git is missing.
-Keep the folder outside cloud sync and shared storage. If the app asks you to
-choose a project folder, choose the folder containing `AGENTS.md`,
-`profile.template.json`, `prompts/` and `reference/`. Codex confirms it can read
-them before collecting family information and handles necessary free installs.
+Codex uses the package folder already open, or the local folder you point to,
+without replacing saved work. It can help you unzip the package. It does not
+fetch a repository or repository files. If the app asks you to choose a project
+folder, choose the folder containing `AGENTS.md`, `profile.template.json`,
+`prompts/` and `reference/`. Codex confirms it can read them before collecting
+family information and handles necessary free installs.
 
 Codex guides you through **Plugins > Computer Use > Install plugin** or
 **Enable**, both the **Computer Use server** and **skill** toggles, and **Try
@@ -57,10 +60,13 @@ For an already-open package, the stage prompts are [start](prompts/start.md),
 
 The helper first asks for each school's name, sport and men's or women's team.
 It then asks the common questions in small batches, followed by only the named
-sport's questions. Say "unknown" or "skip" when needed. Unknown answers stay
-empty; a missing required answer stops that school. Eligibility identifiers for
-the National Association of Intercollegiate Athletics are requested only when
-that association is among your target levels.
+sport's questions. For vague names, confirm the exact school, division and
+sport/team before searching. Intake includes high school and club jersey
+numbers, NCAA Eligibility Center ID where applicable or required, and NAIA
+Eligibility Center ID only for NAIA targets. Say "unknown" or "skip" when
+needed. Unknown answers stay empty; a missing required answer stops that school.
+Eligibility identifiers for the National Association of Intercollegiate
+Athletics are requested only when that association is among your target levels.
 
 Review the full profile, including every number, unit, test score, file,
 unanswered question and consent record. Separately review and approve the final
@@ -73,12 +79,24 @@ Stay available for questions specific to each form. The helper shows every live
 consent, attestation, certification, signature or terms request with its
 complete wording, options and necessary disclosures. Provide your own answer.
 Opt-ins follow the [Opt-in rule](AGENTS.md#opt-in-rule); unanswered required
-requests stop the form. Handle any verification challenge yourself.
+requests stop the form. Handle any verification challenge yourself. Required
+NCSA and IMG Academy choices also need your answer to the complete live wording
+and all options; the helper proposes "No thanks" but never picks for you. If a
+new required question appears during filling, it asks you.
+
+The helper uses the same phone number in the format a field requests, such as
+digits only. It searches high schools by name plus city; if yours is absent, it
+uses the form's add-school path with your address, asking for missing details.
+It never chooses a different school. It checks every preset dropdown, radio and
+checkbox against your answers and lists the final choices before sending.
+Unknown answers are asked, not accepted from a form's defaults. A FrontRush
+Personal Contacts Save needs your approval as part of filling, and unusual
+position choices need your confirmation.
 
 Some actions send data before Submit. ARMS offers "Continue without one of these
 accounts" as its route without social sign-in; the helper always chooses that
-route after separate approval for profile creation. Illinois Wesleyan's "Visitor
-Details" step asks for a name and email "to Create a Profile". It requires
+route after separate approval for profile creation. ARMS "Visitor Details" or
+"Verify Your Details to Create a Profile" asks for profile information. It needs
 full-profile and school-list approvals before proceeding, as well as
 profile-creation approval. Some forms authorize text messages or artificial
 intelligence contact when a mobile number is entered. The helper shows the live
@@ -86,33 +104,33 @@ notice and obtains your approval before that action, following the Opt-in rule.
 
 After reviewing each completed form, give a fresh, school-specific Yes
 immediately before its Submit. Profile and school-list approval do not authorize
-submission. The helper records **submitted** only after observed confirmation,
-**failed** with the specific reason, or **needs-info** with exact missing fields
-or approvals. It shows the form link and evidence/time in chat and local
-`reports/`. Uncertain submissions are not retried automatically, and confirmed
-schools are not resubmitted.
+submission. You see one short line per school and its form link: **Sent** only
+after confirmation, **Not sent: why**, or **Needs your answer: what**. Detailed
+evidence and times stay in local `reports/`. If sending is uncertain, it tells
+you it may already have gone through and does not automatically try again.
+Confirmed schools are not sent again.
 
 Usage limits may apply and can change; see the OpenAI Help Center and the app's
 usage display. Help Center: https://help.openai.com. No fixed message count is
 promised, and don't buy extra usage. If you reach a limit, the helper saves
-local progress. After a pause, ask it to resume from the profile and reports,
-verify the current form and approvals, and get a fresh confirmation before
-Submit.
+local progress. To resume, reopen the folder and ask it to continue. It checks
+saved answers, approvals and the page, then asks again before Submit.
 
 ## Backup option without the local package
 
 Copy all of [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) into the ChatGPT desktop
 app's **Work** mode with **Computer Use**. This is one self-contained paste
 covering the common intake, every sport branch, form verification and approval
-boundaries. It runs the Computer Use check before asking for a saved profile
-summary or new family information. Without working Computer Use, it pauses
-intake and form entry.
+boundaries, with four volleyball examples included. It never fetches repository
+files. It runs the Computer Use check before asking for a saved profile summary
+or new family information. Without working Computer Use, it pauses intake and
+form entry.
 
-The backup keeps its working record in the conversation and prints a complete
-**SAVED PROFILE SUMMARY** for you to keep privately. Paste that summary with the
-backup prompt in a later conversation to resume after the Computer Use check.
-The helper confirms saved answers, asks for missing items, and rechecks live
-wording, links and approvals. It does not maintain `profile.json` or local
+The backup keeps its working record in the conversation and prints one compact,
+complete **SAVED PROFILE SUMMARY** to keep privately. Paste that summary with
+the backup prompt in a later conversation to resume after the Computer Use
+check. The helper confirms saved answers, asks for missing items, and rechecks
+live wording, links and approvals. It does not maintain `profile.json` or local
 reports or create additional remote documents. Chat is still processed by
 ChatGPT and is not offline storage.
 
@@ -127,8 +145,8 @@ of offline processing. Entering data into an approved form discloses it to the
 school and its provider, and the form may save entries before Submit.
 
 - [AGENTS.md](AGENTS.md) defines the workflow, boundaries and approval gates.
-- [START_PROMPT.md](START_PROMPT.md) retrieves the package and starts the Codex
-  path.
+- [START_PROMPT.md](START_PROMPT.md) checks the local package and starts the
+  Codex path.
 - [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) provides the self-contained Work
   backup.
 - [profile.template.json](profile.template.json) contains blank common fields
@@ -139,16 +157,21 @@ school and its provider, and the form may save entries before Submit.
   research. [Sample forms](reference/sample-forms.md) copies its section 5
   exactly, including coverage gaps. Historical links are candidates requiring
   official verification and may be expired or blocked.
+- [Verified forms](reference/verified-forms.md) records four women's volleyball
+  examples verified on 2026-10-23. Recheck every link live from the official
+  athletics site before use; these notes do not grant filling approval.
 - [test/README.md](test/README.md) explains the offline checks and dry run. [The
   dry-run profile](test/dry-run-profile.json) contains invented baseball data
   only. A dry run never submits and may stop earlier at an approval gate.
 
 ## Notes for someone sharing this package
 
-Share https://github.com/reichenbach/recruiting-questionnaire-helper together
-with [START_PROMPT.md](START_PROMPT.md). If this link doesn't open as a public
-repo, send the recipient the correct link. Send only the instructions, blank
-template, prompts, references and synthetic `test/` files. Inspect the folder
-first and exclude all private profiles, reports, documents, screenshots,
-passwords and secrets. Never substitute real family information into the
-shareable test fixture.
+Give the parent a ZIP or folder containing the package and START_PROMPT.md.
+Optional download for an authorized sharer:
+https://github.com/reichenbach/recruiting-questionnaire-helper
+
+This repository may be private. A parent never needs repository access to run
+the package you give them. Send only the instructions, blank template, prompts,
+references and synthetic `test/` files. Inspect the folder first and exclude all
+private profiles, reports, documents, screenshots, passwords and secrets. Never
+substitute real family information into the shareable test fixture.

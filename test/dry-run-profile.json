@@ -326,8 +326,8 @@
   },
   "eligibility": {
     "ncaa_eligibility_center_registered": null,
-    "ncaa_id": "",
-    "naia_playnaia_id": "",
+    "ncaa_id": null,
+    "naia_playnaia_id": null,
     "qualifier": null
   },
   "athletics": {
@@ -346,7 +346,7 @@
     ],
     "recruiting_profile_url": "",
     "high_school_team_name": "",
-    "high_school_jersey_number": "",
+    "high_school_jersey_number": null,
     "high_school_position": "",
     "high_school_coach": {
       "name": "",
@@ -369,7 +369,7 @@
     "club_teams": [
       {
         "name": "",
-        "jersey_number": "",
+        "jersey_number": null,
         "position": "",
         "league": "",
         "coach": {

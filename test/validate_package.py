@@ -107,7 +107,8 @@ def main():
         "CHATGPT_PROMPT.md", "profile.template.json", "prompts/first-run-check.md",
         "prompts/start.md", "prompts/find-forms.md", "prompts/fill-forms.md",
         "prompts/report.md", "reference/recruiting-intake-tree.md",
-        "reference/sample-forms.md", "test/dry-run-profile.json", "test/README.md",
+        "reference/sample-forms.md", "reference/verified-forms.md",
+        "test/dry-run-profile.json", "test/README.md",
     ]
     for name in required:
         require((ROOT / name).is_file(), "Missing package file: " + name)
@@ -173,6 +174,7 @@ def main():
         eligibility.ncaa_eligibility_center_registered eligibility.ncaa_id
         eligibility.naia_playnaia_id eligibility.qualifier
         athletics.height.unit athletics.weight.unit athletics.recruiting_video_links
+        athletics.high_school_jersey_number
         athletics.club_teams.0.name athletics.club_teams.0.jersey_number
         athletics.club_teams.0.position athletics.club_teams.0.coach.email
         athletics.tournaments_showcases_events athletics.high_school_coach.email
@@ -241,6 +243,14 @@ def main():
     require(fixture["athlete"]["address"]["street_line_1"] == "123 Example St", "Wrong example address")
     require(fixture["athlete"]["address"]["city"] == "Anytown", "Wrong example city")
     require(fixture["consents"] is None, "Fixture must not answer consents")
+    for path in (
+        "athletics.high_school_jersey_number",
+        "athletics.club_teams.0.jersey_number",
+        "eligibility.ncaa_id",
+        "eligibility.naia_playnaia_id",
+    ):
+        require(at(template, path) is None, "Expected unanswered template field: " + path)
+        require(at(fixture, path) is None, "Fixture must leave field null: " + path)
     require(all(value is None or value == "" for value in leaves(fixture["approvals"])), "Fixture must not grant approvals")
     require(len(fixture["target_schools"]) == 1, "Expected one test target")
     target = fixture["target_schools"][0]
@@ -307,12 +317,38 @@ def main():
             markdown_pages.append(page)
     print("PASS: all tracked and untracked non-ignored text personal-data scan (binaries skipped; exact reference opt-out number exempt)")
 
-    repo_pattern = r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_-]+"
-    readme_repos = set(re.findall(repo_pattern, (ROOT / "README.md").read_text(encoding="utf-8")))
-    start_repos = set(re.findall(repo_pattern, (ROOT / "START_PROMPT.md").read_text(encoding="utf-8")))
-    require(len(readme_repos) == 1 and readme_repos == start_repos,
-            "README.md and START_PROMPT.md must agree on one repository URL")
-    print("PASS: README and START_PROMPT repository URLs agree")
+    repo_url = "https://github.com/reichenbach/recruiting-questionnaire-helper"
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    sharer_heading = "## Notes for someone sharing this package"
+    require(sharer_heading in readme, "Missing README sharer notes")
+    parent_notes, sharer_notes = readme.split(sharer_heading, 1)
+    require("github.com" not in parent_notes.lower(), "Runtime README steps contain a repository URL")
+    repo_pattern = r"https://github\.com/[^\s)]+"
+    require(re.findall(repo_pattern, sharer_notes) == [repo_url],
+            "README sharer notes must contain only the optional package repository URL")
+    for name in ("START_PROMPT.md", "CHATGPT_PROMPT.md"):
+        prompt = (ROOT / name).read_text(encoding="utf-8")
+        require("github.com" not in prompt.lower(), name + " must not contain github.com")
+        require("do not fetch any repository" in " ".join(prompt.lower().split()),
+                name + " must prohibit fetching repository files")
+    print("PASS: local package startup; repository URL only in optional README sharer notes")
+
+    verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
+    backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")
+    form_urls = {
+        "https://questionnaires.armssoftware.com/1b72853c63ec",
+        "https://www.frontrush.com/FR_Web_App/Player/PlayerSubmit.aspx?sid=MjAzMDk=-S6n4ygUqgK8=&ptype=recruit",
+        "https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13",
+        "https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire",
+    }
+    for url in form_urls:
+        require(url in verified and url in backup, "Missing verified volleyball example: " + url)
+    for name in ("AGENTS.md", "prompts/find-forms.md", "README.md"):
+        require("reference/verified-forms.md" in (ROOT / name).read_text(encoding="utf-8"),
+                name + " must point to the dated verified forms")
+    require("2026-10-23" in verified and "2026-10-23" in backup,
+            "Verified examples must carry their verification date")
+    print("PASS: four dated volleyball forms, inline backup examples and discovery references")
 
     for page in markdown_pages:
         name = page.relative_to(ROOT).as_posix()

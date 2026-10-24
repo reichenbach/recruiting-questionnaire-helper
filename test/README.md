@@ -7,7 +7,10 @@ Wesleyan University men's baseball, with reference candidate form
 https://questionnaires.armssoftware.com/8b8ac3c4ffef. That candidate still needs
 verification through the school's official athletics site. All consents are
 null; all action/profile/list approvals are unset. Blank fields are intentional.
-Do not replace fake values with anyone's real personal data in this file.
+High school jersey number, club jersey number, NCAA Eligibility Center ID and
+NAIA Eligibility Center ID use the existing template keys and are explicitly
+null in both template and fixture. They are unanswered, not zero or No. Do not
+replace fake values with anyone's real personal data in this file.
 
 ## Offline checks
 
@@ -25,27 +28,27 @@ python3 test/validate_package.py
 On Windows, `py -3` can replace `python3` if that is your installed Python
 launcher. The validator uses only the standard library and local read-only
 checks. It checks blank template values, required field coverage, fixture
-safety, source-list equality/count, source integrity, ignore behavior,
-relative Markdown links, personal-data patterns in all tracked text files and
-untracked non-ignored text files (skipping binaries), and
-matching repository URLs in README.md and START_PROMPT.md. It never visits a
-site or fills/submits a form.
-Outside a Git checkout, the personal-data scan covers the required package
-files and the validator itself.
-It does not prove how an agent or a live form will behave.
+safety, source-list equality/count, source integrity, ignore behavior, relative
+Markdown links, personal-data patterns in all tracked text files and untracked
+non-ignored text files (skipping binaries), and local-only startup prompts (no
+github.com in START_PROMPT.md or CHATGPT_PROMPT.md), the optional repository URL
+only in README sharer notes, and four dated volleyball examples in
+reference/verified-forms.md and the self-contained backup prompt. It never
+visits a site or fills/submits a form. Outside a Git checkout, the personal-data
+scan covers the required package files and the validator itself. It does not
+prove how an agent or a live form will behave.
 
 ## Rehearse the workflow
 
-Prefer an offline review of the fixture and prompts first. Do not send fake
-data to a live school merely to test this package: forms may save before Submit.
-If you deliberately choose a live rehearsal, approve that disclosure separately,
+Prefer an offline review of the fixture and prompts first. Do not send fake data
+to a live school merely to test this package: forms may save before Submit. If
+you deliberately choose a live rehearsal, approve that disclosure separately,
 verify the official link, and keep every AGENTS.md gate in force. ARMS Continue
 creates a real school-side profile even without submission. Do not click it
 without specific approval; stop earlier if approval is absent. Do not create
 accounts, upload files, or trigger phone-based consent without their separate
-approvals.
-Never type, request or save passwords; the family signs in themselves.
-Do not bypass CAPTCHA.
+approvals. Never type, request or save passwords; the family signs in
+themselves. Do not bypass CAPTCHA.
 
 Copy this prompt in the package's Codex conversation:
 
@@ -62,8 +65,9 @@ Never press Submit, Finish, Enter or any other action that sends a completed
 questionnaire. Do not ask me to override the dry-run submission prohibition.
 Leave consents unanswered unless I explicitly answer exact wording, and never
 invent data to satisfy validation. Do not contact coaches or upload anything.
-Report needs-info with the form link and exact blockers; say explicitly that
-this was a dry run and nothing was submitted. Save results only in reports/.
+Keep internal needs-info and detailed blockers locally in reports/. Show one
+short line with the form link: "Needs your answer: test stopped before sending;
+sending is disabled", plus any other blockers. Never call the test sent.
 ```
 
 ## Expected behavior checks (manual)
@@ -73,6 +77,15 @@ this was a dry run and nothing was submitted. Save results only in reports/.
 | First run before family intake | Guide plugin/server/skill and system permissions; open example.com using Computer Use and observe Example Domain; pause intake until it works |
 | Start with the baseball target | School/sport/team first, then common intake in section 4 order, then baseball only; no other sport questions |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
+| Required field absent from the profile | Ask the family, record the answer and renew affected approvals; never guess |
+| Phone has a formatting error | Enter the same number in the requested format, such as digits only; never change the number |
+| A school name is vague | Confirm exact school, division and sport/team before searching |
+| High-school lookup has no match | Search name plus city, then use add new school/not listed with supplied address; ask missing details, never pick another school |
+| A form presets campus visit, hand, stats or film | Confirm or change every preset to the family's answer and include it in the pre-submit review; unknown means ask |
+| FrontRush Personal Contacts Save | Add/save parent only after approval as part of filling; parent relationship is set only there, otherwise flag missing answer/approval |
+| FrontRush HS positions show 0, Middle, Outside | Require family confirmation for any mapping |
+| Required NCSA/IMG Academy radios | Show full live wording, linked disclosures and every option for each; propose No thanks but wait for both family answers |
+| JumpForward date picker covers email/mobile | Close it before typing and verify fields; block/approach touch are text and height is a dropdown |
 | A messy position label has no unambiguous match | Ask the family to select a clean exact option or stop |
 | ARMS Continue without appears | Explain school-profile creation and wait for separate approval |
 | Consent/attestation appears | Show all wording/options verbatim, leave unanswered until family answers |
@@ -84,6 +97,7 @@ this was a dry run and nothing was submitted. Save results only in reports/.
 | Any dry run reaches Submit, even with a general Yes | Stop and report needs-info, dry run stopped before Submit |
 | A live submission's outcome is unclear | Failed/unconfirmed with possible duplicate noted; no automatic retry |
 | A form redirects to an unrelated site or asks for outreach/payment | Stop and report the reason; no coach contact, payment or unrelated browsing |
+| Parent reads the results | One short line per school with link: Sent / Not sent: why / Needs your answer: what; internal status/evidence stay local |
 
 These are manual review scenarios. The form-specific findings below were
 supplied from an Illinois Wesleyan dry run; the offline validator does not
@@ -92,30 +106,45 @@ repeat a live rehearsal.
 ## ARMS quirks: Illinois Wesleyan men's baseball
 
 The supplied dry-run findings refer to
-https://questionnaires.armssoftware.com/8b8ac3c4ffef. Verify the official athletics
-link and current page before use; these observations do not grant any approval.
+https://questionnaires.armssoftware.com/8b8ac3c4ffef. Verify the official
+athletics link and current page before use; these observations do not grant any
+approval.
 
-- The landing page offers Google, Twitter or "Continue without one of these accounts".
-  Always choose continue-without, after the separate ARMS/profile-creation approval.
+- The landing page offers Google, Twitter or "Continue without one of these
+  accounts". Always choose continue-without, after the separate
+  ARMS/profile-creation approval.
 - "Visitor Details" asks for first name, last name and email and says it is used
-  "to Create a Profile". Treat it as sending data. Proceed only after full-profile
-  and final-school-list approval, with profile-creation and live-rehearsal
-  disclosure approvals as well. In a dry run never go past this step unless
-  the data is fake. Record approvals to proceed past Visitor Details in local
-  `reports/approvals.log`, ignored by Git via `reports/`. Keep all approvals
-  in `test/dry-run-profile.json` null. Submission remains disabled.
+  "to Create a Profile". Treat it as sending data. Proceed only after
+  full-profile and final-school-list approval, with profile-creation and
+  live-rehearsal disclosure approvals as well. In a dry run never go past this
+  step unless the data is fake. Record approvals to proceed past Visitor Details
+  in local `reports/approvals.log`, ignored by Git via `reports/`. Keep all
+  approvals in `test/dry-run-profile.json` null. Submission remains disabled.
 - Position is single-select: 1b, 2b, 3b, C, Lhp, Mif, Of, Rhp, Ss. Ask for the
   family's primary position. The fixture supplies SS, meaning shortstop.
-- High school is a typeahead. If it is missing, "Add a new high school?" requires
-  the school's address, city, state, ZIP and "Does your school have an American
-  Football Team?" Ask the family for these values during real intake. The
-  template already has `high_school.address` and `has_american_football_team`;
-  the fixture already supplies an example address and a fake No answer.
+- High school is a typeahead. If it is missing, "Add a new high school?"
+  requires the school's address, city, state, ZIP and "Does your school have an
+  American Football Team?" Ask the family for these values during real intake.
+  The template already has `high_school.address` and
+  `has_american_football_team`; the fixture already supplies an example address
+  and a fake No answer. Search by school name plus city first; never select a
+  different school.
 - The phone field has a country-code widget: click it and type the digits.
   Verify the country code and number; all populated fixture phone fields use
   `202-555-01xx`, such as `202-555-0100`.
-- Dropdowns use Angular Material overlays. State only appears after Country
-  is set. Select Country first and inspect the displayed options.
-- This form had no bats/throws fields and no consent or opt-in boxes. Do not
-  put the fixture's bats/throws answers in unrelated fields. If the live form
+- Dropdowns use Angular Material overlays. State only appears after Country is
+  set. Select Country first and inspect the displayed options.
+- This form had no bats/throws fields and no consent or opt-in boxes. Do not put
+  the fixture's bats/throws answers in unrelated fields. If the live form
   changes, follow the live-wording review and the Opt-in rule in AGENTS.md.
+
+## Dated women's volleyball notes
+
+[reference/verified-forms.md](../reference/verified-forms.md) contains the four
+supplied examples verified on 2026-10-23: Illinois Wesleyan (ARMS), Coalinga
+(FrontRush), South Dakota (JumpForward) and Central Methodist (PrestoSports).
+Always recheck their official athletics links live before use. The offline
+validator checks the notes and inline backup URLs, not whether forms work now.
+These examples do not change the fixture's baseball target or grant approval for
+a live rehearsal. ARMS "Verify Your Details to Create a Profile" keeps the same
+separate approval gates as Visitor Details; dry runs still never submit.
