@@ -344,10 +344,13 @@ def main():
 
     verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
     backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")
+    south_dakota_primary = "https://questionnaires.armssoftware.com/eafc4e7429b0"
+    south_dakota_fallback = "https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13"
     form_urls = {
         "https://questionnaires.armssoftware.com/1b72853c63ec",
         "https://www.frontrush.com/FR_Web_App/Player/PlayerSubmit.aspx?sid=MjAzMDk=-S6n4ygUqgK8=&ptype=recruit",
-        "https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13",
+        south_dakota_primary,
+        south_dakota_fallback,
         "https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire",
     }
     for url in form_urls:
@@ -357,7 +360,28 @@ def main():
                 name + " must point to the dated verified forms")
     require("2026-10-23" in verified and "2026-10-23" in backup,
             "Verified examples must carry their verification date")
-    print("PASS: four dated volleyball forms, inline backup examples and discovery references")
+    for name in ("reference/verified-forms.md", "CHATGPT_PROMPT.md", "START_PROMPT.md"):
+        page_text = (ROOT / name).read_text(encoding="utf-8")
+        section = re.search(
+            r"University of South Dakota.*?(?=\n- (?:\*\*)?Central Methodist|\nKeep saved family data)",
+            page_text, re.S,
+        )
+        require(section is not None, name + " must include the South Dakota example")
+        text = " ".join(section.group().lower().split())
+        for label, url in (("primary", south_dakota_primary), ("fallback", south_dakota_fallback)):
+            require(re.search(label + r"(?: \([^)]*\))?:\s*" + re.escape(url), text),
+                    name + " must label the South Dakota " + label + " URL")
+        primary_notes, fallback_notes = text.split(south_dakota_fallback, 1)
+        require(south_dakota_primary in primary_notes and
+                all(phrase in primary_notes for phrase in (
+                    "arms", "goyotes.com", '"recruiting questionnaire"', "2026-10-23",
+                    "visitor details / create profile", "approval", "jumpforward", "older link", "still loads",
+                )), name + " must retain South Dakota sources, platforms and ARMS approval gate")
+        require(all(phrase in fallback_notes for phrase in (
+                    "typeahead", "email/mobile", "free text", "height", "dropdown",
+                )) and ("date-picker" in fallback_notes or "date picker" in fallback_notes),
+                name + " must attach JumpForward control notes to the fallback")
+    print("PASS: four dated volleyball examples, South Dakota ARMS primary/JumpForward fallback and discovery references")
 
     for page in markdown_pages:
         name = page.relative_to(ROOT).as_posix()

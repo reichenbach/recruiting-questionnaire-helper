@@ -144,7 +144,8 @@ approval.
 
 [reference/verified-forms.md](../reference/verified-forms.md) contains the four
 supplied examples verified on 2026-10-23: Illinois Wesleyan (ARMS), Coalinga
-(FrontRush), South Dakota (JumpForward) and Central Methodist (PrestoSports).
+(FrontRush), South Dakota (ARMS primary, older JumpForward fallback) and Central
+Methodist (PrestoSports).
 Always recheck their official athletics links live before use. The offline
 validator checks the notes and inline backup URLs, not whether forms work now.
 These examples do not change the fixture's baseball target or grant approval for

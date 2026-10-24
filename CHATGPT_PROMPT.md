@@ -267,11 +267,16 @@ inlined examples remain available if the optional reference fetch fails.
   Destination says "Volleyball (W)". Requires high school jersey number and
   NCSA/IMG Academy radios. Personal Contacts has its own Save; follow the
   approval rule below.
-- University of South Dakota (D1), JumpForward:
-  https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
+- University of South Dakota (D1), ARMS primary:
+  https://questionnaires.armssoftware.com/eafc4e7429b0
 
-  High school uses search suggestions; a date-picker popup can cover
-  email/mobile. Close it before typing.
+  Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
+  page, seen 2026-10-23. Visitor Details / Create Profile requires the separate
+  ARMS approvals below. Fallback (JumpForward, older link, still loads on that date):
+  https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
+  On the fallback, high school uses typeahead search; close the date picker
+  covering email/mobile before typing. Block/approach touches are free text;
+  height is a dropdown.
 - Central Methodist University (NAIA), school-built (PrestoSports):
   https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire
 
@@ -438,14 +443,18 @@ lost, pause entry, explain and troubleshoot. Continue records/reports where
 possible, never scripted entry.
 
 At intake end, print ONE compact, complete SAVED PROFILE SUMMARY in a single
-copyable code block, once only. Use short labeled lines with every supplied
-common/sport/school answer and unit, file details, unknowns/skips, targets with
-sport/team/link/platform, consent wording/options/answers, approval words/dates
-and current step. Leave out discovery evidence, link chains, action logs and
-instructions. Do not promise persistent memory. On resume, run the Computer Use
-check before asking for the summary; confirm answers, recheck live forms and
-reviewed copies, and ask again before Submit. Historical approvals grant no new
-permission.
+copyable code block, once only. Aim for about half the length of a field-per-line
+summary by merging labeled values with semicolons: one line per school
+(name, division, sport/team, form type, link, platform); one per person with
+contacts; one per address; grouped academics/eligibility/athletics/sport/files.
+Keep every supplied answer, exact value/unit and file detail. List all unknowns
+and skips once on a single "Unknown:" line. Keep each consent's school/URL,
+label/kind, exact wording/options/answer/date, plus approval words/dates/reviewed
+versions and current step. Omit verification notes, link-check status, discovery
+evidence, link chains, action logs and instructions. Do not promise persistent
+memory. On resume, run the Computer Use check before asking for the summary;
+confirm answers, recheck live forms and reviewed copies, and ask again before
+Submit. Historical approvals grant no new permission.
 
 After each school and at the end, show just one short line per school with
 sport/team and its link: "Sent", "Not sent: why", or "Needs your answer: what".

@@ -96,6 +96,18 @@ for now and will become public later. An existing local or bundled copy also wor
     reviewed copies and the page, and ask again before Submit. Never resend
     confirmed forms.
 
+University of South Dakota (D1), women's volleyball example, seen 2026-10-23:
+PRIMARY (ARMS): https://questionnaires.armssoftware.com/eafc4e7429b0
+Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
+page. Visitor Details / Create Profile requires full-profile, final-school-list
+and separate profile-creation approvals before proceeding.
+FALLBACK (JumpForward, older link, still loads on that date):
+https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
+On the fallback, use typeahead high-school search by name plus city; close the
+date picker covering email/mobile before typing. Block/approach touches are
+free text; height is a dropdown. Recheck official links live before use; dated
+notes grant no approval. See reference/verified-forms.md for the other examples.
+
 Keep saved family data only in local profile.json and ignored reports/ (and
 screenshots/ only if needed). Do not create cloud documents or extra remote
 profiles. Explain that chat and Computer Use are not an offline-processing

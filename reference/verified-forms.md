@@ -22,12 +22,18 @@ These notes do not authorize profile creation, filling, uploads or submission.
     answers. Personal Contacts has its own Save button and is the only place to
     set parent relationship; get approval to add/save the contact as part of
     filling. Confirm any position mapping to odd choices (0, Middle, Outside).
-- **University of South Dakota (D1), women's volleyball — JumpForward**
-  - Form: https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
-  - Recheck the official athletics recruiting link. High school uses a search
-    box with suggestions: search name plus city. A date-picker popup can cover
-    email/mobile fields; close it before typing. Block/approach touch are free
-    text; height is a dropdown. Use supplied values and units without guessing.
+- **University of South Dakota (D1), women's volleyball — ARMS primary**
+  - Primary: https://questionnaires.armssoftware.com/eafc4e7429b0
+  - Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
+    page, seen 2026-10-23. ARMS's Visitor Details / Create Profile step applies;
+    require full-profile, final-school-list and separate profile-creation
+    approvals before proceeding.
+  - Fallback (JumpForward, older link, still loads as of 2026-10-23):
+    https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
+    Recheck the official link before use. On this fallback, high school uses a
+    typeahead: search name plus city. A date-picker popup can cover email/mobile
+    fields; close it before typing. Block/approach touch are free text; height
+    is a dropdown. Use supplied values and units without guessing.
 - **Central Methodist University (NAIA), women's volleyball — school-built
   (PrestoSports)**
   - Form: https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire
