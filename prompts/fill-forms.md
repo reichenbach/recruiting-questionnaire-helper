@@ -18,8 +18,11 @@ address; ask if missing and never pick a different school.
 
 Confirm or change every preset dropdown, radio and checkbox to the family's
 answer. Unknown means ask. Clear preselected opt-ins under the Opt-in rule;
-required choices still need the family's answer. Include every preset choice and
-confirmed final answer in the pre-submit review, including CMU campus visit,
+required choices still need the family's answer. If a dropdown has no blank
+option and the answer is unknown, stop and ask; mark it in the review, for
+example: "Site preset Yes - NOT the family's answer; needs your answer".
+Include every visible preset choice and confirmed final answer in the
+pre-submit review, including CMU campus visit,
 hand, stats and film defaults and FrontRush relationship "Other". Confirm or
 change "Other" with the family.
 
@@ -34,13 +37,19 @@ NCSA/IMG Academy radios are required on Coalinga FrontRush: show complete live
 wording and all options for each, propose No thanks and enter only the family's
 confirmed answers. The form cannot be sent while either answer is missing.
 
-Check for the hidden, pre-checked FrontRush Ryzer camps opt-in checkbox. Clear
-it; never leave it checked by default. Show its complete live wording, linked
-disclosures and every option, ask the family and record only their answer in
-`consents.records`. Never answer for them or check it without an explicit Yes.
-An unanswered item stays unchecked with a null answer. Include the preset and
-confirmed final answer in the pre-submit review. If the checkbox cannot be
-inspected or cleared, stop that school as needs-info.
+Check for pre-checked FrontRush opt-ins, including Ryzer registration
+(`name=ryzer_registration`) inside the hidden Recruit Spot widget, posted with
+the form. If an opt-in cannot be seen or cleared through the normal visible UI,
+stop that school as needs-info and tell the family what it is. Never clear or
+change it via page code, JavaScript or DOM manipulation. If accessible through
+the visible UI, clear it, show complete live wording, linked disclosures and
+every option, and record only the family's answer in `consents.records`.
+An unanswered item stays unchecked with a null answer; checking requires
+explicit Yes. Include the preset and confirmed final answer in the review, or
+explain an inaccessible opt-in as a Needs-your-answer blocker in plain words.
+
+On Coalinga FrontRush, ticking "the school is not listed above" erases School
+Name. Re-type and re-check School Name after ticking it; verify it before review.
 
 FrontRush Personal Contacts has its own Save and is the only place to set the
 parent relationship. Add/save a parent only after the family approves it as part
@@ -59,9 +68,18 @@ Details keep every profile-creation approval gate.
 
 Never type, request or save passwords; the family signs in themselves.
 
-Review the completed form, show its values, preset choices with confirmed final
-answers, consents, files and URL, then ask once more and wait for an explicit
-school-specific Yes immediately before each Submit. Never submit a dry run or
+Before each Submit, give a parent-facing review of about one screen per school:
+school/team and final form link; each visible field and its value to enter (or
+blank); visible presets with confirmed answers or explicit unanswered labels;
+Needs-your-answer items; consent answers; uploads; and the school-specific
+approval question. Leave hidden/technical fields untouched and omit them from
+the review, including PrestoSports fs_email1/fs_email2 anti-spam traps, tokens
+and hidden IDs. Explain hidden consent blockers in plain words, not as technical
+fields. Keep it compact without omitting visible fields or blockers. Resolve
+blockers and renew affected approvals before asking: "Approve submitting this
+reviewed questionnaire to [school/team] at [URL] now?" Wait for a fresh explicit
+Yes. On FrontRush, obtain that Yes first, then the family solves any CAPTCHA
+themselves, then Submit. Never solve or bypass CAPTCHAs. Never submit a dry run or
 the fake test fixture. No payments or coach contact.
 
 Log each school with internal status and evidence/time locally in reports/. Show

@@ -150,7 +150,7 @@
     },
     "has_american_football_team": false,
     "coach": {
-      "name": "",
+      "name": "Test Coach",
       "relationship": "",
       "email": "",
       "mobile_phone": "",
@@ -346,10 +346,10 @@
     ],
     "recruiting_profile_url": "",
     "high_school_team_name": "",
-    "high_school_jersey_number": null,
+    "high_school_jersey_number": "7",
     "high_school_position": "",
     "high_school_coach": {
-      "name": "",
+      "name": "Test Coach",
       "relationship": "",
       "email": "",
       "mobile_phone": "",

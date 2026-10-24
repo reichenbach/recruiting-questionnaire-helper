@@ -168,9 +168,12 @@ approvals before entering the new answer.
 For every preset dropdown, radio or checkbox, confirm it against the family's
 answer and change it if needed. Unknown means ask, not accept the default. Clear
 preselected opt-ins under the Opt-in rule; required choices still need the
-family's answer. List every preset choice and its final answer in the pre-submit
-review. For example, Central Methodist may preset campus visit Yes, hand RIGHT,
-stats YES and film Yes, and FrontRush may preset relationship to "Other".
+family's answer. List every visible preset choice and its confirmed final answer
+in the pre-submit review. If a dropdown has no blank option and the answer is
+unknown, stop and ask; label it explicitly, for example: "Site preset Yes - NOT
+the family's answer; needs your answer". Central Methodist may preset campus
+visit Yes, hand RIGHT, stats YES and film Yes, and FrontRush may preset
+relationship to "Other".
 Confirm or change "Other" with the family; no preset establishes their answer.
 
 All section 2 fields must be available in the template, including metrics that
@@ -278,16 +281,21 @@ Never pick a different school to continue.
 ### FrontRush
 
 - Typically a single page, with CAPTCHA before Submit ("Please validate
-  captcha"). Hand off challenges; never solve around or bypass them.
+  captcha"). First obtain the family's Yes to the pre-submit review, then have
+  the family solve any CAPTCHA themselves, then Submit. Never solve or bypass
+  CAPTCHAs; all other approval gates and the dry-run prohibition still apply.
 - Required: first/last name, email, ZIP, cell, graduation year. Volleyball also
   requires city, state, high school, HS coach name, HS position and HS jersey.
 - NCSA and IMG Academy marketing Yes/No radios are required. Follow the **Opt-in
   rule** in section 4 and the live-wording consent review below.
-- Check for the hidden, pre-checked Ryzer camps opt-in checkbox. Treat it as a
-  consent item: clear it, show its complete live wording, disclosures and every
-  option, ask the family and record their answer in `consents.records`. Never
-  answer for them or leave it checked by default; check it only after an
-  explicit Yes. If it cannot be inspected or cleared, stop as needs-info.
+- Check for pre-checked opt-ins, including Ryzer registration
+  (`name=ryzer_registration`) inside the hidden Recruit Spot widget, which is
+  posted with the form. If an opt-in cannot be seen or cleared through the
+  normal visible UI, stop that school as needs-info and tell the family what
+  it is. Never clear or change it via page code, JavaScript or DOM manipulation.
+  If accessible through the visible UI, follow the Opt-in rule and show its
+  complete live wording, disclosures and options before recording the family's
+  answer in `consents.records`.
 - Ten-digit phones; repeatable "Personal Contacts" for parents/coaches.
 - The Personal Contacts widget has its own Save button; the parent relationship
   can only be set there. Use it to add/save the parent contact only after the
@@ -299,6 +307,8 @@ Never pick a different school to continue.
   Map a supplied position to one of these only with the family's confirmation.
 - High-school "is not listed" expands address lines 1–3, city, state, ZIP,
   country and CEEB. Collect required missing values from the family.
+  Coalinga's "the school is not listed above" erases School Name: re-type and
+  re-check School Name after ticking it, and verify it before review.
 - Links expire: Grossmont swimming, CWRU and CCBC Essex were unavailable in the
   tree. Do not treat their sample links as working forms.
 
@@ -370,12 +380,15 @@ Yes/No choice needs the family's answer to the exact live wording and all
 options; propose No or "No thanks" for marketing and SMS, but enter only the
 family's confirmed answer.
 
-The hidden, pre-checked FrontRush Ryzer camps checkbox is a consent item too.
-Clear it rather than leaving it checked by default. Show its complete live
-wording, linked disclosures and every option; ask the family and record only
-their answer in `consents.records`. Never answer for them. An unanswered item
-stays unchecked with a null answer; checking it requires their explicit Yes.
-Include its original preset and confirmed final answer in the pre-submit review.
+The FrontRush Ryzer opt-in is a consent item too. Only inspect or clear it
+through the normal visible UI. If hidden or inaccessible there, stop that school
+as needs-info and explain the opt-in to the family; never change it via page
+code, JavaScript or DOM manipulation. If accessible, clear it, show its complete
+live wording, linked disclosures and every option, and record only the family's
+answer in `consents.records`. An unanswered item stays unchecked with a null
+answer; checking it requires explicit Yes. Include its original preset and
+confirmed final answer in the pre-submit review; report an inaccessible opt-in
+as a Needs-your-answer blocker.
 
 Third-party consents, including NCSA and IMG Academy, always need the exact live
 wording, every option and the family's own answer. For example, Coalinga
@@ -422,12 +435,20 @@ that school and mark needs-info with the exact field labels (including units or
 allowed choices needed). Never enter dummy placeholders, N/A, zero or estimates
 to make validation pass. Leave unanswered optional fields blank.
 
-After filling and immediately before **each Submit**, show the school, team,
-final form URL, entered values, every preset choice and its confirmed final
-answer, consent answers and file list. Ask a fresh, school-specific question
-such as: "Approve submitting this reviewed questionnaire to [school/team] at
-[URL] now?" Wait for an explicit Yes; record it as a school action. Approval for
-one school does not cover another, a retry or a resubmission. Do not press
+After filling and before **each Submit**, give a parent-facing review of about
+one screen per school. Show school/team and final form link, each visible field
+with its value to enter (or blank), visible presets with their confirmed answers
+or explicit unanswered labels, Needs-your-answer items, consent answers and
+uploads. Leave hidden/technical fields untouched and exclude them from this
+review: anti-spam traps such as PrestoSports fs_email1/fs_email2, tokens and
+hidden IDs. Explain hidden consent blockers in plain words under
+Needs-your-answer; do not list technical fields. Keep the review compact without
+omitting visible fields or blockers. Resolve blockers and renew affected
+approvals before asking: "Approve submitting this reviewed questionnaire to
+[school/team] at [URL] now?" Wait for a fresh explicit Yes; record it as a school
+action. For FrontRush, the family then solves any CAPTCHA themselves, then
+Submit. Approval for one school does not cover another, a retry or a
+resubmission. Do not press
 Enter, click a misleading Next/Finish, or use another action that submits early.
 Treat any action sending a completed questionnaire as Submit.
 

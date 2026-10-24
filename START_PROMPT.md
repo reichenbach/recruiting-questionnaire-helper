@@ -87,12 +87,27 @@ also works.
     school/not listed with my school address, asking for missing details. Never
     choose a different school. Enter the same phone number in the requested
     format, such as digits only; never change the number. Confirm or change
-    every preset dropdown/radio/checkbox to my answer; unknown means ask. Follow
-    AGENTS.md for FrontRush Personal Contacts Save approval and odd position
-    choices, JumpForward controls and ARMS profile creation. Immediately before
-    EACH Submit, show that school's URL, all entered values, consent answers,
-    every preset choice and its confirmed final answer, and file list. Wait for
-    my fresh explicit Yes to that submission. Never submit a dry run. Never
+    every preset dropdown/radio/checkbox to my answer; unknown means stop and
+    ask, even if no blank option exists. Mark it in the review, for example:
+    "Site preset Yes - NOT the family's answer; needs your answer". Follow
+    AGENTS.md for FrontRush Personal Contacts Save approval, odd position
+    choices, JumpForward controls and ARMS profile creation. On FrontRush,
+    stop if a pre-checked opt-in cannot be seen or cleared through the normal
+    visible UI; explain it to me and never change it via page code, JavaScript
+    or DOM manipulation. After ticking "the school is not listed above",
+    re-type/re-check School Name and verify it before review.
+    Before EACH Submit, give a parent-facing review of about one screen per
+    school: school/team and form link, each visible field and its value to enter
+    (or blank), visible presets with confirmed answers or explicit unanswered
+    labels, Needs-your-answer items, consent answers, uploads, and the approval
+    question. Leave hidden/technical fields untouched and omit them from the
+    review, including PrestoSports fs_email1/fs_email2 anti-spam traps, tokens
+    and hidden IDs. Explain hidden consent blockers in plain words. Keep it
+    compact without omitting visible fields or blockers. Resolve blockers and
+    renew affected approvals before asking: "Approve submitting this reviewed
+    questionnaire to [school/team] at [URL] now?" Wait for my fresh explicit Yes.
+    On FrontRush, I then solve any CAPTCHA myself, then Submit; never solve or
+    bypass CAPTCHAs. Never submit a dry run. Never
     retry an uncertain submission automatically. Save local per-school action
     logs and reports and show one short line per school plus its link: "Sent"
     (confirmed success only), "Not sent: why", or "Needs your answer: what".

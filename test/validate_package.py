@@ -116,8 +116,12 @@ def check_fixture(template, fixture, *, sport, city, postal_code, form_url):
             address["postal_code"] == postal_code and address["country"] == "US",
             "Wrong example city/state/ZIP/country")
     require(fixture["consents"] is None, "Fixture must not answer consents")
+    require(fixture["high_school"]["coach"]["name"] == "Test Coach" and
+            fixture["athletics"]["high_school_coach"]["name"] == "Test Coach",
+            "Fixture must supply the synthetic high-school coach")
+    require(fixture["athletics"]["high_school_jersey_number"] == "7",
+            "Fixture must supply the synthetic high-school jersey number")
     for path in (
-        "athletics.high_school_jersey_number",
         "athletics.club_teams.0.jersey_number",
         "eligibility.ncaa_id",
         "eligibility.naia_playnaia_id",

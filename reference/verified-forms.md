@@ -24,11 +24,18 @@ These notes do not authorize profile creation, filling, uploads or submission.
     filling. Confirm any position mapping to odd choices (0, Middle, Outside).
     The relationship may preset to "Other"; confirm or change it with the family
     and include the preset and final answer in the pre-submit review.
-  - A hidden, pre-checked Ryzer camps opt-in checkbox is also a consent item.
-    Clear it; never leave it checked by default. Show its complete live wording,
-    linked disclosures and every option, ask the family and record only their
-    answer in `consents.records`. Never answer for them; check it only after an
-    explicit Yes. If it cannot be inspected or cleared, stop as needs-info.
+  - Live-tested 2026-10-23 (fake data, not submitted). A hidden, pre-checked
+    Ryzer registration opt-in (`name=ryzer_registration`) inside the hidden
+    Recruit Spot widget is posted with the form. If it cannot be seen or
+    cleared through the normal visible UI, stop as needs-info and tell the
+    family what it is. Never clear or change it via page code, JavaScript or
+    DOM manipulation. If accessible through the visible UI, follow the Opt-in
+    rule and collect the family's answer to complete live wording and options.
+  - Ticking "the school is not listed above" erases School Name. Re-type and
+    re-check School Name afterward and verify it before review.
+  - First obtain the family's Yes to the pre-submit review, then the family
+    solves any CAPTCHA themselves, then Submit. Never solve or bypass CAPTCHAs;
+    dry runs still never submit.
 - **University of South Dakota (D1), women's volleyball — ARMS primary**
   - Primary: https://questionnaires.armssoftware.com/eafc4e7429b0
   - Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
@@ -57,7 +64,9 @@ These notes do not authorize profile creation, filling, uploads or submission.
     "Graduation Date" is free text; enter the graduation year (e.g. 2028) and
     never invent a month/day. Hidden "Email"/"Secondary Email" (fs_email1/2)
     are anti-spam traps: never fill them. Preset selects have no blank option,
-    so an unanswered preset stays a Needs-your-answer stop, never a choice.
+    so an unanswered preset stays a Needs-your-answer stop. Mark it explicitly
+    in the review, e.g. "Site preset Yes - NOT the family's answer; needs your
+    answer". Omit hidden/technical fields from the parent-facing review.
 
 For every platform, if high-school search has no match, use the form's "add new
 school / not listed" path with the family's school address; ask if it is

@@ -104,7 +104,12 @@ It never chooses a different school. It checks every preset dropdown, radio and
 checkbox against your answers and lists the final choices before sending.
 Unknown answers are asked, not accepted from a form's defaults. A FrontRush
 Personal Contacts Save needs your approval as part of filling, and unusual
-position choices need your confirmation.
+position choices need your confirmation. If a preset has no blank option, the
+review labels it, for example: "Site preset Yes - NOT the family's answer;
+needs your answer". An inaccessible pre-checked opt-in, such as hidden Ryzer
+registration, stops that school; the helper explains it and never changes it
+through page code. On FrontRush, ticking "the school is not listed above"
+erases School Name; the helper re-types and verifies it before review.
 
 Some actions send data before Submit. ARMS offers "Continue without one of these
 accounts" as its route without social sign-in; the helper always chooses that
@@ -115,10 +120,17 @@ profile-creation approval. Some forms authorize text messages or artificial
 intelligence contact when a mobile number is entered. The helper shows the live
 notice and obtains your approval before that action, following the Opt-in rule.
 
-After reviewing each completed form, give a fresh, school-specific Yes
-immediately before its Submit. Profile and school-list approval do not authorize
-submission. You see one short line per school and its form link: **Sent** only
-after confirmation, **Not sent: why**, or **Needs your answer: what**. Detailed
+Before each Submit, review about one screen per school: school/team and form
+link, each visible field and its value to enter (or blank), presets with confirmed
+answers or explicit unanswered labels, Needs-your-answer items, consent answers,
+uploads and the approval question. Hidden/technical fields (anti-spam traps,
+tokens and hidden IDs) stay untouched and are omitted; hidden consent blockers
+are explained in plain words. All visible fields and blockers remain in the
+compact review. Resolve blockers, then give a fresh, school-specific Yes. On
+FrontRush, give that Yes first, then solve any CAPTCHA yourself, then the helper
+submits. The helper never solves CAPTCHAs. Profile and school-list approval do
+not authorize submission. You see one short line per school and its form link:
+**Sent** only after confirmation, **Not sent: why**, or **Needs your answer: what**. Detailed
 evidence and times stay in local `reports/`. If sending is uncertain, it tells
 you it may already have gone through and does not automatically try again.
 Confirmed schools are not sent again.
