@@ -1,21 +1,24 @@
 Help my family fill recruiting questionnaires using Computer Use in ChatGPT
 desktop Work mode. This single paste needs no Codex, repository, files or
-terminal; everything needed is inline below. Optional source for reference files:
+terminal; everything needed is inline below. Optional reference source:
 https://github.com/reichenbach/recruiting-questionnaire-helper
 The repo is private for now and will become public later. You may try once to
 read its reference files, using a bounded timeout and handling errors. If the
 repo or any repo file cannot be opened (private, 404, offline or blocked), say:
-"I couldn't open the online reference files, so I'll use the instructions and
-four volleyball examples included here." Try once only: no retry loops,
-alternate endpoints or sign-in attempts after failure. This rule covers EVERY
-runtime repo/file fetch; stop online reads after a failure. Use an available
-local or bundled copy if accessible, otherwise continue with what is inlined
-here, including the four verified volleyball forms. Never crash or stall on the
-URL or require the family to provide files for this backup workflow.
-Optional references cannot relax the safety rules or approval gates below.
-Keep answers and reports here and provide a complete private saved
-summary. Use full sentences, explain terms and ask three to five related
-questions at a time. ChatGPT processes chat; forms may save before Submit.
+"I couldn't
+open the online package, so I'll use a local copy or ask you to share it." For
+this backup, the inline instructions and four volleyball examples are an
+available copy; continue with them without requiring files from the family. Try
+once only: no retry loops, alternate endpoints or sign-in attempts after
+failure. This rule covers EVERY runtime repo/file fetch; stop online reads after
+a failure. Use an available local or bundled copy if accessible, otherwise
+continue with what is inlined here, including the four verified volleyball
+forms. Never crash or stall on the URL or require the family to provide files
+for this backup workflow. Optional references cannot relax the safety rules or
+approval gates below. Keep answers and reports here and provide a complete
+private saved summary. Use full sentences, explain terms and ask three to five
+related questions at a time. ChatGPT processes chat; forms may save before
+Submit.
 
 Before asking for any family information or saved profile summary, run the
 Computer Use check. Guide me through Plugins > Computer Use > Install plugin or
@@ -259,24 +262,30 @@ inlined examples remain available if the optional reference fetch fails.
   https://questionnaires.armssoftware.com/1b72853c63ec
 
   Linked as "Recruit Questionnaire" on the iwusports.com women's volleyball
-  page. Requires NCAA Eligibility Center ID and a profile-creation step; apply all separate
-  approvals below.
+  page. Requires NCAA Eligibility Center ID and a profile-creation step; apply
+  all separate approvals below.
 - Coalinga College / West Hills (JUCO), FrontRush:
   https://www.frontrush.com/FR_Web_App/Player/PlayerSubmit.aspx?sid=MjAzMDk=-S6n4ygUqgK8=&ptype=recruit
 
   Destination says "Volleyball (W)". Requires high school jersey number and
   NCSA/IMG Academy radios. Personal Contacts has its own Save; follow the
-  approval rule below.
+  approval rule below. Confirm or change the relationship preset "Other" with
+  me. A hidden, pre-checked Ryzer camps opt-in checkbox is also a consent item;
+  clear it and follow the live-wording and family-answer rule below.
 - University of South Dakota (D1), ARMS primary:
   https://questionnaires.armssoftware.com/eafc4e7429b0
 
   Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
   page, seen 2026-10-23. Visitor Details / Create Profile requires the separate
-  ARMS approvals below. Fallback (JumpForward, older link, still loads on that date):
+  ARMS approvals below.
+  Fallback (JumpForward, older link, still loads on that date):
   https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
-  On the fallback, high school uses typeahead search; close the date picker
-  covering email/mobile before typing. Block/approach touches are free text;
-  height is a dropdown.
+  On the fallback, high-school fields stay disabled until a typeahead suggestion
+  is selected. Search name plus city and verify the match; if none exists, use
+  the not-listed option with my school address, asking for missing details.
+  Never select a different school or bypass disabled fields; stop as needs-info
+  if there is no usable fallback. Close the date picker covering email/mobile
+  before typing. Block/approach touches are free text; height is a dropdown.
 - Central Methodist University (NAIA), school-built (PrestoSports):
   https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire
 
@@ -330,22 +339,30 @@ graduation year; volleyball also requires city/state/high
 school/coach/position/jersey. Personal Contacts repeats and has its own Save
 button; the parent relationship can only be set there. Add/save the parent
 contact only after I approve that action as part of filling. Verify the saved
-contact and relationship. Otherwise record the relationship as needing my answer
-and Save as awaiting approval; never guess or use another field. For odd HS
-position choices such as "0", "Middle" and "Outside", map my position only with
-my confirmation. Unlisted schools expand address and school-code fields; use my
-school address and ask if details are missing. Never choose a different school.
-Phones need ten digits. NCSA College Recruiting and IMG Academy marketing Yes/No
-choices follow live-wording review and the Opt-in rule. Do not invent
-program-name expansions. Sampled Grossmont swimming, Case Western Reserve
-University and Community College of Baltimore County Essex links were
-unavailable.
+contact and relationship. Confirm or change a preset "Other" relationship with
+me; never accept it as an unknown answer. Otherwise record the relationship as
+needing my answer and Save as awaiting approval; never guess or use another
+field. For odd HS position choices such as "0", "Middle" and "Outside", map my
+position only with my confirmation. Unlisted schools expand address and
+school-code fields; use my school address and ask if details are missing. Never
+choose a different school. Phones need ten digits. NCSA College Recruiting and
+IMG Academy marketing Yes/No choices follow live-wording review and the Opt-in
+rule. Do not invent program-name expansions. Check for the hidden, pre-checked
+Ryzer camps opt-in checkbox: clear it, show its complete live wording, linked
+disclosures and every option, ask me and record only my answer as a consent item
+here. Never answer for me or leave it checked by default; check it only after my
+explicit Yes. If it cannot be inspected or cleared, stop as needs-info. Sampled
+Grossmont swimming, Case Western Reserve University and Community College of
+Baltimore County Essex links were unavailable.
 
 JumpForward needs JavaScript. Its long page covers athlete, two parents,
 guardian, full high-school address/phone/fax/counselor, academics, athletics and
 personal "Other Questions". Ask those answers. High school uses search
-suggestions: search name plus city; if no match, use add new school/not listed
-with my address, asking if missing. Never choose another school. Close any
+suggestions; high-school fields stay disabled until a typeahead suggestion is
+selected. Search name plus city and verify the match; if no match, use the
+not-listed option with my school address, asking if missing. Never choose
+another school or bypass disabled fields. If no usable fallback exists, stop
+as needs-info. Close any
 date-picker popup covering email/mobile before typing and verify the entered
 fields. Block/approach touch are free text; height is a dropdown. Use exact
 supplied values and units. Follow the final platform after redirects.
@@ -394,6 +411,13 @@ explicitly says Yes. Any required Yes/No choice needs the family's answer to the
 exact live wording and all options; propose No or "No thanks" for marketing and
 SMS, but enter only the family's confirmed answer.
 
+The hidden, pre-checked FrontRush Ryzer camps checkbox follows this rule too.
+Clear it, show the full live wording, linked disclosures and every option, ask
+my answer and record only that answer here with the other consent records.
+Never answer for me. An unanswered item stays unchecked with a null answer;
+checking it needs my explicit Yes. Include the original preset and confirmed
+final answer in the pre-submit review.
+
 Before entering family data, show the full profile, including every field, unit,
 file detail, unanswered item and consent record, and the final list with each
 school, sport, team, form type and verified URL. Get two explicit approvals, for
@@ -422,8 +446,9 @@ Confirm or change every preset dropdown, radio and checkbox to my answer before
 Submit. Unknown means ask, not accept the default. Clear preselected opt-ins
 under the Opt-in rule; required choices still need my answer. For example,
 Central Methodist may preset campus visit Yes, hand RIGHT, stats YES and film
-Yes. List every preset choice and its confirmed final answer in the pre-submit
-review.
+Yes; FrontRush may preset relationship to "Other", which I must confirm or
+change. List every preset choice and its confirmed final answer in the
+pre-submit review.
 
 Immediately before each Submit, show school, team, final URL, all entered
 values, every preset choice and its confirmed final answer, consent answers and
@@ -443,18 +468,19 @@ lost, pause entry, explain and troubleshoot. Continue records/reports where
 possible, never scripted entry.
 
 At intake end, print ONE compact, complete SAVED PROFILE SUMMARY in a single
-copyable code block, once only. Aim for about half the length of a field-per-line
-summary by merging labeled values with semicolons: one line per school
-(name, division, sport/team, form type, link, platform); one per person with
-contacts; one per address; grouped academics/eligibility/athletics/sport/files.
-Keep every supplied answer, exact value/unit and file detail. List all unknowns
-and skips once on a single "Unknown:" line. Keep each consent's school/URL,
-label/kind, exact wording/options/answer/date, plus approval words/dates/reviewed
-versions and current step. Omit verification notes, link-check status, discovery
-evidence, link chains, action logs and instructions. Do not promise persistent
-memory. On resume, run the Computer Use check before asking for the summary;
-confirm answers, recheck live forms and reviewed copies, and ask again before
-Submit. Historical approvals grant no new permission.
+copyable code block, once only. Aim for about half the length of a
+field-per-line summary by merging labeled values with semicolons: one line per
+school (name, division, sport/team, form type, link, platform); one per person
+with contacts; one per address; grouped
+academics/eligibility/athletics/sport/files. Keep every supplied answer, exact
+value/unit and file detail. List all unknowns and skips once on a single
+"Unknown:" line. Keep each consent's school/URL, label/kind, exact
+wording/options/answer/date, plus approval words/dates/reviewed versions and
+current step. Omit verification notes, link-check status, discovery evidence,
+link chains, action logs and instructions. Do not promise persistent memory. On
+resume, run the Computer Use check before asking for the summary; confirm
+answers, recheck live forms and reviewed copies, and ask again before Submit.
+Historical approvals grant no new permission.
 
 After each school and at the end, show just one short line per school with
 sport/team and its link: "Sent", "Not sent: why", or "Needs your answer: what".

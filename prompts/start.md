@@ -1,5 +1,5 @@
 Read AGENTS.md and the entire read-only reference/recruiting-intake-tree.md. If
-this session has not already passed the Computer Use browser test, run
+this session has not already passed the computer-use tool browser test, run
 prompts/first-run-check.md before intake and wait for success. Reuse a
 successful check observed in this session. Explain setup in plain words; no
 parent terminal.
@@ -28,3 +28,8 @@ anything. Keep saved data local.
 Before filling, have me approve the full profile and final school list with each
 form URL; ask again immediately before each school's Submit. After the first-run
 check passes, begin intake with school/sport/team questions only.
+
+## If you use Codex / the ChatGPT desktop app:
+
+Use its enabled Computer Use tool for the browser test and form entry. Follow
+the app-specific setup section in prompts/first-run-check.md if setup is needed.

@@ -63,15 +63,15 @@ subscription or app name.
    connected; do not use the PC meanwhile. The parent can stop or take over at
    any time.
 4. Using **the computer-use tool**, open **https://example.com** in a browser,
-   inspect the actual page and read its heading back to the parent. Pass only if the
-   observed heading is **Example Domain**. Knowing the expected heading is not a
-   test; a web search, HTTP fetch or shell command is not a substitute.
+   inspect the actual page and read its heading back to the parent. Pass only if
+   the observed heading is **Example Domain**. Knowing the expected heading is
+   not a test; a web search, HTTP fetch or shell command is not a substitute.
 5. If it fails, describe what happened in plain words. Check tool enablement,
    required components, browser access, Mac permissions/chip or Windows
-   foreground, and internet access. Retry the same harmless page after the fix. If the tools
-   need a new session, explain how to reopen this project and retry. If
-   unavailable or blocked by account, region or device policy, explain the
-   limitation and pause. **Only continue to intake after this check works.**
+   foreground, and internet access. Retry the same harmless page after the fix.
+   If the tools need a new session, explain how to reopen this project and
+   retry. If unavailable or blocked by account, region or device policy, explain
+   the limitation and pause. **Only continue to intake after this check works.**
 
 Use the package source in `START_PROMPT.md`, or an existing local/bundled copy;
 help the parent unzip it and select it in the app if needed. For EVERY runtime
@@ -124,9 +124,10 @@ time in plain language and saving after each batch:
    separately rather than assuming the same application status or aid preference
    for all schools.
 6. Eligibility: NCAA Eligibility Center registration and ID as applicable to
-   target levels and actual form requirements, including Illinois Wesleyan D3
-   women's volleyball; qualifier answer. Ask NAIA Eligibility Center ID
-   (PlayNAIA, seven digits) only if an NAIA target is present. Save the IDs in
+   target levels and actual form requirements; qualifier answer. See
+   `reference/verified-forms.md` for school-specific eligibility requirements.
+   Ask NAIA Eligibility Center ID (PlayNAIA, seven digits) only for NAIA
+   targets. Save the IDs in
    `eligibility.ncaa_id` and `eligibility.naia_playnaia_id`. Do not invent or
    look up eligibility answers.
 7. Common athletics: height/weight with exact units, videos, recruiting profile,
@@ -169,7 +170,8 @@ answer and change it if needed. Unknown means ask, not accept the default. Clear
 preselected opt-ins under the Opt-in rule; required choices still need the
 family's answer. List every preset choice and its final answer in the pre-submit
 review. For example, Central Methodist may preset campus visit Yes, hand RIGHT,
-stats YES and film Yes; none establishes the family's answer.
+stats YES and film Yes, and FrontRush may preset relationship to "Other".
+Confirm or change "Other" with the family; no preset establishes their answer.
 
 All section 2 fields must be available in the template, including metrics that
 are rare on forms. Baseball 60-yard time/exit velocity/pitching velocity were
@@ -281,11 +283,17 @@ Never pick a different school to continue.
   requires city, state, high school, HS coach name, HS position and HS jersey.
 - NCSA and IMG Academy marketing Yes/No radios are required. Follow the **Opt-in
   rule** in section 4 and the live-wording consent review below.
+- Check for the hidden, pre-checked Ryzer camps opt-in checkbox. Treat it as a
+  consent item: clear it, show its complete live wording, disclosures and every
+  option, ask the family and record their answer in `consents.records`. Never
+  answer for them or leave it checked by default; check it only after an
+  explicit Yes. If it cannot be inspected or cleared, stop as needs-info.
 - Ten-digit phones; repeatable "Personal Contacts" for parents/coaches.
 - The Personal Contacts widget has its own Save button; the parent relationship
   can only be set there. Use it to add/save the parent contact only after the
   family approves that action as part of filling. Verify the relationship and
-  saved contact. Otherwise record the relationship as needing their answer and
+  saved contact. A preset "Other" relationship must be confirmed or changed
+  with the family. Otherwise record the relationship as needing their answer and
   the Save action as awaiting approval; do not guess or use another field.
 - Some HS position lists show odd values such as "0", "Middle" and "Outside".
   Map a supplied position to one of these only with the family's confirmation.
@@ -296,11 +304,14 @@ Never pick a different school to continue.
 
 ### JumpForward
 
-- High school uses a typeahead: search name plus city and use the
-  unlisted-school path if needed. A date-picker popup can cover email/mobile
-  fields; close it before typing and verify where the text went. Block/approach
-  touch are free text; height is a dropdown. Use supplied values and units
-  without conversion.
+- High-school fields stay disabled until a typeahead suggestion is selected.
+  Search name plus city and verify the match before selecting it. If no match
+  exists, use the not-listed option with the family's school address; ask for
+  missing details and never pick a different school or bypass disabled fields.
+  If no usable fallback exists, stop as needs-info. A date-picker popup can
+  cover email/mobile fields; close it before typing and verify where the text
+  went. Block/approach touch are free text; height is a dropdown. Use supplied
+  values and units without conversion.
 - Needs JavaScript; long single page: athlete, Parent 1, Parent 2, guardian,
   academics with full school address/phone/fax/counselor, athletics, then fun
   "Other Questions". Ask for those answers rather than inventing preferences.
@@ -354,6 +365,13 @@ AI contact) default to No unless the family explicitly says Yes. Any required
 Yes/No choice needs the family's answer to the exact live wording and all
 options; propose No or "No thanks" for marketing and SMS, but enter only the
 family's confirmed answer.
+
+The hidden, pre-checked FrontRush Ryzer camps checkbox is a consent item too.
+Clear it rather than leaving it checked by default. Show its complete live
+wording, linked disclosures and every option; ask the family and record only
+their answer in `consents.records`. Never answer for them. An unanswered item
+stays unchecked with a null answer; checking it requires their explicit Yes.
+Include its original preset and confirmed final answer in the pre-submit review.
 
 Third-party consents, including NCSA and IMG Academy, always need the exact live
 wording, every option and the family's own answer. For example, Coalinga

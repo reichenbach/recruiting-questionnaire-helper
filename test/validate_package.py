@@ -101,6 +101,61 @@ def phone_fields(value, path=""):
             yield from phone_fields(item, path + "." + str(index))
 
 
+def check_fixture(template, fixture, *, sport, city, postal_code, form_url):
+    same_shape(template, fixture)
+    require(fixture["intake"]["dry_run"] is True, "Fixture must be a dry run")
+    team = "women's" if sport == "volleyball" else "men's"
+    require(fixture["intake"]["sport"] == sport and
+            fixture["intake"]["team"] == team, "Wrong fixture sport/team")
+    require(fixture["athlete"]["first_name"] + " " +
+            fixture["athlete"]["last_name"] == "Test Athlete", "Wrong synthetic name")
+    require(fixture["athlete"]["email"] == "test@example.com", "Wrong synthetic email")
+    address = fixture["athlete"]["address"]
+    require(address["street_line_1"] == "123 Example St", "Wrong example address")
+    require(address["city"] == city and address["state_province"] == "IL" and
+            address["postal_code"] == postal_code and address["country"] == "US",
+            "Wrong example city/state/ZIP/country")
+    require(fixture["consents"] is None, "Fixture must not answer consents")
+    for path in (
+        "athletics.high_school_jersey_number",
+        "athletics.club_teams.0.jersey_number",
+        "eligibility.ncaa_id",
+        "eligibility.naia_playnaia_id",
+    ):
+        require(at(fixture, path) is None, "Fixture must leave field null: " + path)
+    require(all(value is None or value == "" for value in leaves(fixture["approvals"])),
+            "Fixture must not grant approvals")
+    require(len(fixture["target_schools"]) == 1, "Expected one test target")
+    target = fixture["target_schools"][0]
+    require(target["school"] == "Illinois Wesleyan University" and
+            target["sport"] == sport and target["team"] == team, "Wrong test target")
+    require(target["form_url"] == form_url, "Wrong test form URL")
+    for other_sport in template["sports"].keys() - {sport}:
+        require(fixture["sports"][other_sport] == template["sports"][other_sport],
+                "Unrelated sport data in fixture: " + other_sport)
+    require(fixture["athletics"]["other_sports_played"] ==
+            template["athletics"]["other_sports_played"], "Other-sport answers in fixture")
+    for value in leaves(fixture):
+        if isinstance(value, str) and "@" in value:
+            require(value.endswith("@example.com"), "Non-example email in fixture")
+    for path, value in phone_fields(fixture):
+        require(value in (None, "") or (isinstance(value, str) and
+                re.fullmatch(r"202-555-01\d{2}", value)),
+                "Fixture phone must use 202-555-01xx: " + path)
+    for field in ("street_line_1", "city", "state_province", "postal_code", "country"):
+        require(bool(fixture["high_school"]["address"][field]),
+                "Missing fake high-school address: " + field)
+    require(fixture["high_school"]["has_american_football_team"] is False,
+            "Expected explicit synthetic high-school football answer")
+    if sport == "volleyball":
+        volleyball = fixture["sports"][sport]
+        require(volleyball["primary_position"] == "OH" and
+                volleyball["secondary_position"] == "RS", "Wrong volleyball positions")
+        require(fixture["athletics"]["height"]["value"] == "5'11\"" and
+                fixture["athletics"]["height"]["unit"] == "feet/inches",
+                "Volleyball fixture must preserve 5'11\" without conversion")
+
+
 def main():
     required = [
         ".gitignore", "AGENTS.md", "README.md", "START_PROMPT.md",
@@ -108,7 +163,7 @@ def main():
         "prompts/start.md", "prompts/find-forms.md", "prompts/fill-forms.md",
         "prompts/report.md", "reference/recruiting-intake-tree.md",
         "reference/sample-forms.md", "reference/verified-forms.md",
-        "test/dry-run-profile.json", "test/README.md",
+        "test/dry-run-profile.json", "test/dry-run-profile-volleyball.json", "test/README.md",
     ]
     for name in required:
         require((ROOT / name).is_file(), "Missing package file: " + name)
@@ -125,7 +180,6 @@ def main():
     print("PASS: unchanged reference and exact section-5 copy (61 source rows)")
 
     template = json.loads((ROOT / "profile.template.json").read_text(encoding="utf-8"))
-    fixture = json.loads((ROOT / "test/dry-run-profile.json").read_text(encoding="utf-8"))
     require(all(value is None or value == "" for value in leaves(template)), "Template contains prefilled answers")
     expected_sports = {
         "baseball", "softball", "football", "basketball", "soccer", "volleyball",
@@ -236,13 +290,6 @@ def main():
     """)
     print("PASS: blank template, common field coverage and 14 sport blocks")
 
-    same_shape(template, fixture)
-    require(fixture["intake"]["dry_run"] is True, "Fixture must be a dry run")
-    require(fixture["athlete"]["first_name"] + " " + fixture["athlete"]["last_name"] == "Test Athlete", "Wrong synthetic name")
-    require(fixture["athlete"]["email"] == "test@example.com", "Wrong synthetic email")
-    require(fixture["athlete"]["address"]["street_line_1"] == "123 Example St", "Wrong example address")
-    require(fixture["athlete"]["address"]["city"] == "Anytown", "Wrong example city")
-    require(fixture["consents"] is None, "Fixture must not answer consents")
     for path in (
         "athletics.high_school_jersey_number",
         "athletics.club_teams.0.jersey_number",
@@ -250,33 +297,23 @@ def main():
         "eligibility.naia_playnaia_id",
     ):
         require(at(template, path) is None, "Expected unanswered template field: " + path)
-        require(at(fixture, path) is None, "Fixture must leave field null: " + path)
-    require(all(value is None or value == "" for value in leaves(fixture["approvals"])), "Fixture must not grant approvals")
-    require(len(fixture["target_schools"]) == 1, "Expected one test target")
-    target = fixture["target_schools"][0]
-    require(target["school"] == "Illinois Wesleyan University" and target["sport"] == "baseball", "Wrong test target")
-    require(target["form_url"] == "https://questionnaires.armssoftware.com/8b8ac3c4ffef", "Wrong test form URL")
-    for sport in expected_sports - {"baseball"}:
-        require(fixture["sports"][sport] == template["sports"][sport], "Unrelated sport data in fixture")
-    for value in leaves(fixture):
-        if isinstance(value, str) and "@" in value:
-            require(value.endswith("@example.com"), "Non-example email in fixture")
-    for path, value in phone_fields(fixture):
-        require(value in (None, "") or (isinstance(value, str) and
-                re.fullmatch(r"202-555-01\d{2}", value)),
-                "Fixture phone must use 202-555-01xx: " + path)
-    for field in ("street_line_1", "city", "state_province", "postal_code", "country"):
-        require(bool(fixture["high_school"]["address"][field]), "Missing fake high-school address: " + field)
-    require(fixture["high_school"]["has_american_football_team"] is False,
-            "Expected explicit synthetic high-school football answer")
-    print("PASS: synthetic dry-run fixture, null consents, no approvals or other-sport answers")
+    for name, sport, city, postal_code, form_hash in (
+        ("dry-run-profile.json", "baseball", "Anytown", "00000", "8b8ac3c4ffef"),
+        ("dry-run-profile-volleyball.json", "volleyball", "Springfield", "62701", "1b72853c63ec"),
+    ):
+        fixture = json.loads((ROOT / "test" / name).read_text(encoding="utf-8"))
+        check_fixture(template, fixture, sport=sport, city=city, postal_code=postal_code,
+                      form_url="https://questionnaires.armssoftware.com/" + form_hash)
+        print("PASS: synthetic " + sport + " dry-run fixture, null consents, "
+              "no approvals or other-sport answers")
 
     patterns = (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
     expected_patterns = {"profile.json", "profile*.local.json", "reports/", "*.pdf", "screenshots/", ".DS_Store"}
     require(expected_patterns <= set(patterns), "Missing privacy ignore pattern")
     if shutil.which("git") and (ROOT / ".git").exists():
         ignored = ["profile.json", "profile.family." "local.json", "reports/run.md", "reports/approvals.log", "transcript.pdf", "screenshots/form.png", ".DS_Store"]
-        visible = ["profile.template.json", "test/dry-run-profile.json", "test/README.md", "test/validate_package.py"]
+        visible = ["profile.template.json", "test/dry-run-profile.json",
+                   "test/dry-run-profile-volleyball.json", "test/README.md", "test/validate_package.py"]
         result = subprocess.run(
             ["git", "check-ignore", "--no-index", "--stdin"], cwd=ROOT,
             input="\n".join(ignored + visible) + "\n", capture_output=True, text=True, check=False,
@@ -333,7 +370,13 @@ def main():
                 name + " must contain the same package repository URL as README")
     for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "README.md",
                  "prompts/first-run-check.md"):
-        instructions = " ".join((ROOT / name).read_text(encoding="utf-8").lower().split())
+        instructions = " ".join((ROOT / name).read_text(encoding="utf-8").split())
+        fallback_sentence = (
+            "I couldn't open the online package, so I'll use a local copy or ask you to share it."
+        )
+        require(fallback_sentence in instructions,
+                name + " must include the exact package-fetch fallback sentence")
+        instructions = instructions.lower()
         for phrase in ("try once only", "no retry loops", "bounded timeout", "private",
                        "404", "offline", "blocked", "local", "bundled", "never crash or stall"):
             require(phrase in instructions, name + " must cover fetch fallback: " + phrase)

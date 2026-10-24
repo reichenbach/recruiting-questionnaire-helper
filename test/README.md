@@ -12,28 +12,43 @@ NAIA Eligibility Center ID use the existing template keys and are explicitly
 null in both template and fixture. They are unanswered, not zero or No. Do not
 replace fake values with anyone's real personal data in this file.
 
+`dry-run-profile-volleyball.json` is a separate synthetic **Test Athlete** for
+women's volleyball, with primary position OH (outside hitter), secondary RS
+(right side) and height `5'11"` in feet/inches, without conversion. It uses
+`test@example.com`, reserved 202-555-01xx phones and the invented home address
+123 Example St, Springfield, IL 62701. Its only target is Illinois Wesleyan
+University women's volleyball, with candidate form
+https://questionnaires.armssoftware.com/1b72853c63ec. Recheck the official link
+before any live use. Consents are null, all approvals are unset, and all other
+sport blocks and other-sports answers stay blank. The same dry-run prohibition
+and separate approval gates apply to both fixtures; never use either for a real
+family or submit synthetic data.
+
 ## Offline checks
 
 These commands are for the helper or a package maintainer. Parents using
-START_PROMPT.md never need to open a terminal; Codex handles setup and checks.
+START_PROMPT.md never need to open a terminal; the agent handles setup and
+checks.
 
 From the package folder, with Python 3 available, run:
 
 ```sh
 python3 -m json.tool profile.template.json
 python3 -m json.tool test/dry-run-profile.json
+python3 -m json.tool test/dry-run-profile-volleyball.json
 python3 test/validate_package.py
 ```
 
 On Windows, `py -3` can replace `python3` if that is your installed Python
 launcher. The validator uses only the standard library and local read-only
-checks. It checks blank template values, required field coverage, fixture
+checks. It checks blank template values, required field coverage, both fixtures'
 safety, source-list equality/count, source integrity, ignore behavior, relative
 Markdown links, personal-data patterns in all tracked text files and untracked
 non-ignored text files (skipping binaries), matching package repository URLs in
 START_PROMPT.md, CHATGPT_PROMPT.md and the README parent steps, single-attempt
-download fallback instructions, agent-neutral AGENTS.md wording, and four dated
-volleyball examples in reference/verified-forms.md and the self-contained backup prompt. It never
+download fallback instructions including the exact shared fallback sentence,
+agent-neutral AGENTS.md wording, and four dated volleyball examples in
+reference/verified-forms.md and the self-contained backup prompt. It never
 visits a site or fills/submits a form. Outside a Git checkout, the personal-data
 scan covers the required package files and the validator itself. It does not
 prove how an agent or a live form will behave.
@@ -50,7 +65,9 @@ accounts, upload files, or trigger phone-based consent without their separate
 approvals. Never type, request or save passwords; the family signs in
 themselves. Do not bypass CAPTCHA.
 
-Copy this prompt in the package's Codex conversation:
+Copy this prompt in the package's agent conversation. For volleyball, replace
+`test/dry-run-profile.json` with `test/dry-run-profile-volleyball.json` in the
+prompt; use only one fixture per rehearsal.
 
 ```text
 Read AGENTS.md, the full reference/recruiting-intake-tree.md and test/README.md.
@@ -78,6 +95,7 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
 | First run before family intake | Guide plugin/server/skill and system permissions; open example.com using Computer Use and observe Example Domain; pause intake until it works |
 | Start with the baseball target | School/sport/team first, then common intake in section 4 order, then baseball only; no other sport questions |
+| Start with the volleyball fixture | Women's volleyball only, OH/RS and 5'11" as supplied; null consents, no approvals and no other-sport answers |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
 | Required field absent from the profile | Ask the family, record the answer and renew affected approvals; never guess |
 | Phone has a formatting error | Enter the same number in the requested format, such as digits only; never change the number |
@@ -85,8 +103,11 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | High-school lookup has no match | Search name plus city, then use add new school/not listed with supplied address; ask missing details, never pick another school |
 | A form presets campus visit, hand, stats or film | Confirm or change every preset to the family's answer and include it in the pre-submit review; unknown means ask |
 | FrontRush Personal Contacts Save | Add/save parent only after approval as part of filling; parent relationship is set only there, otherwise flag missing answer/approval |
+| FrontRush relationship presets Other | Confirm or change it with the family and list the preset and final answer before Submit |
 | FrontRush HS positions show 0, Middle, Outside | Require family confirmation for any mapping |
 | Required NCSA/IMG Academy radios | Show full live wording, linked disclosures and every option for each; propose No thanks but wait for both family answers |
+| Hidden, pre-checked FrontRush Ryzer camps opt-in | Clear it, show complete live wording/options/disclosures, ask the family and record only their answer; check only after explicit Yes; stop if it cannot be inspected or cleared |
+| JumpForward high-school fields are disabled | Select only a verified typeahead match or use not listed with the family's address; never choose a different school or bypass disabled fields |
 | JumpForward date picker covers email/mobile | Close it before typing and verify fields; block/approach touch are text and height is a dropdown |
 | A messy position label has no unambiguous match | Ask the family to select a clean exact option or stop |
 | ARMS Continue without appears | Explain school-profile creation and wait for separate approval |
@@ -148,6 +169,6 @@ supplied examples verified on 2026-10-23: Illinois Wesleyan (ARMS), Coalinga
 Methodist (PrestoSports).
 Always recheck their official athletics links live before use. The offline
 validator checks the notes and inline backup URLs, not whether forms work now.
-These examples do not change the fixture's baseball target or grant approval for
+These examples do not change either fixture's target or grant approval for
 a live rehearsal. ARMS "Verify Your Details to Create a Profile" keeps the same
 separate approval gates as Visitor Details; dry runs still never submit.

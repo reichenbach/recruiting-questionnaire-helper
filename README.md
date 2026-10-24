@@ -43,9 +43,9 @@ exists, Codex asks you to paste or share the package and explains what is
 missing; a failed fetch must never crash or stall the workflow.
 
 If the app asks you to choose a project folder, choose the folder containing
-`AGENTS.md`, `profile.template.json`, `prompts/` and `reference/`. Codex confirms
-it can read them before collecting family information and handles necessary
-free installs.
+`AGENTS.md`, `profile.template.json`, `prompts/` and `reference/`. Codex
+confirms it can read them before collecting family information and handles
+necessary free installs.
 
 Codex guides you through **Plugins > Computer Use > Install plugin** or
 **Enable**, both the **Computer Use server** and **skill** toggles, and **Try
@@ -139,7 +139,8 @@ reference files from the same GitHub URL as an optional source. If that fails,
 it explains in one sentence and continues with the instructions and examples
 inlined in the prompt; it never blocks on a download or requires a local copy.
 It runs the Computer Use check before asking for a saved profile summary or new
-family information. Without working Computer Use, it pauses intake and form entry.
+family information. Without working Computer Use, it pauses intake and form
+entry.
 
 The backup keeps its working record in the conversation and prints one compact,
 complete **SAVED PROFILE SUMMARY** to keep privately. Paste that summary with
@@ -175,9 +176,10 @@ school and its provider, and the form may save entries before Submit.
 - [Verified forms](reference/verified-forms.md) records four women's volleyball
   examples verified on 2026-10-23. Recheck every link live from the official
   athletics site before use; these notes do not grant filling approval.
-- [test/README.md](test/README.md) explains the offline checks and dry run. [The
-  dry-run profile](test/dry-run-profile.json) contains invented baseball data
-  only. A dry run never submits and may stop earlier at an approval gate.
+- [test/README.md](test/README.md) explains the offline checks and dry runs. The
+  [baseball fixture](test/dry-run-profile.json) and
+  [volleyball fixture](test/dry-run-profile-volleyball.json) contain invented
+  data only. A dry run never submits and may stop earlier at an approval gate.
 
 ## Notes for someone sharing this package
 

@@ -22,6 +22,13 @@ These notes do not authorize profile creation, filling, uploads or submission.
     answers. Personal Contacts has its own Save button and is the only place to
     set parent relationship; get approval to add/save the contact as part of
     filling. Confirm any position mapping to odd choices (0, Middle, Outside).
+    The relationship may preset to "Other"; confirm or change it with the family
+    and include the preset and final answer in the pre-submit review.
+  - A hidden, pre-checked Ryzer camps opt-in checkbox is also a consent item.
+    Clear it; never leave it checked by default. Show its complete live wording,
+    linked disclosures and every option, ask the family and record only their
+    answer in `consents.records`. Never answer for them; check it only after an
+    explicit Yes. If it cannot be inspected or cleared, stop as needs-info.
 - **University of South Dakota (D1), women's volleyball — ARMS primary**
   - Primary: https://questionnaires.armssoftware.com/eafc4e7429b0
   - Linked as "Recruiting Questionnaire" from the goyotes.com women's volleyball
@@ -31,9 +38,13 @@ These notes do not authorize profile creation, filling, uploads or submission.
   - Fallback (JumpForward, older link, still loads as of 2026-10-23):
     https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
     Recheck the official link before use. On this fallback, high school uses a
-    typeahead: search name plus city. A date-picker popup can cover email/mobile
-    fields; close it before typing. Block/approach touch are free text; height
-    is a dropdown. Use supplied values and units without guessing.
+    typeahead: search name plus city. High-school fields stay disabled until a
+    typeahead suggestion is selected. Verify the match; if none exists, use the
+    not-listed option with the family's school address and ask for missing
+    details. Never select a different school or bypass disabled fields. If no
+    usable fallback exists, stop as needs-info. A date-picker popup can cover
+    email/mobile fields; close it before typing. Block/approach touch are free
+    text; height is a dropdown. Use supplied values and units without guessing.
 - **Central Methodist University (NAIA), women's volleyball — school-built
   (PrestoSports)**
   - Form: https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire
