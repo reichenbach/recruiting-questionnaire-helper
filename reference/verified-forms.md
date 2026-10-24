@@ -52,6 +52,12 @@ These notes do not authorize profile creation, filling, uploads or submission.
     change formatting, never the number. Preset choices may include campus visit
     Yes, hand RIGHT, stats YES and film Yes. Confirm or change every preset to
     the family's answer and list it before Submit; unknown means ask.
+  - Live-tested 2026-10-23 (fake data, not submitted). "SPIKE APPROACH REACH
+    (2 FEET)" is the approach jump touch; enter the supplied value as given.
+    "Graduation Date" is free text; enter the graduation year (e.g. 2028) and
+    never invent a month/day. Hidden "Email"/"Secondary Email" (fs_email1/2)
+    are anti-spam traps: never fill them. Preset selects have no blank option,
+    so an unanswered preset stays a Needs-your-answer stop, never a choice.
 
 For every platform, if high-school search has no match, use the form's "add new
 school / not listed" path with the family's school address; ask if it is

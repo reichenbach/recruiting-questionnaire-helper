@@ -328,7 +328,11 @@ Never pick a different school to continue.
   another school's template; watch for validation messages.
 - Genesee and Holmes JUCO forms add reCAPTCHA. Central Methodist requires name,
   address 1, city, state, ZIP, email and cell; previous-college,
-  eligibility-remaining and NAIA ID fields also occur.
+  eligibility-remaining and NAIA ID fields also occur. PrestoSports hidden
+  fs_email1/fs_email2 inputs are anti-spam traps: never fill them. A live
+  label that names a supplied measurable differently (CMU "SPIKE APPROACH
+  REACH (2 FEET)" = approach jump touch) takes the supplied value unchanged;
+  a year-only "Graduation Date" takes the year, never an invented day.
 - Headers may be copied incorrectly: Tennessee Wesleyan's women's lacrosse form
   says "MEN'S LACROSSE INFORMATION". Verify the official link/team; if
   ambiguous, stop that school rather than changing the target team.
