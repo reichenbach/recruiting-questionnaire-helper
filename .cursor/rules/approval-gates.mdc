@@ -11,17 +11,19 @@ wording and every option before asking. Follow the Opt-in rule there.
 
 ## Do not create accounts or school profiles without asking
 
-Ask separately before any account creation, ARMS "Continue without one of these
-accounts", or any step that creates a school-side profile. Inspect only public
-content until approved.
+Any account creation, ARMS "Continue without one of these accounts", or step
+that creates a school-side profile must be listed in the single approved
+summary, naming the action and the disclosure the form shows. If it is not
+listed, stop and ask. Inspect only public content until approved.
 
 ## Stop before ARMS Visitor Details / Verify Your Details
 
 Treat **Visitor Details** and **Verify Your Details to Create a Profile** as
 sending data to create a school profile. Stop before that step. Proceed only
-after full-profile approval, final-school-list approval and separate
-profile-creation approval. In a dry run never go past it unless data is fake and
-live-rehearsal disclosure is separately approved. Never submit a dry run.
+if the summary the parent approved (full profile and final school list) lists
+the profile creation, naming the action and its disclosure. In a dry run never
+go past it unless data is fake and live-rehearsal disclosure is separately
+approved. Never submit a dry run.
 
 ## Never click final Submit without family approval
 
@@ -33,5 +35,14 @@ now?" Wait for an explicit Yes. Approval for one school does not cover another,
 a retry or a resubmission. Treat any action that sends a completed questionnaire
 as Submit.
 
-Before entering family data, obtain two explicit approvals: the full profile and
-the final school list with each form URL. Changes require renewed approval.
+Before entering family data, get the parent's ONE approval ("Yes, fill these
+forms") of the summary covering the full profile and the final school list with
+each official form URL; never ask for separate profile and list approvals.
+Record that Yes as BOTH `approvals.full_profile` and
+`approvals.final_school_list` with the same quote and date but separate SHA-256
+snapshot values. Small additions (non-sensitive extras only) go in the
+per-Submit review without re-approval. ALWAYS re-ask a specific question about
+just the item for a new or changed school, sport or team; any consent answer;
+any file; any contact or phone number that could trigger SMS or AI-contact
+authorization; and anything touching an ARMS profile not listed in the summary.
+See CURSOR_PROMPT.md step 7; if wording differs, apply the stricter one.
