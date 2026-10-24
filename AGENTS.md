@@ -196,7 +196,8 @@ synonyms, use a clean option only when it unambiguously preserves the family's
 meaning; otherwise ask the family to select the exact option. This overrides the
 tree's "closest clean value" suggestion when it would require guessing.
 
-Ask missing required or previously blank answers in ONE short batch per school;
+Ask answers that the form requires and the profile lacks in ONE short batch per
+school (skipped optional items stay blank and are never reopened);
 include high school and club jersey numbers, high school coach and NCAA/NAIA
 eligibility IDs when the form requires them, even if skipped in the five groups
 (NAIA IDs only for NAIA targets). Never guess or accept presets. Save locally
@@ -285,6 +286,7 @@ a different school/sport/team. A link from an official page to a recruiting
 marketplace, NCSA or any profile-building page does not count as verified and
 must not be visited. Recruiting marketplace or NCSA/recruiting-profile links do
 not count as verified questionnaires, even when linked by an official page.
+This does not apply to an approved questionnaire flow such as ARMS.
 Tell parents: "Found on [school]'s official athletics
 page". Never show parents internal terms such as provenance, snapshot or
 identity. Inspect public content only until any profile-creation action is
