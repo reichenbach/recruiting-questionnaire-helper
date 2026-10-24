@@ -5,17 +5,42 @@ profile and final school list with form URLs and exact listed one-time actions
 (see AGENTS.md). Ask once for "Yes, fill these forms" if not already approved;
 never request separate profile/list approvals. Verify saved copies and logs.
 
+Tool-permission or app-access clicks (granting computer-use, screen recording
+or browser access) are NOT family approval for any form action, Submit, consent,
+upload or account creation.
+
 Use the family's exact answers only. Never guess, round, calculate missing
 answers, or fill unknown required values with placeholders.
 Stop that school as needs-info if a required answer or unambiguous option is
-missing. Ask new required or previously blank answers in ONE short
-batch per school, save and log locally, then include them in the pre-Submit
-review; its per-form Yes covers additions without whole-profile/list re-approval.
-Confirm only the change for changed/removed approved answers, added schools
-or changed form links before proceeding. Never accept a preset as an unknown answer.
+missing. Never accept a preset as an unknown answer.
+Ask missing required or previously blank answers in ONE short batch per school;
+include high school and club jersey numbers, high school coach and NCAA/NAIA
+eligibility IDs when the form requires them, even if skipped in the five groups
+(NAIA IDs only for NAIA targets). Never guess or accept presets. Save locally
+with school/sport and log additions in `reports/`.
+
+Small additions are NON-SENSITIVE fields only: extra stats, awards/honors,
+hobbies, and a coach email or phone number already shown in the approved profile
+or on the school's own form. Only these fold into that school's pre-Submit
+review without extra confirmation; its fresh Submit Yes covers them.
+
+For later additions or changes, always re-ask a specific question about just the
+item before proceeding: a new or changed school, sport or team (and any change
+to a form link or form type); any consent/attestation answer (exact live wording,
+linked disclosures and all options); any file upload (exact file/school/form);
+any contact or phone number that could trigger SMS/AI-contact authorization
+(before entry); and anything that touches an ARMS profile (continue-without-sign-in,
+Visitor Details/Create Profile). These gates override the small-additions rule.
+Show each answer/action again in that school's per-Submit review. Other additions or changing/removing approved answers need
+confirmation of just the change; the specific follow-up answer can provide it,
+without whole profile/list re-approval. Keep original approval copies/hashes
+intact. Log additions/changes, family words/date and reviewed copies/hashes as
+applicable, linked to original approvals. Keep the approvals schema unchanged;
+record additions in reports, not profile approvals.
 
 Enter the same phone number in the format requested, such as digits only after a
-format error; never change the number itself. For high-school search, use name
+format error (CMU requires digits-only cell numbers); never change the number
+itself. Ask if it still fails. For high-school search, use name
 plus city. If absent, use add new school/not listed with the family's school
 address; ask if missing and never pick a different school.
 
@@ -30,8 +55,8 @@ hand, stats and film defaults and FrontRush relationship "Other". Confirm or
 change "Other" with the family.
 
 Show every consent, attestation, certification and signature request verbatim
-with all options and enter only the family's answer. Leave unanswered requests
-blank. Follow the Opt-in rule in AGENTS.md section 4. Before entering a phone
+with all options and linked disclosures; enter only the family's answer.
+Leave unanswered requests blank. Follow the Opt-in rule in AGENTS.md section 4. Before entering a phone
 number that itself grants SMS/AI-contact authorization, show that wording and
 get approval for the action. ARMS Continue/profile creation, account creation
 and uploads need specific approval, either exactly listed in the one summary

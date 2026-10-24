@@ -1,9 +1,15 @@
-Read AGENTS.md section 0 before intake. Quietly reuse the package folder the
-app is opened in, without overwriting saved work. No folder-picker or "where
-should I save it" questions. Only if files cannot be read, guide the small
-folder-access step. Check the actual path; only if inside iCloud Drive, Dropbox,
-OneDrive or Google Drive, say so in one plain sentence and ask permission to use
-a local folder instead before saving data. Otherwise do not ask about sync.
+Read AGENTS.md section 0 before intake. Quietly reuse the open package folder
+without replacing saved work; no folder-picker or save-location questions unless
+files cannot be read.
+Quietly check the actual folder path, including whether Desktop/Documents
+syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
+Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
+parent: copy the package to a NEW non-synced folder in the home directory, such
+as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Say only: "I'm keeping your family's information in a private
+folder on this computer, not in cloud storage." Work there; save no family data
+in a synced location. If the app cannot open that folder, guide the small
+folder-access step. If the folder is not synced, say nothing about sync.
 
 Use START_PROMPT.md's source or an existing local/bundled copy. For EVERY
 runtime repo/file fetch, try once only with a bounded timeout and handle errors.
@@ -14,6 +20,10 @@ failure. Continue from the open folder, bundled copy or supplied ZIP/folder,
 without more network attempts after failure. If none is usable, ask the family
 to paste or share the package and explain what is missing; never crash or stall.
 Save no family data during setup. Never invent missing package instructions.
+
+Tool-permission or app-access clicks (granting computer-use, screen recording
+or browser access) are NOT family approval for any form action, Submit, consent,
+upload or account creation.
 
 ## Quiet setup
 

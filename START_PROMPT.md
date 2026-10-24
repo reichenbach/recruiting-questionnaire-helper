@@ -16,13 +16,19 @@ failure. Use the open folder, bundled copy or supplied ZIP/folder without more
 network attempts after failure. If none is usable, ask me to paste or share the
 package and explain what's missing; never crash or stall. Do not invent rules.
 
-Unzip if needed, quietly check file access and actual folder path. No folder
-picker or "where should I save it" questions unless you cannot read the files;
-then guide that small step. Only if inside iCloud Drive, Dropbox, OneDrive or
-Google Drive, say so in one sentence and ask permission to use a local folder
-instead before saving data. Otherwise do not ask about sync. Work only inside
-the package folder. Read AGENTS.md, README.md, prompts/ and the whole read-only
-reference/recruiting-intake-tree.md; AGENTS.md overrides its suggestions to
+Unzip if needed and quietly check file access; guide a small access step only
+if files cannot be read.
+Quietly check the actual folder path, including whether Desktop/Documents
+syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
+Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
+parent: copy the package to a NEW non-synced folder in the home directory, such
+as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Say only: "I'm keeping your family's information in a private
+folder on this computer, not in cloud storage." Work there; save no family data
+in a synced location. If the app cannot open that folder, guide the small
+folder-access step. If the folder is not synced, say nothing about sync.
+Work only inside the package folder. Read AGENTS.md, README.md, prompts/ and
+the whole read-only reference/recruiting-intake-tree.md; AGENTS.md overrides its suggestions to
 guess/default/substitute. Never edit the reference/template or use fixture data
 for my family. Do not commit, change remotes or publish.
 
@@ -55,13 +61,33 @@ reachable through optional additions or actual required form questions.
 5. Optional extras: anything else, such as social accounts, family/education,
    academic extras, hobbies or files. Sensitive optional answers can be skipped.
 
-Public discovery may start after group 1. A questionnaire link followed from the
-school's official athletics page counts as verified even if the vendor shows no
-school name. Record the link chain in target_schools. Stop if no official
-athletics source, redirects leave allowed vendors/school forms, or the page
-visibly shows a different school/sport/team. Tell me "Found on [school]'s official
-athletics page". Stay on official athletics pages and linked vendor forms;
-never visit supplied social/video/profile links or marketplaces.
+Public discovery may start after group 1. Stay on official athletics pages and
+linked questionnaire forms; never visit supplied social/video/profile links.
+A questionnaire link followed from the school's official athletics page counts
+as verified, even if the vendor page shows no school name (common on
+JumpForward). Silently require the final URL, platform and sport/team to match
+the official source page's linked form; where the vendor displays school/sport/team,
+they must match. Record the official source page, full link chain, final URL,
+platform, form type and verification notes in `target_schools`. Check redirects:
+stop if no official athletics source, redirects leave allowed vendors or
+school-built forms, or the page visibly shows a different school/sport/team.
+Recruiting marketplace or NCSA/recruiting-profile links do not count as verified
+questionnaires and must not be visited, even when linked by an official page.
+Tell parents: "Found on [school]'s official athletics page". Never show parents
+internal terms such as provenance, snapshot or identity. Inspect public content
+only until any profile-creation action is approved.
+
+If a form link is expired, wrong or unavailable, recheck the official site for a
+replacement or appropriate generic fallback; stop if provenance or team identity
+remains unclear. If the official site is blocked or unreadable (including an AWS
+web-application firewall or Cloudflare), stop that school; never bypass access
+controls or challenges. Tell the parent: "The school's official page would not
+load. Please open it in the browser and tell me when it loads." The family
+handles any challenge; do not treat a supplied vendor URL as a substitute.
+
+Tool-permission or app-access clicks (granting computer-use, screen recording
+or browser access) are NOT family approval for any form action, Submit, consent,
+upload or account creation.
 
 Before entering family data show ONE summary: full profile (all values, units,
 files, unanswered items, consent records), final school list with sport/team,
@@ -72,15 +98,36 @@ exact file, school and form. Account creation and Personal Contacts Save must
 also be listed specifically or approved later. Ask once: "Does this look right?
 Reply 'Yes, fill these forms' to approve." One Yes approves profile and list
 and only listed actions; never ask separate profile/list approvals. Save local
-reports/ copies and record the same quote/date with separate SHA-256 values in
-approvals.full_profile and approvals.final_school_list; record listed actions
-as school_actions. This is never permission to Submit.
+reports/ copies (profile excluding approvals, and school list). Record the same
+quote/date in BOTH approvals.full_profile and approvals.final_school_list with
+separate SHA-256 values for the profile copy and school-list copy respectively;
+record listed actions as school_actions. This is never permission to Submit.
 
-While filling, ask new required/previously blank answers in ONE short batch per
-school, save and log locally, and fold them into that school's pre-Submit review;
-its Submit Yes covers additions without repeating the whole summary. Confirm
-just the change before changing/removing approved answers, adding a school or
-changing a form link. Retain original approvals/copies; log additions/changes.
+Ask missing required or previously blank answers in ONE short batch per school;
+include high school and club jersey numbers, high school coach and NCAA/NAIA
+eligibility IDs when the form requires them, even if skipped in the five groups
+(NAIA IDs only for NAIA targets). Never guess or accept presets. Save locally
+with school/sport and log additions in `reports/`.
+
+Small additions are NON-SENSITIVE fields only: extra stats, awards/honors,
+hobbies, and a coach email or phone number already shown in the approved profile
+or on the school's own form. Only these fold into that school's pre-Submit
+review without extra confirmation; its fresh Submit Yes covers them.
+
+For later additions or changes, always re-ask a specific question about just the
+item before proceeding: a new or changed school, sport or team (and any change
+to a form link or form type); any consent/attestation answer (exact live wording,
+linked disclosures and all options); any file upload (exact file/school/form);
+any contact or phone number that could trigger SMS/AI-contact authorization
+(before entry); and anything that touches an ARMS profile (continue-without-sign-in,
+Visitor Details/Create Profile). These gates override the small-additions rule.
+Show each answer/action again in that school's per-Submit review. Other additions or changing/removing approved answers need
+confirmation of just the change; the specific follow-up answer can provide it,
+without whole profile/list re-approval. Keep original approval copies/hashes
+intact. Log additions/changes, family words/date and reviewed copies/hashes as
+applicable, linked to original approvals. Keep the approvals schema unchanged;
+record additions in reports, not profile approvals.
+
 Show each consent/attestation/signature/terms item verbatim with every option
 and needed linked disclosures when it appears; enter only my own answer, once
 per item unless wording changes, and show it again in the final review. Show
@@ -90,8 +137,9 @@ NCSA/IMG Academy, but never choose for me.
 
 Fill only through computer-use; review every field and validation error. Never
 guess, calculate, convert units or invent digits. Preserve values and units;
-phone punctuation may change, never the number. Follow AGENTS.md's platform
-rules: high-school typeahead matches must be correct (JumpForward uses school
+phone punctuation may change, never the number. Retry digits only after a
+format error (CMU requires digits-only cell numbers); ask if it still fails.
+Follow AGENTS.md's platform rules: high-school typeahead matches must be correct (JumpForward uses school
 name only and has no not-listed option); never choose a different school or
 bypass disabled controls. Confirm every preset; unknown means stop and ask,
 even without a blank option: "Site preset Yes - NOT the family's answer; needs

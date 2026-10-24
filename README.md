@@ -8,14 +8,22 @@ app. The helper uses the package folder already open, checks browser access,
 and starts the questions. You never need a terminal. It handles necessary free
 setup and only explains extra steps if access fails or a permission prompt
 appears. Grant the app permissions you approve; handle sign-in yourself.
+Tool-permission or app-access clicks (granting computer-use, screen recording
+or browser access) are NOT family approval for any form action, Submit, consent,
+upload or account creation.
 
 The public package is at
 https://github.com/reichenbach/recruiting-questionnaire-helper
-An existing local or bundled copy works too. The helper quietly checks the
-folder path. If it is inside iCloud Drive, Dropbox, OneDrive or Google Drive,
-it asks to use a local folder instead before saving data. Otherwise there is no
-save-location or sync question. If files cannot be read, it guides the small
-access step without replacing saved work.
+An existing local or bundled copy works too.
+Quietly check the actual folder path, including whether Desktop/Documents
+syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
+Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
+parent: copy the package to a NEW non-synced folder in the home directory, such
+as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Say only: "I'm keeping your family's information in a private
+folder on this computer, not in cloud storage." Work there; save no family data
+in a synced location. If the app cannot open that folder, guide the small
+folder-access step. If the folder is not synced, say nothing about sync.
 
 **Other apps:** [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) is a self-contained rules
 backup for ChatGPT Work with Computer Use; local file access is still needed to
@@ -76,22 +84,29 @@ there are no "reply yes to continue" steps.
 All reference fields remain available; optional or sensitive questions can be
 skipped. Unknown answers stay blank. The helper never guesses, invents numbers,
 calculates missing statistics, converts units or chooses a different school to
-get past a field. It can change phone punctuation, never the number.
+get past a field. It can retry digits only after a phone format error (CMU
+requires this), changing punctuation, never the number; it asks if that still fails.
 
 It may find public forms after the schools group. A questionnaire link followed
-from the school's official athletics page counts as verified, even if the
-vendor shows no school name. You see "Found on [school]'s official athletics
-page". The helper records the link chain and stops if there is no official
-source, redirects leave allowed vendors/school forms, or the page visibly shows
-a different school/sport/team. It stays on official athletics pages and linked
-forms; supplied video/social/profile links are form data, not browsing targets.
+from the school's official athletics page counts as verified, even if the vendor
+shows no school name. You see "Found on [school]'s official athletics page". The
+helper checks that the final URL, platform and sport/team match the official
+page's linked form and records the link chain and form type locally. Any school,
+sport or team shown by the vendor must match. Recruiting marketplace or
+NCSA/recruiting-profile links do not count as questionnaires and must not be
+visited. Supplied video/social/profile links are form data, not browsing targets.
+If the official site is blocked or unreadable, that school stops. The helper
+says the school's official page would not load and asks you to open it in the
+browser and say when it loads; it never bypasses a firewall or challenge.
 
 Before entry you see ONE summary: all profile values, units, files, unanswered
 items and consent records; each school's sport/team, form type and official
 form link; and any specific one-time actions requested. Reply **"Yes, fill these
 forms"** once to approve the profile and school list together. The helper saves
-local copies and your words/date, with a separate SHA-256 for each reviewed copy.
-You are not asked to approve profile and list separately.
+copies under local `reports/` and records that one Yes in BOTH
+`approvals.full_profile` and `approvals.final_school_list`, with the same quote
+and date and separate SHA-256 values for the profile copy (excluding approvals)
+and school-list copy respectively. You approve them together.
 
 The same Yes can approve actions explicitly listed there: for example ARMS
 "continue without signing in, which creates a profile on the school's side",
@@ -99,12 +114,25 @@ Visitor Details/Create Profile disclosure, a named account creation or Personal
 Contacts Save, or an exact file uploaded to a named school/form. Unlisted actions
 still need specific approval. This Yes never authorizes Submit.
 
-New required answers or answers to blank fields are asked in one short batch
-per school, saved locally and included in that school's final review; you do
-not approve the whole summary again. Changing/removing an approved answer,
-adding a school or changing its form link needs a brief confirmation of just
-the change before proceeding. Original reviewed copies stay intact; additions
-and changes are logged locally.
+Missing required answers are asked in one short batch per school, including
+high school and club jersey numbers, high school coach and NCAA/NAIA eligibility
+IDs when required, even if skipped earlier (NAIA IDs only for NAIA targets).
+Small additions are non-sensitive fields only: extra stats, awards/honors,
+hobbies, and a coach email or phone number already shown in the approved profile
+or on the school's own form. Only these fold into that school's per-Submit
+review without extra confirmation, covered by its fresh Yes.
+
+For later additions or changes, the helper always re-asks about just the item:
+a new or changed school, sport or team, any form link or form type change; any
+consent/attestation answer, with exact live wording, linked disclosures and all
+options; any file upload, naming the exact file/school/form; any contact or
+phone number that could trigger SMS/AI-contact authorization, before entry; and
+anything that touches an ARMS profile, including continue-without-sign-in and
+Visitor Details/Create Profile. These gates override the small-additions rule.
+Other additions or changes/removals need brief confirmation of just the change. Your specific follow-up answer can provide it.
+Each answer/action appears again in that school's per-Submit review; the whole
+summary is not repeated. Original reviewed copies stay intact and additions and
+changes are logged locally.
 
 ## Filling and sending
 

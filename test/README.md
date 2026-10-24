@@ -54,8 +54,16 @@ CLAUDE_PROMPT.md, and four dated volleyball examples in
 reference/verified-forms.md and the self-contained backup prompt. It never
 visits a site or fills/submits a form. It also checks five groups/one summary,
 displayed-page browser checks, official-link verification, additions/change
-handling and retained Submit/CAPTCHA/Ryzer/dry-run safeguards in the four current
-entry instructions. Unchanged Claude/Cursor launcher checks remain in force. Outside a Git checkout, the personal-data
+handling and retained Submit/CAPTCHA/Ryzer/dry-run safeguards in the current
+entry instructions. Refinement checks compare AGENTS Boundaries verbatim with the
+frozen base plus the coach-contact sentence, and check key phrases in Cursor's
+hard boundaries when present. They cover both approval records with the same
+quote/date and separate profile/school-list hashes; non-sensitive small additions
+and the always-re-ask exceptions; final URL/platform/sport-team matching;
+marketplace/NCSA exclusions; blocked official sites; new non-synced home folders
+without overwrites; required jersey/coach/eligibility follow-ups; CMU phone
+formatting; linked consent disclosures; and tool permissions not being family
+approval. Unchanged Claude/Cursor launcher checks remain in force. Outside a Git checkout, the personal-data
 scan covers the required package files and the validator itself. It does not
 prove how an agent or a live form will behave.
 
@@ -99,11 +107,11 @@ sending is disabled", plus any other blockers. Never call the test sent.
 |---|---|
 | Repo or any repo file is private, 404, offline or blocked | Try once only with a bounded timeout; explain in one plain sentence, then use the open folder, bundled copy or supplied ZIP/folder; ask for a pasted/shared package if none exists; no retries or stall |
 | Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
-| First run before family intake | Quietly reuse the open folder, check the actual path and ask about moving only if cloud-synced; use Computer Use at example.com and pass only if displayed page text contains Example Domain; say at most Browser check passed.; explain setup only on failure/permission prompts and pause intake until it works |
+| First run before family intake | Quietly check the actual path and Desktop/Documents sync; copy a synced package to a NEW non-synced home folder with a numbered name if needed, never overwrite, say the private-folder line and work there; ask for folder access only if the app cannot open it; use Computer Use at example.com and pass only if displayed page text contains Example Domain; say at most Browser check passed.; explain setup only on failure/permission prompts and pause intake until it works |
 | Start with the baseball target | Five short messages, one reply per group: schools/year/levels; athlete/parents; school/academics; athletics plus baseball only; optional extras. Save quietly, no continue-Yes gates |
 | Start with the volleyball fixture | Women's volleyball only, OH/RS and 5'11" as supplied; null consents, no approvals and no other-sport answers |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
-| Required field absent from the profile | Ask one short batch per school, save/log additions and include them in that school's pre-Submit review; its Yes covers additions, without full profile/list re-approval; never guess |
+| Required field absent from the profile | Ask one short batch per school, including skipped jersey numbers, high school coach and required NCAA/NAIA eligibility IDs (NAIA only for NAIA targets); save/log answers, get item-specific confirmation outside the narrow small-additions rule and include them in the per-Submit review; never guess or repeat the whole summary |
 | Phone has a formatting error | Enter the same number in the requested format, such as digits only; never change the number |
 | A school name is vague | Confirm exact school, division and sport/team before searching |
 | High-school lookup has no match | Search name plus city, then use add new school/not listed with supplied address; ask missing details, never pick another school |
@@ -121,14 +129,18 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | JumpForward date picker covers email/mobile | Close it before typing and verify fields; block/approach touch are text and height is a dropdown |
 | A messy position label has no unambiguous match | Ask the family to select a clean exact option or stop |
 | ARMS Continue without appears | Use specific school-profile-creation approval listed in the one summary, or ask for that action if unlisted; never infer it from general filling approval |
-| Consent/attestation appears | Show all wording/options verbatim, leave unanswered until family answers |
+| Consent/attestation appears | Show exact live wording, linked disclosures and all options; leave unanswered until the family answers and show their answer again in the per-Submit review |
 | Marketing/SMS choice appears | Follow the [Opt-in rule](../AGENTS.md#opt-in-rule) |
 | Entering a number itself authorizes SMS/AI contact | Show wording and obtain permission before entering the number |
 | Transcript or headshot is required | Ask for the missing file and specific upload approval; never upload automatically |
 | Full intake ready | One full summary with profile, school/sport/team/form types/official links and exact one-time actions; one Yes approves both profile/list with same quote/date and separate SHA-256 records; only listed actions are covered |
-| Official athletics link leads to vendor without school name | Verified if official link chain is recorded and redirects stay allowed; stop for visibly different school/sport/team, not missing branding |
+| Official athletics link leads to vendor without school name | Verified if the official link chain, final URL, platform and form type are recorded and final URL/platform/sport-team match the official source; displayed vendor school/sport/team must match; missing branding alone does not block entry |
 | Approved answer changed/removed, school added or form link changed | Confirm just the change, log it and retain original reviewed copies; never repeat the whole summary |
-| Three answers added to previously blank fields | Save/log them, do not rewrite original profile approvals; show in the per-school review covered by its Submit Yes |
+| Small additions: extra stats, awards/honors, hobbies, or a coach email/phone already in the approved profile or on the school's own form | Non-sensitive fields only; save/log them, retain original approval copies/hashes and include them in that school's per-Submit review without extra confirmation; its fresh Yes covers them |
+| New/changed school, sport, team or form link; consent answer; file upload; SMS/AI-contact number; ARMS profile action | Always re-ask a specific question about just the item, before acting; show exact consent wording/disclosures/options or exact file/school/form as applicable and show the answer/action again before that school's Submit; these gates override small additions |
+| Tool-permission or app-access click | Never treat computer-use, screen recording or browser access as family approval for a form action, Submit, consent, upload or account creation |
+| Official page links to a recruiting marketplace or NCSA/recruiting-profile page | Does not count as a verified questionnaire; never visit it |
+| Official site blocked by an AWS web-application firewall, Cloudflare or unreadable content | Stop that school, never bypass; tell the parent the official page would not load and ask them to open it in the browser and say when it loads |
 | Consent/attestation appears after approval | Show exact live wording/disclosures/options once per item and record only the family's answer; show it again in final review; fresh wording needs a fresh answer |
 | School A approved; School B not approved | No submission to School B |
 | Any dry run reaches Submit, even with a general Yes | Stop and report needs-info, dry run stopped before Submit |

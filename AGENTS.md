@@ -8,7 +8,7 @@ including coverage notes; sample links are candidates, not verified targets.
 ## Boundaries
 
 - Help fill recruiting questionnaires only. Never contact coaches: no emails,
-  messages, calls, meeting requests, or outreach through any channel.
+  messages, calls, meeting requests, or outreach through any channel. Coach contacts are form data only.
 - No payments, paid services, or subscriptions. Never create accounts without
   asking first for that specific action.
 - Never type, request or save passwords; the family signs in themselves.
@@ -16,14 +16,16 @@ including coverage notes; sample links are candidates, not verified targets.
   substitute a form, AGENTS.md wins.
 - Never upload a file without approval for that exact file, school, and form.
   Knowing a file path is not upload approval.
-- During discovery/filling stay on official school athletics sites and their
-  verified questionnaire links to school/vendor forms. Never browse marketplaces,
-  social profiles or other unofficial sites, even from supplied URLs. Entering
-  a supplied video/profile link in a form does not authorize visiting it.
-- Save family data only in local `./profile.json`, ignored `./reports/` and
-  `./screenshots/` if needed. No cloud documents, shared drives, external logs
-  or other storage services. Approved questionnaire entry discloses data to
-  that school; additional remote copies/profiles need separate approval.
+- During questionnaire discovery and filling, stay on official school athletics
+  sites and their verified questionnaire links to school/vendor forms. Do not
+  browse recruiting marketplaces, social profiles, or other non-official sites,
+  even if the profile contains those URLs. Entering a family-provided
+  video/profile link in a form does not authorize visiting it.
+- Save family data only in local `./profile.json` and local ignored files inside
+  `./reports/` (and `./screenshots/` only if needed). Do not use cloud
+  documents, shared drives, external logs, or other storage services. Entering
+  data into an approved questionnaire is the intended disclosure to the school;
+  do not create additional remote copies or profiles without separate approval.
 - Never commit or share family data, reports, documents, screenshots, passwords,
   or secrets. Do not commit, add remotes, push, merge, or delete branches as
   part of this workflow. Work only inside this folder.
@@ -39,10 +41,15 @@ including coverage notes; sample links are candidates, not verified targets.
 
 Follow `prompts/first-run-check.md` before intake. Quietly reuse the open package
 folder; no save-location or folder-picker questions unless files cannot be read.
-Then guide the small access step. Check the actual path: only if inside iCloud
-Drive, Dropbox, OneDrive or Google Drive, say so in one sentence and ask
-permission to use a local folder instead before saving data. Otherwise no sync
-questions.
+Quietly check the actual folder path, including whether Desktop/Documents
+syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
+Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
+parent: copy the package to a NEW non-synced folder in the home directory, such
+as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Say only: "I'm keeping your family's information in a private
+folder on this computer, not in cloud storage." Work there; save no family data
+in a synced location. If the app cannot open that folder, guide the small
+folder-access step. If the folder is not synced, say nothing about sync.
 
 Handle necessary free setup within app permissions; no parent terminal. Explain
 permissions, Intel Mac support or Windows foreground only on failure or a
@@ -143,24 +150,37 @@ blank; `consents` may be null until records exist.
 Ask, do not invent, guess, calculate missing stats, convert units, derive a
 superscore, or round a value. Do not fabricate a ten-digit phone from seven
 digits. Enter the same number in the format the field requests, such as digits
-only after a format error. Changing punctuation is formatting only; never change
-the number itself or invent a country code. If it still fails, ask. For dropdown
+only after a format error (CMU requires digits-only cell numbers). Changing
+punctuation is formatting only; never change the number itself or invent a
+country code. If it still fails, ask. For dropdown
 synonyms, use a clean option only when it unambiguously preserves the family's
 meaning; otherwise ask the family to select the exact option. This overrides the
 tree's "closest clean value" suggestion when it would require guessing.
 
 Ask missing required or previously blank answers in ONE short batch per school;
-save locally with school/sport and log additions in `reports/`. Never guess or
-accept presets. Include additions in that school's pre-Submit review: its fresh
-Submit Yes covers them without whole profile/list re-approval. Keep original
-approval copies/hashes intact. Consents still need the family's own answer to
-exact live wording when they appear.
+include high school and club jersey numbers, high school coach and NCAA/NAIA
+eligibility IDs when the form requires them, even if skipped in the five groups
+(NAIA IDs only for NAIA targets). Never guess or accept presets. Save locally
+with school/sport and log additions in `reports/`.
 
-Changing/removing approved answers, adding schools or changing form links needs
-quick confirmation of just the change before proceeding, not the whole summary.
-Sport/team/form-type changes count too. Log the exact change, family words/date,
-reviewed copies/hashes as applicable, linked to original approvals. Keep the
-approvals schema unchanged; record additions in reports, not profile approvals.
+Small additions are NON-SENSITIVE fields only: extra stats, awards/honors,
+hobbies, and a coach email or phone number already shown in the approved profile
+or on the school's own form. Only these fold into that school's pre-Submit
+review without extra confirmation; its fresh Submit Yes covers them.
+
+For later additions or changes, always re-ask a specific question about just the
+item before proceeding: a new or changed school, sport or team (and any change
+to a form link or form type); any consent/attestation answer (exact live wording,
+linked disclosures and all options); any file upload (exact file/school/form);
+any contact or phone number that could trigger SMS/AI-contact authorization
+(before entry); and anything that touches an ARMS profile (continue-without-sign-in,
+Visitor Details/Create Profile). These gates override the small-additions rule.
+Show each answer/action again in that school's per-Submit review. Other additions or changing/removing approved answers need
+confirmation of just the change; the specific follow-up answer can provide it,
+without whole profile/list re-approval. Keep original approval copies/hashes
+intact. Log additions/changes, family words/date and reviewed copies/hashes as
+applicable, linked to original approvals. Keep the approvals schema unchanged;
+record additions in reports, not profile approvals.
 
 Confirm/change every preset dropdown, radio and checkbox against the family's
 answer. Unknown means ask, never accept the default. Clear preselected opt-ins
@@ -204,19 +224,25 @@ only if an official athletics link verifies it. A vendor name, reference hash,
 or family-provided URL alone is insufficient proof.
 A questionnaire link followed from the school's official athletics page counts
 as verified, even if the vendor page shows no school name (common on
-JumpForward). Missing vendor branding is not a reason to refuse entry. Record
-the official source page, full link chain, final form URL, platform, form type
-and verification notes in `target_schools`. Check redirects: stop if the link did
-not come from the official athletics page, redirects leave the allowed vendors
-or school-built forms, or the page visibly shows a different school/sport/team.
-Tell parents: "Found on [school]'s official athletics page". Use plain words;
-Never show parents internal terms such as provenance, snapshot or identity. Inspect public content
+JumpForward). Silently require the final URL, platform and sport/team to match
+the official source page's linked form; where the vendor displays school/sport/team,
+they must match. Record the official source page, full link chain, final URL,
+platform, form type and verification notes in `target_schools`. Check redirects:
+stop if no official athletics source, redirects leave allowed vendors or
+school-built forms, or the page visibly shows a different school/sport/team.
+Recruiting marketplace or NCSA/recruiting-profile links do not count as verified
+questionnaires and must not be visited, even when linked by an official page.
+Tell parents: "Found on [school]'s official athletics page". Never show parents
+internal terms such as provenance, snapshot or identity. Inspect public content
 only until any profile-creation action is approved.
 
-If a link is expired, wrong, blocked or unavailable, recheck the official site
-for a replacement or appropriate generic fallback. Never bypass access
-controls, CAPTCHA or Cloudflare; ask the family to handle a challenge or report
-the block.
+If a form link is expired, wrong or unavailable, recheck the official site for a
+replacement or appropriate generic fallback; stop if provenance or team identity
+remains unclear. If the official site is blocked or unreadable (including an AWS
+web-application firewall or Cloudflare), stop that school; never bypass access
+controls or challenges. Tell the parent: "The school's official page would not
+load. Please open it in the browser and tell me when it loads." The family
+handles any challenge; do not treat a supplied vendor URL as a substitute.
 
 For a high-school typeahead (a search box with suggestions), search by school
 name plus city and verify the match. If no match exists, use "add new school" or
@@ -362,6 +388,10 @@ Never pick a different school to continue.
 
 ## 4. Consent and approval gates
 
+Tool-permission or app-access clicks (granting computer-use, screen recording
+or browser access) are NOT family approval for any form action, Submit, consent,
+upload or account creation.
+
 Never answer an attestation, consent, certification, signature, or terms
 acceptance for the family. Show **verbatim live wording and every option**,
 including linked/in-place disclosures needed to understand it, before asking for
@@ -434,10 +464,12 @@ Ask once: "Does this look right? Reply 'Yes, fill these forms' to approve."
 One explicit Yes approves both profile and school list and only the listed
 one-time actions. Do not ask for separate profile/list approvals. Store reviewed
 snapshots under local `reports/`, excluding `approvals` from the profile copy.
-Record the same family quote and date in `approvals.full_profile` and
-`approvals.final_school_list`, with each saved copy's SHA-256 in its existing
-field; record listed action approvals in `approvals.school_actions` and the local
-action log. Null approvals or an earlier general "go ahead" do not count.
+Record the one Yes as BOTH `approvals.full_profile` and
+`approvals.final_school_list` entries with the same family quote and date, but
+separate SHA-256 values: the profile snapshot hash in `approvals.full_profile`
+and the school-list snapshot hash in `approvals.final_school_list`. Record listed
+action approvals in `approvals.school_actions` and the local action log.
+Null approvals or an earlier general "go ahead" do not count.
 Additions and changes follow section 1; retain the original reviewed copies.
 
 Use **the computer-use tool in the app on macOS or Windows** to fill the
