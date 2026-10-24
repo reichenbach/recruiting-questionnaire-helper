@@ -1,15 +1,23 @@
 Read AGENTS.md section 0 before intake. Quietly reuse the open package folder
-without replacing saved work; no folder-picker or save-location questions unless
-files cannot be read.
-Quietly check the actual folder path, including whether Desktop/Documents
-syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
-Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
-parent: copy the package to a NEW non-synced folder in the home directory, such
-as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
-existing folder. Say only: "I'm keeping your family's information in a private
-folder on this computer, not in cloud storage." Work there; save no family data
-in a synced location. If the app cannot open that folder, guide the small
-folder-access step. If the folder is not synced, say nothing about sync.
+without replacing saved work; request file access only if needed.
+For an agent-created package folder (download/clone/unzip), silently create a
+NEW folder directly in the home directory, such as `~/RecruitingHelper`,
+adding a number if the name exists; never overwrite an existing folder. Never
+create it on Desktop, in Documents, or in a synced location. Say nothing about
+sync.
+
+When reusing an already-open folder, quietly check the actual folder path. If
+inside iCloud Drive, Dropbox, OneDrive or Google Drive, OR under `~/Desktop` or
+`~/Documents` on macOS, ask ONE plain sentence for permission: "May I keep your
+family's information in a new private folder in your home directory instead?"
+iCloud Desktop & Documents sync is invisible from the path, so treat either
+macOS folder as needing this permission. Wait for Yes before copying the
+package to a NEW non-synced folder directly in the home directory, such as
+`~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Save no family data in the reused Desktop/Documents or synced
+location while waiting. Work there; save no family data in a synced location.
+If the app cannot open that folder, guide the small folder-access step.
+Otherwise say nothing about sync.
 
 Use START_PROMPT.md's source or an existing local/bundled copy. For EVERY
 runtime repo/file fetch, try once only with a bounded timeout and handle errors.

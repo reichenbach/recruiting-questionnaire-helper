@@ -55,17 +55,38 @@ reference/verified-forms.md and the self-contained backup prompt. It never
 visits a site or fills/submits a form. It also checks five groups/one summary,
 displayed-page browser checks, official-link verification, additions/change
 handling and retained Submit/CAPTCHA/Ryzer/dry-run safeguards in the current
-entry instructions. Refinement checks compare AGENTS Boundaries verbatim with the
-frozen base plus the coach-contact sentence, and check key phrases in Cursor's
-hard boundaries when present. They cover both approval records with the same
+entry instructions. Refinement checks compare AGENTS Boundaries wording with the
+frozen base plus the coach-contact sentence, ignoring wrapping, and check key
+phrases in Cursor's hard boundaries when present. They cover both approval records with the same
 quote/date and separate profile/school-list hashes; non-sensitive small additions
 and the always-re-ask exceptions; final URL/platform/sport-team matching;
-marketplace/NCSA exclusions; blocked official sites; new non-synced home folders
-without overwrites; required jersey/coach/eligibility follow-ups; CMU phone
-formatting; linked consent disclosures; and tool permissions not being family
-approval. Unchanged Claude/Cursor launcher checks remain in force. Outside a Git checkout, the personal-data
-scan covers the required package files and the validator itself. It does not
+marketplace/NCSA/profile-building exclusions; blocked official sites; new private
+home folders without overwrites and permission before relocating a reused
+Desktop/Documents or synced folder; required jersey/coach/eligibility
+follow-ups; CMU phone formatting; linked consent disclosures; and tool
+permissions not being family approval. Unchanged Claude/Cursor launcher checks
+remain in force. Outside a Git checkout, the personal-data scan covers the
+required package files and the validator itself. It does not
 prove how an agent or a live form will behave.
+
+AGENTS.md prose must fit within 80 columns; fenced blocks, Markdown table rows
+and URL-only lines are exempt. Alignment checks scan CLAUDE_PROMPT.md,
+CURSOR_PROMPT.md, CLAUDE.md and every file under `.cursor/rules/` for old
+two-approval, heading read-back and separate profile/list approval wording.
+Each hit prints `WARN: <file> still has old wording (<phrase>); enforce after
+branches merge`. Warnings permit the normal run to finish with its final pass
+line while those other branches remain unaligned. A file containing both the
+new marker `Yes, fill these forms` and old wording always fails.
+
+To enforce alignment for every scanned file, run:
+
+```sh
+RQ_STRICT_ALIGN=1 python3 test/validate_package.py
+```
+
+This strict run is expected to fail only on legacy alignment warnings until
+the other branches merge and align. It still runs all other offline checks.
+The validator reports filenames and rule labels, never private values.
 
 ## Rehearse the workflow
 
@@ -107,7 +128,9 @@ sending is disabled", plus any other blockers. Never call the test sent.
 |---|---|
 | Repo or any repo file is private, 404, offline or blocked | Try once only with a bounded timeout; explain in one plain sentence, then use the open folder, bundled copy or supplied ZIP/folder; ask for a pasted/shared package if none exists; no retries or stall |
 | Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
-| First run before family intake | Quietly check the actual path and Desktop/Documents sync; copy a synced package to a NEW non-synced home folder with a numbered name if needed, never overwrite, say the private-folder line and work there; ask for folder access only if the app cannot open it; use Computer Use at example.com and pass only if displayed page text contains Example Domain; say at most Browser check passed.; explain setup only on failure/permission prompts and pause intake until it works |
+| Agent creates the package folder (download/clone/unzip) | Silently create a NEW folder directly in home, never Desktop/Documents/synced; add a number if the name exists, never overwrite, and say nothing about sync |
+| Reuse an already-open package folder | Quietly check the path; any synced path or macOS ~/Desktop or ~/Documents requires ONE plain sentence asking permission for a new private home folder, then wait for Yes before copying; save no family data in the old location; guide folder access only if needed; otherwise say nothing about sync |
+| First run before family intake | Use Computer Use at example.com and pass only if displayed page text contains Example Domain; say at most Browser check passed.; explain setup only on failure/permission prompts and pause intake until it works |
 | Start with the baseball target | Five short messages, one reply per group: schools/year/levels; athlete/parents; school/academics; athletics plus baseball only; optional extras. Save quietly, no continue-Yes gates |
 | Start with the volleyball fixture | Women's volleyball only, OH/RS and 5'11" as supplied; null consents, no approvals and no other-sport answers |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
@@ -137,9 +160,9 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | Official athletics link leads to vendor without school name | Verified if the official link chain, final URL, platform and form type are recorded and final URL/platform/sport-team match the official source; displayed vendor school/sport/team must match; missing branding alone does not block entry |
 | Approved answer changed/removed, school added or form link changed | Confirm just the change, log it and retain original reviewed copies; never repeat the whole summary |
 | Small additions: extra stats, awards/honors, hobbies, or a coach email/phone already in the approved profile or on the school's own form | Non-sensitive fields only; save/log them, retain original approval copies/hashes and include them in that school's per-Submit review without extra confirmation; its fresh Yes covers them |
-| New/changed school, sport, team or form link; consent answer; file upload; SMS/AI-contact number; ARMS profile action | Always re-ask a specific question about just the item, before acting; show exact consent wording/disclosures/options or exact file/school/form as applicable and show the answer/action again before that school's Submit; these gates override small additions |
+| New/changed school, sport, team or form link; any consent or file; a new phone number/contact that could trigger SMS/AI-contact authorization; ARMS profile action | NEVER fold in silently; always re-ask a specific question about just the item, before acting; show exact consent wording/disclosures/options or exact file/school/form as applicable and show the answer/action again before that school's Submit; these gates override small additions |
 | Tool-permission or app-access click | Never treat computer-use, screen recording or browser access as family approval for a form action, Submit, consent, upload or account creation |
-| Official page links to a recruiting marketplace or NCSA/recruiting-profile page | Does not count as a verified questionnaire; never visit it |
+| Official page links to a recruiting marketplace, NCSA or any profile-building page | Does not count as a verified questionnaire; never visit it |
 | Official site blocked by an AWS web-application firewall, Cloudflare or unreadable content | Stop that school, never bypass; tell the parent the official page would not load and ask them to open it in the browser and say when it loads |
 | Consent/attestation appears after approval | Show exact live wording/disclosures/options once per item and record only the family's answer; show it again in final review; fresh wording needs a fresh answer |
 | School A approved; School B not approved | No submission to School B |

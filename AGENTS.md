@@ -8,7 +8,8 @@ including coverage notes; sample links are candidates, not verified targets.
 ## Boundaries
 
 - Help fill recruiting questionnaires only. Never contact coaches: no emails,
-  messages, calls, meeting requests, or outreach through any channel. Coach contacts are form data only.
+  messages, calls, meeting requests, or outreach through any channel. Coach
+  contacts are form data only.
 - No payments, paid services, or subscriptions. Never create accounts without
   asking first for that specific action.
 - Never type, request or save passwords; the family signs in themselves.
@@ -39,17 +40,25 @@ including coverage notes; sample links are candidates, not verified targets.
 
 ## 0. First-run check: before intake
 
-Follow `prompts/first-run-check.md` before intake. Quietly reuse the open package
-folder; no save-location or folder-picker questions unless files cannot be read.
-Quietly check the actual folder path, including whether Desktop/Documents
-syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
-Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
-parent: copy the package to a NEW non-synced folder in the home directory, such
-as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
-existing folder. Say only: "I'm keeping your family's information in a private
-folder on this computer, not in cloud storage." Work there; save no family data
-in a synced location. If the app cannot open that folder, guide the small
-folder-access step. If the folder is not synced, say nothing about sync.
+Follow `prompts/first-run-check.md` before intake. Quietly reuse the open
+package folder without replacing saved work; request file access only if needed.
+For an agent-created package folder (download/clone/unzip), silently create a
+NEW folder directly in the home directory, such as `~/RecruitingHelper`, adding
+a number if the name exists; never overwrite an existing folder. Never create it
+on Desktop, in Documents, or in a synced location. Say nothing about sync.
+
+When reusing an already-open folder, quietly check the actual folder path. If
+inside iCloud Drive, Dropbox, OneDrive or Google Drive, OR under `~/Desktop` or
+`~/Documents` on macOS, ask ONE plain sentence for permission: "May I keep your
+family's information in a new private folder in your home directory instead?"
+iCloud Desktop & Documents sync is invisible from the path, so treat either
+macOS folder as needing this permission. Wait for Yes before copying the
+package to a NEW non-synced folder directly in the home directory, such as
+`~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Save no family data in the reused Desktop/Documents or synced
+location while waiting. Work there; save no family data in a synced location.
+If the app cannot open that folder, guide the small folder-access step.
+Otherwise say nothing about sync.
 
 Handle necessary free setup within app permissions; no parent terminal. Explain
 permissions, Intel Mac support or Windows foreground only on failure or a
@@ -57,9 +66,10 @@ permission prompt. The parent grants permissions and handles sign-in; never
 bypass prompts or buy anything. Check actual access, not app/subscription names.
 
 Use **the computer-use tool** to open **https://example.com** and inspect the
-actual browser. Pass only if **displayed page text** contains **Example Domain**;
-expected text, web search, HTTP fetch or shell commands cannot pass. On success
-say at most "Browser check passed." On failure explain what happened, check tool
+actual browser. Pass only if **displayed page text** contains
+**Example Domain**; expected text, web search, HTTP fetch or shell commands
+cannot pass. On success say at most "Browser check passed." On failure explain
+what happened, check tool
 components/browser access, Mac chip/Screen Recording/Accessibility or Windows
 foreground and internet as needed, then retry the same page after fixing it.
 If a new session is needed, explain how to reopen this project and retry. If
@@ -68,17 +78,17 @@ Only continue to intake after this check works.
 
 Use the package source in `START_PROMPT.md` or an existing local/bundled copy.
 For EVERY runtime repo/file fetch, try once only with a bounded timeout and
-handle errors. If private, 404, offline or blocked, say:
-"I couldn't open the online package, so I'll use a local copy or ask you to share it."
-No retry loops, alternate download methods/endpoints after failure, or sign-in
-attempts to bypass it. Use the open folder, bundled copy or supplied ZIP/folder
-without more network attempts after failure. If none is usable, ask the family
-to paste or share the package and explain what is missing; never crash or stall.
-Do not invent missing instructions or begin intake before the required package
-and browser check are available. Setup alone may use the package source,
-provider's official help, necessary official free installers and example.com.
-This does not authorize other recruiting browsing. Save no family data during
-setup; work inside this folder without changing remotes.
+handle errors. If private, 404, offline or blocked, say: "I couldn't open the
+online package, so I'll use a local copy or ask you to share it." No retry
+loops, alternate download methods/endpoints after failure, or sign-in attempts
+to bypass it. Use the open folder, bundled copy or supplied ZIP/folder without
+more network attempts after failure. If none is usable, ask the family to paste
+or share the package and explain what is missing; never crash or stall. Do not
+invent missing instructions or begin intake before the required package and
+browser check are available. Setup alone may use the package source, provider's
+official help, necessary official free installers and example.com. This does not
+authorize other recruiting browsing. Save no family data during setup; work
+inside this folder without changing remotes.
 
 ## 1. Intake and local profile
 
@@ -90,9 +100,10 @@ Use these messages, tailoring only the named sport details:
 
 1. **Schools:** "Which schools, sport and men's/women's team for each? What
    graduation year and levels (NCAA D1/D2/D3, NAIA, JUCO or club/ACHA)?"
-2. **Athlete and parents:** "What are the athlete's full/preferred names, emails,
-   phones, full address and date of birth? Who are the parents/guardians, their
-   relationships, names and contacts (and addresses if different)?"
+2. **Athlete and parents:** "What are the athlete's full/preferred names,
+   emails, phones, full address and date of birth? Who are the
+   parents/guardians, their relationships, names and contacts (and addresses if
+   different)?"
 3. **High school and academics:** "What high school and address, coach/counselor
    contacts, GPA with scale, test scores/dates and intended major? Share
    eligibility registration/IDs if applicable, entry plans and any transfer
@@ -116,18 +127,20 @@ required form questions, not as more intake groups:
 - Athlete: legal/middle/preferred names, primary/secondary emails, phones, full
   address, DOB, gender/sex, citizenship, ethnicity/Hispanic answers, social
   accounts and headshot path. Optional sensitive answers may be skipped.
-- Family: all guardians, relationships, contacts, occupations, college/education,
-  four-year-college attendance, different addresses, lives with, optional marital
-  status, siblings/ages and family/alumni ties. Never infer these.
+- Family: all guardians, relationships, contacts, occupations,
+  college/education, four-year-college attendance, different addresses, lives
+  with, optional marital status, siblings/ages and family/alumni ties. Never
+  infer these.
 - School: full address/country, phone, fax if asked, CEEB/ETS code,
   has-American-football-team Y/N, coach/counselor names/phones/emails. Keep
   supplied fallback details even when lookup may work.
-- Academics: weighted/unweighted/core GPA and scale, rank, SAT Math/Reading-EBRW/
-  Writing/Total/supplied superscore, PSAT, ACT composite/subscores, test and
-  planned dates, major, AP courses/scores, honors, transcript/test-score paths,
-  other schools, entry/admit term/year, application status, ED/financial aid.
-  Keep school-specific answers separate. If applicable: prior college,
-  credits/hours, GPA, major, transfer reason and eligibility remaining.
+- Academics: weighted/unweighted/core GPA and scale, rank, SAT
+  Math/Reading-EBRW/ Writing/Total/supplied superscore, PSAT, ACT
+  composite/subscores, test and planned dates, major, AP courses/scores, honors,
+  transcript/test-score paths, other schools, entry/admit term/year, application
+  status, ED/financial aid. Keep school-specific answers separate. If
+  applicable: prior college, credits/hours, GPA, major, transfer reason and
+  eligibility remaining.
 - Eligibility: NCAA Eligibility Center registration, ID and qualifier answer
   where applicable to levels or live requirements (see
   `reference/verified-forms.md`). Ask NAIA Eligibility Center ID (PlayNAIA,
@@ -168,14 +181,21 @@ hobbies, and a coach email or phone number already shown in the approved profile
 or on the school's own form. Only these fold into that school's pre-Submit
 review without extra confirmation; its fresh Submit Yes covers them.
 
+An addition that touches any consent, any file, a new phone number or contact
+that could trigger SMS/AI-contact authorization, an ARMS profile, or a
+school/sport/team (or form link) is NEVER folded in silently. Ask one specific
+question about just that item first, before acting, and show it again in that
+school's per-Submit review.
+
 For later additions or changes, always re-ask a specific question about just the
 item before proceeding: a new or changed school, sport or team (and any change
-to a form link or form type); any consent/attestation answer (exact live wording,
-linked disclosures and all options); any file upload (exact file/school/form);
-any contact or phone number that could trigger SMS/AI-contact authorization
-(before entry); and anything that touches an ARMS profile (continue-without-sign-in,
-Visitor Details/Create Profile). These gates override the small-additions rule.
-Show each answer/action again in that school's per-Submit review. Other additions or changing/removing approved answers need
+to a form link or form type); any consent/attestation answer (exact live
+wording, linked disclosures and all options); any file upload (exact
+file/school/form); any contact or phone number that could trigger SMS/AI-contact
+authorization (before entry); and anything that touches an ARMS profile
+(continue-without-sign-in, Visitor Details/Create Profile). These gates override
+the small-additions rule. Show each answer/action again in that school's
+per-Submit review. Other additions or changing/removing approved answers need
 confirmation of just the change; the specific follow-up answer can provide it,
 without whole profile/list re-approval. Keep original approval copies/hashes
 intact. Log additions/changes, family words/date and reviewed copies/hashes as
@@ -185,12 +205,12 @@ record additions in reports, not profile approvals.
 Confirm/change every preset dropdown, radio and checkbox against the family's
 answer. Unknown means ask, never accept the default. Clear preselected opt-ins
 under the Opt-in rule; required choices need the family's answer. List every
-visible preset and confirmed final answer in the pre-submit review. If a dropdown has no blank option and the answer is
-unknown, stop and ask; label it explicitly, for example: "Site preset Yes - NOT
-the family's answer; needs your answer". Central Methodist may preset campus
-visit Yes, hand RIGHT, stats YES and film Yes, and FrontRush may preset
-relationship to "Other".
-Confirm or change "Other" with the family; no preset establishes their answer.
+visible preset and confirmed final answer in the pre-submit review. If a
+dropdown has no blank option and the answer is unknown, stop and ask; label it
+explicitly, for example: "Site preset Yes - NOT the family's answer; needs your
+answer". Central Methodist may preset campus visit Yes, hand RIGHT, stats YES
+and film Yes, and FrontRush may preset relationship to "Other". Confirm or
+change "Other" with the family; no preset establishes their answer.
 
 All section 2 fields must be available in the template, including metrics that
 are rare on forms. Baseball 60-yard time/exit velocity/pitching velocity were
@@ -222,19 +242,23 @@ vendors linked by that official athletics site: ARMS
 (`college.jumpforward.com`), PrestoSports, Slate, HockeyTech, and another vendor
 only if an official athletics link verifies it. A vendor name, reference hash,
 or family-provided URL alone is insufficient proof.
+
 A questionnaire link followed from the school's official athletics page counts
 as verified, even if the vendor page shows no school name (common on
 JumpForward). Silently require the final URL, platform and sport/team to match
-the official source page's linked form; where the vendor displays school/sport/team,
-they must match. Record the official source page, full link chain, final URL,
-platform, form type and verification notes in `target_schools`. Check redirects:
-stop if no official athletics source, redirects leave allowed vendors or
-school-built forms, or the page visibly shows a different school/sport/team.
-Recruiting marketplace or NCSA/recruiting-profile links do not count as verified
-questionnaires and must not be visited, even when linked by an official page.
-Tell parents: "Found on [school]'s official athletics page". Never show parents
-internal terms such as provenance, snapshot or identity. Inspect public content
-only until any profile-creation action is approved.
+the official source page's linked form; where the vendor displays
+school/sport/team, they must match. Record the official source page, full link
+chain, final URL, platform, form type and verification notes in
+`target_schools`. Check redirects: stop if no official athletics source,
+redirects leave allowed vendors or school-built forms, or the page visibly shows
+a different school/sport/team. A link from an official page to a recruiting
+marketplace, NCSA or any profile-building page does not count as verified and
+must not be visited. Recruiting marketplace or NCSA/recruiting-profile links do
+not count as verified questionnaires, even when linked by an official page.
+Tell parents: "Found on [school]'s official athletics
+page". Never show parents internal terms such as provenance, snapshot or
+identity. Inspect public content only until any profile-creation action is
+approved.
 
 If a form link is expired, wrong or unavailable, recheck the official site for a
 replacement or appropriate generic fallback; stop if provenance or team identity
@@ -255,13 +279,13 @@ Never pick a different school to continue.
 
 - The landing page offers Google, Twitter or "Continue without one of these
   accounts". Always choose continue-without. Get explicit action approval in the
-  one summary or a later request before clicking, even in a dry run: it creates a
-  school-side profile. This never approves Submit. Inspect public content only
+  one summary or a later request before clicking, even in a dry run: it creates
+  a school-side profile. This never approves Submit. Inspect public content only
   until approved.
 - Treat "Verify Your Details to Create a Profile" like "Visitor Details": it
   sends data to create a school profile. Require full-profile, final-school-list
-  and specific profile-creation approval before proceeding (all may be given
-  in the one summary). Live dry runs also need disclosure approval and fake data;
+  and specific profile-creation approval before proceeding (all may be given in
+  the one summary). Live dry runs also need disclosure approval and fake data;
   never submit them.
 - Illinois Wesleyan University men's baseball dry-run findings, supplied for
   https://questionnaires.armssoftware.com/8b8ac3c4ffef:
@@ -401,7 +425,8 @@ an answer from silence, other profile data, another school's answer or a prior
 run. Record school, URL, field label, kind, exact wording/options, family's
 exact answer, and date in `consents.records`; unanswered means null and remains
 blank. Ask once per item when it appears and show the answer again in that
-school's final review. If wording changes, collect a fresh answer to the new text.
+school's final review. If wording changes, collect a fresh answer to the new
+text.
 
 ### Opt-in rule
 
@@ -460,17 +485,17 @@ specifically too. A listed action is approved only for exactly what was shown;
 an unlisted action still needs its own approval. Implicit contact authorization
 always needs exact live wording before its triggering action.
 
-Ask once: "Does this look right? Reply 'Yes, fill these forms' to approve."
-One explicit Yes approves both profile and school list and only the listed
-one-time actions. Do not ask for separate profile/list approvals. Store reviewed
+Ask once: "Does this look right? Reply 'Yes, fill these forms' to approve." One
+explicit Yes approves both profile and school list and only the listed one-time
+actions. Do not ask for separate profile/list approvals. Store reviewed
 snapshots under local `reports/`, excluding `approvals` from the profile copy.
 Record the one Yes as BOTH `approvals.full_profile` and
 `approvals.final_school_list` entries with the same family quote and date, but
 separate SHA-256 values: the profile snapshot hash in `approvals.full_profile`
-and the school-list snapshot hash in `approvals.final_school_list`. Record listed
-action approvals in `approvals.school_actions` and the local action log.
-Null approvals or an earlier general "go ahead" do not count.
-Additions and changes follow section 1; retain the original reviewed copies.
+and the school-list snapshot hash in `approvals.final_school_list`. Record
+listed action approvals in `approvals.school_actions` and the local action log.
+Null approvals or an earlier general "go ahead" do not count. Additions and
+changes follow section 1; retain the original reviewed copies.
 
 Use **the computer-use tool in the app on macOS or Windows** to fill the
 verified forms. Review every entered field, all sections and validation errors.
@@ -489,8 +514,9 @@ hidden IDs. Explain hidden consent blockers in plain words under
 Needs-your-answer; do not list technical fields. Keep the review compact without
 omitting visible fields or blockers. Include newly supplied answers, resolve
 blockers and confirm changes under section 1 before asking: "Approve submitting
-this reviewed questionnaire to [school/team] at [URL] now?" Wait for a fresh explicit Yes; record it as a school
-action. For FrontRush, the family then solves any CAPTCHA themselves, then
+this reviewed questionnaire to [school/team] at [URL] now?" Wait for a fresh
+explicit Yes; record it as a school action. For FrontRush, the family then
+solves any CAPTCHA themselves, then
 Submit. Approval for one school does not cover another, a retry or a
 resubmission. Never submit early via Enter, Next/Finish or another send action.
 Treat any action sending a completed questionnaire as Submit.
@@ -511,7 +537,7 @@ unapproved gate.
 
 After each school and at the end, save a local Markdown report in `reports/`:
 
-| School | Sport/team | Form link | Status | Reason or missing fields | Evidence/time |
+|School|Sport/team|Form link|Status|Reason or missing fields|Evidence/time|
 |---|---|---|---|---|---|
 
 Use exactly these internal statuses:
@@ -521,10 +547,11 @@ Use exactly these internal statuses:
 - `failed`: unavailable/expired link, access/technical failure or no confirmed
   success. For uncertain outcomes record "submission unconfirmed; possible
   duplicate"; never retry automatically.
-- `needs-info`: missing answers/approvals, unresolved choices/consents or required
-  empty/broken controls; list exact blockers. For unvisited schools record
-  "not attempted" and the pending gate; never invent a URL. For dry runs record
-  "dry run stopped before Submit; submission intentionally disabled" plus blockers.
+- `needs-info`: missing answers/approvals, unresolved choices/consents or
+  required empty/broken controls; list exact blockers. For unvisited schools
+  record "not attempted" and the pending gate; never invent a URL. For dry runs
+  record "dry run stopped before Submit; submission intentionally disabled" plus
+  blockers.
 
 Show parents one line per school with sport/team and link:
 
@@ -532,13 +559,14 @@ Show parents one line per school with sport/team and link:
 - "Not sent: why" for failures. If uncertain: "We could not confirm it was sent;
   it may already have gone through. Do not send it again yet."
 - "Needs your answer: what" for unresolved blockers; for dry runs: "Needs your
-  answer: test stopped before sending; sending is disabled" plus blockers;
-  for unvisited schools: "Needs your answer: not started; [pending approval/answer]".
-  If URL unknown say "link not verified yet".
+  answer: test stopped before sending; sending is disabled" plus blockers; for
+  unvisited schools: "Needs your answer: not started; [pending
+  approval/answer]". If URL unknown say "link not verified yet".
 
 Keep evidence/time and internal codes local. Use plain parent-facing words:
 "official link" and "saved copy of the answers you reviewed".
 Keep local per-school action logs with URLs, approvals, current step, missing
 fields, confirmation evidence and whether Submit was attempted. On resume never
 resubmit confirmed schools. Full profiles belong only in private review copies,
-not routine reports. No external reporting or contacting schools to check receipt.
+not routine reports. No external reporting or contacting schools to check
+receipt.

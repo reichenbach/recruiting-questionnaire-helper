@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -202,12 +203,71 @@ def phrases_in(text, phrases, context):
         require(phrase in text, context + " missing rule: " + phrase)
 
 
+def overlong_markdown_lines(raw):
+    """Return line numbers only; exempt fences, tables and URL-only lines."""
+    overlong = []
+    fence = None
+    for number, line in enumerate(raw.splitlines(), 1):
+        marker = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
+        if fence:
+            if (marker and marker[1][0] == fence[0] and
+                    len(marker[1]) >= len(fence) and not line[marker.end():].strip()):
+                fence = None
+            continue
+        if marker:
+            fence = marker[1]
+            continue
+        if line.lstrip().startswith("|") or re.fullmatch(
+                r'\s*(?:>\s*)?["\'(<`]*https?://[^\s]+\s*', line):
+            continue
+        if len(line) > 80:
+            overlong.append(number)
+    return overlong
+
+
+OLD_ALIGNMENT_PATTERNS = (
+    ("two explicit approvals", r"\btwo explicit approvals\b"),
+    ("two approvals", r"\btwo approvals\b"),
+    ("heading actually", r"\bheading actually\b"),
+    ("read its heading back", r"\bread (?:its|the) heading back\b"),
+    ("heading is Example Domain", r'\bheading is ["“]?example domain\b'),
+    ('reads "Example Domain"', r'\breads? ["“]example domain["”]'),
+    ("approve profile and school list separately",
+     r"\bapprov(?:e|ing) (?:the )?(?:full )?profile and (?:the )?"
+     r"(?:final )?school[- ]list separately\b"),
+    ("separate profile and school list approvals",
+     r"\b(?:separate (?:profile(?:/| and )school[- ]list) approvals|"
+     r"(?:profile(?:/| and )school[- ]list) approvals separately)\b"),
+)
+
+
+def check_legacy_alignment(pages, *, strict=False):
+    """Warn on other branches' old launchers; reject mixed or strict wording."""
+    failures = []
+    for name, raw in sorted(pages.items()):
+        text = normalized(raw)
+        for phrase, pattern in OLD_ALIGNMENT_PATTERNS:
+            if not re.search(pattern, text):
+                continue
+            # Print only fixed rule labels and package filenames, never values.
+            print("WARN: " + name + " still has old wording (" + phrase +
+                  "); enforce after branches merge")
+            if "yes, fill these forms" in text or strict:
+                failures.append(name + " (" + phrase + ")")
+    require(not failures, "Legacy alignment check failed: " + "; ".join(failures))
+    if strict:
+        print("PASS: strict legacy alignment")
+
+
 def check_refinements(pages, cursor_boundaries=None):
     """Check policy clauses in their relevant blocks without echoing family data."""
     agents = pages["AGENTS.md"]
     boundaries = agents.split("## Boundaries\n", 1)[1].split("\n## ", 1)[0]
-    require(boundaries == EXPECTED_BOUNDARIES,
-            "AGENTS.md Boundaries must match the base verbatim plus the coach-contact sentence")
+    require(" ".join(boundaries.split()) == " ".join(EXPECTED_BOUNDARIES.split()),
+            "AGENTS.md Boundaries must match the base wording plus the coach-contact sentence")
+    overlong = overlong_markdown_lines(agents)
+    require(not overlong, "AGENTS.md lines exceed 80 columns: " +
+            ", ".join(map(str, overlong)))
     if cursor_boundaries is not None:
         phrases_in(normalized(cursor_boundaries), (
             "never contact coaches", "no payments", "never type, request or save passwords",
@@ -229,6 +289,11 @@ def check_refinements(pages, cursor_boundaries=None):
             "coach email or phone number already shown in the approved profile",
             "or on the school's own form", "only these fold into", "submit",
             "review without extra confirmation", "fresh",
+            "any consent, any file, a new phone number or contact",
+            "that could trigger sms/ai-contact authorization, an arms profile",
+            "school/sport/team (or form link) is never folded in silently",
+            "ask one specific question about just that item first, before acting",
+            "show it again in that school's per-submit review",
         ), name + " small additions")
         changes = text.split("for later additions or changes", 1)[1]
         end_marker = "filling and sending" if name == "README.md" else "record additions in reports"
@@ -301,31 +366,45 @@ def check_refinements(pages, cursor_boundaries=None):
             "form type", "vendor", "must match", "recruiting marketplace or ncsa/recruiting-profile links do not count",
             "must not be visited", "official site is blocked or unreadable", "stop",
             "school's official page would not load", "open it in the browser", "when it loads",
+            "a link from an official page to a recruiting marketplace, ncsa or any "
+            "profile-building page does not count as verified and must not be visited",
+            "stop that school", "never bypass", "aws web-application firewall", "cloudflare",
         ), name + " official form verification")
         if name != "README.md":
             phrases_in(text, ("silently require", "target_schools", "aws web-application firewall",
-                              "cloudflare", "never bypass", "never show parents internal terms"),
+                              "cloudflare", "never bypass", "never show parents internal terms",
+                              "stop if provenance or team identity remains unclear"),
                        name + " internal verification")
+        else:
+            require("stop if the official form link or school/team remains unclear" in text,
+                    name + " must explain the official-site stop in plain words")
     phrases_in(normalized(agents), ("stop if provenance or team identity remains unclear",),
                "AGENTS.md internal stop")
 
-    private_folder_line = (
-        "I'm keeping your family's information in a private folder on this computer, not in cloud storage."
-    ).lower()
     for name in ("AGENTS.md", "CHATGPT_PROMPT.md", "START_PROMPT.md", "README.md",
                  "prompts/start.md", "prompts/first-run-check.md"):
         text = normalized(pages[name])
         phrases_in(text, (
-            "quietly check the actual folder path", "desktop/documents folder syncing to icloud/onedrive",
-            "icloud drive", "dropbox", "onedrive", "google drive", "do not ask the parent",
-            "copy the package to a new non-synced folder in the home directory", "~/recruitinghelper",
+            "for an agent-created package folder (download/clone/unzip), silently create a new folder "
+            "directly in the home directory",
+            "never create it on desktop, in documents, or in a synced location",
+            "say nothing about sync",
+            "when reusing an already-open folder, quietly check the actual folder path",
+            "icloud drive", "dropbox", "onedrive", "google drive",
+            "or under ~/desktop or ~/documents on macos, ask one plain sentence for permission",
+            "may i keep your family's information in a new private folder in your home directory instead?",
+            "icloud desktop & documents sync is invisible from the path",
+            "wait for yes before copying the package to a new non-synced folder directly in the home directory",
+            "~/recruitinghelper",
             "adding a number if the name exists", "never overwrite an existing folder",
-            private_folder_line, "work there; save no family data in a synced location",
+            "save no family data in the reused desktop/documents or synced location while waiting",
+            "work there; save no family data in a synced location",
             "if the app cannot open that folder", "folder-access step",
-            "if the folder is not synced, say nothing about sync",
+            "otherwise say nothing about sync",
         ), name + " local-folder setup")
-        require(not re.search(r"ask permission to use a local folder|asks to use a local folder", text),
-                name + " must relocate a synced package without a folder-choice question")
+        require("do not ask the parent" not in text and
+                "i'm keeping your family's information in a private folder on this computer" not in text,
+                name + " must not retain silent relocation of an already-open folder")
     for name, raw in pages.items():
         if name.startswith("prompts/"):
             require(not re.search(r"two explicit approvals|any change requires re-approval", normalized(raw)),
@@ -623,7 +702,7 @@ def main():
     policies = {name: (ROOT / name).read_text(encoding="utf-8") for name in policy_names}
     cursor_path = ROOT / ".cursor/rules/hard-boundaries.mdc"
     check_refinements(policies, cursor_path.read_text(encoding="utf-8") if cursor_path.exists() else None)
-    print("PASS: base Boundaries, single-summary hashes, non-sensitive additions, specific action gates, official-site stops and non-synced setup")
+    print("PASS: base Boundaries, 80-column rules, single-summary hashes, non-sensitive additions, specific action gates, official-site stops and private-folder setup")
     first_run = " ".join((ROOT / "prompts/first-run-check.md").read_text(encoding="utf-8").lower().split())
     require("displayed page text" in first_run and "example domain" in first_run,
             "First-run prompt must use displayed page text")
@@ -679,8 +758,20 @@ def main():
                 continue
             require((page.parent / link.split("#")[0]).exists(), "Broken relative link in " + name)
     print("PASS: local Markdown links")
+    legacy_names = ["CLAUDE_PROMPT.md", "CURSOR_PROMPT.md", "CLAUDE.md"]
+    legacy_names.extend(path.relative_to(ROOT).as_posix()
+                        for path in (ROOT / ".cursor/rules").rglob("*") if path.is_file())
+    check_legacy_alignment(
+        {name: (ROOT / name).read_text(encoding="utf-8") for name in legacy_names},
+        strict=os.environ.get("RQ_STRICT_ALIGN") == "1",
+    )
     print("All offline package checks passed. No live forms were used or submitted.")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except AssertionError as error:
+        # Rule failures need no traceback containing this computer's home path.
+        print("FAIL: " + str(error))
+        raise SystemExit(1) from None

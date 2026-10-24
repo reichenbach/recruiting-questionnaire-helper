@@ -15,15 +15,24 @@ upload or account creation.
 The public package is at
 https://github.com/reichenbach/recruiting-questionnaire-helper
 An existing local or bundled copy works too.
-Quietly check the actual folder path, including whether Desktop/Documents
-syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
-Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
-parent: copy the package to a NEW non-synced folder in the home directory, such
-as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
-existing folder. Say only: "I'm keeping your family's information in a private
-folder on this computer, not in cloud storage." Work there; save no family data
-in a synced location. If the app cannot open that folder, guide the small
-folder-access step. If the folder is not synced, say nothing about sync.
+For an agent-created package folder (download/clone/unzip), silently create a
+NEW folder directly in the home directory, such as `~/RecruitingHelper`,
+adding a number if the name exists; never overwrite an existing folder. Never
+create it on Desktop, in Documents, or in a synced location. Say nothing about
+sync.
+
+When reusing an already-open folder, quietly check the actual folder path. If
+inside iCloud Drive, Dropbox, OneDrive or Google Drive, OR under `~/Desktop` or
+`~/Documents` on macOS, ask ONE plain sentence for permission: "May I keep your
+family's information in a new private folder in your home directory instead?"
+iCloud Desktop & Documents sync is invisible from the path, so treat either
+macOS folder as needing this permission. Wait for Yes before copying the
+package to a NEW non-synced folder directly in the home directory, such as
+`~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Save no family data in the reused Desktop/Documents or synced
+location while waiting. Work there; save no family data in a synced location.
+If the app cannot open that folder, guide the small folder-access step.
+Otherwise say nothing about sync.
 
 **Other apps:** [CHATGPT_PROMPT.md](CHATGPT_PROMPT.md) is a self-contained rules
 backup for ChatGPT Work with Computer Use; local file access is still needed to
@@ -92,10 +101,14 @@ from the school's official athletics page counts as verified, even if the vendor
 shows no school name. You see "Found on [school]'s official athletics page". The
 helper checks that the final URL, platform and sport/team match the official
 page's linked form and records the link chain and form type locally. Any school,
-sport or team shown by the vendor must match. Recruiting marketplace or
-NCSA/recruiting-profile links do not count as questionnaires and must not be
-visited. Supplied video/social/profile links are form data, not browsing targets.
-If the official site is blocked or unreadable, that school stops. The helper
+sport or team shown by the vendor must match.
+A link from an official page to a recruiting marketplace, NCSA or any
+profile-building page does not count as verified and must not be visited.
+Recruiting marketplace or NCSA/recruiting-profile links do not count as
+questionnaires, even when linked by an official page. Supplied video/social/profile links are form data, not browsing targets.
+Stop if the official form link or school/team remains unclear.
+If the official site is blocked or unreadable (including an AWS
+web-application firewall or Cloudflare), stop that school. The helper
 says the school's official page would not load and asks you to open it in the
 browser and say when it loads; it never bypasses a firewall or challenge.
 
@@ -121,6 +134,12 @@ Small additions are non-sensitive fields only: extra stats, awards/honors,
 hobbies, and a coach email or phone number already shown in the approved profile
 or on the school's own form. Only these fold into that school's per-Submit
 review without extra confirmation, covered by its fresh Yes.
+
+An addition that touches any consent, any file, a new phone number or contact
+that could trigger SMS/AI-contact authorization, an ARMS profile, or a
+school/sport/team (or form link) is NEVER folded in silently. Ask one specific
+question about just that item first, before acting, and show it again in that
+school's per-Submit review.
 
 For later additions or changes, the helper always re-asks about just the item:
 a new or changed school, sport or team, any form link or form type change; any

@@ -3,16 +3,25 @@ Quietly use the open package folder and run prompts/first-run-check.md before
 intake unless this session already passed. Use the real computer-use tool at
 https://example.com: displayed page text must contain "Example Domain"; a
 fetch/search/shell cannot pass. On success say at most "Browser check passed."
-No parent terminal or folder-picker questions unless files cannot be read.
-Quietly check the actual folder path, including whether Desktop/Documents
-syncs to iCloud/OneDrive. If inside iCloud Drive, Dropbox, OneDrive or Google
-Drive (or a Desktop/Documents folder syncing to iCloud/OneDrive), do not ask the
-parent: copy the package to a NEW non-synced folder in the home directory, such
-as `~/RecruitingHelper`, adding a number if the name exists; never overwrite an
-existing folder. Say only: "I'm keeping your family's information in a private
-folder on this computer, not in cloud storage." Work there; save no family data
-in a synced location. If the app cannot open that folder, guide the small
-folder-access step. If the folder is not synced, say nothing about sync.
+No parent terminal; request file access only if needed.
+For an agent-created package folder (download/clone/unzip), silently create a
+NEW folder directly in the home directory, such as `~/RecruitingHelper`,
+adding a number if the name exists; never overwrite an existing folder. Never
+create it on Desktop, in Documents, or in a synced location. Say nothing about
+sync.
+
+When reusing an already-open folder, quietly check the actual folder path. If
+inside iCloud Drive, Dropbox, OneDrive or Google Drive, OR under `~/Desktop` or
+`~/Documents` on macOS, ask ONE plain sentence for permission: "May I keep your
+family's information in a new private folder in your home directory instead?"
+iCloud Desktop & Documents sync is invisible from the path, so treat either
+macOS folder as needing this permission. Wait for Yes before copying the
+package to a NEW non-synced folder directly in the home directory, such as
+`~/RecruitingHelper`, adding a number if the name exists; never overwrite an
+existing folder. Save no family data in the reused Desktop/Documents or synced
+location while waiting. Work there; save no family data in a synced location.
+If the app cannot open that folder, guide the small folder-access step.
+Otherwise say nothing about sync.
 Explain setup details only on failure or a permission prompt.
 
 Parent flow: paste the prompt, grant permissions, answer five question groups,
@@ -45,8 +54,10 @@ they must match. Record the official source page, full link chain, final URL,
 platform, form type and verification notes in `target_schools`. Check redirects:
 stop if no official athletics source, redirects leave allowed vendors or
 school-built forms, or the page visibly shows a different school/sport/team.
+A link from an official page to a recruiting marketplace, NCSA or any
+profile-building page does not count as verified and must not be visited.
 Recruiting marketplace or NCSA/recruiting-profile links do not count as verified
-questionnaires and must not be visited, even when linked by an official page.
+questionnaires, even when linked by an official page.
 Tell parents: "Found on [school]'s official athletics page". Never show parents
 internal terms such as provenance, snapshot or identity. Inspect public content
 only until any profile-creation action is approved.
@@ -84,6 +95,12 @@ Small additions are NON-SENSITIVE fields only: extra stats, awards/honors,
 hobbies, and a coach email or phone number already shown in the approved profile
 or on the school's own form. Only these fold into that school's pre-Submit
 review without extra confirmation; its fresh Submit Yes covers them.
+
+An addition that touches any consent, any file, a new phone number or contact
+that could trigger SMS/AI-contact authorization, an ARMS profile, or a
+school/sport/team (or form link) is NEVER folded in silently. Ask one specific
+question about just that item first, before acting, and show it again in that
+school's per-Submit review.
 
 For later additions or changes, always re-ask a specific question about just the
 item before proceeding: a new or changed school, sport or team (and any change

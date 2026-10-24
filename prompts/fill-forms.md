@@ -24,6 +24,12 @@ hobbies, and a coach email or phone number already shown in the approved profile
 or on the school's own form. Only these fold into that school's pre-Submit
 review without extra confirmation; its fresh Submit Yes covers them.
 
+An addition that touches any consent, any file, a new phone number or contact
+that could trigger SMS/AI-contact authorization, an ARMS profile, or a
+school/sport/team (or form link) is NEVER folded in silently. Ask one specific
+question about just that item first, before acting, and show it again in that
+school's per-Submit review.
+
 For later additions or changes, always re-ask a specific question about just the
 item before proceeding: a new or changed school, sport or team (and any change
 to a form link or form type); any consent/attestation answer (exact live wording,

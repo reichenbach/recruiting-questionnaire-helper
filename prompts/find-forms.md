@@ -16,8 +16,10 @@ they must match. Record the official source page, full link chain, final URL,
 platform, form type and verification notes in `target_schools`. Check redirects:
 stop if no official athletics source, redirects leave allowed vendors or
 school-built forms, or the page visibly shows a different school/sport/team.
+A link from an official page to a recruiting marketplace, NCSA or any
+profile-building page does not count as verified and must not be visited.
 Recruiting marketplace or NCSA/recruiting-profile links do not count as verified
-questionnaires and must not be visited, even when linked by an official page.
+questionnaires, even when linked by an official page.
 Tell parents: "Found on [school]'s official athletics page". Never show parents
 internal terms such as provenance, snapshot or identity. Inspect public content
 only until any profile-creation action is approved.
