@@ -64,7 +64,10 @@ marketplace/NCSA/profile-building exclusions; blocked official sites; new privat
 home folders without overwrites and permission before relocating a reused
 Desktop/Documents or synced folder; required jersey/coach/eligibility
 follow-ups; CMU phone formatting; linked consent disclosures; and tool
-permissions not being family approval. Unchanged Claude/Cursor launcher checks
+permissions not being family approval. A separate Claude-only check covers CLAUDE_PROMPT.md
+and CLAUDE.md: one summary with both approval records and SHA-256, the
+displayed-page-text Example Domain check, and cloud-folder, CAPTCHA, each-Submit,
+Ryzer and marketplace/NCSA safeguards. Unchanged Claude/Cursor launcher checks
 remain in force. Outside a Git checkout, the personal-data scan covers the
 required package files and the validator itself. It does not
 prove how an agent or a live form will behave.

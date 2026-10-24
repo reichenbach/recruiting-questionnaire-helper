@@ -710,6 +710,29 @@ def main():
             "First-run prompt must not require heading narration")
     print("PASS: five groups, one summary approval, displayed-text browser check, official links, logged additions and safety gates")
 
+    # Claude launcher files: same simplified flow, checked separately because
+    # they do not list the five groups as a numbered list.
+    for name in ("CLAUDE_PROMPT.md", "CLAUDE.md"):
+        raw = (ROOT / name).read_text(encoding="utf-8")
+        text = " ".join(re.sub(r"[*`#]", "", raw).lower().split())
+        require("one summary" in text or "yes, fill these forms" in text,
+                name + " must describe the one summary approval")
+        for phrase in ("approvals.full_profile", "approvals.final_school_list",
+                       "sha-256", "displayed page text", "example domain"):
+            require(phrase in text, name + " missing simplified-flow anchor: " + phrase)
+        for phrase in ("two explicit approvals", "heading actually",
+                       "destination identity unresolved"):
+            require(phrase not in text, name + " must not contain old wording: " + phrase)
+    claude_prompt = " ".join(re.sub(r"[*`#]", "", (ROOT / "CLAUDE_PROMPT.md").read_text(
+        encoding="utf-8")).lower().split())
+    for phrase in ("yes, fill these forms", "icloud drive", "dropbox", "onedrive",
+                   "google drive", "captcha", "each submit", "ryzer", "no thanks",
+                   "marketplace"):
+        require(phrase in claude_prompt, "CLAUDE_PROMPT.md missing: " + phrase)
+    require(re.search(r"marketplace, ncsa.{0,60}not verified", claude_prompt),
+            "CLAUDE_PROMPT.md must exclude marketplace/NCSA links from verification")
+    print("PASS: Claude prompt and CLAUDE.md use one summary approval, displayed-text check and safety gates")
+
     verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
     backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")
     south_dakota_primary = "https://questionnaires.armssoftware.com/eafc4e7429b0"

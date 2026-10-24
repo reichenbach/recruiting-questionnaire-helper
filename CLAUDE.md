@@ -26,17 +26,27 @@ The setup steps in `prompts/first-run-check.md` and `START_PROMPT.md` are for
 ChatGPT/Codex. On Claude, run the same AGENTS.md section 0 check with Claude's
 own controls instead:
 
+- Setup is quiet, as in AGENTS.md section 0: no folder-picker or sync questions.
+  If Claude creates the package folder itself, silently make a new folder
+  directly in the home folder, such as `~/RecruitingHelper` (add a number if the
+  name exists; never overwrite), never on Desktop, in Documents or in a synced
+  location. If it reuses an already-open folder, quietly check the path; if it
+  is inside iCloud Drive, Dropbox, OneDrive or Google Drive, or under
+  `~/Desktop` or `~/Documents` on a Mac, ask the one sentence in AGENTS.md
+  section 0 and wait for Yes before copying the package to a new non-synced
+  folder. Otherwise say nothing about sync.
 - **Computer use in the Claude desktop app:** help the parent turn it on in the
   app, if the app offers it. On a Mac, the parent grants **Screen Recording**
-  and **Accessibility** when macOS asks. Explain each app-access prompt before
-  they approve it. Never bypass a system prompt.
+  and **Accessibility** when macOS asks. Explain these prompts only when they
+  appear or something fails. Never bypass a system prompt.
 - **Claude in Chrome:** the parent installs and signs in to the extension
   themselves and grants site access when asked. It works in the parent's real
   Chrome with their own sign-ins. Open forms in a new tab. Do not read, use or
   close other tabs, email or accounts.
-- Either way, open https://example.com, read the heading actually shown on the
-  page, and pass only if it says **Example Domain**. Pause intake until it
-  works.
+- Either way, open https://example.com with that same tool and pass only if the
+  displayed page text contains **Example Domain**. On success say at most
+  "Browser check passed." Do not ask the parent to read anything back. Pause
+  intake until it works.
 
 ## Permission prompts and approvals
 
@@ -71,6 +81,9 @@ own controls instead:
 ## Parent setup prompt
 
 Parents using a Claude app paste [CLAUDE_PROMPT.md](CLAUDE_PROMPT.md). It
-follows the same order as START_PROMPT.md: get the package, run the first-run
-check before any family data, do intake, review and approve, fill forms, then
-give a separate Yes before each Submit.
+follows the same order as START_PROMPT.md: get the package quietly, run the
+first-run check before any family data, ask the five question groups, show one
+summary and get one "Yes, fill these forms" approval (recorded with the same
+quote and date and separate SHA-256 values in approvals.full_profile and
+approvals.final_school_list), fill forms, then ask for a separate, fresh
+school-specific Yes before each Submit.
