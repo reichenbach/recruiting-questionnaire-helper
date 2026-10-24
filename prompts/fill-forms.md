@@ -48,13 +48,15 @@ of filling; otherwise record that the relationship needs their answer and Save
 needs approval. Map odd HS positions (0, Middle, Outside) only with their
 confirmation.
 
-JumpForward high-school fields stay disabled until a typeahead suggestion is
-selected. Search the school name only (name plus city or ZIP finds nothing)
-and verify the city/state in the suggestion. It has no not-listed option for
-high schools; if none matches, stop that school as needs-info. Never pick
-another school or bypass disabled fields. Close the date picker if it covers
-email/mobile before typing. Block/approach touch are free text;
-height is a dropdown. ARMS "Verify Your Details to Create a Profile" and Visitor
+On JumpForward, set Country first, before typing anything else. Country
+defaults to United States; changing it reloads the page through a server
+postback, so recheck every field after. High-school fields stay disabled until
+a typeahead suggestion is selected. Search the school name only (name plus city
+or ZIP finds nothing) and verify the city/state in the suggestion. It has no
+not-listed option for high schools; if none matches, stop that school as
+needs-info. Never pick another school or bypass disabled fields. Close the date
+picker if it covers email/mobile before typing. Block/approach touch are free
+text; height is a dropdown. ARMS "Verify Your Details to Create a Profile" and Visitor
 Details keep every profile-creation approval gate.
 
 Never type, request or save passwords; the family signs in themselves.

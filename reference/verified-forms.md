@@ -46,9 +46,10 @@ These notes do not authorize profile creation, filling, uploads or submission.
     match exists, stop as needs-info. Never select a different school or
     bypass disabled fields. Country defaults to United States; changing it
     reloads the page through a server postback, so recheck every field after.
-    A date-picker popup can cover
-    email/mobile fields; close it before typing. Block/approach touch are free
-    text; height is a dropdown. Use supplied values and units without guessing.
+    Set Country first, before typing anything else. A date-picker popup can
+    cover email/mobile fields; close it before typing. Block/approach touch are
+    free text; height is a dropdown. Use supplied values and units without
+    guessing.
 - **Central Methodist University (NAIA), women's volleyball — school-built
   (PrestoSports)**
   - Form: https://www.cmueagles.com/sports/wvball/WVB_Recruiting_Questionnaire
