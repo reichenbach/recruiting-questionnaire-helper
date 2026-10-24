@@ -50,7 +50,10 @@ has open, or ask me to share the package. Apply this to every later fetch too.
    group.
 7. When intake is done, show ONE summary: the full profile (including files,
    unanswered items and consent choices) and the final school list with the
-   official questionnaire link for each school. I approve it once, with a single
+   official questionnaire link for each school. If a school's form (such as
+   ARMS) will create a school-side profile or account, list that action in the
+   summary, naming it and the disclosure the form shows, so my one yes covers
+   it. I approve it once, with a single
    yes, before you enter any family data. Record that one yes as BOTH entries in
    `approvals` (full profile and final school list), each with my words, the
    date and the SHA-256 of its own saved snapshot (the profile snapshot and the
@@ -92,10 +95,12 @@ has open, or ask me to share the package. Apply this to every later fetch too.
 
 - I solve every captcha and sign-in myself. A tool-permission click is never
   family approval.
-- Ask before creating any account or school-side profile. Stop before ARMS
-  Visitor Details / Verify Your Details to Create a Profile until I give a
-  separate yes to creating that profile. Ryzer: check for the hidden pre-checked
-  Ryzer opt-in (AGENTS.md section 3), show its wording, then stop and ask me.
+- Create an account or school-side profile only if it is listed in the summary
+  I approved (naming the action and its disclosure); otherwise stop and ask.
+  Stop before ARMS Visitor Details / Verify Your Details to Create a Profile
+  unless that profile creation is listed in the summary. Ryzer: check for the
+  hidden pre-checked Ryzer opt-in (AGENTS.md section 3), show its wording, then
+  stop and ask me.
 - Immediately before EACH Submit, show that school's URL, entered values,
   consent answers, preset choices and files, and wait for my fresh Yes for that
   school. Never click final Submit without it, never retry an uncertain
