@@ -15,17 +15,19 @@ never crash or stall on a fetch.
 
 ## Setup (mostly quiet)
 
-1. Use the open folder if it has AGENTS.md, profile.template.json, prompts/,
-   reference/ and .cursor/rules/. Check that folder's path. If it is inside
-   iCloud, Dropbox, OneDrive, Google Drive or a synced Desktop or Documents
-   folder, quietly copy it to a new ~/RecruitingHelper (add a number suffix if
-   that exists; never overwrite), work from the copy, say one sentence about it
-   and ask nothing. If there is no package folder, get the package and unzip it
-   for me into a new ~/RecruitingHelper (same suffix rule), silently, never
-   inside a synced or shared location. Do not ask me about folder locations or
-   cloud sync. Open the folder as the Cursor project; if Cursor needs me to
-   grant folder access, walk me through that one click. Keep family data only
-   inside it.
+1. Folder (AGENTS.md section 0 is the source). If I have no package folder and
+   you download, clone or unzip one, silently create a NEW folder directly in my
+   home directory, such as ~/RecruitingHelper (add a number if the name exists;
+   never overwrite), never on Desktop, in Documents or in a synced location, and
+   say nothing about sync. If you reuse an already-open folder, quietly check
+   its actual path. If it is inside iCloud Drive, Dropbox, OneDrive or Google
+   Drive, OR under ~/Desktop or ~/Documents on a Mac, ask ONE sentence: "May I
+   keep your family's information in a new private folder in your home directory
+   instead?" and wait for Yes before copying the package to a new non-synced
+   folder in the home directory (same naming rule). Save no family data in the
+   old folder meanwhile. Otherwise say nothing about sync. If Cursor needs me to
+   grant folder access, walk me through that one click. Keep family data only in
+   the final folder.
 2. Read AGENTS.md, README.md, prompts/ and reference/recruiting-intake-tree.md.
    Do not edit the reference or the blank template. Do not commit or push.
 3. Run prompts/first-run-check.md quietly with safe defaults: package files
@@ -58,17 +60,22 @@ never crash or stall on a fetch.
    unanswered items and consent choices) and the final school list with the
    official questionnaire link for each school. If a school's form (such as
    ARMS) will create a school-side profile or account, list that action in the
-   summary, naming it and the disclosure the form shows, so my one yes covers
-   it. I approve it once, with a single yes, before you enter any family data.
-   Record that one yes as BOTH entries in `approvals` (full profile and final
-   school list), each with my words, the date and the SHA-256 of its own saved
-   snapshot (the profile snapshot and the school-list snapshot), as AGENTS.md
-   requires. "Small additions" means non-sensitive extras only: more stats,
-   awards, or a coach email already shown on a form. Add them, list them in the
-   same per-Submit review, and do not ask for a full re-approval. ALWAYS ask
-   again for a new or changed school, sport or team; any consent answer; any
-   file; any contact or phone number that could trigger SMS or AI-contact
-   authorization; and anything involving an ARMS profile.
+   summary, naming it and the disclosure the form shows. Ask once: "Does this
+   look right? Reply 'Yes, fill these forms' to approve." That one Yes approves
+   both the profile and the school list and only the listed actions; you must
+   have it before you enter any family data. Never ask for separate profile and
+   list approvals. Record that one Yes as BOTH `approvals.full_profile` and
+   `approvals.final_school_list`, with the same quote and date but separate
+   SHA-256 values for the profile snapshot and the school-list snapshot, as
+   AGENTS.md requires. "Small additions" means non-sensitive extras only: more
+   stats, awards, hobbies, or a coach email or phone number already shown in the
+   approved profile or on that school's form. Add them and list them in that
+   school's per-Submit review; no extra confirmation. For anything else, ask one
+   specific question about just that item before acting (not a full
+   re-approval): a new or changed school, sport or team (or form link); any
+   consent answer; any file; any contact or phone number that could trigger SMS
+   or AI-contact authorization; and anything touching an ARMS profile that was
+   not listed in the summary. Show it again in that school's per-Submit review.
 
 ## Finding and filling forms
 

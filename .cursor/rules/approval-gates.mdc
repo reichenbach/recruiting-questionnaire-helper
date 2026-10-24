@@ -35,11 +35,14 @@ now?" Wait for an explicit Yes. Approval for one school does not cover another,
 a retry or a resubmission. Treat any action that sends a completed questionnaire
 as Submit.
 
-Before entering family data, get the parent's approval of ONE summary that
-covers the full profile and the final school list with each official form URL.
-Record that one yes as BOTH `approvals` entries, each with its own snapshot
-SHA-256. Small additions (non-sensitive extras only) go in the per-Submit review
-without re-approval. ALWAYS re-ask for a new or changed school, sport or team;
-any consent answer; any file; any contact or phone number that could trigger
-SMS or AI-contact authorization; and anything involving an ARMS profile. See
-CURSOR_PROMPT.md step 7; if wording differs, apply the stricter one.
+Before entering family data, get the parent's ONE approval ("Yes, fill these
+forms") of the summary covering the full profile and the final school list with
+each official form URL; never ask for separate profile and list approvals.
+Record that Yes as BOTH `approvals.full_profile` and
+`approvals.final_school_list` with the same quote and date but separate SHA-256
+snapshot values. Small additions (non-sensitive extras only) go in the
+per-Submit review without re-approval. ALWAYS re-ask a specific question about
+just the item for a new or changed school, sport or team; any consent answer;
+any file; any contact or phone number that could trigger SMS or AI-contact
+authorization; and anything touching an ARMS profile not listed in the summary.
+See CURSOR_PROMPT.md step 7; if wording differs, apply the stricter one.
