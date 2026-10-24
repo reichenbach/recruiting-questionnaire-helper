@@ -26,17 +26,24 @@ The setup steps in `prompts/first-run-check.md` and `START_PROMPT.md` are for
 ChatGPT/Codex. On Claude, run the same AGENTS.md section 0 check with Claude's
 own controls instead:
 
+- Setup is quiet, as in AGENTS.md section 0: reuse the open package folder
+  without folder-picker or sync questions. Only if its actual path is inside
+  iCloud Drive, Dropbox, OneDrive or Google Drive, say so in one sentence and
+  ask to use a local folder instead. If Claude must create the folder itself,
+  make a new folder directly in the parent's home folder, not Desktop,
+  Documents, Downloads or a cloud-synced location.
 - **Computer use in the Claude desktop app:** help the parent turn it on in the
   app, if the app offers it. On a Mac, the parent grants **Screen Recording**
-  and **Accessibility** when macOS asks. Explain each app-access prompt before
-  they approve it. Never bypass a system prompt.
+  and **Accessibility** when macOS asks. Explain these prompts only when they
+  appear or something fails. Never bypass a system prompt.
 - **Claude in Chrome:** the parent installs and signs in to the extension
   themselves and grants site access when asked. It works in the parent's real
   Chrome with their own sign-ins. Open forms in a new tab. Do not read, use or
   close other tabs, email or accounts.
-- Either way, open https://example.com, read the heading actually shown on the
-  page, and pass only if it says **Example Domain**. Pause intake until it
-  works.
+- Either way, open https://example.com with that same tool and pass only if the
+  displayed page text contains **Example Domain**. On success say at most
+  "Browser check passed." Do not ask the parent to read anything back. Pause
+  intake until it works.
 
 ## Permission prompts and approvals
 
@@ -71,6 +78,9 @@ own controls instead:
 ## Parent setup prompt
 
 Parents using a Claude app paste [CLAUDE_PROMPT.md](CLAUDE_PROMPT.md). It
-follows the same order as START_PROMPT.md: get the package, run the first-run
-check before any family data, do intake, review and approve, fill forms, then
-give a separate Yes before each Submit.
+follows the same order as START_PROMPT.md: get the package quietly, run the
+first-run check before any family data, ask the five question groups, show one
+summary and get one "Yes, fill these forms" approval (recorded with the same
+quote and date and separate SHA-256 values in approvals.full_profile and
+approvals.final_school_list), fill forms, then ask for a separate, fresh
+school-specific Yes before each Submit.
