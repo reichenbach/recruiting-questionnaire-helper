@@ -1,5 +1,5 @@
 Read AGENTS.md and follow its section 0 before intake. Use the package obtained
-through START_PROMPT.md or an existing local/bundled copy; help the parent unzip
+through START_PROMPT.md (or CURSOR_PROMPT.md in Cursor) or an existing local/bundled copy; help the parent unzip
 and select the folder if needed. Every runtime repo/file fetch must follow
 START_PROMPT.md's single-attempt fallback: use a bounded timeout and handle
 errors; if private, 404, offline or blocked, say "I couldn't open the online
@@ -29,6 +29,26 @@ Guide the parent through Plugins > Computer Use > Install plugin or Enable.
 Turn on both the Computer Use server and skill
 toggles, then Try now. Review browser access in Settings > Computer use and
 explain the app-access prompt before the parent approves it.
+
+### If you use Cursor:
+
+Guide the parent through enabling Cursor's built-in Browser tool (Browser /
+browser MCP) in plain words:
+
+1. Open Cursor Settings (Cursor > Settings on Mac, or File > Preferences >
+   Settings on Windows/Linux).
+2. Go to Tools & MCP.
+3. Find Browser Automation and turn it on. Choose Browser Tab (Cursor's built-in
+   browser). Fully restart Cursor if needed, then open a new Agent chat in this
+   project folder.
+4. Explain that when the agent uses a browser tool, the parent should review and
+   approve each action for recruiting work (prefer manual approval over auto-run).
+
+In Cursor, the Browser tool is the computer-use tool for the check below. If it
+fails, also check that Browser Automation is on and set to Browser Tab, that
+Cursor was fully restarted, that a new Agent chat is open in this project, and
+that browser tool approvals are not blocked. The headless cursor-agent CLI has
+no Browser tool; use the Cursor desktop app.
 
 ## Permissions and browser check for any supported app
 

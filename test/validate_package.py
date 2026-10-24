@@ -159,11 +159,15 @@ def check_fixture(template, fixture, *, sport, city, postal_code, form_url):
 def main():
     required = [
         ".gitignore", "AGENTS.md", "README.md", "START_PROMPT.md",
-        "CHATGPT_PROMPT.md", "profile.template.json", "prompts/first-run-check.md",
-        "prompts/start.md", "prompts/find-forms.md", "prompts/fill-forms.md",
-        "prompts/report.md", "reference/recruiting-intake-tree.md",
-        "reference/sample-forms.md", "reference/verified-forms.md",
-        "test/dry-run-profile.json", "test/dry-run-profile-volleyball.json", "test/README.md",
+        "CHATGPT_PROMPT.md", "CURSOR_PROMPT.md", "profile.template.json",
+        "prompts/first-run-check.md", "prompts/start.md", "prompts/find-forms.md",
+        "prompts/fill-forms.md", "prompts/report.md",
+        "reference/recruiting-intake-tree.md", "reference/sample-forms.md",
+        "reference/verified-forms.md", "test/dry-run-profile.json",
+        "test/dry-run-profile-volleyball.json", "test/README.md",
+        ".cursor/rules/agents-source-of-truth.mdc",
+        ".cursor/rules/hard-boundaries.mdc",
+        ".cursor/rules/approval-gates.mdc",
     ]
     for name in required:
         require((ROOT / name).is_file(), "Missing package file: " + name)
