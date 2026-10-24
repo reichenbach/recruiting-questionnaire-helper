@@ -159,7 +159,8 @@ def check_fixture(template, fixture, *, sport, city, postal_code, form_url):
 def main():
     required = [
         ".gitignore", "AGENTS.md", "README.md", "START_PROMPT.md",
-        "CHATGPT_PROMPT.md", "profile.template.json", "prompts/first-run-check.md",
+        "CHATGPT_PROMPT.md", "CLAUDE.md", "CLAUDE_PROMPT.md",
+        "profile.template.json", "prompts/first-run-check.md",
         "prompts/start.md", "prompts/find-forms.md", "prompts/fill-forms.md",
         "prompts/report.md", "reference/recruiting-intake-tree.md",
         "reference/sample-forms.md", "reference/verified-forms.md",
@@ -364,12 +365,12 @@ def main():
             "README parent steps must contain the package repository URL")
     require(re.findall(repo_pattern, sharer_notes) == [repo_url],
             "README sharer notes must contain only the package repository URL")
-    for name in ("START_PROMPT.md", "CHATGPT_PROMPT.md"):
+    for name in ("START_PROMPT.md", "CHATGPT_PROMPT.md", "CLAUDE_PROMPT.md"):
         prompt = (ROOT / name).read_text(encoding="utf-8")
         require(set(re.findall(repo_pattern, prompt)) == {repo_url},
                 name + " must contain the same package repository URL as README")
     for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "README.md",
-                 "prompts/first-run-check.md"):
+                 "prompts/first-run-check.md", "CLAUDE_PROMPT.md"):
         instructions = " ".join((ROOT / name).read_text(encoding="utf-8").split())
         fallback_sentence = (
             "I couldn't open the online package, so I'll use a local copy or ask you to share it."
@@ -383,7 +384,14 @@ def main():
     agent_rules = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
     require(not re.search(r"codex|chatgpt", agent_rules, re.I),
             "AGENTS.md must use agent-neutral wording")
-    print("PASS: matching repository URLs, single-attempt fetch fallbacks and agent-neutral rules")
+    claude_rules = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+    require(re.search(r"^@AGENTS\.md$", claude_rules, re.M),
+            "CLAUDE.md must import AGENTS.md as the source of truth")
+    require("never auto-approve submit" in claude_rules.lower(),
+            "CLAUDE.md must forbid auto-approving Submit")
+    require("CLAUDE_PROMPT.md" in parent_notes,
+            "README parent steps must link CLAUDE_PROMPT.md")
+    print("PASS: matching repository URLs, single-attempt fetch fallbacks, agent-neutral rules and Claude import")
 
     verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
     backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")

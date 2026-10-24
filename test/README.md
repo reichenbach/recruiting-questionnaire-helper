@@ -45,9 +45,11 @@ checks. It checks blank template values, required field coverage, both fixtures'
 safety, source-list equality/count, source integrity, ignore behavior, relative
 Markdown links, personal-data patterns in all tracked text files and untracked
 non-ignored text files (skipping binaries), matching package repository URLs in
-START_PROMPT.md, CHATGPT_PROMPT.md and the README parent steps, single-attempt
-download fallback instructions including the exact shared fallback sentence,
-agent-neutral AGENTS.md wording, and four dated volleyball examples in
+START_PROMPT.md, CHATGPT_PROMPT.md, CLAUDE_PROMPT.md and the README parent
+steps, single-attempt download fallback instructions including the exact shared
+fallback sentence, agent-neutral AGENTS.md wording, CLAUDE.md importing
+AGENTS.md and forbidding auto-approved Submit, a README link to
+CLAUDE_PROMPT.md, and four dated volleyball examples in
 reference/verified-forms.md and the self-contained backup prompt. It never
 visits a site or fills/submits a form. Outside a Git checkout, the personal-data
 scan covers the required package files and the validator itself. It does not

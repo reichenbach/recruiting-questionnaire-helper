@@ -15,6 +15,12 @@
    asking questions. Keep it in a private local folder outside cloud sync or
    shared storage. If you have no copy, share or paste the package when asked.
 
+**Using Claude instead?** Paste all of [CLAUDE_PROMPT.md](CLAUDE_PROMPT.md)
+into the Claude desktop app with computer use, or into Claude in Chrome, if your
+Claude plan and app offer them. Claude Code is optional. The same check, review
+and per-Submit approvals apply; see [CLAUDE.md](CLAUDE.md) and
+https://support.anthropic.com for setup help.
+
 This folder helps a parent and athlete prepare one local profile, find official
 college recruiting questionnaires, and fill them using Computer Use. You review
 the answers, final school list, live consent wording and each completed form
