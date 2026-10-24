@@ -5,33 +5,39 @@ answers. Never ask me to type or run commands. Keep it simple: short plain
 questions, no jargon, no internal status wording.
 
 Get the package from https://github.com/reichenbach/recruiting-questionnaire-helper
-(git clone or ZIP). An existing local or bundled copy also works. Try the
-download once with a time limit. If it cannot be opened (private, 404, offline
-or blocked), say: "I couldn't open the online package, so I'll use a local copy
-or ask you to share it." Do not retry or try workarounds; use the folder Cursor
-has open, or ask me to share the package. Apply this to every later fetch too.
+(git clone or ZIP). An existing local or bundled copy also works. Try once
+only, with a bounded timeout. If the repo or any file cannot be opened
+(private, 404, offline or blocked), say: "I couldn't open the online package,
+so I'll use a local copy or ask you to share it." No retry loops, alternate
+download methods or sign-in attempts; use the folder Cursor has open, a bundled
+copy, or ask me to share the package. Apply this to every later fetch too, and
+never crash or stall on a fetch.
 
 ## Setup (mostly quiet)
 
 1. Use the open folder if it has AGENTS.md, profile.template.json, prompts/,
-   reference/ and .cursor/rules/. Otherwise get the package and unzip it for me
-   into a new local folder (never overwrite an existing one). Open it as the
-   Cursor project. If Cursor needs me to grant folder access, walk me through
-   that one click. Do not ask me about folder locations or cloud sync. Choose
-   the folder silently: a new local folder in my home directory, never inside
-   iCloud, Dropbox, OneDrive or any other synced or shared location. Keep family
-   data only inside it.
+   reference/ and .cursor/rules/. Check that folder's path. If it is inside
+   iCloud, Dropbox, OneDrive, Google Drive or a synced Desktop or Documents
+   folder, quietly copy it to a new ~/RecruitingHelper (add a number suffix if
+   that exists; never overwrite), work from the copy, say one sentence about it
+   and ask nothing. If there is no package folder, get the package and unzip it
+   for me into a new ~/RecruitingHelper (same suffix rule), silently, never
+   inside a synced or shared location. Do not ask me about folder locations or
+   cloud sync. Open the folder as the Cursor project; if Cursor needs me to
+   grant folder access, walk me through that one click. Keep family data only
+   inside it.
 2. Read AGENTS.md, README.md, prompts/ and reference/recruiting-intake-tree.md.
    Do not edit the reference or the blank template. Do not commit or push.
-3. Run prompts/first-run-check.md silently with safe defaults: package files
-   readable, a place to save progress, and Cursor's built-in Browser tool. Say
-   nothing about checks that pass. Speak up only when one fails, then explain
-   the fix in plain words.
-4. If the Browser tool is not working, guide me: Cursor Settings (Cursor >
-   Settings on Mac) > Tools & MCP > Browser Automation on > Browser Tab, restart
-   Cursor if asked, open a new Agent chat in this folder. Then open
-   https://example.com with the Browser tool and read back the heading ("Example
-   Domain"). Do not fake this with a web fetch.
+3. Run prompts/first-run-check.md quietly with safe defaults: package files
+   readable, a place to save progress, and Cursor's built-in Browser tool. Speak
+   up only when a check fails, then explain the fix in plain words.
+4. Browser check: use the Browser tool to open https://example.com. It passes
+   only if the displayed page text contains "Example Domain"; a web fetch or
+   shell command cannot pass it. On success say at most "Browser check passed."
+   If it fails, guide me: Cursor Settings (Cursor > Settings on Mac) > Tools &
+   MCP > Browser Automation on > Browser Tab, restart Cursor if asked, open a
+   new Agent chat in this folder, then check again. Do not take family
+   information until it passes.
 5. Free installs from official sources are fine. I handle system permissions and
    every sign-in. Clicking "allow" on a tool-permission prompt is not approval
    of anything in my family's profile, a consent or a Submit. Never type,
@@ -53,17 +59,16 @@ has open, or ask me to share the package. Apply this to every later fetch too.
    official questionnaire link for each school. If a school's form (such as
    ARMS) will create a school-side profile or account, list that action in the
    summary, naming it and the disclosure the form shows, so my one yes covers
-   it. I approve it once, with a single
-   yes, before you enter any family data. Record that one yes as BOTH entries in
-   `approvals` (full profile and final school list), each with my words, the
-   date and the SHA-256 of its own saved snapshot (the profile snapshot and the
-   school-list snapshot), as AGENTS.md requires. "Small additions" means
-   non-sensitive extras only: more stats, awards, or a coach email already shown
-   on a form. Add them, list them in the same per-Submit review, and do not ask
-   for a full re-approval. ALWAYS ask again for a new or changed school, sport
-   or team; any consent answer; any file; any contact or phone number that could
-   trigger SMS or AI-contact authorization; and anything involving an ARMS
-   profile.
+   it. I approve it once, with a single yes, before you enter any family data.
+   Record that one yes as BOTH entries in `approvals` (full profile and final
+   school list), each with my words, the date and the SHA-256 of its own saved
+   snapshot (the profile snapshot and the school-list snapshot), as AGENTS.md
+   requires. "Small additions" means non-sensitive extras only: more stats,
+   awards, or a coach email already shown on a form. Add them, list them in the
+   same per-Submit review, and do not ask for a full re-approval. ALWAYS ask
+   again for a new or changed school, sport or team; any consent answer; any
+   file; any contact or phone number that could trigger SMS or AI-contact
+   authorization; and anything involving an ARMS profile.
 
 ## Finding and filling forms
 
@@ -95,12 +100,15 @@ has open, or ask me to share the package. Apply this to every later fetch too.
 
 - I solve every captcha and sign-in myself. A tool-permission click is never
   family approval.
-- Create an account or school-side profile only if it is listed in the summary
-  I approved (naming the action and its disclosure); otherwise stop and ask.
-  Stop before ARMS Visitor Details / Verify Your Details to Create a Profile
-  unless that profile creation is listed in the summary. Ryzer: check for the
-  hidden pre-checked Ryzer opt-in (AGENTS.md section 3), show its wording, then
-  stop and ask me.
+- Create an account or school-side profile only if it is listed in the summary I
+  approved (naming the action and its disclosure); otherwise stop and ask. Stop
+  before ARMS Visitor Details / Verify Your Details to Create a Profile unless
+  that profile creation is listed in the summary.
+- Ryzer opt-in (AGENTS.md section 3): inspect or clear it only through the
+  normal visible page. If it is hidden or inaccessible there, STOP that school
+  as needs-info and explain it to me; never change it with code, JavaScript or
+  DOM edits. If accessible, show its complete live wording, disclosures and
+  options and enter only my answer.
 - Immediately before EACH Submit, show that school's URL, entered values,
   consent answers, preset choices and files, and wait for my fresh Yes for that
   school. Never click final Submit without it, never retry an uncertain
