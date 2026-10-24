@@ -14,12 +14,15 @@ a local copy or ask you to share it." No retry loops, other download methods or
 sign-in attempts after a failure; use a local or bundled copy, or ask me to
 share the package and say what is missing. Never crash or stall.
 
-Setup is quiet: no folder-picker, "where to save" or sync questions. If you must
-create the folder yourself, silently make a new folder directly in my home
-folder (not Desktop, Documents, Downloads or any iCloud Drive, Dropbox, OneDrive
-or Google Drive location). If you use an open folder, check its actual path;
-only if it is inside iCloud Drive, Dropbox, OneDrive or Google Drive, say so in
-one sentence and ask to use a local folder instead. Read CLAUDE.md, AGENTS.md,
+Setup is quiet: no folder-picker, "where to save" or sync questions. Quietly
+check the open folder's actual path. If it is inside iCloud Drive, Dropbox,
+OneDrive or Google Drive (or a Desktop/Documents folder syncing to iCloud or
+OneDrive), do not ask me: copy the package to a NEW non-synced folder in my home
+folder, such as ~/RecruitingHelper (add a number if the name exists; never
+overwrite one) and work there. Say only: "I'm keeping your family's information
+in a private folder on this computer, not in cloud storage." If you must create
+the folder yourself, silently make a new folder directly in my home folder. If
+the folder is not synced, say nothing about sync. Read CLAUDE.md, AGENTS.md,
 README.md, prompts/ and all of reference/recruiting-intake-tree.md; AGENTS.md
 wins. The ChatGPT/Codex menu steps do not apply to Claude. Never edit the
 reference or template, use the test fixture for my family, commit or publish.

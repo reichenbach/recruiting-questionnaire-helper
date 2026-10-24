@@ -26,12 +26,14 @@ The setup steps in `prompts/first-run-check.md` and `START_PROMPT.md` are for
 ChatGPT/Codex. On Claude, run the same AGENTS.md section 0 check with Claude's
 own controls instead:
 
-- Setup is quiet, as in AGENTS.md section 0: reuse the open package folder
-  without folder-picker or sync questions. Only if its actual path is inside
-  iCloud Drive, Dropbox, OneDrive or Google Drive, say so in one sentence and
-  ask to use a local folder instead. If Claude must create the folder itself,
-  make a new folder directly in the parent's home folder, not Desktop,
-  Documents, Downloads or a cloud-synced location.
+- Setup is quiet, as in AGENTS.md section 0: no folder-picker or sync questions.
+  Quietly check the open folder's actual path. If it is inside iCloud Drive,
+  Dropbox, OneDrive or Google Drive (or a Desktop/Documents folder syncing to
+  iCloud or OneDrive), do not ask: copy the package to a new non-synced folder
+  in the parent's home folder, such as `~/RecruitingHelper` (add a number if the
+  name exists; never overwrite), and work there. If Claude must create the
+  folder itself, make it directly in the home folder. If the folder is not
+  synced, say nothing about sync.
 - **Computer use in the Claude desktop app:** help the parent turn it on in the
   app, if the app offers it. On a Mac, the parent grants **Screen Recording**
   and **Accessibility** when macOS asks. Explain these prompts only when they
