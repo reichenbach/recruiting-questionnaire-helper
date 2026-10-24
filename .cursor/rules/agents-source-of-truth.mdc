@@ -13,6 +13,8 @@ candidates, not verified targets.
 
 Where the reference tree says to answer, default, pick the closest value or
 substitute a form, **AGENTS.md wins**.
+The one exception is the parent-facing flow in `parent-flow.mdc` (fewer
+questions, one summary approval, quiet setup); safety gates are never relaxed.
 
 In Cursor, the **Browser / browser MCP** (built-in browser tool) is the
 computer-use tool named in AGENTS.md for the example.com check and form fills.

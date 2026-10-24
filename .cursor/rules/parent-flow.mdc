@@ -1,0 +1,27 @@
+---
+description: Keep the parent experience short and plain; safety gates unchanged
+alwaysApply: true
+---
+
+# Simple parent flow
+
+Target flow: parent pastes the prompt, grants permissions, answers about five
+plain questions, approves ONE summary, watches forms fill, and says yes once
+per Submit. Where AGENTS.md asks the parent for more batches or approvals than
+this, follow this flow. Every safety gate stays (see approval-gates.mdc).
+
+- **Intake:** ask target schools first, then a few plain groups; no "reply yes"
+  after each group. Then show ONE summary (full profile plus final school list
+  with official links) for a single approval.
+- **After approval:** small additions are saved, shown in the final review, and
+  do not need full re-approval. Re-ask only for a new school or a changed
+  consent or file.
+- **Form identity:** a questionnaire link on the school's official athletics
+  page is verified. JumpForward pages do not show the school name; never block
+  on that and never show "destination identity unresolved" or similar internal
+  wording to a parent. Ask only if the link came from somewhere else or the
+  sport or team looks wrong.
+- **Setup:** run first-run checks quietly with safe defaults and report only
+  failures. Do not ask parents about folders, cloud sync or storage; use a
+  normal local folder.
+- **Wording:** plain words, no jargon or internal state names.

@@ -13,8 +13,8 @@ Mirror **AGENTS.md** Boundaries exactly:
 - **No payments**, paid services or subscriptions. Never create accounts without
   asking first for that specific action.
 - **Never type, request or save passwords**; the family signs in themselves.
-- Stay on **official school athletics sites** and their verified questionnaire
-  links to school/vendor forms. Do not browse recruiting marketplaces, social
+- Stay on **official school athletics sites** and their questionnaire links to
+  school/vendor forms; a link on the official athletics page counts as verified. Do not browse recruiting marketplaces, social
   profiles or other non-official sites. Entering a family-provided video/profile
   link in a form does not authorize visiting it.
 - Save family data only in local `./profile.json` and local ignored files inside
