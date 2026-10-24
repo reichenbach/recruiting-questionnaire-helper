@@ -8,6 +8,10 @@ candidates, not proof that a form is current.
 Start at each official athletics domain and follow its sport/team questionnaire
 link. Stay on official pages and linked questionnaires. Use an official generic
 form only if no sport-specific form is available; explain it in the summary.
+The official athletics page link chain is enough when JumpForward shows no
+school name. Missing branding alone never blocks verification or needs a
+parent question; still stop for a visible mismatch or a blocked official site.
+
 A questionnaire link followed from the school's official athletics page counts
 as verified, even if the vendor page shows no school name (common on
 JumpForward). Silently require the final URL, platform and sport/team to match

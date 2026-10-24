@@ -381,34 +381,113 @@ def check_refinements(pages, cursor_boundaries=None):
     phrases_in(normalized(agents), ("stop if provenance or team identity remains unclear",),
                "AGENTS.md internal stop")
 
-    for name in ("AGENTS.md", "CHATGPT_PROMPT.md", "START_PROMPT.md", "README.md",
-                 "prompts/start.md", "prompts/first-run-check.md"):
-        text = normalized(pages[name])
-        phrases_in(text, (
-            "for an agent-created package folder (download/clone/unzip), silently create a new folder "
-            "directly in the home directory",
-            "never create it on desktop, in documents, or in a synced location",
-            "say nothing about sync",
-            "when reusing an already-open folder, quietly check the actual folder path",
-            "icloud drive", "dropbox", "onedrive", "google drive",
-            "or under ~/desktop or ~/documents on macos, ask one plain sentence for permission",
-            "may i keep your family's information in a new private folder in your home directory instead?",
-            "icloud desktop & documents sync is invisible from the path",
-            "wait for yes before copying the package to a new non-synced folder directly in the home directory",
-            "~/recruitinghelper",
-            "adding a number if the name exists", "never overwrite an existing folder",
-            "save no family data in the reused desktop/documents or synced location while waiting",
-            "work there; save no family data in a synced location",
-            "if the app cannot open that folder", "folder-access step",
-            "otherwise say nothing about sync",
-        ), name + " local-folder setup")
-        require("do not ask the parent" not in text and
-                "i'm keeping your family's information in a private folder on this computer" not in text,
-                name + " must not retain silent relocation of an already-open folder")
     for name, raw in pages.items():
         if name.startswith("prompts/"):
             require(not re.search(r"two explicit approvals|any change requires re-approval", normalized(raw)),
                     name + " retains old approval wording")
+
+
+SETUP_NAMES = (
+    "AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "README.md",
+    "prompts/first-run-check.md", "prompts/start.md", "CLAUDE.md",
+    "CLAUDE_PROMPT.md", "CURSOR_PROMPT.md", ".cursor/rules/parent-flow.mdc",
+)
+
+
+def check_live_run_friction(pages):
+    """Reject regression in all entry paths without accessing live sites."""
+    for name in SETUP_NAMES:
+        text = normalized(pages[name])
+        phrases_in(text, (
+            "for an agent-created package folder (download/clone/unzip), silently create a new folder directly in the home directory",
+            "never create it on desktop, in documents, or in a synced location",
+            "adding a number if the name exists", "never overwrite an existing folder",
+            "when reusing an already-open folder, quietly check the actual folder path",
+            "on macos", "icloud drive, dropbox, onedrive or google drive",
+            "or if under ~/desktop or ~/documents and either icloud desktop & documents sync folder exists",
+            "~/library/mobile documents/com~apple~clouddocs/desktop",
+            "~/library/mobile documents/com~apple~clouddocs/documents",
+            "on windows", "path contains onedrive, dropbox or google drive",
+            "if it is or might be synced, do not ask: silently copy",
+            "new non-synced folder directly in the home directory",
+            "preserve saved work in the copy", "save no family data in the synced location",
+            "say one plain line only",
+            "i'm keeping your family's information in a private folder on this computer, not in cloud storage.",
+            "if the path is not synced, say nothing about sync",
+            "never ask the parent to select, confirm or describe a folder or sync status",
+            'never ask "is it outside cloud sync"',
+            "only if the agent cannot create or open the home folder",
+            "folder-access step in plain words",
+        ), name + " silent folder setup")
+        phrases_in(text, (
+            "entire pre-intake message to at most two short sentences",
+            '"browser check passed." plus the first question group',
+            "omit the optional browser-success sentence",
+            "no privacy/processing essays, setup reports or offers to save setup reports",
+            "save setup notes quietly in reports/",
+            "for real-family runs: five groups -> one summary -> one yes -> fill -> one fresh yes per submit",
+            "summary lists what will be entered into which official form",
+            'do not add a separate disclosure approval step, profile versions such as "v1" or "v2"',
+            "separate live-rehearsal disclosure approval applies only to deliberate dry-run tests on live forms",
+            "with fake data and no submit", "item-specific safety gates still apply",
+        ), name + " brief opening and real-family flow")
+
+    browser_names = (*SETUP_NAMES, ".cursor/rules/agents-source-of-truth.mdc", "test/README.md")
+    for name in browser_names:
+        text = normalized(pages[name])
+        phrases_in(text, (
+            "real computer-use tool to open https://example.com",
+            'pass if the tab title or displayed page text contains "example domain", or displayed page text contains "this domain is for use in"',
+            "documentation examples notice", "record what the tool actually saw quietly in reports/",
+            "never ask the parent to accept a variant, approve a changed test or choose how to pass",
+            "troubleshoot with the parent only if the page fails to load or the tool cannot read anything",
+        ), name + " actual-browser title/text/notice check")
+        require("heading" in text and "shell" in text and "fetch" in text and "search" in text,
+                name + " must require real computer use without a heading or scripted substitute")
+        require('on success say at most "browser check passed."' in text,
+                name + " must keep the success message short")
+
+    # Scan every editable instruction page, including future prompts/rules. Negated
+    # prohibitions are allowed; positive requests to the parent are not.
+    for name, raw in pages.items():
+        text = normalized(raw)
+        for phrase in ("destination identity unresolved", "verification incomplete",
+                       "may i keep your family's information in a new private folder",
+                       "wait for yes before copying", "wait for yes, then copy",
+                       "asking permission for a new private home folder",
+                       "folder gets the one permission sentence"):
+            require(phrase not in text, name + " contains stale parent-facing wording: " + phrase)
+        for clause in re.split(r"[.!?;]\s+|\|", text):
+            # Look immediately before the request so an unrelated 'not' later
+            # in the same sentence cannot mask a positive folder question.
+            for request in re.finditer(
+                    r"\b(?:ask (?:me|(?:the )?(?:parent|family))|"
+                    r"have (?:me|(?:the )?parent)|request (?:that )?(?:I|the parent))\b",
+                    clause, re.I):
+                prefix = clause[max(0, request.start() - 20):request.start()]
+                if re.search(r"(?:never|do not|don't|must not)\s*$", prefix):
+                    continue
+                question = clause[request.end():request.end() + 180]
+                require(not re.search(r"\b(?:sync(?:ed|ing)?|folders?|folder-picker)\b", question),
+                        name + " must not ask the parent about folders or sync")
+
+    discovery = ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "README.md",
+                 "prompts/start.md", "prompts/find-forms.md", "CLAUDE_PROMPT.md",
+                 "reference/verified-forms.md")
+    for name in discovery:
+        phrases_in(normalized(pages[name]), (
+            "official athletics page link chain is enough when jumpforward shows no school name",
+            "missing branding alone never blocks verification", "visible mismatch", "blocked official site",
+        ), name + " unbranded JumpForward verification")
+    for name in ("CURSOR_PROMPT.md", ".cursor/rules/parent-flow.mdc"):
+        text = normalized(pages[name])
+        require("jumpforward" in text and "school name" in text and "never" in text,
+                name + " must accept unbranded official questionnaire links")
+    expected = normalized(pages["test/README.md"])
+    for label in ("reuse an already-open package folder", "first run before family intake",
+                  "successful opening", "real-family flow", "deliberate dry-run test on a live form"):
+        require("| " + label + " |" in expected, "Missing expected-behavior row: " + label)
+    print("PASS: silent folder relocation, short openings, browser title/text/notice checks, real-family approvals and unbranded official links")
 
 
 def main():
@@ -651,7 +730,7 @@ def main():
     print("PASS: matching repository URLs, single-attempt fetch fallbacks, agent-neutral rules and Claude import")
 
     # Current entry paths share one parent flow. Legacy launchers above keep
-    # all their existing URL/fallback checks; they are intentionally unchanged.
+    # all their existing URL/fallback checks and updated setup rules.
     for name in ("AGENTS.md", "START_PROMPT.md", "CHATGPT_PROMPT.md", "prompts/start.md"):
         raw = (ROOT / name).read_text(encoding="utf-8")
         text = " ".join(re.sub(r"[*`#]", "", raw).lower().split())
@@ -697,6 +776,13 @@ def main():
             require(phrase in text, name + " must allow logged additions/change-only confirmation: " + phrase)
         for phrase in ("icloud drive", "dropbox", "onedrive", "google drive"):
             require(phrase in text, name + " must check cloud-synced folder paths")
+    friction_names = {path.relative_to(ROOT).as_posix()
+                      for path in ROOT.rglob("*")
+                      if path.is_file() and path.suffix in {".md", ".mdc"}
+                      and not any(part in {".git", "reports", "screenshots"} for part in path.relative_to(ROOT).parts)}
+    friction_names -= {"reference/recruiting-intake-tree.md", "reference/sample-forms.md"}
+    check_live_run_friction({name: (ROOT / name).read_text(encoding="utf-8")
+                            for name in friction_names})
     policy_names = {"AGENTS.md", "CHATGPT_PROMPT.md", "START_PROMPT.md", "README.md"}
     policy_names.update(path.relative_to(ROOT).as_posix() for path in (ROOT / "prompts").glob("*.md"))
     policies = {name: (ROOT / name).read_text(encoding="utf-8") for name in policy_names}
@@ -708,7 +794,7 @@ def main():
             "First-run prompt must use displayed page text")
     require("heading actually" not in first_run and "read its heading back" not in first_run,
             "First-run prompt must not require heading narration")
-    print("PASS: five groups, one summary approval, displayed-text browser check, official links, logged additions and safety gates")
+    print("PASS: five groups, one summary approval, title/text/notice browser check, official links, logged additions and safety gates")
 
     # Claude launcher files: same simplified flow, checked separately because
     # they do not list the five groups as a numbered list.
@@ -731,7 +817,7 @@ def main():
         require(phrase in claude_prompt, "CLAUDE_PROMPT.md missing: " + phrase)
     require(re.search(r"marketplace, ncsa.{0,60}not verified", claude_prompt),
             "CLAUDE_PROMPT.md must exclude marketplace/NCSA links from verification")
-    print("PASS: Claude prompt and CLAUDE.md use one summary approval, displayed-text check and safety gates")
+    print("PASS: Claude prompt and CLAUDE.md use one summary approval, title/text/notice check and safety gates")
 
     verified = (ROOT / "reference/verified-forms.md").read_text(encoding="utf-8")
     backup = (ROOT / "CHATGPT_PROMPT.md").read_text(encoding="utf-8")

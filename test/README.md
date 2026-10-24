@@ -53,23 +53,25 @@ AGENTS.md and forbidding auto-approved Submit, a README link to
 CLAUDE_PROMPT.md, and four dated volleyball examples in
 reference/verified-forms.md and the self-contained backup prompt. It never
 visits a site or fills/submits a form. It also checks five groups/one summary,
-displayed-page browser checks, official-link verification, additions/change
-handling and retained Submit/CAPTCHA/Ryzer/dry-run safeguards in the current
+tab-title/page-text/notice browser checks, official-link verification,
+additions/change handling and retained Submit/CAPTCHA/Ryzer/dry-run safeguards in the current
 entry instructions. Refinement checks compare AGENTS Boundaries wording with the
 frozen base plus the coach-contact sentence, ignoring wrapping, and check key
 phrases in Cursor's hard boundaries when present. They cover both approval records with the same
 quote/date and separate profile/school-list hashes; non-sensitive small additions
 and the always-re-ask exceptions; final URL/platform/sport-team matching;
 marketplace/NCSA/profile-building exclusions; blocked official sites; new private
-home folders without overwrites and permission before relocating a reused
-Desktop/Documents or synced folder; required jersey/coach/eligibility
+home folders without overwrites and silent relocation of a reused synced or
+possibly synced folder, conditional macOS iCloud checks and no folder/sync
+questions; required jersey/coach/eligibility
 follow-ups; CMU phone formatting; linked consent disclosures; and tool
 permissions not being family approval. A separate Claude-only check covers CLAUDE_PROMPT.md
 and CLAUDE.md: one summary with both approval records and SHA-256, the
-displayed-page-text Example Domain check, and cloud-folder, CAPTCHA, each-Submit,
+tab-title/page-text/notice browser check, and cloud-folder, CAPTCHA, each-Submit,
 Ryzer and marketplace/NCSA safeguards. Unchanged Claude/Cursor launcher checks
 remain in force. Outside a Git checkout, the personal-data scan covers the
-required package files and the validator itself. It does not
+required package files and the validator itself. It also rejects parent-facing
+internal verification jargon and stale folder permission questions. It does not
 prove how an agent or a live form will behave.
 
 AGENTS.md prose must fit within 80 columns; fenced blocks, Markdown table rows
@@ -132,8 +134,11 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | Repo or any repo file is private, 404, offline or blocked | Try once only with a bounded timeout; explain in one plain sentence, then use the open folder, bundled copy or supplied ZIP/folder; ask for a pasted/shared package if none exists; no retries or stall |
 | Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
 | Agent creates the package folder (download/clone/unzip) | Silently create a NEW folder directly in home, never Desktop/Documents/synced; add a number if the name exists, never overwrite, and say nothing about sync |
-| Reuse an already-open package folder | Quietly check the path; any synced path or macOS ~/Desktop or ~/Documents requires ONE plain sentence asking permission for a new private home folder, then wait for Yes before copying; save no family data in the old location; guide folder access only if needed; otherwise say nothing about sync |
-| First run before family intake | Use Computer Use at example.com and pass only if displayed page text contains Example Domain; say at most Browser check passed.; explain setup only on failure/permission prompts and pause intake until it works |
+| Reuse an already-open package folder | Quietly check its actual path. On macOS, iCloud Drive/Dropbox/OneDrive/Google Drive paths count as possibly synced; ~/Desktop or ~/Documents counts only if either ~/Library/Mobile Documents/com~apple~CloudDocs/Desktop or ~/Library/Mobile Documents/com~apple~CloudDocs/Documents exists. On Windows, OneDrive/Dropbox/Google Drive paths count. If synced or possibly synced, silently copy to a NEW non-synced home folder, never overwrite, preserve saved work, work there and save no family data in the old location. Say only: "I'm keeping your family's information in a private folder on this computer, not in cloud storage." Otherwise say nothing about sync. Never ask the parent to select, confirm or describe a folder or sync status; only guide a small folder-access step if the home folder cannot be created or opened |
+| First run before family intake | Use the real computer-use tool to open https://example.com; pass if the tab title OR displayed page text contains "Example Domain", OR displayed page text contains "This domain is for use in" (documentation examples notice). No heading needed. Record what the tool actually saw quietly in reports/. No fetch, search or shell substitute. Never ask the parent to accept a variant, approve a changed test or choose how to pass. Troubleshoot with the parent only if the page fails to load or the tool cannot read anything. On success say at most "Browser check passed." |
+| Successful opening | Entire pre-intake message is at most two short sentences: optional "Browser check passed." plus the first question group; omit browser-success if the relocation line is needed. No privacy/processing essays, setup reports or offers to save them; setup notes stay quietly in reports/ |
+| Real-family flow | Five groups -> one summary listing data, official forms and specific one-time actions -> one Yes -> fill -> one fresh Yes per Submit; no separate disclosure approval, profile versions or whole-profile re-approvals; item-specific safety gates still apply |
+| Deliberate dry-run test on a live form | Separate live-rehearsal disclosure approval and fake data are required; never submit |
 | Start with the baseball target | Five short messages, one reply per group: schools/year/levels; athlete/parents; school/academics; athletics plus baseball only; optional extras. Save quietly, no continue-Yes gates |
 | Start with the volleyball fixture | Women's volleyball only, OH/RS and 5'11" as supplied; null consents, no approvals and no other-sport answers |
 | Required value missing, phone rejected, or position list empty | Stop that school as needs-info; never invent digits or choose a guessed position |
@@ -190,10 +195,11 @@ approval.
   ARMS/profile-creation action approval, in the summary or a later request.
 - "Visitor Details" asks for first name, last name and email and says it is used
   "to Create a Profile". Treat it as sending data. Proceed only after
-  the one combined profile/list approval, with specific profile-creation and
-  live-rehearsal disclosure approvals (these may be explicitly listed in that
-  summary). In a dry run never go past this
-  step unless the data is fake. Record approvals to proceed past Visitor Details
+  the one combined profile/list approval listing the specific profile-creation
+  action. Real runs need no separate disclosure approval. Only a deliberate
+  live dry run additionally needs separate rehearsal disclosure approval and
+  fake data before going past this step. Record approvals to proceed past
+  Visitor Details
   in local `reports/approvals.log`, ignored by Git via `reports/`. Keep all
   approvals in `test/dry-run-profile.json` null. Submission remains disabled.
 - Position is single-select: 1b, 2b, 3b, C, Lhp, Mif, Of, Rhp, Ss. Ask for the

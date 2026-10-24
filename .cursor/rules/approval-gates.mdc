@@ -42,7 +42,15 @@ Record that Yes as BOTH `approvals.full_profile` and
 `approvals.final_school_list` with the same quote and date but separate SHA-256
 snapshot values. Small additions (non-sensitive extras only) go in the
 per-Submit review without re-approval. ALWAYS re-ask a specific question about
-just the item for a new or changed school, sport or team; any consent answer;
+just the item for a new or changed school, sport or team (or form link/type); any consent answer;
 any file; any contact or phone number that could trigger SMS or AI-contact
 authorization; and anything touching an ARMS profile not listed in the summary.
 See CURSOR_PROMPT.md step 7; if wording differs, apply the stricter one.
+
+For real-family runs: five groups -> one summary -> one Yes -> fill -> one
+fresh Yes per Submit. The summary lists what will be entered into which
+official form, including any specific ARMS profile-creation action. Do not add
+a separate disclosure approval step, profile versions such as "v1" or "v2", or
+whole-profile re-approvals. Separate live-rehearsal disclosure approval applies
+only to deliberate dry-run tests on live forms, with fake data and no Submit.
+Required consent, file, contact and other item-specific safety gates still apply.

@@ -14,38 +14,72 @@ a local copy or ask you to share it." No retry loops, other download methods or
 sign-in attempts after a failure; use a local or bundled copy, or ask me to
 share the package and say what is missing. Never crash or stall.
 
-Setup is quiet: no folder-picker, "where to save" or sync questions. If you
-create the package folder yourself (download, clone or unzip), silently make a
-NEW folder directly in my home folder, such as ~/RecruitingHelper (add a number
-if the name exists; never overwrite one); never on Desktop, in Documents or in a
-synced location, and say nothing about sync. If you reuse a folder I already
-opened, quietly check its actual path. If it is inside iCloud Drive, Dropbox,
-OneDrive or Google Drive, OR under ~/Desktop or ~/Documents on a Mac (iCloud
-Desktop & Documents sync is invisible from the path), ask me ONE plain sentence:
-"May I keep your family's information in a new private folder in your home
-directory instead?" Wait for Yes, then copy the package to a NEW non-synced
-folder such as ~/RecruitingHelper (never overwrite), save no family data in the
-old folder meanwhile, and work in the copy. Otherwise say nothing about sync.
+For an agent-created package folder (download/clone/unzip), silently create a
+NEW folder directly in the home directory, such as `~/RecruitingHelper`, adding
+a number if the name exists; never overwrite an existing folder. Never create it
+on Desktop, in Documents, or in a synced location. Say nothing about sync.
+
+When reusing an already-open folder, quietly check the actual folder path.
+On macOS, treat it as possibly synced if inside iCloud Drive, Dropbox, OneDrive
+or Google Drive, or if under `~/Desktop` or `~/Documents` AND either iCloud
+Desktop & Documents sync folder exists:
+`~/Library/Mobile Documents/com~apple~CloudDocs/Desktop` or
+`~/Library/Mobile Documents/com~apple~CloudDocs/Documents`.
+On Windows, treat it as possibly synced if the path contains OneDrive, Dropbox
+or Google Drive. If it is or might be synced, do NOT ask: silently copy the
+package into a NEW non-synced folder directly in the home directory, using the
+same naming rule; never overwrite. Preserve saved work in the copy. Work there;
+save no family data in the synced location. Say one plain line only:
+"I'm keeping your family's information in a private folder on this computer,
+not in cloud storage." If the path is not synced, say nothing about sync.
+Never ask the parent to select, confirm or describe a folder or sync status;
+never ask "is it outside cloud sync". Only if the agent cannot create or open
+the home folder, guide the small folder-access step in plain words.
+
+Keep the entire pre-intake message to at most two short sentences:
+"Browser check passed." plus the first question group. If the relocation line
+is needed, omit the optional browser-success sentence to keep that same limit.
+No privacy/processing essays, setup reports or offers to save setup reports.
+Save setup notes quietly in reports/.
 Read CLAUDE.md, AGENTS.md, README.md, prompts/ and all of reference/recruiting-
 intake-tree.md; AGENTS.md wins. The ChatGPT/Codex menu steps do not apply to
 Claude. Never edit the reference or template, use the test fixture for my
 family, commit or publish.
 
-Before any family questions, open https://example.com with the same tool you
-will use for forms (computer use or Claude in Chrome). Pass only if the
-displayed page text contains "Example Domain". Web fetch, web search, shell
-commands, Playwright or other scripts never count. On success say at most
-"Browser check passed." Explain permission prompts (Screen Recording,
+Use the real computer-use tool to open https://example.com and inspect the
+actual browser. Pass if the tab title OR displayed page text contains
+"Example Domain", OR displayed page text contains "This domain is for use in"
+(the documentation examples notice). No heading element is needed. Record what
+the tool actually saw quietly in reports/. Expected text, web search, HTTP fetch
+or shell commands cannot pass. Never ask the parent to accept a variant,
+approve a changed test or choose how to pass. Troubleshoot with the parent only
+if the page fails to load or the tool cannot read anything. On success say at
+most "Browser check passed." Pause intake until the real check passes.
+
+Use the same tool for forms (computer use or Claude in Chrome). Playwright or
+other scripts never count. Explain permission prompts (Screen Recording,
 Accessibility, Chrome extension site access) only when they appear or something
 fails. I grant permissions and handle every sign-in; never type, request or
 save passwords, bypass a prompt or buy anything. If it cannot work, explain and
 pause. Collect no family information until the check passes.
+
+For real-family runs: five groups -> one summary -> one Yes -> fill -> one
+fresh Yes per Submit. The summary lists what will be entered into which
+official form, including any specific ARMS profile-creation action. Do not add
+a separate disclosure approval step, profile versions such as "v1" or "v2", or
+whole-profile re-approvals. Separate live-rehearsal disclosure approval applies
+only to deliberate dry-run tests on live forms, with fake data and no Submit.
+Required consent, file, contact and other item-specific safety gates still apply.
 
 Then ask five short question groups, one reply each: schools; athlete and
 parents; high school and academics; athletics (only the named sport's
 questions); optional extras. "Skip" or "not sure" is fine; unknown stays blank.
 Save quietly to profile.json (from profile.template.json) after each group; no
 "reply yes" between groups. Never infer team from gender.
+
+The official athletics page link chain is enough when JumpForward shows no
+school name. Missing branding alone never blocks verification or needs a
+parent question; still stop for a visible mismatch or a blocked official site.
 
 Find forms from each school's official athletics page. A link followed from that
 page counts as verified even if the vendor shows no school name (JumpForward);
@@ -64,8 +98,12 @@ Save. Ask: "Does this look right? Reply 'Yes, fill these forms' to approve."
 That one Yes approves the profile, list and listed actions only. Save reviewed
 copies in reports/; record the same quote and date with separate SHA-256 values
 in approvals.full_profile and approvals.final_school_list. It never approves
-Submit. Ask missing or blank answers in one short batch per school and fold them
-into that school's pre-Submit review; no whole-summary re-approval. Always ask
+Submit. Ask missing or blank answers in one short batch per school. Small
+additions are non-sensitive fields only: extra stats, awards/honors, hobbies,
+and a coach email or phone number already shown in the approved profile or on
+the school's own form. Only these fold into that school's pre-Submit review
+without extra confirmation; its fresh Submit Yes covers them. No whole-summary
+re-approval. Always ask
 again, in just the change, for: a new or changed school, sport, team or form
 link; changing or removing an approved answer; any consent answer; any file;
 any new phone or contact that could trigger SMS or AI-contact authorization;

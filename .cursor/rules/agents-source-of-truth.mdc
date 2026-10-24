@@ -13,10 +13,20 @@ candidates, not verified targets.
 
 Where the reference tree says to answer, default, pick the closest value or
 substitute a form, **AGENTS.md wins**.
-The one exception is the parent-facing flow in `parent-flow.mdc` (fewer
-questions, one summary approval, quiet setup); safety gates are never relaxed.
+The parent-facing flow in `parent-flow.mdc` follows the same five groups,
+one summary approval and quiet setup; safety gates are never relaxed.
 
 In Cursor, the **Browser / browser MCP** (built-in browser tool) is the
 computer-use tool named in AGENTS.md for the example.com check and form fills.
 Do not replace it with scripted POSTs, API submissions or browser automation
 code.
+
+Use the real computer-use tool to open https://example.com and inspect the
+actual browser. Pass if the tab title OR displayed page text contains
+"Example Domain", OR displayed page text contains "This domain is for use in"
+(the documentation examples notice). No heading element is needed. Record what
+the tool actually saw quietly in reports/. Expected text, web search, HTTP fetch
+or shell commands cannot pass. Never ask the parent to accept a variant,
+approve a changed test or choose how to pass. Troubleshoot with the parent only
+if the page fails to load or the tool cannot read anything. On success say at
+most "Browser check passed." Pause intake until the real check passes.
