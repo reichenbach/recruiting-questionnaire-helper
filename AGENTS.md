@@ -200,8 +200,10 @@ Ask answers that the form requires and the profile lacks in ONE short batch per
 school (skipped optional items stay blank and are never reopened);
 include high school and club jersey numbers, high school coach and NCAA/NAIA
 eligibility IDs when the form requires them, even if skipped in the five groups
-(NAIA IDs only for NAIA targets). Never guess or accept presets. Save locally
-with school/sport and log additions in `reports/`.
+(NAIA IDs only for NAIA targets). Ask each blank at most once: after "not sure"
+or no answer, keep it as Needs-your-answer for that school's pre-Submit review
+and do not repeat it in later replies. Never guess or accept presets. Save
+locally with school/sport and log additions in `reports/`.
 
 Small additions are NON-SENSITIVE fields only: extra stats, awards/honors,
 hobbies, and a coach email or phone number already shown in the approved profile

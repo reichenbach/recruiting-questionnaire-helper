@@ -98,12 +98,13 @@ Save. Ask: "Does this look right? Reply 'Yes, fill these forms' to approve."
 That one Yes approves the profile, list and listed actions only. Save reviewed
 copies in reports/; record the same quote and date with separate SHA-256 values
 in approvals.full_profile and approvals.final_school_list. It never approves
-Submit. Ask missing or blank answers in one short batch per school. Small
-additions are non-sensitive fields only: extra stats, awards/honors, hobbies,
-and a coach email or phone number already shown in the approved profile or on
-the school's own form. Only these fold into that school's pre-Submit review
-without extra confirmation; its fresh Submit Yes covers them. No whole-summary
-re-approval. Always ask
+Submit. Ask missing or blank answers in one short batch per school. Ask each
+blank once; after "not sure" or no answer, keep it as Needs-your-answer and do
+not repeat it in later replies. Small additions are non-sensitive fields only:
+extra stats, awards/honors, hobbies, and a coach email or phone number already
+shown in the approved profile or on the school's own form. Only these fold into
+that school's pre-Submit review without extra confirmation; its fresh Submit
+Yes covers them. No whole-summary re-approval. Always ask
 again, in just the change, for: a new or changed school, sport, team or form
 link; changing or removing an approved answer; any consent answer; any file;
 any new phone or contact that could trigger SMS or AI-contact authorization;
