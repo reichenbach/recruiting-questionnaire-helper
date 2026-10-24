@@ -1,28 +1,54 @@
 Read AGENTS.md and the entire read-only reference/recruiting-intake-tree.md.
 Quietly use the open package folder and run prompts/first-run-check.md before
-intake unless this session already passed. Use the real computer-use tool at
-https://example.com: displayed page text must contain "Example Domain"; a
-fetch/search/shell cannot pass. On success say at most "Browser check passed."
+intake unless this session already passed.
+
+Use the real computer-use tool to open https://example.com and inspect the
+actual browser. Pass if the tab title OR displayed page text contains
+"Example Domain", OR displayed page text contains "This domain is for use in"
+(the documentation examples notice). No heading element is needed. Record what
+the tool actually saw quietly in reports/. Expected text, web search, HTTP fetch
+or shell commands cannot pass. Never ask the parent to accept a variant,
+approve a changed test or choose how to pass. Troubleshoot with the parent only
+if the page fails to load or the tool cannot read anything. On success say at
+most "Browser check passed." Pause intake until the real check passes.
 No parent terminal; request file access only if needed.
 For an agent-created package folder (download/clone/unzip), silently create a
-NEW folder directly in the home directory, such as `~/RecruitingHelper`,
-adding a number if the name exists; never overwrite an existing folder. Never
-create it on Desktop, in Documents, or in a synced location. Say nothing about
-sync.
+NEW folder directly in the home directory, such as `~/RecruitingHelper`, adding
+a number if the name exists; never overwrite an existing folder. Never create it
+on Desktop, in Documents, or in a synced location. Say nothing about sync.
 
-When reusing an already-open folder, quietly check the actual folder path. If
-inside iCloud Drive, Dropbox, OneDrive or Google Drive, OR under `~/Desktop` or
-`~/Documents` on macOS, ask ONE plain sentence for permission: "May I keep your
-family's information in a new private folder in your home directory instead?"
-iCloud Desktop & Documents sync is invisible from the path, so treat either
-macOS folder as needing this permission. Wait for Yes before copying the
-package to a NEW non-synced folder directly in the home directory, such as
-`~/RecruitingHelper`, adding a number if the name exists; never overwrite an
-existing folder. Save no family data in the reused Desktop/Documents or synced
-location while waiting. Work there; save no family data in a synced location.
-If the app cannot open that folder, guide the small folder-access step.
-Otherwise say nothing about sync.
+When reusing an already-open folder, quietly check the actual folder path.
+On macOS, treat it as possibly synced if inside iCloud Drive, Dropbox, OneDrive
+or Google Drive, or if under `~/Desktop` or `~/Documents` AND either iCloud
+Desktop & Documents sync folder exists:
+`~/Library/Mobile Documents/com~apple~CloudDocs/Desktop` or
+`~/Library/Mobile Documents/com~apple~CloudDocs/Documents`.
+On Windows, treat it as possibly synced if the path contains OneDrive, Dropbox
+or Google Drive. If it is or might be synced, do NOT ask: silently copy the
+package into a NEW non-synced folder directly in the home directory, using the
+same naming rule; never overwrite. Preserve saved work in the copy. Work there;
+save no family data in the synced location. Say one plain line only:
+"I'm keeping your family's information in a private folder on this computer,
+not in cloud storage." If the path is not synced, say nothing about sync.
+Never ask the parent to select, confirm or describe a folder or sync status;
+never ask "is it outside cloud sync". Only if the agent cannot create or open
+the home folder, guide the small folder-access step in plain words.
+
+Keep the entire pre-intake message to at most two short sentences:
+"Browser check passed." plus the first question group. If the relocation line
+is needed, omit the optional browser-success sentence to keep that same limit.
+No privacy/processing essays, setup reports or offers to save setup reports.
+Save setup notes quietly in reports/.
+
 Explain setup details only on failure or a permission prompt.
+
+For real-family runs: five groups -> one summary -> one Yes -> fill -> one
+fresh Yes per Submit. The summary lists what will be entered into which
+official form, including any specific ARMS profile-creation action. Do not add
+a separate disclosure approval step, profile versions such as "v1" or "v2", or
+whole-profile re-approvals. Separate live-rehearsal disclosure approval applies
+only to deliberate dry-run tests on live forms, with fake data and no Submit.
+Required consent, file, contact and other item-specific safety gates still apply.
 
 Parent flow: paste the prompt, grant permissions, answer five question groups,
 approve one summary, watch forms fill, give one fresh Yes per Submit.
@@ -46,6 +72,10 @@ unknown stays blank, never guessed. No "reply yes to continue" between groups.
    remain reachable through these groups or later actual-form questions.
 
 Public discovery can start right after group 1.
+The official athletics page link chain is enough when JumpForward shows no
+school name. Missing branding alone never blocks verification or needs a
+parent question; still stop for a visible mismatch or a blocked official site.
+
 A questionnaire link followed from the school's official athletics page counts
 as verified, even if the vendor page shows no school name (common on
 JumpForward). Silently require the final URL, platform and sport/team to match

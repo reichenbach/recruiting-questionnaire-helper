@@ -6,6 +6,10 @@ at the school's official athletics site and following its women's volleyball
 recruiting link. Check redirects and visible school/sport/team mismatches. A link followed from
 the school's official athletics page counts as verified even without a vendor
 school name; missing branding alone does not block entry.
+The official athletics page link chain is enough when JumpForward shows no
+school name. Missing branding alone never blocks verification or needs a
+parent question; still stop for a visible mismatch or a blocked official site.
+
 Record the current official source page and link chain before using a form.
 These notes do not authorize profile creation, filling, uploads or submission.
 
