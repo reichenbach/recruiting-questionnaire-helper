@@ -49,10 +49,10 @@ needs approval. Map odd HS positions (0, Middle, Outside) only with their
 confirmation.
 
 JumpForward high-school fields stay disabled until a typeahead suggestion is
-selected. Search name plus city and verify the match. If none exists, use the
-not-listed option with the family's school address; ask for missing details.
-Never pick another school or bypass disabled fields. If no usable fallback
-exists, stop that school as needs-info. Close the date picker if it covers
+selected. Search the school name only (name plus city or ZIP finds nothing)
+and verify the city/state in the suggestion. It has no not-listed option for
+high schools; if none matches, stop that school as needs-info. Never pick
+another school or bypass disabled fields. Close the date picker if it covers
 email/mobile before typing. Block/approach touch are free text;
 height is a dropdown. ARMS "Verify Your Details to Create a Profile" and Visitor
 Details keep every profile-creation approval gate.

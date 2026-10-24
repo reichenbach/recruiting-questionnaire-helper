@@ -38,11 +38,15 @@ These notes do not authorize profile creation, filling, uploads or submission.
   - Fallback (JumpForward, older link, still loads as of 2026-10-23):
     https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
     Recheck the official link before use. On this fallback, high school uses a
-    typeahead: search name plus city. High-school fields stay disabled until a
-    typeahead suggestion is selected. Verify the match; if none exists, use the
-    not-listed option with the family's school address and ask for missing
-    details. Never select a different school or bypass disabled fields. If no
-    usable fallback exists, stop as needs-info. A date-picker popup can cover
+    typeahead. Search the school name only; name plus city, city alone or ZIP
+    returned no results on 2026-10-23 despite the placeholder. Verify the city
+    and state shown in the suggestion. High-school fields stay disabled until a
+    suggestion is selected, then fill and lock with the platform's address.
+    There is no not-listed option for high schools (only for clubs); if no
+    match exists, stop as needs-info. Never select a different school or
+    bypass disabled fields. Country defaults to United States; changing it
+    reloads the page through a server postback, so recheck every field after.
+    A date-picker popup can cover
     email/mobile fields; close it before typing. Block/approach touch are free
     text; height is a dropdown. Use supplied values and units without guessing.
 - **Central Methodist University (NAIA), women's volleyball — school-built

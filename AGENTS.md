@@ -305,10 +305,11 @@ Never pick a different school to continue.
 ### JumpForward
 
 - High-school fields stay disabled until a typeahead suggestion is selected.
-  Search name plus city and verify the match before selecting it. If no match
-  exists, use the not-listed option with the family's school address; ask for
-  missing details and never pick a different school or bypass disabled fields.
-  If no usable fallback exists, stop as needs-info. A date-picker popup can
+  Search the school name only (name plus city or ZIP finds nothing) and
+  verify the city/state in the suggestion before selecting it. There is no
+  not-listed option for high schools; if no match exists, stop as needs-info.
+  Never pick a different school or bypass disabled fields.
+  A date-picker popup can
   cover email/mobile fields; close it before typing and verify where the text
   went. Block/approach touch are free text; height is a dropdown. Use supplied
   values and units without conversion.

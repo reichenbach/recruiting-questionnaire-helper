@@ -120,7 +120,7 @@ page. Visitor Details / Create Profile requires full-profile, final-school-list
 and separate profile-creation approvals before proceeding.
 FALLBACK (JumpForward, older link, still loads on that date):
 https://college.jumpforward.com/questionnaire.aspx?iid=453&sportid=13
-On the fallback, use typeahead high-school search by name plus city; close the
+On the fallback, typeahead-search school name only, verify city; close the
 date picker covering email/mobile before typing. Block/approach touches are
 free text; height is a dropdown. Recheck official links live before use; dated
 notes grant no approval. See reference/verified-forms.md for the other examples.
