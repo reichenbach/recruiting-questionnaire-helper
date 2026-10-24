@@ -378,13 +378,17 @@ Never pick a different school to continue.
   unseen or uncleared through normal visible UI, stop as needs-info and explain;
   never change via code/JavaScript/DOM. If accessible, follow section 4's Opt-in
   rule: complete live wording/disclosures/options and the family's answer only.
-- Ten-digit phones; repeatable "Personal Contacts" for parents/coaches.
-- The Personal Contacts widget has its own Save button; the parent relationship
-  can only be set there. Use it to add/save the parent contact only after the
-  family approves that action as part of filling. Verify the relationship and
-  saved contact. A preset "Other" relationship must be confirmed or changed
-  with the family. Otherwise record the relationship as needing their answer and
-  the Save action as awaiting approval; do not guess or use another field.
+- Ten-digit phones. Enter parents in the form's own Parent/Guardian 1 and 2
+  fields. "Personal Contacts" (repeatable) is optional: use it, and list its
+  Save in the summary, only if it is really needed (for example a coach or a
+  contact the main fields cannot hold, or a relationship the family wants
+  saved).
+- The Personal Contacts widget has its own Save button; the relationship can
+  only be set there. If used, add/save a contact only after the family approves
+  that action as part of filling. Verify the relationship and saved contact. A
+  preset "Other" relationship must be confirmed or changed with the family.
+  Otherwise record the relationship as needing their answer and the Save action
+  as awaiting approval; do not guess or use another field.
 - Some HS position lists show odd values such as "0", "Middle" and "Outside".
   Map a supplied position to one of these only with the family's confirmation.
 - High-school "is not listed" expands address lines 1–3, city, state, ZIP,
@@ -514,10 +518,11 @@ list (school/sport/team, form type and official form link for EACH), and any
 specific one-time actions requested. For ARMS list "continue without signing
 in, which creates a profile on the school's side" and any Visitor Details /
 Create Profile data disclosure for the named school/form. For uploads name the
-exact file, school and form; list any account creation or Personal Contacts Save
-specifically too. A listed action is approved only for exactly what was shown;
-an unlisted action still needs its own approval. Implicit contact authorization
-always needs exact live wording before its triggering action.
+exact file, school and form; list any account creation too, and a
+Personal Contacts Save only if it will really be used. A listed action is
+approved only for exactly what was shown; an unlisted action still needs its own
+approval. Implicit contact authorization always needs exact live wording before
+its triggering action.
 
 Ask once: "Does this look right? Reply 'Yes, fill these forms' to approve." One
 explicit Yes approves both profile and school list and only the listed one-time
