@@ -27,13 +27,14 @@ ChatGPT/Codex. On Claude, run the same AGENTS.md section 0 check with Claude's
 own controls instead:
 
 - Setup is quiet, as in AGENTS.md section 0: no folder-picker or sync questions.
-  Quietly check the open folder's actual path. If it is inside iCloud Drive,
-  Dropbox, OneDrive or Google Drive (or a Desktop/Documents folder syncing to
-  iCloud or OneDrive), do not ask: copy the package to a new non-synced folder
-  in the parent's home folder, such as `~/RecruitingHelper` (add a number if the
-  name exists; never overwrite), and work there. If Claude must create the
-  folder itself, make it directly in the home folder. If the folder is not
-  synced, say nothing about sync.
+  If Claude creates the package folder itself, silently make a new folder
+  directly in the home folder, such as `~/RecruitingHelper` (add a number if the
+  name exists; never overwrite), never on Desktop, in Documents or in a synced
+  location. If it reuses an already-open folder, quietly check the path; if it
+  is inside iCloud Drive, Dropbox, OneDrive or Google Drive, or under
+  `~/Desktop` or `~/Documents` on a Mac, ask the one sentence in AGENTS.md
+  section 0 and wait for Yes before copying the package to a new non-synced
+  folder. Otherwise say nothing about sync.
 - **Computer use in the Claude desktop app:** help the parent turn it on in the
   app, if the app offers it. On a Mac, the parent grants **Screen Recording**
   and **Accessibility** when macOS asks. Explain these prompts only when they

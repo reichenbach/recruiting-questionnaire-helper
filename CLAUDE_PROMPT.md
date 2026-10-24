@@ -14,18 +14,22 @@ a local copy or ask you to share it." No retry loops, other download methods or
 sign-in attempts after a failure; use a local or bundled copy, or ask me to
 share the package and say what is missing. Never crash or stall.
 
-Setup is quiet: no folder-picker, "where to save" or sync questions. Quietly
-check the open folder's actual path. If it is inside iCloud Drive, Dropbox,
-OneDrive or Google Drive (or a Desktop/Documents folder syncing to iCloud or
-OneDrive), do not ask me: copy the package to a NEW non-synced folder in my home
-folder, such as ~/RecruitingHelper (add a number if the name exists; never
-overwrite one) and work there. Say only: "I'm keeping your family's information
-in a private folder on this computer, not in cloud storage." If you must create
-the folder yourself, silently make a new folder directly in my home folder. If
-the folder is not synced, say nothing about sync. Read CLAUDE.md, AGENTS.md,
-README.md, prompts/ and all of reference/recruiting-intake-tree.md; AGENTS.md
-wins. The ChatGPT/Codex menu steps do not apply to Claude. Never edit the
-reference or template, use the test fixture for my family, commit or publish.
+Setup is quiet: no folder-picker, "where to save" or sync questions. If you
+create the package folder yourself (download, clone or unzip), silently make a
+NEW folder directly in my home folder, such as ~/RecruitingHelper (add a number
+if the name exists; never overwrite one); never on Desktop, in Documents or in a
+synced location, and say nothing about sync. If you reuse a folder I already
+opened, quietly check its actual path. If it is inside iCloud Drive, Dropbox,
+OneDrive or Google Drive, OR under ~/Desktop or ~/Documents on a Mac (iCloud
+Desktop & Documents sync is invisible from the path), ask me ONE plain sentence:
+"May I keep your family's information in a new private folder in your home
+directory instead?" Wait for Yes, then copy the package to a NEW non-synced
+folder such as ~/RecruitingHelper (never overwrite), save no family data in the
+old folder meanwhile, and work in the copy. Otherwise say nothing about sync.
+Read CLAUDE.md, AGENTS.md, README.md, prompts/ and all of reference/recruiting-
+intake-tree.md; AGENTS.md wins. The ChatGPT/Codex menu steps do not apply to
+Claude. Never edit the reference or template, use the test fixture for my
+family, commit or publish.
 
 Before any family questions, open https://example.com with the same tool you
 will use for forms (computer use or Claude in Chrome). Pass only if the
