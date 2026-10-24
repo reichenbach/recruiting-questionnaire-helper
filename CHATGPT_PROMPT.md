@@ -127,8 +127,7 @@ Use these messages, tailoring only the named sport details:
 Never infer team from gender or family answers from household structure.
 Confirm exact school, division and sport/team for vague names before searching.
 Public form discovery may start immediately after group 1, before the summary.
-Before the summary, quietly read each target form in the interactive browser
-tool (never to get past a bot wall) and list its REQUIRED fields; fold any
+Before the summary, quietly read each target form in the computer-use tool (read only: enter nothing, click no Continue, Save or Submit, and never to get past a bot wall) and list its REQUIRED fields; fold any
 still-unknown required item into the last group so no required question first
 appears while filling, keeping about five groups total. Ask only leftovers found
 later, once per school.
