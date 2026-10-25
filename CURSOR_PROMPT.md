@@ -87,7 +87,16 @@ never crash or stall on a fetch.
    the parent says changed. Previously asked blanks stay Needs-your-answer; do
    not ask them again. Keep all item-specific safety gates for proposed actions.
 
-   For `intake.dry_run=true`, reuse the answers for rehearsals with the recap's
+   Name the athlete in the recap's first line. If the parent says it is a different
+athlete or family, or the reply is unclear, do not use the profile: ask once,
+and for a different athlete or family run the five groups in a NEW numbered home
+folder, leaving the saved folder untouched. A real-family profile
+(`intake.dry_run` false) beats a newer test profile. Approvals on a
+`dry_run=true` profile never authorize a real form. The reviewed school-list
+copy must list every one-time action still wanted (ARMS profile creation,
+uploads, accounts); any action not listed there needs its own question.
+
+For `intake.dry_run=true`, reuse the answers for rehearsals with the recap's
    first line labeled "Test profile (made-up athlete)". Keep `dry_run=true` and
    never present it as the real family. Prefer offline rehearsal; live rehearsal
    needs separate disclosure approval before fake data goes to any real form,

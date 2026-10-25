@@ -50,6 +50,11 @@ older folders untouched and never create an empty duplicate when data exists.
 Show one recap (about six lines: athlete, year, sport/team, schools/levels,
 parent names, blanks) and ask only "Anything changed?" Re-ask no saved answers;
 ask only blank required items once in one batch per school and reported changes.
+Name the athlete in the recap; if it is a different athlete or family or the
+reply is unclear, do not use the profile (ask; new family means a NEW numbered
+home folder, old one untouched). A real profile beats a newer test profile.
+Test-profile approvals never authorize a real form; a one-time action not listed
+in the reviewed school-list copy needs its own question.
 Label dry-run recaps "Test profile (made-up athlete)", keep `dry_run=true`,
 and retain all live-rehearsal disclosure gates and the ban on fake submits.
 For a real-family/fresh start, back up the test profile before a blank profile

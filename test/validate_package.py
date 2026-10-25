@@ -571,6 +571,15 @@ def check_resume_flow(pages):
             "both recorded sha-256", "every submit needs a fresh yes",
         ), name + " resume alignment")
 
+    for name in SETUP_NAMES + (".cursor/rules/agents-source-of-truth.mdc",
+                               ".cursor/rules/approval-gates.mdc",
+                               ".cursor/rules/hard-boundaries.mdc"):
+        phrases_in(normalized(pages[name]).replace("\n", " "), (
+            "name the athlete in the recap", "different athlete or family",
+            "new numbered home folder", "beats a newer test profile",
+            "never authorize a real form", "needs its own question",
+        ), name + " wrong-family and stale-approval guards")
+
     expected = normalized(pages["test/README.md"])
     for label in ("resume search across package folders", "newest answered profile wins",
                   "resume without repeating intake", "saved dry-run profile",
