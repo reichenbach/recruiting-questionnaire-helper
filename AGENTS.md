@@ -42,10 +42,14 @@ including coverage notes; sample links are candidates, not verified targets.
 
 Follow `prompts/first-run-check.md` before intake. Quietly reuse the open
 package folder without replacing saved work; request file access only if needed.
+Defer creating or relocating a working folder until the browser check and
+resume check below; use the available open/local package for setup. Do not
+collect new family answers during setup. Search before making any home folder.
 For an agent-created package folder (download/clone/unzip), silently create a
-NEW folder directly in the home directory, such as `~/RecruitingHelper`, adding
-a number if the name exists; never overwrite an existing folder. Never create it
-on Desktop, in Documents, or in a synced location. Say nothing about sync.
+NEW folder directly in the home directory only if no saved folder can be reused
+or relocation is required, such as `~/RecruitingHelper`, adding a number if the
+name exists; never overwrite an existing folder. Never create it on Desktop,
+in Documents, or in a synced location. Say nothing about sync.
 
 When reusing an already-open folder, quietly check the actual folder path.
 On macOS, treat it as possibly synced if inside iCloud Drive, Dropbox, OneDrive
@@ -63,6 +67,77 @@ not in cloud storage." If the path is not synced, say nothing about sync.
 Never ask the parent to select, confirm or describe a folder or sync status;
 never ask "is it outside cloud sync". Only if the agent cannot create or open
 the home folder, guide the small folder-access step in plain words.
+
+Resume check: quietly, after the browser check passes and before any
+question, look for an existing `profile.json` from this package. Its folder
+must also contain `profile.template.json` or `AGENTS.md`. Search in this order:
+
+- The folder the agent was opened from (remember its original path).
+- `~/RecruitingHelper*`, including `~/RecruitingHelper`,
+  `~/RecruitingHelper2`, `~/RecruitingHelper3` and later numbered folders.
+- Sibling folders one level up from the opened folder, then folders directly
+  under `~/Desktop`, `~/Documents` and `~/Documents/projects`; in this last
+  search include folders whose name contains "recruit" (case-insensitive) or
+  that contain `profile.template.json`.
+
+Inspect all candidates; ignore profiles equal to the blank template or with
+no answers. Metadata, approvals and `intake.dry_run` alone are not answers;
+explicit false/zero answers count. Pick the profile with answers whose
+`profile.json` has the newest modification time across all locations (search
+order breaks ties). If several have answers, mention only the newest one.
+
+Reuse that profile. Never replace, blank, reset or overwrite a profile that
+has answers with the template. Never start a fresh intake over it unless the
+parent says in their own words to start over; first keep a timestamped backup
+under local ignored `reports/`. Do not interpret `intake.dry_run=true` as a
+reason to discard answers. If the selected folder is non-synced, work in it
+directly; do not create another folder. If the selected source or opened folder
+needs relocation under the sync rules, silently copy the selected package to a
+NEW non-synced home folder under the existing naming rule. A non-synced folder
+with saved answers takes precedence over relocating the opened folder.
+Never create an empty duplicate home folder when one with data exists.
+
+When changing working folders, copy (never move or delete) `profile.json`,
+`reports/` and the saved approvals log (including `reports/approvals.log`)
+into the working folder. Never overwrite anything already there that is newer;
+retain conflicting older copies in timestamped local backups, including any
+answered profile before replacing it with another saved profile. Preserve
+reviewed copies, hashes and log history; do not silently merge answers or
+rewrite approvals. Leave older folders untouched. Work and save family data
+only in the selected non-synced package folder after this check.
+
+Show ONE short recap, about six lines maximum: athlete, graduation year,
+sport/team, target schools and levels, parent contact names, and what is still
+blank. Then ask exactly one question: "Anything changed?" Do not restart the
+five groups or re-ask any answer already in the profile. After that reply, ask
+only what is blank AND required, once in one batch per school, and only items
+the parent says changed. Previously asked blanks stay Needs-your-answer; do
+not ask them again. Keep all item-specific safety gates for proposed actions.
+
+For `intake.dry_run=true`, reuse the answers for rehearsals with the recap's
+first line labeled "Test profile (made-up athlete)". Keep `dry_run=true` and
+never present it as the real family. Prefer offline rehearsal; live rehearsal
+needs separate disclosure approval before fake data goes to any real form,
+plus specific ARMS/profile, consent, contact and upload approvals as applicable.
+Never submit a dry run or fake data. If the parent says this is a real family
+or wants to start fresh, save a timestamped backup of the test profile first,
+then create a new blank profile in the working folder and run the normal five
+groups. Never silently convert test answers into real-family answers.
+
+Saved approvals alone never carry over as permission to fill or Submit.
+If the recap shows no change, the existing summary approval applies only after
+verifying BOTH recorded SHA-256 values still match the current profile
+(excluding approvals) and school list against the saved reviewed copies.
+Missing approvals/copies or a hash mismatch means show the one summary again
+and obtain its Yes before filling. Keep original approval copies/hashes intact;
+record a renewed review separately in local `reports/`. Every Submit still
+needs a fresh per-school Yes; never resend confirmed forms. Consent wording,
+exact-file uploads, contact authorizations, ARMS profile actions, family-only
+passwords/CAPTCHAs and the FrontRush Ryzer stop retain every existing gate.
+
+If no profile with answers exists anywhere in the search, use the unchanged
+brand-new-family flow: create `profile.json` from `profile.template.json`,
+five groups, one summary, one Yes to fill, one fresh Yes per Submit.
 
 Handle necessary free setup within app permissions; no parent terminal. Explain
 permissions, Intel Mac support or Windows foreground only on failure or a
@@ -101,24 +176,27 @@ official help, necessary official free installers and example.com. This does not
 authorize other recruiting browsing. Save no family data during setup; work
 inside this folder without changing remotes.
 
-Keep the entire pre-intake message to at most two short sentences:
-"Browser check passed." plus the first question group. If the relocation line
-is needed, omit the optional browser-success sentence to keep that same limit.
+Keep the entire pre-intake message to at most two short sentences plus the
+recap block on resume: optional "Browser check passed." and "Anything changed?"
+For a brand-new family, "Browser check passed." plus the first question group;
+if the relocation line is needed, omit the optional browser-success sentence.
+On resume the relocation line may be one more sentence before the recap.
 No privacy/processing essays, setup reports or offers to save setup reports.
 Save setup notes quietly in reports/.
 
 ## 1. Intake and local profile
 
-For real-family runs: five groups -> one summary -> one Yes -> fill -> one
-fresh Yes per Submit. The summary lists what will be entered into which
-official form, including any specific ARMS profile-creation action. Do not add
-a separate disclosure approval step, profile versions such as "v1" or "v2", or
+For brand-new real-family runs: five groups -> one summary -> one Yes -> fill ->
+one fresh Yes per Submit. The summary lists what will be entered into which
+official form, including any specific ARMS profile-creation action. Do not add a
+separate disclosure approval step, profile versions such as "v1" or "v2", or
 whole-profile re-approvals. Separate live-rehearsal disclosure approval applies
 only to deliberate dry-run tests on live forms, with fake data and no Submit.
 Required consent, file, contact and other item-specific safety gates still
 apply.
 
-Use FIVE plain-language question groups: one short message, one reply each.
+For a new profile only, use FIVE plain-language question groups: one short
+message, one reply each.
 Allow "skip" or "not sure"; unknown stays blank, never guessed. Reuse answers;
 save quietly after each group, no "reply yes to continue" gates. Every section 4
 field remains reachable through optional additions or actual-form follow-ups.
@@ -185,9 +263,10 @@ required form questions, not as more intake groups:
 - Consents/attestations: ask once per item when it appears, using exact live
   wording/options under section 4; show the answer again in the final review.
 
-Create `./profile.json` from `profile.template.json`, never by editing the
-template or using the test fixture for a real family. Empty strings/nulls mean
-unanswered, never No/zero/not applicable. Repeated objects are blank examples:
+Only for a new profile, create `./profile.json` from
+`profile.template.json`, never by editing the template or using the test fixture
+for a real family. Empty strings/nulls mean unanswered, never No/zero/not
+applicable. Repeated objects are blank examples:
 add/remove as needed; no empty placeholder contacts. Preserve exact values,
 units, leading zeros and school-specific answers. Unused sport blocks stay
 blank; `consents` may be null until records exist.

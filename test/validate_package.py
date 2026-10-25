@@ -421,11 +421,14 @@ def check_live_run_friction(pages):
         ), name + " silent folder setup")
         phrases_in(text, (
             "entire pre-intake message to at most two short sentences",
-            '"browser check passed." plus the first question group',
+            'for a brand-new family, "browser check passed." plus the first question group',
+            'plus the recap block on resume',
+            'optional "browser check passed." and "anything changed?"',
+            'on resume the relocation line may be one more sentence before the recap',
             "omit the optional browser-success sentence",
             "no privacy/processing essays, setup reports or offers to save setup reports",
             "save setup notes quietly in reports/",
-            "for real-family runs: five groups -> one summary -> one yes -> fill -> one fresh yes per submit",
+            "for brand-new real-family runs: five groups -> one summary -> one yes -> fill -> one fresh yes per submit",
             "summary lists what will be entered into which official form",
             'do not add a separate disclosure approval step, profile versions such as "v1" or "v2"',
             "separate live-rehearsal disclosure approval applies only to deliberate dry-run tests on live forms",
@@ -496,6 +499,86 @@ def check_live_run_friction(pages):
                   "successful opening", "real-family flow", "deliberate dry-run test on a live form"):
         require("| " + label + " |" in expected, "Missing expected-behavior row: " + label)
     print("PASS: silent folder relocation, short openings, browser title/text/notice checks, real-family approvals and unbranded official links")
+
+
+def check_resume_flow(pages):
+    """Guard saved-answer recovery in every launcher, entirely offline."""
+    for name in SETUP_NAMES:
+        text = normalized(pages[name])
+        require("~/RecruitingHelper*" in pages[name],
+                name + " must search the RecruitingHelper* glob")
+        phrases_in(text, (
+            "defer creating or relocating a working folder until the browser check and resume check",
+            "resume check: quietly, after the browser check passes and before any question",
+            "must also contain profile.template.json or agents.md",
+            "folder the agent was opened from", "~/recruitinghelper",
+            "~/recruitinghelper2", "~/recruitinghelper3",
+            "sibling folders one level up from the opened folder",
+            '~/desktop', '~/documents', '~/documents/projects',
+            'name contains "recruit" (case-insensitive)',
+            "or that contain profile.template.json", "inspect all candidates",
+            "ignore profiles equal to the blank template or with no answers",
+            "newest modification time across all locations",
+            "if several have answers, mention only the newest one",
+            "never replace, blank, reset or overwrite a profile that has answers with the template",
+            "parent says in their own words to start over",
+            "timestamped backup", "under local ignored reports/",
+            "if the selected folder is non-synced, work in it directly",
+            "never create an empty duplicate home folder when one with data exists",
+            "copy (never move or delete) profile.json, reports/ and the saved approvals log",
+            "reports/approvals.log", "never overwrite anything already there that is newer",
+            "leave older folders untouched", "show one short recap",
+            "six lines maximum", "athlete, graduation year, sport/team",
+            "target schools and levels, parent contact names", "what is still blank",
+            'ask exactly one question: "anything changed?"',
+            "do not restart the five groups or re-ask any answer already in the profile",
+            "only what is blank and required, once in one batch per school",
+            "only items the parent says changed", "do not ask them again",
+            "for intake.dry_run=true, reuse the answers for rehearsals",
+            'first line labeled "test profile (made-up athlete)"',
+            "keep dry_run=true", "never present it as the real family",
+            "live rehearsal needs separate disclosure approval before fake data goes to any real form",
+            "never submit a dry run or fake data",
+            "if the parent says this is a real family or wants to start fresh",
+            "backup of the test profile first", "run the normal five groups",
+            "saved approvals alone never carry over as permission to fill or submit",
+            "if the recap shows no change", "verifying both recorded sha-256 values",
+            "current profile (excluding approvals) and school list",
+            "missing approvals/copies or a hash mismatch means show the one summary again",
+            "obtain its yes before filling", "every submit still needs a fresh per-school yes",
+            "if no profile with answers exists anywhere in the search",
+            "unchanged brand-new-family flow",
+        ), name + " saved-profile resume flow")
+        # Search order is a traversal order, not permission to stop at the first
+        # answered candidate. Selection must compare modification times globally.
+        search = text.split("search in this order:", 1)[1]
+        positions = [search.index(phrase) for phrase in (
+            "folder the agent was opened from", "~/recruitinghelper",
+            "sibling folders one level up", "~/desktop", "~/documents/projects",
+        )]
+        require(positions == sorted(positions), name + " wrong resume search order")
+
+    for name in (".cursor/rules/agents-source-of-truth.mdc",
+                 ".cursor/rules/approval-gates.mdc", ".cursor/rules/hard-boundaries.mdc"):
+        require("~/RecruitingHelper*" in pages[name],
+                name + " must search the RecruitingHelper* glob")
+        phrases_in(normalized(pages[name]), (
+            "after the browser check and before any question", "~/recruitinghelper",
+            "newest modified profile with answers",
+            "never replace a profile that has answers with the template",
+            "copy (never move or delete)", "anything changed?",
+            "test profile (made-up athlete)", "keep dry_run=true",
+            "both recorded sha-256", "every submit needs a fresh yes",
+        ), name + " resume alignment")
+
+    expected = normalized(pages["test/README.md"])
+    for label in ("resume search across package folders", "newest answered profile wins",
+                  "resume without repeating intake", "saved dry-run profile",
+                  "parent requests a fresh start", "resume approval hashes",
+                  "copy saved work without data loss", "no saved answers anywhere"):
+        require("| " + label + " |" in expected,
+                "Missing expected-behavior row: " + label)
+    print("PASS: saved-profile discovery, safe copies, recap, dry-run reuse and resume approval hashes")
 
 
 def main():
@@ -789,8 +872,10 @@ def main():
                       if path.is_file() and path.suffix in {".md", ".mdc"}
                       and not any(part in {".git", "reports", "screenshots"} for part in path.relative_to(ROOT).parts)}
     friction_names -= {"reference/recruiting-intake-tree.md", "reference/sample-forms.md"}
-    check_live_run_friction({name: (ROOT / name).read_text(encoding="utf-8")
-                            for name in friction_names})
+    entry_pages = {name: (ROOT / name).read_text(encoding="utf-8")
+                   for name in friction_names}
+    check_live_run_friction(entry_pages)
+    check_resume_flow(entry_pages)
     policy_names = {"AGENTS.md", "CHATGPT_PROMPT.md", "START_PROMPT.md", "README.md"}
     policy_names.update(path.relative_to(ROOT).as_posix() for path in (ROOT / "prompts").glob("*.md"))
     policies = {name: (ROOT / name).read_text(encoding="utf-8") for name in policy_names}

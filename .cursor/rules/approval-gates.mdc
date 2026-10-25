@@ -47,10 +47,39 @@ any file; any contact or phone number that could trigger SMS or AI-contact
 authorization; and anything touching an ARMS profile not listed in the summary.
 See CURSOR_PROMPT.md step 7; if wording differs, apply the stricter one.
 
-For real-family runs: five groups -> one summary -> one Yes -> fill -> one
-fresh Yes per Submit. The summary lists what will be entered into which
-official form, including any specific ARMS profile-creation action. Do not add
-a separate disclosure approval step, profile versions such as "v1" or "v2", or
+For brand-new real-family runs: five groups -> one summary -> one Yes -> fill ->
+one fresh Yes per Submit. The summary lists what will be entered into which
+official form, including any specific ARMS profile-creation action. Do not add a
+separate disclosure approval step, profile versions such as "v1" or "v2", or
 whole-profile re-approvals. Separate live-rehearsal disclosure approval applies
 only to deliberate dry-run tests on live forms, with fake data and no Submit.
-Required consent, file, contact and other item-specific safety gates still apply.
+Required consent, file, contact and other item-specific safety gates still
+apply.
+
+## Resume saved answers
+
+After the browser check and before any question, follow AGENTS.md section 0
+and parent-flow.mdc: search the opened folder, `~/RecruitingHelper*`, siblings
+one level up, then qualifying folders directly under `~/Desktop`, `~/Documents`
+and `~/Documents/projects` (name contains "recruit", case-insensitive, or has
+`profile.template.json`). Require a package marker (`profile.template.json` or
+`AGENTS.md`), inspect all candidates and pick the newest modified profile with
+answers; ignore blank/no-answer profiles and mention only the newest one.
+Never replace a profile that has answers with the template or restart intake
+without the parent's own start-over request and a timestamped backup.
+Reuse a non-synced saved folder directly; copy synced/possibly synced sources
+to a new non-synced home folder. Copy (never move or delete) `profile.json`,
+`reports/` and the saved approvals log without overwriting newer files; leave
+older folders untouched and never create an empty duplicate when data exists.
+Show one recap (about six lines: athlete, year, sport/team, schools/levels,
+parent names, blanks) and ask only "Anything changed?" Re-ask no saved answers;
+ask only blank required items once in one batch per school and reported changes.
+Label dry-run recaps "Test profile (made-up athlete)", keep `dry_run=true`,
+and retain all live-rehearsal disclosure gates and the ban on fake submits.
+For a real-family/fresh start, back up the test profile before a blank profile
+and the normal five groups. New families otherwise keep the five-group flow.
+Saved approvals alone never authorize filling or Submit: reuse an unchanged
+summary approval only after BOTH recorded SHA-256 values match the current
+profile (excluding approvals) and school list with their reviewed copies;
+otherwise show the one summary again. Every Submit needs a fresh Yes.
+Keep all consent, upload, contact, ARMS, password, CAPTCHA and Ryzer gates.
