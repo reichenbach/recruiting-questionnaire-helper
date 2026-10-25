@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -590,6 +591,79 @@ def check_resume_flow(pages):
     print("PASS: saved-profile discovery, safe copies, recap, dry-run reuse and resume approval hashes")
 
 
+def check_stale_package_resume(pages):
+    """Keep resume rules in pasted prompts even when only stale copies load."""
+    names = SETUP_NAMES + (
+        ".cursor/rules/agents-source-of-truth.mdc",
+        ".cursor/rules/approval-gates.mdc", ".cursor/rules/hard-boundaries.mdc",
+    )
+    for name in names:
+        text = normalized(pages[name])
+        phrases_in(text, (
+            "prompt-resident rule: the pasted start_prompt.md / chatgpt_prompt.md text",
+            "source of truth for the resume check, relocation rule",
+            '"anything changed?" recap and never-blank rule',
+            "wins over stale package files", "lack the resume check section",
+            "never fall back to starting a fresh intake because a package copy is stale",
+            "if the opened folder has no agents.md",
+            "search one and two levels down for package copies",
+            "folders with both agents.md and profile.template.json",
+            'prefer a copy whose agents.md contains "resume check"',
+            "choose the newest agents.md modification time",
+            "never silently pick a copy lacking it when one with it exists",
+            "if none has it, use the newest copy and still apply the prompt-resident rules",
+            "all discovered package copies as profile candidates",
+            "do not tell the parent about package selection or stale copies",
+            "even", "stale or missing",
+            "do the resume check before copying a package into any numbered home folder",
+            "only when no saved profile with answers exists" if name.startswith(
+                ".cursor/rules/") and name != ".cursor/rules/parent-flow.mdc"
+            else "only allowed when no saved profile with answers exists",
+            "never create recruitinghelpern", "reuse it",
+            "refresh stale package files in the selected saved folder",
+            "opened/selected newest package only after selecting the saved profile",
+            "first copy the old versions to reports/package-backup-<timestamp>/",
+            "preserving relative paths", "update only those package files",
+            "do not delete other files or copy the whole package over the saved folder",
+            "never touch profile.json, existing reports/ contents, approvals logs or any family data",
+            "a one-line note in reports/", "say nothing to the parent",
+            'the recap must be the first parent message after "browser check passed."',
+            "a first message asking a question group while an answered profile exists is a failure",
+            "matt's regression scenario", "~/documents/projects without agents.md",
+            "saved dry_run profile in ~/recruitinghelper2/profile.json",
+            'recap labeled "test profile (made-up athlete)" + "anything changed?", never group 1',
+        ), name + " stale-package recovery")
+        refresh = text.split("compare only this allowlist:", 1)[1].split("if they differ", 1)[0]
+        for item in ("agents.md", "readme.md", "prompts/", "reference/", "test/",
+                     ".cursor/", "claude.md", "claude_prompt.md", "cursor_prompt.md",
+                     "chatgpt_prompt.md", "start_prompt.md", "profile.template.json"):
+            require(item in refresh, name + " refresh allowlist missing: " + item)
+        require("profile.json" not in refresh and "reports/" not in refresh,
+                name + " refresh allowlist must exclude saved family data")
+
+    expected = normalized(pages["test/README.md"])
+    for label in ("prompt-resident resume wins", "package selection from a parent folder",
+                  "stale saved package refresh", "first question group with saved answers",
+                  "matt's stale-copy resume scenario"):
+        require("| " + label + " |" in expected,
+                "Missing expected-behavior row: " + label)
+    scenario = next(normalized(line) for line in pages["test/README.md"].splitlines()
+                    if normalized(line).startswith("| matt's stale-copy resume scenario |"))
+    phrases_in(scenario, ("~/documents/projects", "without agents.md", "stale",
+                         "~/recruitinghelper2/profile.json", "dry_run=true",
+                         "test profile (made-up athlete)", "anything changed?",
+                         "failure"), "Matt's expected stale-copy recap")
+    require("resume_scenarios.py" in expected,
+            "Offline resume scenarios must be documented")
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "test/resume_scenarios.py")],
+        cwd=ROOT, capture_output=True, text=True, check=False, timeout=30,
+    )
+    require(result.returncode == 0, "Offline resume scenarios failed")
+    print(result.stdout.strip())
+    print("PASS: prompt-resident resume, parent-folder package choice, safe refresh and first-message recap")
+
+
 def main():
     required = [
         ".gitignore", "AGENTS.md", "README.md", "START_PROMPT.md",
@@ -599,6 +673,7 @@ def main():
         "prompts/report.md", "reference/recruiting-intake-tree.md",
         "reference/sample-forms.md", "reference/verified-forms.md",
         "test/dry-run-profile.json", "test/dry-run-profile-volleyball.json", "test/README.md",
+        "test/resume_scenarios.py",
         ".cursor/rules/agents-source-of-truth.mdc",
         ".cursor/rules/approval-gates.mdc",
     ]
@@ -818,6 +893,9 @@ def main():
                        "404", "offline", "blocked", "local", "bundled", "never crash or stall"):
             require(phrase in instructions, name + " must cover fetch fallback: " + phrase)
     agent_rules = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+    # The required refresh allowlist and prompt precedence name the backup file.
+    # Keep the agent-neutral prose check; exempt only this exact filename.
+    agent_rules = re.sub(r"\bCHATGPT_PROMPT\.md\b", "", agent_rules)
     require(not re.search(r"codex|chatgpt", agent_rules, re.I),
             "AGENTS.md must use agent-neutral wording")
     claude_rules = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
@@ -885,6 +963,7 @@ def main():
                    for name in friction_names}
     check_live_run_friction(entry_pages)
     check_resume_flow(entry_pages)
+    check_stale_package_resume(entry_pages)
     policy_names = {"AGENTS.md", "CHATGPT_PROMPT.md", "START_PROMPT.md", "README.md"}
     policy_names.update(path.relative_to(ROOT).as_posix() for path in (ROOT / "prompts").glob("*.md"))
     policies = {name: (ROOT / name).read_text(encoding="utf-8") for name in policy_names}

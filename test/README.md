@@ -38,7 +38,23 @@ python3 -m json.tool profile.template.json
 python3 -m json.tool test/dry-run-profile.json
 python3 -m json.tool test/dry-run-profile-volleyball.json
 python3 test/validate_package.py
+python3 test/resume_scenarios.py
 ```
+
+The validator also runs `resume_scenarios.py` automatically. It uses only the
+standard library, no network, and temporary directories as a synthetic HOME.
+It builds Matt's parent-folder layout with a stale package containing older
+answers, a blank RecruitingHelper and a newer answered dry-run profile in
+RecruitingHelper2 with stale package files. Its read-only
+`select_saved_profile(home, opened)` function returns the selected profile,
+package and a refresh plan; it never creates a working folder or applies the
+plan. Assertions compare tree contents and modification times, require the
+RecruitingHelper2 profile to win, and exclude profile.json, reports and approval
+logs from the refresh plan. Additional cases cover a current package two levels
+down, current-rule preference over a newer stale copy, newest current package,
+all-stale fallback, missing saved-package markers, real-family precedence,
+search-order ties, explicit false/zero answers and no answered profiles.
+This is an offline model of the instructions, not a live agent/browser test.
 
 On Windows, `py -3` can replace `python3` if that is your installed Python
 launcher. The validator uses only the standard library and local read-only
@@ -132,6 +148,11 @@ sending is disabled", plus any other blockers. Never call the test sent.
 
 | Situation | Expected behavior |
 |---|---|
+| Prompt-resident resume wins | The pasted START_PROMPT.md / CHATGPT_PROMPT.md text is the source of truth for the Resume check, relocation rule, recap and never-blank rule. It wins over stale AGENTS.md, README or prompts lacking Resume check, even if all package copies are stale; never fall back to fresh intake because of stale files |
+| Package selection from a parent folder | If the opened folder has no AGENTS.md, search one and two levels down for folders with AGENTS.md and profile.template.json. Prefer AGENTS.md containing "Resume check", then newest AGENTS.md modification time. If none contains it, use the newest copy while applying prompt-resident rules. Search all discovered packages for answers as well; do not tell the parent about selection |
+| Stale saved package refresh | After selecting saved answers and before copying any package-only folder, reuse the non-synced saved folder. If package files differ from the opened/selected newest package, first back up old versions to `reports/package-backup-<timestamp>/` and update only the package allowlist in section 0. Never touch profile.json, existing reports, approvals logs or family data; add only the backup folder and a one-line refresh note in reports/. Say nothing to the parent |
+| First question group with saved answers | FAILURE: a first message asking a question group while an answered profile exists anywhere in the search. The recap must be the first parent message after "Browser check passed." (only the required relocation line may precede it), followed by exactly "Anything changed?" |
+| Matt's stale-copy resume scenario | Opened in ~/Documents/projects without AGENTS.md; recruiting-questionnaire-codex is stale and has older answers, ~/RecruitingHelper is blank, ~/RecruitingHelper2/profile.json has newer answers with dry_run=true and stale package files. Select RecruitingHelper2, refresh only package files with backups, show recap labeled "Test profile (made-up athlete)" + "Anything changed?". Asking group 1 or creating RecruitingHelper3 is a failure |
 | Repo or any repo file is private, 404, offline or blocked | Try once only with a bounded timeout; explain in one plain sentence, then use the open folder, bundled copy or supplied ZIP/folder; ask for a pasted/shared package if none exists; no retries or stall |
 | Optional backup-prompt reference read fails | Explain in one plain sentence and continue with inline instructions and all four volleyball examples; no download dependency |
 | Agent creates the package folder (download/clone/unzip) | Complete the browser and resume checks before creating or relocating a working folder; reuse a saved non-synced package when one exists and never create an empty duplicate. Only if needed, silently create a NEW folder directly in home, never Desktop/Documents/synced; add a number if the name exists, never overwrite, and say nothing about sync |
@@ -139,7 +160,7 @@ sending is disabled", plus any other blockers. Never call the test sent.
 | First run before family intake | Use the real computer-use tool to open https://example.com; pass if the tab title OR displayed page text contains "Example Domain", OR displayed page text contains "This domain is for use in" (documentation examples notice). No heading needed. Record what the tool actually saw quietly in reports/. No fetch, search or shell substitute. Never ask the parent to accept a variant, approve a changed test or choose how to pass. Troubleshoot with the parent only if the page fails to load or the tool cannot read anything. On success say at most "Browser check passed." |
 | Successful opening | Entire pre-intake message is at most two short sentences plus the recap block on resume: optional "Browser check passed." and "Anything changed?"; relocation may add one sentence before the recap. For new families use optional browser-success plus group 1, omitting browser-success if relocation is needed. No privacy/processing essays, setup reports or offers to save them; setup notes stay quietly in reports/ |
 | Real-family flow | For brand-new families: five groups -> one summary listing data, official forms and specific one-time actions -> one Yes -> fill -> one fresh Yes per Submit; no separate disclosure approval, profile versions or whole-profile re-approvals; item-specific safety gates still apply |
-| Resume search across package folders | After the browser check and before any question, quietly inspect the originally opened folder, then ~/RecruitingHelper* (including numbered folders), then siblings one level up and qualifying folders directly under ~/Desktop, ~/Documents and ~/Documents/projects. In this last search, include names containing "recruit" case-insensitively or folders containing profile.template.json. Require profile.template.json or AGENTS.md beside profile.json; ignore profiles equal to the blank template or with no answers (metadata alone does not count) |
+| Resume search across package folders | After the browser check and before any question or package copy to a numbered home folder, quietly inspect the originally opened folder, then ~/RecruitingHelper* (including numbered folders), then siblings one level up and qualifying folders directly under ~/Desktop, ~/Documents and ~/Documents/projects, plus discovered descendant package copies. In this last search, include names containing "recruit" case-insensitively or folders containing profile.template.json. Require profile.template.json or AGENTS.md beside profile.json except that every ~/RecruitingHelper* folder with answers is a candidate even with stale or missing package files; ignore profiles equal to the blank template or with no answers (metadata alone does not count) |
 | Newest answered profile wins | Inspect all candidates and select the profile.json with answers with the newest modification time, using search order only to break ties. A newer blank profile cannot hide an older answered one. If several have answers, mention only the newest one; never merge or blank it |
 | Resume without repeating intake | Show ONE recap about six lines maximum (athlete, graduation year, sport/team, schools/levels, parent contact names, blanks), then ask exactly "Anything changed?" Re-ask no saved answer. After the reply, ask only blank required items once in one batch per school and the items the parent says changed; never repeat a previously asked blank |
 | Saved dry-run profile | Reproduce the reported failure case with saved test answers in ~/RecruitingHelper2 and an empty ~/RecruitingHelper: select the answered profile, label the first recap line "Test profile (made-up athlete)", keep intake.dry_run=true and reuse for rehearsal. Never replace an answered profile with the template or say no answers were collected; live fake-data disclosure and every specific action gate still apply; never submit |

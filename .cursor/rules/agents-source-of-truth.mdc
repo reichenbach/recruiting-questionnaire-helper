@@ -34,19 +34,66 @@ most "Browser check passed." Pause intake until the real check passes.
 
 ## Resume saved answers
 
+Prompt-resident rule: the pasted START_PROMPT.md / CHATGPT_PROMPT.md text is the
+source of truth for the Resume check, relocation rule, "Anything changed?" recap
+and never-blank rule. It wins over stale package files (AGENTS.md, README.md or
+prompts) that lack the Resume check section. Never fall back to starting a fresh
+intake because a package copy is stale. Keep these prompt-resident rules even if
+every available package copy is stale.
+
+Package choice: if the opened folder has no AGENTS.md (for example,
+`~/Documents/projects`), search one and two levels down for package copies:
+folders with both AGENTS.md and profile.template.json. Prefer a copy whose
+AGENTS.md contains "Resume check"; among those, choose the newest AGENTS.md
+modification time. Never silently pick a copy lacking it when one with it
+exists. If none has it, use the newest copy and still apply the prompt-resident
+rules. Keep the original opened path for the saved-profile search and include
+all discovered package copies as profile candidates, not just the chosen copy.
+Do not tell the parent about package selection or stale copies.
+
 After the browser check and before any question, follow AGENTS.md section 0
 and parent-flow.mdc: search the opened folder, `~/RecruitingHelper*`, siblings
 one level up, then qualifying folders directly under `~/Desktop`, `~/Documents`
 and `~/Documents/projects` (name contains "recruit", case-insensitive, or has
 `profile.template.json`). Require a package marker (`profile.template.json` or
-`AGENTS.md`), inspect all candidates and pick the newest modified profile with
-answers; ignore blank/no-answer profiles and mention only the newest one.
+`AGENTS.md`) except for every ~/RecruitingHelper* folder with answers, even
+with stale or missing package files. Inspect all candidates and pick the
+newest modified profile with answers; ignore blank/no-answer profiles and
+mention only the newest one. Do the resume check BEFORE copying a package into
+any numbered home folder. Copy a package-only folder only when no saved profile
+with answers exists. Never create RecruitingHelperN when a non-synced folder
+with data exists; reuse it. Relocation of synced saved work remains allowed.
 Never replace a profile that has answers with the template or restart intake
 without the parent's own start-over request and a timestamped backup.
 Reuse a non-synced saved folder directly; copy synced/possibly synced sources
 to a new non-synced home folder. Copy (never move or delete) `profile.json`,
 `reports/` and the saved approvals log without overwriting newer files; leave
 older folders untouched and never create an empty duplicate when data exists.
+
+Refresh stale package files in the selected saved folder from the
+opened/selected newest package only after selecting the saved profile. Compare
+only this allowlist: AGENTS.md, README.md, prompts/, reference/, test/,
+.cursor/, CLAUDE.md, CLAUDE_PROMPT.md, CURSOR_PROMPT.md, CHATGPT_PROMPT.md,
+START_PROMPT.md and profile.template.json. If they differ, first copy the old
+versions to `reports/package-backup-<timestamp>/`, preserving relative paths;
+then update ONLY those package files from the newest package. Do not delete
+other files or copy the whole package over the saved folder. NEVER touch
+profile.json, existing reports/ contents, approvals logs or any family data. The
+only reports/ changes are adding the backup folder and a one-line note in
+reports/ recording the refresh. Do not overwrite an existing backup or follow
+symlinks into family data. Say nothing to the parent. If the selected source
+must be relocated, copy saved work under the rules below before refreshing in
+the private folder.
+
+The recap must be the first parent message after "Browser check passed." when an
+answered profile exists anywhere in the search (with only the required
+relocation line allowed before it). A first message asking a question group
+while an answered profile exists is a failure. Matt's regression scenario:
+opened in `~/Documents/projects` without AGENTS.md, stale package copies there
+and in `~/RecruitingHelper*`, saved dry_run profile in
+`~/RecruitingHelper2/profile.json` -> recap labeled
+"Test profile (made-up athlete)" + "Anything changed?", never group 1.
+
 Show one recap (about six lines: athlete, year, sport/team, schools/levels,
 parent names, blanks) and ask only "Anything changed?" Re-ask no saved answers;
 ask only blank required items once in one batch per school and reported changes.

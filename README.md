@@ -16,6 +16,23 @@ upload or account creation.
 The public package is at
 https://github.com/reichenbach/recruiting-questionnaire-helper
 An existing local or bundled copy works too.
+Prompt-resident rule: the pasted START_PROMPT.md / CHATGPT_PROMPT.md text is the
+source of truth for the Resume check, relocation rule, "Anything changed?" recap
+and never-blank rule. It wins over stale package files (AGENTS.md, README.md or
+prompts) that lack the Resume check section. Never fall back to starting a fresh
+intake because a package copy is stale. Keep these prompt-resident rules even if
+every available package copy is stale.
+
+Package choice: if the opened folder has no AGENTS.md (for example,
+`~/Documents/projects`), search one and two levels down for package copies:
+folders with both AGENTS.md and profile.template.json. Prefer a copy whose
+AGENTS.md contains "Resume check"; among those, choose the newest AGENTS.md
+modification time. Never silently pick a copy lacking it when one with it
+exists. If none has it, use the newest copy and still apply the prompt-resident
+rules. Keep the original opened path for the saved-profile search and include
+all discovered package copies as profile candidates, not just the chosen copy.
+Do not tell the parent about package selection or stale copies.
+
 Defer creating or relocating a working folder until the browser check and
 resume check below; use the available open/local package for setup. Do not
 collect new family answers during setup. Search before making any home folder.
@@ -42,9 +59,18 @@ Never ask the parent to select, confirm or describe a folder or sync status;
 never ask "is it outside cloud sync". Only if the agent cannot create or open
 the home folder, guide the small folder-access step in plain words.
 
-Resume check: quietly, after the browser check passes and before any
-question, look for an existing `profile.json` from this package. Its folder
-must also contain `profile.template.json` or `AGENTS.md`. Search in this order:
+Resume check: quietly, after the browser check passes and before any question,
+look for an existing `profile.json` from this package. Its folder must also
+contain `profile.template.json` or `AGENTS.md`, except that every
+`~/RecruitingHelper*` folder holding a profile with answers is a candidate even
+if its package files are stale or missing. Do the resume check BEFORE copying a
+package into any numbered home folder. Copying a package copy, which may contain
+a stale or blank profile.json, into a new numbered folder is only allowed when
+no saved profile with answers exists. Never create RecruitingHelperN when one
+with data exists in a non-synced folder; reuse it directly. Relocating saved
+work from a synced folder is still allowed under the relocation rules, after
+this search; this is not permission to copy a package-only folder first.
+Search in this order:
 
 - The folder the agent was opened from (remember its original path).
 - `~/RecruitingHelper*`, including `~/RecruitingHelper`,
@@ -71,6 +97,21 @@ NEW non-synced home folder under the existing naming rule. A non-synced folder
 with saved answers takes precedence over relocating the opened folder.
 Never create an empty duplicate home folder when one with data exists.
 
+Refresh stale package files in the selected saved folder from the
+opened/selected newest package only after selecting the saved profile. Compare
+only this allowlist: AGENTS.md, README.md, prompts/, reference/, test/,
+.cursor/, CLAUDE.md, CLAUDE_PROMPT.md, CURSOR_PROMPT.md, CHATGPT_PROMPT.md,
+START_PROMPT.md and profile.template.json. If they differ, first copy the old
+versions to `reports/package-backup-<timestamp>/`, preserving relative paths;
+then update ONLY those package files from the newest package. Do not delete
+other files or copy the whole package over the saved folder. NEVER touch
+profile.json, existing reports/ contents, approvals logs or any family data. The
+only reports/ changes are adding the backup folder and a one-line note in
+reports/ recording the refresh. Do not overwrite an existing backup or follow
+symlinks into family data. Say nothing to the parent. If the selected source
+must be relocated, copy saved work under the rules below before refreshing in
+the private folder.
+
 When changing working folders, copy (never move or delete) `profile.json`,
 `reports/` and the saved approvals log (including `reports/approvals.log`)
 into the working folder. Never overwrite anything already there that is newer;
@@ -79,6 +120,15 @@ answered profile before replacing it with another saved profile. Preserve
 reviewed copies, hashes and log history; do not silently merge answers or
 rewrite approvals. Leave older folders untouched. Work and save family data
 only in the selected non-synced package folder after this check.
+
+The recap must be the first parent message after "Browser check passed." when an
+answered profile exists anywhere in the search (with only the required
+relocation line allowed before it). A first message asking a question group
+while an answered profile exists is a failure. Matt's regression scenario:
+opened in `~/Documents/projects` without AGENTS.md, stale package copies there
+and in `~/RecruitingHelper*`, saved dry_run profile in
+`~/RecruitingHelper2/profile.json` -> recap labeled
+"Test profile (made-up athlete)" + "Anything changed?", never group 1.
 
 Show ONE short recap, about six lines maximum: athlete, graduation year,
 sport/team, target schools and levels, parent contact names, and what is still
