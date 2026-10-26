@@ -149,7 +149,7 @@ only in the selected non-synced package folder after this check.
 The recap must be the first parent message after "Browser check passed." when an
 answered profile exists anywhere in the search (with only the required
 relocation line allowed before it). A first message asking a question group
-while an answered profile exists is a failure. Matt's regression scenario:
+while an answered profile exists is a failure. Regression scenario:
 opened in `~/Documents/projects` without AGENTS.md, stale package copies there
 and in `~/RecruitingHelper*`, saved dry_run profile in
 `~/RecruitingHelper2/profile.json` -> recap labeled

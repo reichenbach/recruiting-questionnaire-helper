@@ -629,7 +629,7 @@ def check_stale_package_resume(pages):
             "a one-line note in reports/", "say nothing to the parent",
             'the recap must be the first parent message after "browser check passed."',
             "a first message asking a question group while an answered profile exists is a failure",
-            "matt's regression scenario", "~/documents/projects without agents.md",
+            "regression scenario", "~/documents/projects without agents.md",
             "saved dry_run profile in ~/recruitinghelper2/profile.json",
             'recap labeled "test profile (made-up athlete)" + "anything changed?", never group 1',
         ), name + " stale-package recovery")
@@ -644,15 +644,15 @@ def check_stale_package_resume(pages):
     expected = normalized(pages["test/README.md"])
     for label in ("prompt-resident resume wins", "package selection from a parent folder",
                   "stale saved package refresh", "first question group with saved answers",
-                  "matt's stale-copy resume scenario"):
+                  "stale-copy resume scenario"):
         require("| " + label + " |" in expected,
                 "Missing expected-behavior row: " + label)
     scenario = next(normalized(line) for line in pages["test/README.md"].splitlines()
-                    if normalized(line).startswith("| matt's stale-copy resume scenario |"))
+                    if normalized(line).startswith("| stale-copy resume scenario |"))
     phrases_in(scenario, ("~/documents/projects", "without agents.md", "stale",
                          "~/recruitinghelper2/profile.json", "dry_run=true",
                          "test profile (made-up athlete)", "anything changed?",
-                         "failure"), "Matt's expected stale-copy recap")
+                         "failure"), "Expected stale-copy recap")
     require("resume_scenarios.py" in expected,
             "Offline resume scenarios must be documented")
     result = subprocess.run(

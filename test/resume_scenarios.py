@@ -171,7 +171,7 @@ def run_scenarios():
         write(saved, "reports/approvals.log", "Keep original approval history")
         before = snapshot(home)
         result = select_saved_profile(home, opened)
-        assert result.profile == saved_profile, "Matt's newer dry-run profile must win"
+        assert result.profile == saved_profile, "The newer dry-run profile must win"
         assert result.package == stale, "All-stale fallback must still resume"
         assert snapshot(home) == before, "Selection must never modify saved work"
         assert not (home / "RecruitingHelper3").exists()
